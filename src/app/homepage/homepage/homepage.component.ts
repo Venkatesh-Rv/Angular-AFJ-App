@@ -9,8 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomepageComponent implements OnInit {
 
-  //slider images
-
   slides = [{ 'image': 'https://therichpost.com/wp-content/uploads/2021/02/Vuejs-Fashion-Ecommerce-Template-Free.png' },
   { 'image': 'https://media.gettyimages.com/photos/jewelry-picture-id118199633?s=2048x2048' },
   { 'image': 'https://therichpost.com/wp-content/uploads/2020/10/Angular-10-Learning-Education-Center-Free-Template-1.png' },
@@ -23,6 +21,7 @@ export class HomepageComponent implements OnInit {
 
   //define validable to store dynamic products data
   products: any;
+
 
   constructor(private http: HttpClient) {
     //slider responsive settings
@@ -54,7 +53,7 @@ export class HomepageComponent implements OnInit {
       //data storing for use in html component
       this.products = data;
     }, error => console.error(error));
-  }
+   }
 
   ngOnInit(): void {
   }

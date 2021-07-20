@@ -1,5 +1,6 @@
 import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,14 @@ import { ShippingDetailsComponent } from './shipping-details/shipping-details.co
 import { RouterModule, Routes } from '@angular/router';
 import { ProductPageComponent } from './product/product-page/product-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CarouselModule } from 'primeng/carousel';
+import { ButtonModule } from 'primeng/button';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductViewComponent } from './product-view/product-view.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const routes: Routes = [
@@ -20,6 +29,7 @@ const routes: Routes = [
   { path: 'comboset', component: CombosetsComponent },
   { path: 'prod-page', component: ProductPageComponent },
   { path: 'details', component: ShippingDetailsComponent },
+  { path: 'view', component: ProductViewComponent },
 ]
 
 @NgModule({
@@ -36,8 +46,17 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes, { enableTracing: true }),
+    RouterModule.forRoot(routes), //, { enableTracing: true }
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatCarouselModule.forRoot(),
+    FormsModule,
+    CarouselModule,
+    ButtonModule,
+    NgbModule,
+    FontAwesomeModule,
+    MatSelectModule,
+    
     
   ],
   providers: [],

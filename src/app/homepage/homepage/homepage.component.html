@@ -197,7 +197,7 @@
     <div class="row">
       <div class="col-12">
         <div class="section-title">
-          <h2>Best Buy</h2>
+          <h2>Necklace</h2>
         </div>
       </div>
     </div>
@@ -316,11 +316,224 @@
           <!-- End Single Product -->
         </div>
 
-
+        <p-carousel
+        ngClass="hidePaginator"
+        [value]="products"
+        [numVisible]="3"
+        [numScroll]="3"
+        [circular]="false"
+        [autoplayInterval]="5000"
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template pTemplate="header"> </ng-template>
+        <ng-template let-product pTemplate="item">
+          <div class="product-item">
+            <div class="product-item-content">
+              <div class="p-mb-3">
+                <img
+                  class="product-image img-fluid"
+                  src="{{ product.product_image }}"
+                  alt="{{ product.product_title }}"
+                />
+              </div>
+              <div>
+                <h6 class="p-mb-1">{{ product.product_title }}</h6>
+                <h6 class="p-mt-0 p-mb-3">{{ product.product_price }}</h6>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+      
+      <!--Product slider ends here-->
 
       </div>
     </div>
   </div>
 </div>
 
+<div>
+    <mat-carousel
+    timings="250ms ease-in"
+    [autoplay]="true"
+    
+    color="accent"
+    maxWidth="auto"
+    
+    [loop]="true"
+    [hideArrows]="true"
+    [hideIndicators]="true"
+    [useKeyboard]="true"
+    [useMouseWheel]="true"
+    orientation="ltr"
+    >
+    <mat-carousel-slide
+      #matCarouselSlide
+      *ngFor="let slide of slides; let i = index"
+      [image]="slide.image"
+      overlayColor="#00000040"
+      [hideOverlay]="false"
+    ></mat-carousel-slide>
+    </mat-carousel>
+</div> 
+<br>
 
+<div class="product-area most-popular section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          <h2>Combo Sets</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="owl-carousel popular-slider" style="display: none;">
+          <!-- Start Single Product -->
+          <div class="single-product">
+            <div class="product-img">
+              <a href="product-details.html">
+                <img class="default-img" src="assets/images/AFJ- Images/Necklace/20200906_234515.jpg" alt="#">
+                <img class="hover-img" src="assets/images/AFJ- Images/Necklace/20200906_234515.jpg" alt="#">
+                <span class="out-of-stock">Hot</span>
+              </a>
+              <div class="button-head">
+                <!-- <div class="product-action">
+                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                  </div> -->
+                <div class="product-action-2">
+                  <a title="Add to cart" href="#">Add to cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-content">
+              <h3><a href="product-details.html">Choker</a></h3>
+              <div class="product-price">
+                <span class="old">₹60.00</span>
+                <span>₹50.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- End Single Product -->
+          <!-- Start Single Product -->
+          <div class="single-product">
+            <div class="product-img">
+              <a href="product-details.html">
+                <img class="default-img" src="assets/images/AFJ- Images/Choker/20200112_215159.jpg" alt="#">
+                <img class="hover-img" src="assets/images/AFJ- Images/Choker/20200112_215159.jpg" alt="#">
+              </a>
+              <div class="button-head">
+                <!-- <div class="product-action">
+                  <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
+                      class=" ti-eye"></i><span>Quick Shop</span></a>
+                  <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                </div> -->
+                <div class="product-action-2">
+                  <a title="Add to cart" href="#">Add to cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-content">
+              <h3><a href="product-details.html">Haaram</a></h3>
+              <div class="product-price">
+                <span>₹50.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- End Single Product -->
+          <!-- Start Single Product -->
+          <div class="single-product">
+            <div class="product-img">
+              <a href="product-details.html">
+                <img class="default-img" src="assets/images/AFJ- Images/Harram/20200115_200020.jpg" alt="#">
+                <img class="hover-img" src="assets/images/AFJ- Images/Harram/20200115_200020.jpg" alt="#">
+                <span class="new">New</span>
+              </a>
+              <div class="button-head">
+                <!-- <div class="product-action">
+                  <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
+                      class=" ti-eye"></i><span>Quick Shop</span></a>
+                  <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                </div> -->
+                <div class="product-action-2">
+                  <a title="Add to cart" href="#">Add to cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-content">
+              <h3><a href="product-details.html">Jadapillai</a></h3>
+              <div class="product-price">
+                <span>₹50.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- End Single Product -->
+          <!-- Start Single Product -->
+          <div class="single-product">
+            <div class="product-img">
+              <a href="product-details.html">
+                <img class="default-img" src="assets/images/AFJ- Images/Harram/20200820_000508.jpg" alt="#">
+                <img class="hover-img" src="assets/images/AFJ- Images/Harram/20200820_000508.jpg" alt="#">
+              </a>
+              <div class="button-head">
+                <!-- <div class="product-action">
+                  <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
+                      class=" ti-eye"></i><span>Quick Shop</span></a>
+                  <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                </div> -->
+                <div class="product-action-2">
+                  <a title="Add to cart" href="#">Add to cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="product-content">
+              <h3><a href="product-details.html">Vangi/Amband</a></h3>
+              <div class="product-price">
+                <span>₹50.00</span>
+              </div>
+            </div>
+          </div>
+          <!-- End Single Product -->
+        </div>
+
+        <p-carousel
+        ngClass="hidePaginator"
+        [value]="products"
+        [numVisible]="3"
+        [numScroll]="3"
+        [circular]="false"
+        [autoplayInterval]="5000"
+        [responsiveOptions]="responsiveOptions"
+      >
+        <ng-template pTemplate="header"> </ng-template>
+        <ng-template let-product pTemplate="item">
+          <div class="product-item">
+            <div class="product-item-content">
+              <div class="p-mb-3">
+                <img
+                  class="product-image img-fluid"
+                  src="{{ product.product_image }}"
+                  alt="{{ product.product_title }}"
+                />
+              </div>
+              <div>
+                <h6 class="p-mb-1">{{ product.product_title }}</h6>
+                <h6 class="p-mt-0 p-mb-3">{{ product.product_price }}</h6>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-carousel>
+      
+      <!--Product slider ends here-->
+
+      </div>
+    </div>
+  </div>
+</div>
