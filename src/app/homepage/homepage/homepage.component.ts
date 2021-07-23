@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class HomepageComponent implements OnInit {
   products: any;
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router:Router) {
     //slider responsive settings
     this.responsiveOptions = [
       {
@@ -53,12 +54,18 @@ export class HomepageComponent implements OnInit {
       //data storing for use in html component
       this.products = data;
     }, error => console.error(error));
-   }
+  }
+
+  btnClick() {
+    this.router.navigate(['prod-page'])
+  }
 
   ngOnInit(): void {
   }
 
 }
+
+
 
 
 

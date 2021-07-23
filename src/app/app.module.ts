@@ -23,6 +23,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import {MatSelectModule} from '@angular/material/select';
 
 
+
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'neck', component: NecklaceComponent },

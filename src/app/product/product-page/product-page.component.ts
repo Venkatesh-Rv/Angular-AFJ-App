@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductPageComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor() { 
+    
+  }
 
+  
   ngOnInit(): void {
   }
 
