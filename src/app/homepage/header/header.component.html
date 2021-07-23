@@ -9,68 +9,132 @@
         <div class="col-lg-2 col-md-2 col-12">
           <!-- Logo -->
           <div class="logo">
-            <a href="#"
-              ><img src="assets/images/afj-logo.png" alt="logo"
-            /></a>
+            <a href="#"><img src="assets/images/afj-logo.png" alt="logo" /></a>
           </div>
           <!--/ End Logo -->
           <!-- Search Form -->
           <div class="search-top">
             <div class="top-search">
-              
               <a><i class="ti-search"></i></a>
             </div>
             <!-- Search Form -->
             <div class="search-top">
-              <ng-template #content let-modal>
-                <div class="modal-header">
-                  <h4 class="modal-title" id="modal-basic-title">Working</h4>
+              <div class="mp">
+                <ng-template #content let-modal>
+                  <div class="modal-header">
+                    <!-- <h4 class="modal-title" id="modal-basic-title">Working</h4> -->
 
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="navbar-collapse">
-                  <div class="nav-inner">
-                    <ul class="nav main-menu menu navbar-nav">
-                      <li class="active"><a routerLink="/" (click)="modal.dismiss('Cross click')">Home</a></li>
-                      <li><a routerLink="/neck" (click)="modal.dismiss('Cross click')">Necklace</a></li>												
-                      <li><a routerLink="/comboset" (click)="modal.dismiss('Cross click')">Combo Sets</a></li>
-                      <li><a routerLink="/" (click)="modal.dismiss('Cross click')">Hipchain/Belt</a></li>
-                      <li><a routerLink="/">Bridal Sets</a></li>									
-                      <li><a routerLink="/">Choker</a></li>
-                      <li><a href="">Others</a>
-                        <ul class="dropdown">
-                          <li><a href="">Anklet</a></li>
-                            <li><a href="">Bangles</a></li>
-                            <li><a href="">Chains</a></li>
-                            <li>
+                    <button
+                      type="button"
+                      class="close"
+                      aria-label="Close"
+                      (click)="modal.dismiss('Cross click')"
+                    >
+                      <span aria-hidden="true"
+                        ><i class="fa fa-times" aria-hidden="true"></i
+                      ></span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- <div class="navbar-collapse">
+                      <div class="nav-inner">
+                        <ul class="nav main-menu menu navbar-nav">
+                          <li class="active">
+                            <a
+                              routerLink="/"
+                              (click)="modal.dismiss('Cross click')"
+                              >Home</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              routerLink="/neck"
+                              (click)="modal.dismiss('Cross click')"
+                              >Necklace</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              routerLink="/comboset"
+                              (click)="modal.dismiss('Cross click')"
+                              >Combo Sets</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              routerLink="/"
+                              (click)="modal.dismiss('Cross click')"
+                              >Hipchain/Belt</a
+                            >
+                          </li>
+                          <li><a routerLink="/">Bridal Sets</a></li>
+                          <li><a routerLink="/">Choker</a></li>
+                          <li>
+                            <a href="">Others</a>
+                            <ul class="dropdown">
+                              <li><a href="">Anklet</a></li>
+                              <li><a href="">Bangles</a></li>
+                              <li><a href="">Chains</a></li>
+                              <li>
                                 <a href="">Rings</a>
                                 <ul>
-                                    <li><a href="">Toe Rings</a></li>
-                                    <li><a href="">Finger Rings</a></li>
-                                    <li><a href="">Nose Rings</a></li>
+                                  <li><a href="">Toe Rings</a></li>
+                                  <li><a href="">Finger Rings</a></li>
+                                  <li><a href="">Nose Rings</a></li>
                                 </ul>
-                            </li> 
-                          </ul>
+                              </li>
+                            </ul>
+                          </li>
+
                           <li id="mob-cart"><a href="">Cart</a></li>
-                    </ul>
+                        </ul>
+                      </div>
+                    </div> -->
+                  
+                    <div class="box_content">
+                      <ol class="rounded-list">
+                          <li>
+                              <ul>
+                                  <li><a href="#">Home</a></li>
+                                  <li><a href="#">Necklace </a></li>
+                                  <li><a href="#">Combo Sets </a></li>
+                                  <li><a href="#">Hipchain/Belt</a></li>
+                                  <li><a href="#">Bridal Sets</a></li>
+                                  <li><a href="#">Choker</a></li>
+                                  <li><a href="#">Others</a></li>
+                                  <li><a href="#">Cart</a></li>
+                                  
+                              </ul>
+                          </li>
+                      </ol>
                   </div>
-                </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-                </div>
-              </ng-template>
-              
-              <button class="btn btn-lg btn-outline-primary" (click)="open(content)"><i class="fa fa-bars" aria-hidden="true"></i></button>
-              
-              <hr>
-              
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-dark"
+                      (click)="modal.close('Save click')"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </ng-template>
+
+                <button
+                  class="btn btn-lg btn-outline-warning"
+                  (click)="open(content)"
+                >
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+              </div>
+
               <!-- <pre>{{ closeResult }}</pre> -->
               <form class="search-form">
-                <input type="text" placeholder="Search here......." name="search" />
+                <input
+                  type="text"
+                  placeholder="Search here......."
+                  name="search"
+                />
                 <button value="search" type="submit">
                   <i class="ti-search"></i>
                 </button>
@@ -79,8 +143,8 @@
             <!--/ End Search Form -->
           </div>
           <!--/ End Search Form -->
-          
-          <!-- <div class="mobile-nav"></div> -->
+
+          <!-- <div class="slicknav_nav"></div> -->
         </div>
         <div class="col-lg-8 col-md-7 col-12">
           <div class="search-bar-top">
@@ -162,51 +226,48 @@
   </div>
   <!-- Header Inner -->
   <div class="header-inner">
-    <div class="container">
+    <div class="container fixes">
       <div class="cat-nav-head">
         <div class="row">
-          <div class="col-lg-3">
-           
-          </div>
+          <div class="col-lg-3"></div>
           <div class="col-lg-9 col-12">
             <div class="menu-area">
-             
               <nav class="navbar navbar-expand-lg">
                 <div class="navbar-collapse">
                   <div class="nav-inner">
                     <ul class="nav main-menu menu navbar-nav">
                       <li class="active"><a routerLink="/">Home</a></li>
-                      <li><a routerLink="/neck" class="active">Necklace</a></li>												
+                      <li><a routerLink="/neck" class="active">Necklace</a></li>
                       <li><a routerLink="/comboset">Combo Sets</a></li>
                       <li><a routerLink="/">Hipchain/Belt</a></li>
-                      <li><a routerLink="/">Bridal Sets</a></li>									
+                      <li><a routerLink="/">Bridal Sets</a></li>
                       <li><a routerLink="/">Choker</a></li>
-                      <li><a href="">Others</a>
+                      <li>
+                        <a href="">Others</a>
                         <ul class="dropdown">
                           <li><a href="">Anklet</a></li>
-                            <li><a href="">Bangles</a></li>
-                            <li><a href="">Chains</a></li>
-                            <li>
-                                <a href="">Rings</a>
-                                <ul>
-                                    <li><a href="">Toe Rings</a></li>
-                                    <li><a href="">Finger Rings</a></li>
-                                    <li><a href="">Nose Rings</a></li>
-                                </ul>
-                            </li> 
-                          </ul>
-                          <li id="mob-cart"><a href="">Cart</a></li>
+                          <li><a href="">Bangles</a></li>
+                          <li><a href="">Chains</a></li>
+                          <li>
+                            <a href="">Rings</a>
+                            <ul>
+                              <li><a href="">Toe Rings</a></li>
+                              <li><a href="">Finger Rings</a></li>
+                              <li><a href="">Nose Rings</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li id="mob-cart"><a href="">Cart</a></li>
                     </ul>
                   </div>
                 </div>
               </nav>
-              
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  
 </header>

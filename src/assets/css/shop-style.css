@@ -1041,7 +1041,8 @@
 
   /* CC*/
   .top-search{
-    margin-top: 6px;
+    margin-top: 16px;
+    width: -1px;
   }
   /*cc ends*/
 
@@ -1125,7 +1126,7 @@
   }
   
   .header .search-form input {
-    width: 283px;/*220*/
+    width: 210px;/*220*/
     height: 45px;
     line-height: 45px;
     padding: 0 60px 0 15px;
