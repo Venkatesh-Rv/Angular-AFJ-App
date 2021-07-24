@@ -85,3 +85,13 @@ ol ol {
   background: #1da7e7;
   color: #fff
 }
+
+/* .dropdown.hider {
+  display: none;
+}
+     */
+.myDIV:hover + .dropdown.hider a {
+  display: hide !important;
+  
+}
+

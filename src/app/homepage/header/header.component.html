@@ -90,26 +90,25 @@
                         </ul>
                       </div>
                     </div> -->
-                  
+
                     <div class="box_content">
                       <ol class="rounded-list">
-                          <li>
-                              <ul>
-                                  <li><a href="#">Home</a></li>
-                                  <li><a href="#">Necklace </a></li>
-                                  <li><a href="#">Combo Sets </a></li>
-                                  <li><a href="#">Hipchain/Belt</a></li>
-                                  <li><a href="#">Bridal Sets</a></li>
-                                  <li><a href="#">Choker</a></li>
-                                  <li><a href="#">Others</a></li>
-                                  <li><a href="#">Cart</a></li>
-                                  
-                              </ul>
-                          </li>
+                        <li>
+                          <ul>
+                            <li><a routerLink="/" (click)="modal.dismiss('Cross click')">Home</a></li>
+                            <li><a routerLink="/neck" (click)="modal.dismiss('Cross click')">Necklace </a></li>
+                            <li><a routerLink="/comboset" (click)="modal.dismiss('Cross click')">Combo Sets </a></li>
+                            <li><a routerLink="/" (click)="modal.dismiss('Cross click')">Hipchain/Belt</a></li>
+                            <li><a routerLink="/" (click)="modal.dismiss('Cross click')">Bridal Sets</a></li>
+                            <li><a href="" (click)="modal.dismiss('Cross click')">Choker</a></li>
+                            <li><a href="" (click)="modal.dismiss('Cross click')">Others</a></li>
+                            <li><a href="" (click)="modal.dismiss('Cross click')">Cart</a></li>
+                          </ul>
+                        </li>
                       </ol>
+                    </div>
                   </div>
-                  </div>
-                  <div class="modal-footer">
+                  <!-- <div class="modal-footer">
                     <button
                       type="button"
                       class="btn btn-outline-dark"
@@ -117,7 +116,7 @@
                     >
                       Save
                     </button>
-                  </div>
+                  </div> -->
                 </ng-template>
 
                 <button
@@ -243,19 +242,20 @@
                       <li><a routerLink="/">Bridal Sets</a></li>
                       <li><a routerLink="/">Choker</a></li>
                       <li>
-                        <a href="">Others</a>
+                        <a>Others</a>
                         <ul class="dropdown">
-                          <li><a href="">Anklet</a></li>
-                          <li><a href="">Bangles</a></li>
-                          <li><a href="">Chains</a></li>
+                          <li><a>Anklet</a></li>
+                          <li><a>Bangles</a></li>
+                          <li><a>Chains</a></li>
+                          
                           <li>
-                            <a href="">Rings</a>
-                            <ul>
-                              <li><a href="">Toe Rings</a></li>
-                              <li><a href="">Finger Rings</a></li>
-                              <li><a href="">Nose Rings</a></li>
-                            </ul>
+                            <a class="myDIV">Rings<i class="ti-angle-down"></i></a>
                           </li>
+                          <ul class="dropdown hider">
+                            <li><a href=""><i class="ti-angle-right"></i>Toe Rings</a></li>
+                            <li><a href=""><i class="ti-angle-right"></i>Finger Rings</a></li>
+                            <li><a href=""><i class="ti-angle-right"></i>Nose Rings</a></li>
+                          </ul>
                         </ul>
                       </li>
 
