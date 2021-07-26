@@ -21,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductViewComponent } from './product-view/product-view.component';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxPaginationModule } from 'ngx-pagination'; 
 
 
 
@@ -57,7 +58,7 @@ const routes: Routes = [
     NgbModule,
     FontAwesomeModule,
     MatSelectModule,
-    
+    NgxPaginationModule
     
   ],
   providers: [],
