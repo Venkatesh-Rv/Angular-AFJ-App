@@ -23,10 +23,10 @@
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
-                  <label>Last Name<span>*</span></label>
+                  <label>House No/Name<span>*</span></label>
                   <input
                     type="text"
-                    name="name"
+                    name="house"
                     placeholder=""
                     required="required"
                   />
@@ -34,7 +34,18 @@
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
-                  <label>Email Address<span>*</span></label>
+                  <label>Address<span>*</span></label>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder=""
+                    required="required"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <label>Email Address</label>
                   <input
                     type="email"
                     name="email"
@@ -48,7 +59,7 @@
                   <label>Phone Number<span>*</span></label>
                   <input
                     type="number"
-                    name="number"
+                    name="ph-number"
                     placeholder=""
                     required="required"
                   />
@@ -56,7 +67,7 @@
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
-                  <label>City<span>*</span></label>
+                  <label>City/Village/Panchayat<span>*</span></label>
                   <select
                     name="state-province"
                     id="state-province"
@@ -335,6 +346,34 @@
                                     </select>
                                 </div> -->
               </div>
+
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <label>District<span>*</span></label>
+                  <select name="state-province" id="state-province" style="display: none;">
+                    <option value="divition" selected="selected">
+                      Chennai
+                    </option>
+                    <option>Kerala</option>
+                    <option>Karnataka</option>
+                    <option>North</option>
+                  </select>
+                  <div class="nice-select" tabindex="0">
+                    <span class="current"></span>
+                    <ul class="list">
+                      <li data-value="divition" class="option selected focus">
+                        TamilNadu
+                      </li>
+                      <li data-value="Coimbatore" class="option">Kerala</li>
+                      <li data-value="Trichy" class="option">Andhra Pradesh</li>
+                      <li data-value="Kanchipuram" class="option">
+                        North
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
                   <label>State<span>*</span></label>
@@ -372,23 +411,37 @@
                   />
                 </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label>Address<span>*</span></label>
-                  <input
-                    type="text"
-                    name="address"
-                    placeholder=""
-                    required="required"
-                  />
-                </div>
-              </div>
+              
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
                   <label>Pin Code<span>*</span></label>
                   <input
                     type="text"
                     name="post"
+                    placeholder=""
+                    required="required"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <label>Landmark</label>
+                  <input
+                    type="text"
+                    name="house"
+                    placeholder=""
+                    required="required"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="form-group">
+                  <label>Alternate Contact-No</label>
+                  <input
+                    type="text"
+                    name="house"
                     placeholder=""
                     required="required"
                   />

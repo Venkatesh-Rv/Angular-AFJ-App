@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { HomepagesectionService } from 'src/app/services/homepagesection.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class HomepageComponent implements OnInit {
   products: any;
 
 
-  constructor(private http: HttpClient, private router:Router) {
+  constructor(private http: HttpClient, private router: Router, private Homepagesection: HomepagesectionService) {
     //slider responsive settings
     this.responsiveOptions = [
       {
@@ -54,14 +55,65 @@ export class HomepageComponent implements OnInit {
       //data storing for use in html component
       this.products = data;
     }, error => console.error(error));
+
+    // banner images
+    this.Homepagesection.getHomeBanner('product/banner/get/all/record/').subscribe(ele => {
+      
+      console.log(ele);
+      this.topImageSeprator(ele)
+
+    })
+  }
+
+  ngOnInit(): void {
+    this.getImage;
+    this.working();
   }
 
   btnClick() {
     this.router.navigate(['prod-page'])
   }
 
-  ngOnInit(): void {
+  dummy: any = [];
+
+  private working(){
+    console.log(typeof(this.products))
   }
+  private getImage() {
+    // this.Homepagesection.getHomeBanner('product/banner/get/all/record/').subscribe(ele => {
+      
+    //   console.log(ele);
+    //   this.topImageSeprator(ele)
+
+    // })
+  }
+
+  private topImageSeprator(TopItems) {
+
+
+    for (const i of TopItems.success) {
+
+      console.log(i.banner_image);
+      if (i.category === 'Cosmetics') {
+        const objNew: any = { image: i.image_url };
+
+        this.dummy.push(objNew)
+        // console.log(this.dummy)
+      }
+      else {
+        const objNew: any = { image: i.image_url, name: i.name };
+
+        // this.newdummy.push(objNew)
+        // console.log(this.newdummy)
+        // console.log(this.dummy)
+      }
+
+    }
+  }
+
+  
+
+
 
 }
 

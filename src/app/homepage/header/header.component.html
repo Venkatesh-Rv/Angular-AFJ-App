@@ -95,14 +95,64 @@
                       <ol class="rounded-list">
                         <li>
                           <ul>
-                            <li><a routerLink="/" (click)="modal.dismiss('Cross click')">Home</a></li>
-                            <li><a routerLink="/neck" (click)="modal.dismiss('Cross click')">Necklace </a></li>
-                            <li><a routerLink="/comboset" (click)="modal.dismiss('Cross click')">Combo Sets </a></li>
-                            <li><a routerLink="/" (click)="modal.dismiss('Cross click')">Hipchain/Belt</a></li>
-                            <li><a routerLink="/" (click)="modal.dismiss('Cross click')">Bridal Sets</a></li>
-                            <li><a href="" (click)="modal.dismiss('Cross click')">Choker</a></li>
-                            <li><a href="" (click)="modal.dismiss('Cross click')">Others</a></li>
-                            <li><a href="" (click)="modal.dismiss('Cross click')">Cart</a></li>
+                            <br>
+                            <li style="
+                            text-align:center;">Cart <i class="fas fa-shopping-cart"></i> </li>
+                            <br>
+                            <li>
+                              <a
+                                routerLink="/"
+                                (click)="
+                                  modal.dismiss('Cross click'); gotoTop()
+                                "
+                                >Home</a
+                              >
+                            </li>
+                            <li>
+                              <a
+                                routerLink="/neck"
+                                (click)="
+                                  modal.dismiss('Cross click'); gotoTop()
+                                "
+                                >Necklace
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                routerLink="/comboset"
+                                (click)="modal.dismiss('Cross click')"
+                                >Combo Sets
+                              </a>
+                            </li>
+                            <li>
+                              <a
+                                routerLink="/"
+                                (click)="modal.dismiss('Cross click')"
+                                >Hipchain/Belt</a
+                              >
+                            </li>
+                            <li>
+                              <a
+                                routerLink="/"
+                                (click)="modal.dismiss('Cross click')"
+                                >Bridal Sets</a
+                              >
+                            </li>
+                            <li>
+                              <a href="" (click)="modal.dismiss('Cross click')"
+                                >Choker</a
+                              >
+                            </li>
+                            <li>
+                              <a href="" (click)="modal.dismiss('Cross click')"
+                                >Others</a
+                              >
+                            </li>
+                            <li>
+                              <a href="" (click)="modal.dismiss('Cross click')"
+                                >Cart</a
+                              >
+                            </li>
                           </ul>
                         </li>
                       </ol>
@@ -156,6 +206,20 @@
                 />
                 <button class="btnn"><i class="ti-search"></i></button>
               </form>
+            
+              <!-- <form [formGroup]="formGroup">
+                <mat-form-field>
+                  <mat-label>
+                    Employee
+                  </mat-label>
+                  <input formControlName="employee" matInput type="text" [matAutocomplete]="auto" />
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let item of filteredOptions" [value]="item">
+                      {{item}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+              </form> -->
             </div>
           </div>
         </div>
@@ -235,26 +299,54 @@
                 <div class="navbar-collapse">
                   <div class="nav-inner">
                     <ul class="nav main-menu menu navbar-nav">
-                      <li class="active"><a routerLink="/">Home</a></li>
-                      <li><a routerLink="/neck" class="active">Necklace</a></li>
-                      <li><a routerLink="/comboset">Combo Sets</a></li>
-                      <li><a routerLink="/">Hipchain/Belt</a></li>
-                      <li><a routerLink="/">Bridal Sets</a></li>
-                      <li><a routerLink="/">Choker</a></li>
+                      <li class="active">
+                        <a routerLink="/" (click)="gotoTop()">Home</a>
+                      </li>
+                      <li>
+                        <a routerLink="/neck" class="active" (click)="gotoTop()"
+                          >Necklace</a
+                        >
+                      </li>
+                      <li>
+                        <a routerLink="/comboset" (click)="gotoTop()"
+                          >Combo Sets</a
+                        >
+                      </li>
+                      <li>
+                        <a routerLink="/" (click)="gotoTop()">Hipchain/Belt</a>
+                      </li>
+                      <li>
+                        <a routerLink="/" (click)="gotoTop()">Bridal Sets</a>
+                      </li>
+                      <li><a routerLink="/" (click)="gotoTop()">Choker</a></li>
                       <li>
                         <a>Others</a>
                         <ul class="dropdown">
                           <li><a>Anklet</a></li>
                           <li><a>Bangles</a></li>
                           <li><a>Chains</a></li>
-                          
+
                           <li>
-                            <a class="myDIV">Rings<i class="ti-angle-down"></i></a>
+                            <a class="myDIV"
+                              >Rings<i class="ti-angle-down"></i
+                            ></a>
                           </li>
                           <ul class="dropdown hider">
-                            <li><a href=""><i class="ti-angle-right"></i>Toe Rings</a></li>
-                            <li><a href=""><i class="ti-angle-right"></i>Finger Rings</a></li>
-                            <li><a href=""><i class="ti-angle-right"></i>Nose Rings</a></li>
+                            <li>
+                              <a href=""
+                                ><i class="ti-angle-right"></i>Toe Rings</a
+                              >
+                            </li>
+                            <li>
+                              <a href=""
+                                ><i class="ti-angle-right"></i>Finger Rings</a
+                              >
+                            </li>
+                            <li>
+                              <a href=""
+                                ><i class="ti-angle-right"></i>Nose Rings</a
+                              >
+                            </li>
                           </ul>
                         </ul>
                       </li>

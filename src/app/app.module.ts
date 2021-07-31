@@ -1,6 +1,8 @@
-import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+
+import { HomepagesectionService } from './services/homepagesection.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,14 +16,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductPageComponent } from './product/product-page/product-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductViewComponent } from './product-view/product-view.component';
-import {MatSelectModule} from '@angular/material/select';
-import { NgxPaginationModule } from 'ngx-pagination'; 
+import { MatSelectModule } from '@angular/material/select';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -48,21 +52,24 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes), //, { enableTracing: true }
     BrowserAnimationsModule,
     HttpClientModule,
     MatCarouselModule.forRoot(),
-    FormsModule,
     CarouselModule,
     ButtonModule,
     NgbModule,
     FontAwesomeModule,
     MatSelectModule,
-    NgxPaginationModule
-    
+    NgxPaginationModule,
+    MatInputModule,
+    MatAutocompleteModule
+
   ],
-  providers: [],
+  providers: [HomepagesectionService],
   bootstrap: [AppComponent],
-  schemas:[NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
