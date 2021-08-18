@@ -1696,3 +1696,12 @@ Version:1.0
 	margin: 10px 0 10px;
 }
 }
+
+@media screen and (max-width: 992px) {
+	.mp {
+	  display: block;
+	  position: absolute;
+	  right: 24px;
+	  top: -4px;
+	}
+  }

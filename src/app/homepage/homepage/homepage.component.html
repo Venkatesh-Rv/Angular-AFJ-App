@@ -1,4 +1,4 @@
-
+<app-header></app-header>
 
 <!--Main Products-->
 <div class="product-area most-popular section">
@@ -134,13 +134,13 @@
               <div class="p-mb-3">
                 <img
                   class="product-image img-fluid"
-                  src="{{ product.product_image }}"
-                  alt="{{ product.product_title }}"
+                  src="{{ product.image_url }}"
+                  alt="{{ product.name}}"
                 />
               </div>
               <div>
-                <h6 class="p-mb-1">{{ product.product_title }}</h6>
-                <h6 class="p-mt-0 p-mb-3">{{ product.product_price }}</h6>
+                <h6 class="p-mb-1">{{ product.name }}</h6>
+                <h6 class="p-mt-0 p-mb-3">{{ product.offer }}</h6>
               </div>
             </div>
           </div>
@@ -356,7 +356,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="section-title">
+        <div class="section-title ">
           <h2>Necklace</h2>
         </div>
       </div>
@@ -478,7 +478,7 @@
 
         <p-carousel
         ngClass="hidePaginator"
-        [value]="products"
+        [value]="necklace"
         [numVisible]="3"
         [numScroll]="3"
         [circular]="false"
@@ -486,19 +486,22 @@
         [responsiveOptions]="responsiveOptions"
       >
         <ng-template pTemplate="header"> </ng-template>
-        <ng-template let-product pTemplate="item">
-          <div class="product-item">
-            <div class="product-item-content">
+        <ng-template let-necklaces pTemplate="item">
+          <div class="single-product">
+            <div class="product-img">
+              
               <div class="p-mb-3">
+                <a>
                 <img
                   class="product-image img-fluid"
-                  src="{{ product.product_image }}"
-                  alt="{{ product.product_title }}"
+                  src="{{ necklaces.image_url }}"
+                  alt="{{ necklaces.name }}"
                 />
+                <span class="out-of-stock">New</span></a>
               </div>
               <div>
-                <h6 class="p-mb-1">{{ product.product_title }}</h6>
-                <h6 class="p-mt-0 p-mb-3">{{ product.product_price }}</h6>
+                <h6 class="p-mb-1">{{ necklaces.name }}</h6>
+                <h6 class="p-mt-0 p-mb-3">{{ necklaces.price }}</h6>
               </div>
             </div>
           </div>
@@ -664,7 +667,7 @@
 
         <p-carousel
         ngClass="hidePaginator"
-        [value]="products"
+        [value]="combosets"
         [numVisible]="3"
         [numScroll]="3"
         [circular]="false"
@@ -672,19 +675,20 @@
         [responsiveOptions]="responsiveOptions"
       >
         <ng-template pTemplate="header"> </ng-template>
-        <ng-template let-product pTemplate="item">
+        <ng-template let-comboset pTemplate="item">
           <div class="product-item">
             <div class="product-item-content">
               <div class="p-mb-3">
                 <img
                   class="product-image img-fluid"
-                  src="{{ product.product_image }}"
-                  alt="{{ product.product_title }}"
+                  src="{{ comboset.image_url }}"
+                  alt="{{ comboset.name }}"
                 />
+                
               </div>
               <div>
-                <h6 class="p-mb-1">{{ product.product_title }}</h6>
-                <h6 class="p-mt-0 p-mb-3">{{ product.product_price }}</h6>
+                <h3 >{{ comboset.name }}</h3>
+                <h6 >{{ comboset.price }}</h6>
               </div>
             </div>
           </div>
@@ -697,3 +701,25 @@
     </div>
   </div>
 </div>
+
+<div class="bbb_advs">
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-12 bbb_adv_col">
+          <!-- bbb_adv Item -->
+          <div class="bbb_adv d-flex flex-row align-items-center">
+            <div class="ml-auto">
+              <div class="bbb_adv_image"><img src="https://i.imgur.com/iDwDQ4o.png" alt=""></div>
+          </div>
+              <div class="bbb_adv_content">
+                  <div class="bbb_adv_title"><a href="#">Trends 2018</a></div>
+                  <div class="bbb_adv_text">2019 is the session for trending laptops and accessories</div>
+              </div>
+              
+          </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

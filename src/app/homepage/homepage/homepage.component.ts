@@ -21,8 +21,15 @@ export class HomepageComponent implements OnInit {
   //slider setting variable
   responsiveOptions: any;
 
-  //define validable to store dynamic products data
+  //define validable to store dynamic products data(product slider)
   products: any;
+
+  //
+  necklace:any;
+  combosets:any;
+  hipchain:any;
+  bridalsets:any;
+  choker:any;
 
 
   constructor(private http: HttpClient, private router: Router, private Homepagesection: HomepagesectionService) {
@@ -35,23 +42,23 @@ export class HomepageComponent implements OnInit {
       },
       {
         breakpoint: '768px',
-        numVisible: 3,
+        numVisible: 2,
         numScroll: 2
       },
       {
         breakpoint: '560px',
-        numVisible: 3,
+        numVisible: 2,
         numScroll: 1
       },
       {
         breakpoint: '414px',
-        numVisible: 3,
+        numVisible: 2,
         numScroll: 1
       }
     ];
 
-    //get request
-    this.http.get('https://www.testjsonapi.com/products/').subscribe(data => {
+    //get request for product slider
+    this.http.get('http://localhost:3000/posts').subscribe(data => {
       //data storing for use in html component
       this.products = data;
     }, error => console.error(error));
@@ -66,8 +73,13 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getImage;
-    this.working();
+    // let ses_prod= this.products;
+    // // console.log(ses_prod)
+    // sessionStorage.setItem('session_testing',JSON.stringify(ses_prod));
+    // console.log('The session data is:' +sessionStorage.getItem('session_testing'));
+    this.hpNecklace();
+    this.hpCombosets();
+    this.hpHipchain();
   }
 
   btnClick() {
@@ -77,7 +89,7 @@ export class HomepageComponent implements OnInit {
   dummy: any = [];
 
   private working(){
-    console.log(typeof(this.products))
+    console.log(this.products)
   }
   private getImage() {
     // this.Homepagesection.getHomeBanner('product/banner/get/all/record/').subscribe(ele => {
@@ -86,6 +98,7 @@ export class HomepageComponent implements OnInit {
     //   this.topImageSeprator(ele)
 
     // })
+   
   }
 
   private topImageSeprator(TopItems) {
@@ -111,7 +124,29 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  
+  private hpNecklace(){
+    this.Homepagesection.homeSection('necklace').subscribe(data => {
+      //data storing for use in html component
+      this.necklace = data;
+    }, error => console.error(error));
+
+  }
+
+  private hpCombosets(){
+    this.Homepagesection.homeSection('combo-sets').subscribe(data => {
+      //data storing for use in html component
+      this.combosets = data;
+    }, error => console.error(error));
+
+  }
+
+  private hpHipchain(){
+    this.Homepagesection.homeSection('hipchain').subscribe(data => {
+      //data storing for use in html component
+      this.hipchain = data;
+    }, error => console.error(error));
+
+  }
 
 
 

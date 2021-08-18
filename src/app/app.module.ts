@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'comboset', component: CombosetsComponent },
   { path: 'prod-page', component: ProductPageComponent },
   { path: 'details', component: ShippingDetailsComponent },
-  { path: 'view', component: ProductViewComponent },
+  { path: 'product/:id', component: ProductViewComponent },
 ]
 
 @NgModule({

@@ -1,0 +1,225 @@
+{
+  "posts": [
+    {
+      "id": "bb5e9285-eaa8-4c1e-a90e-5ef7e0c1754e",
+      "name": "necklace",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "necklace"
+      },
+      "price": "1000",
+      "offer": "899",
+      "category": "Hand accessories",
+      "created_at": "2021-07-31T10:13:36.924326Z",
+      "updated_at": "2021-08-04T05:41:48.778411Z"
+    },
+    {
+      "id": "bb5e9285-eaa8-4c1e-a90e-5ef7e0c1754e",
+      "name": "necklace",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "necklace"
+      },
+      "price": "1000",
+      "offer": "899",
+      "category": "Hand accessories",
+      "created_at": "2021-07-31T10:13:36.924326Z",
+      "updated_at": "2021-08-04T05:41:48.778411Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
+      "name": "Neckklacetwo",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "899",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
+      "name": "Neckklacetwo",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "899",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    }
+  ],
+  "combo-sets": [
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
+      "name": "combo-sets-1",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "899",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
+      "name": "combo-sets-two",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "899",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
+      "name": "combo-sets-3",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "899",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    }
+  ],
+  "necklace": [
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb59",
+      "name": "Neckklacetwo",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "499",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb60",
+      "name": "Neckklacethree",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "999",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb61",
+      "name": "Neckklacefour",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "599",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb62",
+      "name": "Neckklacefinal",
+      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "89",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    }
+  ],
+  "banner": [
+    {
+        "id": "f6425aa6-577f-4589-aa37-3d20678b57fb",
+        "name": "workingrnot",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+        "category": "Fashion",
+        "created_at": "2021-08-04T06:17:16.070384Z",
+        "updated_at": "2021-08-11T05:49:26.073549Z"
+    },
+    {
+        "id": "0cd7e6e3-d1b3-4c2c-b96c-8e5bcff63b16",
+        "name": "check",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/890-2-6.jpg",
+        "category": "Cosmetics",
+        "created_at": "2021-08-04T06:11:20.370268Z",
+        "updated_at": "2021-08-04T06:11:20.494988Z"
+    },
+    {
+        "id": "26fb231b-e5d8-470c-a4fc-2e481c00b32a",
+        "name": "START",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/static-banner.jpg",
+        "category": "Fashion",
+        "created_at": "2021-08-03T05:42:00.238665Z",
+        "updated_at": "2021-08-03T05:42:00.360911Z"
+    },
+    {
+        "id": "f17c4447-294c-4a45-ab56-3fa9fd5759eb",
+        "name": "bags",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/bags.jpg",
+        "category": "Fashion",
+        "created_at": "2021-02-20T15:28:53.374526Z",
+        "updated_at": "2021-02-20T15:28:53.416849Z"
+    },
+    {
+        "id": "f052da49-536b-4209-a817-85802e2e4591",
+        "name": "newjewell",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/jewnew2.jpg",
+        "category": "Cosmetics",
+        "created_at": "2021-02-20T14:00:33.722515Z",
+        "updated_at": "2021-02-20T14:00:33.843092Z"
+    },
+    {
+        "id": "2490b9a6-772c-41da-92b2-894539d0fc12",
+        "name": "jewwll",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/jewnew1.jpg",
+        "category": "Cosmetics",
+        "created_at": "2021-02-20T13:55:36.476969Z",
+        "updated_at": "2021-02-20T13:55:36.519330Z"
+    },
+    {
+        "id": "5605cc99-7121-4e9c-a210-22937be3bd0e",
+        "name": "Neckless",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/brand1.jpg",
+        "category": "Fashion",
+        "created_at": "2021-02-20T12:57:43.080834Z",
+        "updated_at": "2021-02-20T12:57:43.119875Z"
+    },
+    {
+        "id": "faea0ac6-33c3-459f-8c1b-a28ab3cc5eca",
+        "name": "Bridal",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/jewnew3.jpg",
+        "category": "Cosmetics",
+        "created_at": "2021-02-20T12:56:42.996633Z",
+        "updated_at": "2021-02-20T12:56:43.038815Z"
+    },
+    {
+        "id": "0b73eaf9-c553-43ee-9e63-7fb5f5717659",
+        "name": "DiamondRings",
+        "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/jewnew.jpg",
+        "category": "Cosmetics",
+        "created_at": "2021-02-20T09:30:50.280665Z",
+        "updated_at": "2021-02-20T09:30:50.323154Z"
+    }
+]
+}

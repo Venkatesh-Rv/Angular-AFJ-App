@@ -62,37 +62,37 @@ export class HeaderComponent implements OnInit {
  
 
   ngOnInit(): void {
-    this.initForm();
-    this.getNames();
+    // this.initForm();
+    // this.getNames();
   }
 
-  initForm(){
-    this.formGroup = this.fb.group({
-      'employee' : ['']
-    })
-    this.formGroup.get('employee').valueChanges
-    .pipe(debounceTime(1000))
-    .subscribe(response => {
-      console.log('entered data is ', response);
-      if(response && response.length){
-        this.filterData(response);
-      } else {
-        this.filteredOptions = [];
-      }
+  // initForm(){
+  //   this.formGroup = this.fb.group({
+  //     'employee' : ['']
+  //   })
+  //   this.formGroup.get('employee').valueChanges
+  //   .pipe(debounceTime(1000))
+  //   .subscribe(response => {
+  //     console.log('entered data is ', response);
+  //     if(response && response.length){
+  //       this.filterData(response);
+  //     } else {
+  //       this.filteredOptions = [];
+  //     }
       
-    })
-  }
+  //   })
+  // }
 
-  filterData(enteredData){
-    this.filteredOptions = this.options.filter(item => {
-      return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1
-    })
-  }
+  // filterData(enteredData){
+  //   this.filteredOptions = this.options.filter(item => {
+  //     return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1
+  //   })
+  // }
 
-  getNames(){
-    this.service.getData().subscribe(response => {
-      this.options = response;
-    })
-  }
+  // getNames(){
+  //   this.service.getData().subscribe(response => {
+  //     this.options = response;
+  //   })
+  // }
 
 }
