@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomepagesectionService } from './services/homepagesection.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { CurrencyPipe,CommonModule  } from '@angular/common';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage/homepage.component';
 import { HeaderComponent } from './homepage/header/header.component';
@@ -51,6 +52,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    CommonModule ,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -68,7 +70,8 @@ const routes: Routes = [
     MatAutocompleteModule
 
   ],
-  providers: [HomepagesectionService],
+  providers: [HomepagesectionService,
+    CurrencyPipe],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

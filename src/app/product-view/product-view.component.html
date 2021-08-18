@@ -144,3 +144,71 @@
     </div>
   </section>
 
+<h5>Available Items</h5>
+  <div class="row ">
+      <div id="{{i}}" class="col-12 " *ngFor="let data of sampleSuggestionsArray; let i = index">
+          <div class="row">
+              <div class="col-6">
+                  <p>{{data}}</p>
+                  <p>qwertyuytrewedrfghjhgedfgh</p>
+                  <div class=" ">{{ data.menuName }}</div>
+                  <small class=" ">{{ data.desc }}</small>
+              </div>
+              <div class="col-2">
+                  <input class="w-100" disabled type="hidden" min="1" value="1" />
+        </div>
+  
+        <div class="col-2 ">
+                      <div>${{ data.variationCost }}</div>
+        </div>
+        <div class="col-2">
+                      <button (click)="addToCart(data)" class="btn btn-secondary mb-1">
+            Add Item
+            <!-- <span class="icon-add_circle"></span> -->
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <h5>Cart</h5>
+  <div class="row">
+    <div class="col-12 " *ngFor="let item of items; let j = index ">
+      <div class="row" id="{{ item.id}}">
+        <div class="col-6">
+          <div class=" ">
+                          {{ item.menuName }}
+                          <small>( {{ item.variationCost }} ) </small>
+          </div>
+          <small class=" ">{{ item.desc }}</small>
+        </div>
+        <div class="col-2 p-0">
+                      <input
+            [(ngModel)]="item.qtyTotal"
+            [ngModelOptions]="{standalone: true}"
+            min="1"
+            type="number"
+            value="{{ item.qtyTotal }}"
+            name=""
+            class="form-control"
+            (change)="changeSubtotal(item ,j)"
+          />
+        </div>
+        <div class="col-2 pr-0">
+                          <div #subTotalWrap>{{ item.variationCost  }}</div>
+        </div>
+        <div class="col-1 pl-0">
+                          <button class="btn btn-secondary" (click)="removeFromCart(item)"> x</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-12 ">
+                  <hr />
+      <div>
+                      Order Total:
+                      <span class="font-weight-bold  ">{{total }}</span><hr>
+            <button class="btn btn-primary  " (click)="clearCart(items)"> Clear Items</button>
+      </div>
+    </div>
+  </div> 

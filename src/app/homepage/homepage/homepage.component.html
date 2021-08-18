@@ -169,11 +169,11 @@
               <div class="row">
                 <div class="col-lg-7 col-12">
                   <div class="hero-text">
-                    <h1><span>UP TO 10% OFF </span>Combo Sets</h1>
+                    <h1><span>UP TO 10% OFF </span>Necklaces</h1>
                     <!-- <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy
                       maboriosm.</p> -->
                     <div class="button">
-                      <a href="#" class="btn">Shop Now!</a>
+                      <a  class="btn">Shop Now!</a>
                     </div>
                   </div>
                 </div>
@@ -188,26 +188,24 @@
   <!--/ End Slider Area -->
 
  
-
-  <!-- Start Most Popular -->
   <div class="product-area most-popular section">
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <div class="section-title">
-            <h2 (click)="btnClick()">Trending Items</h2>
+          <div class="section-title ">
+            <h2>Necklace</h2>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <div class="owl-carousel popular-slider">
+          <div class="owl-carousel popular-slider" style="display: none;">
             <!-- Start Single Product -->
             <div class="single-product">
               <div class="product-img">
                 <a href="product-details.html">
-                  <img class="default-img" src="assets/images/AFJ- Images/Necklace/20200818_232326.jpg" alt="#">
-                  <img class="hover-img" src="assets/images/AFJ- Images/Necklace/20200818_232326.jpg" alt="#">
+                  <img class="default-img" src="assets/images/AFJ- Images/Necklace/20200906_234515.jpg" alt="#">
+                  <img class="hover-img" src="assets/images/AFJ- Images/Necklace/20200906_234515.jpg" alt="#">
                   <span class="out-of-stock">Hot</span>
                 </a>
                 <div class="button-head">
@@ -217,12 +215,12 @@
                       <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
                     </div> -->
                   <div class="product-action-2">
-                    <a title="Add to cart">Add to cart</a>
+                    <a title="Add to cart" href="#">Add to cart</a>
                   </div>
                 </div>
               </div>
               <div class="product-content">
-                <h3><a>Hipchains</a></h3>
+                <h3><a href="product-details.html">Choker</a></h3>
                 <div class="product-price">
                   <span class="old">₹60.00</span>
                   <span>₹50.00</span>
@@ -233,9 +231,9 @@
             <!-- Start Single Product -->
             <div class="single-product">
               <div class="product-img">
-                <a>
-                  <img class="default-img" src="assets/images/AFJ- Images/Necklace/20200819_001951.jpg" alt="#">
-                  <img class="hover-img" src="assets/images/AFJ- Images/Necklace/20200819_001951.jpg" alt="#">
+                <a href="product-details.html">
+                  <img class="default-img" src="assets/images/AFJ- Images/Choker/20200112_215159.jpg" alt="#">
+                  <img class="hover-img" src="assets/images/AFJ- Images/Choker/20200112_215159.jpg" alt="#">
                 </a>
                 <div class="button-head">
                   <!-- <div class="product-action">
@@ -250,7 +248,7 @@
                 </div>
               </div>
               <div class="product-content">
-                <h3><a href="product-details.html">Rings</a></h3>
+                <h3><a href="product-details.html">Haaram</a></h3>
                 <div class="product-price">
                   <span>₹50.00</span>
                 </div>
@@ -261,8 +259,8 @@
             <div class="single-product">
               <div class="product-img">
                 <a href="product-details.html">
-                  <img class="default-img" src="assets/images/AFJ- Images/Necklace/20200823_000808.jpg" alt="#">
-                  <img class="hover-img" src="assets/images/AFJ- Images/Necklace/20200823_000808.jpg" alt="#">
+                  <img class="default-img" src="assets/images/AFJ- Images/Harram/20200115_200020.jpg" alt="#">
+                  <img class="hover-img" src="assets/images/AFJ- Images/Harram/20200115_200020.jpg" alt="#">
                   <span class="new">New</span>
                 </a>
                 <div class="button-head">
@@ -278,7 +276,7 @@
                 </div>
               </div>
               <div class="product-content">
-                <h3><a href="product-details.html">Bridal Sets</a></h3>
+                <h3><a href="product-details.html">Jadapillai</a></h3>
                 <div class="product-price">
                   <span>₹50.00</span>
                 </div>
@@ -289,8 +287,8 @@
             <div class="single-product">
               <div class="product-img">
                 <a href="product-details.html">
-                  <img class="default-img" src="assets/images/AFJ- Images/Necklace/20200823_143426.jpg" alt="#">
-                  <img class="hover-img" src="assets/images/AFJ- Images/Necklace/20200823_143426.jpg" alt="#">
+                  <img class="default-img" src="assets/images/AFJ- Images/Harram/20200820_000508.jpg" alt="#">
+                  <img class="hover-img" src="assets/images/AFJ- Images/Harram/20200820_000508.jpg" alt="#">
                 </a>
                 <div class="button-head">
                   <!-- <div class="product-action">
@@ -305,7 +303,7 @@
                 </div>
               </div>
               <div class="product-content">
-                <h3><a href="product-details.html">Nethi Chutti</a></h3>
+                <h3><a href="product-details.html">Vangi/Amband</a></h3>
                 <div class="product-price">
                   <span>₹50.00</span>
                 </div>
@@ -313,207 +311,49 @@
             </div>
             <!-- End Single Product -->
           </div>
-        </div>
+  
+          <p-carousel
+          ngClass="hidePaginator"
+          [value]="necklace"
+          [numVisible]="3"
+          [numScroll]="3"
+          [circular]="false"
+          [autoplayInterval]="5000"
+          [responsiveOptions]="responsiveOptions"
+        >
+          <ng-template pTemplate="header"> </ng-template>
+          <ng-template let-necklaces pTemplate="item">
+            <div class="product-item">
+              <div class="product-item-content">
+                
+                <div class="p-mb-3">
+                  
+                  <img
+                    class="product-image img-fluid"
+                    src="{{ necklaces.image_url }}"
+                    alt="{{ necklaces.name }}"
+                  />
+                  
+                </div>
+                <div>
+                  <h3>{{ necklaces.name }}</h3>
+                  <h6>{{ necklaces.price }}</h6>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
         
-      </div>
-    </div>
-  </div>
-  <!-- End Most Popular Area -->
-
-<!--Carousel Area2-->
-
-<section class="hero-slider">
-  <!-- Slider 2-->
-  <div class="single-slider">
-    <div class="container">
-      <div class="row no-gutters">
-        <div class="col-lg-9 offset-lg-3 col-12">
-          <div class="text-inner">
-            <div class="row">
-              <div class="col-lg-7 col-12">
-                <div class="hero-text">
-                  <h1><span>UP TO 5% OFF </span>Bracelets & Accessories</h1>
-                  <!-- <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy
-                    maboriosm.</p> -->
-                  <div class="button">
-                    <a href="#" class="btn">Shop Now!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!--Product slider ends here-->
+  
         </div>
       </div>
     </div>
   </div>
-  <!-- End Slider 2 -->
-</section>
+  
+  <br>
 
-<!--End of Carousel Area2-->
-<br>
 
-<div class="product-area most-popular section">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="section-title ">
-          <h2>Necklace</h2>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="owl-carousel popular-slider" style="display: none;">
-          <!-- Start Single Product -->
-          <div class="single-product">
-            <div class="product-img">
-              <a href="product-details.html">
-                <img class="default-img" src="assets/images/AFJ- Images/Necklace/20200906_234515.jpg" alt="#">
-                <img class="hover-img" src="assets/images/AFJ- Images/Necklace/20200906_234515.jpg" alt="#">
-                <span class="out-of-stock">Hot</span>
-              </a>
-              <div class="button-head">
-                <!-- <div class="product-action">
-                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                  </div> -->
-                <div class="product-action-2">
-                  <a title="Add to cart" href="#">Add to cart</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-content">
-              <h3><a href="product-details.html">Choker</a></h3>
-              <div class="product-price">
-                <span class="old">₹60.00</span>
-                <span>₹50.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- End Single Product -->
-          <!-- Start Single Product -->
-          <div class="single-product">
-            <div class="product-img">
-              <a href="product-details.html">
-                <img class="default-img" src="assets/images/AFJ- Images/Choker/20200112_215159.jpg" alt="#">
-                <img class="hover-img" src="assets/images/AFJ- Images/Choker/20200112_215159.jpg" alt="#">
-              </a>
-              <div class="button-head">
-                <!-- <div class="product-action">
-                  <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
-                      class=" ti-eye"></i><span>Quick Shop</span></a>
-                  <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                </div> -->
-                <div class="product-action-2">
-                  <a title="Add to cart" href="#">Add to cart</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-content">
-              <h3><a href="product-details.html">Haaram</a></h3>
-              <div class="product-price">
-                <span>₹50.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- End Single Product -->
-          <!-- Start Single Product -->
-          <div class="single-product">
-            <div class="product-img">
-              <a href="product-details.html">
-                <img class="default-img" src="assets/images/AFJ- Images/Harram/20200115_200020.jpg" alt="#">
-                <img class="hover-img" src="assets/images/AFJ- Images/Harram/20200115_200020.jpg" alt="#">
-                <span class="new">New</span>
-              </a>
-              <div class="button-head">
-                <!-- <div class="product-action">
-                  <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
-                      class=" ti-eye"></i><span>Quick Shop</span></a>
-                  <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                </div> -->
-                <div class="product-action-2">
-                  <a title="Add to cart" href="#">Add to cart</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-content">
-              <h3><a href="product-details.html">Jadapillai</a></h3>
-              <div class="product-price">
-                <span>₹50.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- End Single Product -->
-          <!-- Start Single Product -->
-          <div class="single-product">
-            <div class="product-img">
-              <a href="product-details.html">
-                <img class="default-img" src="assets/images/AFJ- Images/Harram/20200820_000508.jpg" alt="#">
-                <img class="hover-img" src="assets/images/AFJ- Images/Harram/20200820_000508.jpg" alt="#">
-              </a>
-              <div class="button-head">
-                <!-- <div class="product-action">
-                  <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
-                      class=" ti-eye"></i><span>Quick Shop</span></a>
-                  <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                  <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-                </div> -->
-                <div class="product-action-2">
-                  <a title="Add to cart" href="#">Add to cart</a>
-                </div>
-              </div>
-            </div>
-            <div class="product-content">
-              <h3><a href="product-details.html">Vangi/Amband</a></h3>
-              <div class="product-price">
-                <span>₹50.00</span>
-              </div>
-            </div>
-          </div>
-          <!-- End Single Product -->
-        </div>
-
-        <p-carousel
-        ngClass="hidePaginator"
-        [value]="necklace"
-        [numVisible]="3"
-        [numScroll]="3"
-        [circular]="false"
-        [autoplayInterval]="5000"
-        [responsiveOptions]="responsiveOptions"
-      >
-        <ng-template pTemplate="header"> </ng-template>
-        <ng-template let-necklaces pTemplate="item">
-          <div class="single-product">
-            <div class="product-img">
-              
-              <div class="p-mb-3">
-                <a>
-                <img
-                  class="product-image img-fluid"
-                  src="{{ necklaces.image_url }}"
-                  alt="{{ necklaces.name }}"
-                />
-                <span class="out-of-stock">New</span></a>
-              </div>
-              <div>
-                <h6 class="p-mb-1">{{ necklaces.name }}</h6>
-                <h6 class="p-mt-0 p-mb-3">{{ necklaces.price }}</h6>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-      </p-carousel>
-      
-      <!--Product slider ends here-->
-
-      </div>
-    </div>
-  </div>
-</div>
 
 <div>
     <mat-carousel
@@ -536,10 +376,43 @@
       [image]="slide?.image"
       overlayColor="#00000040"
       [hideOverlay]="false"
+      
     ></mat-carousel-slide>
     </mat-carousel>
 </div> 
 <br>
+
+<!--Carousel Area2-->
+
+<section class="hero-slider">
+  <!-- Slider 2-->
+  <div class="single-slider">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-9 offset-lg-3 col-12">
+          <div class="text-inner">
+            <div class="row">
+              <div class="col-lg-7 col-12">
+                <div class="hero-text">
+                  <h1><span>UP TO 5% OFF </span>Combo Sets</h1>
+                  <!-- <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy
+                    maboriosm.</p> -->
+                  <div class="button">
+                    <a class="btn">Shop Now!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Slider 2 -->
+</section>
+
+<!--End of Carousel Area2-->
+
 
 <div class="product-area most-popular section">
   <div class="container">
