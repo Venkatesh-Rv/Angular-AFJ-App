@@ -3,6 +3,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { ServService } from './serv.service';
+import { ActivatedRoute,ParamMap,Router } from '@angular/router';
+import { map } from "rxjs/operators";
 
 
 
@@ -19,12 +21,16 @@ export class HeaderComponent implements OnInit {
 
   options = ["Sam", "Varun", "Jasmine"];
 
+  sid;
+
   filteredOptions;
 
 
   formGroup : FormGroup ;
 
-  constructor(private modalService: NgbModal,private service : ServService, private fb : FormBuilder) { 
+  constructor(private modalService: NgbModal,private service : ServService, private fb : FormBuilder,
+    private aroute :ActivatedRoute,
+    private router: Router ) { 
 
 
   }
@@ -49,13 +55,13 @@ export class HeaderComponent implements OnInit {
   }
 
   // TODO: Cross browsing, scroll up
-  gotoTop() {
-    window.scroll({ 
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
-    });
-  }
+  // gotoTop() {
+  //   window.scroll({ 
+  //     top: 0, 
+  //     left: 0, 
+  //     behavior: 'smooth' 
+  //   });
+  // }
 
   //typeahead/auto-suggestion
 
@@ -95,4 +101,17 @@ export class HeaderComponent implements OnInit {
   //   })
   // }
 
+  search(event: any){
+    // this.aroute.paramMap.pipe(
+    //   map((param: ParamMap) => {
+    //     // @ts-ignore
+    //     return this.router.navigate(['prod-page',param]);
+        
+    //   })
+    // )
+
+    this.sid=event.target.value
+    console.log(this.sid)
+    this.router.navigate(['search',this.sid])
+  }
 }

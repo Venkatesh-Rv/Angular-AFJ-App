@@ -332,10 +332,12 @@
                     class="product-image img-fluid"
                     src="{{ necklaces.image_url }}"
                     alt="{{ necklaces.name }}"
+                    (click)="nav(necklaces.id)"
                   />
                   
                 </div>
                 <div>
+                  <p></p>
                   <h3>{{ necklaces.name }}</h3>
                   <h6>{{ necklaces.price }}</h6>
                 </div>

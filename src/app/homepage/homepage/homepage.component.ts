@@ -31,6 +31,8 @@ export class HomepageComponent implements OnInit {
   bridalsets:any;
   choker:any;
 
+  endpoint_necklace ='necklace/';
+
 
   constructor(private http: HttpClient, private router: Router, private Homepagesection: HomepagesectionService) {
     //slider responsive settings
@@ -146,6 +148,10 @@ export class HomepageComponent implements OnInit {
       this.hipchain = data;
     }, error => console.error(error));
 
+  }
+
+  nav(id){
+    this.router.navigateByUrl('/product/'+id);
   }
 
 

@@ -27,6 +27,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HipchainComponent } from './product/hipchain/hipchain.component';
+import { BridalsetsComponent } from './product/bridalsets/bridalsets.component';
+import { ChokerComponent } from './product/choker/choker.component';
+import { AnkletComponent } from './product/anklet/anklet.component';
+import { BanglesComponent } from './product/bangles/bangles.component';
+import { ChainsComponent } from './product/chains/chains.component';
+import { RingsComponent } from './product/rings/rings.component';
+import { SearchresultComponent } from './searchresult/searchresult.component';
 
 
 
@@ -37,6 +45,7 @@ const routes: Routes = [
   { path: 'prod-page', component: ProductPageComponent },
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'product/:id', component: ProductViewComponent },
+  { path: 'search/:id', component: SearchresultComponent }
 ]
 
 @NgModule({
@@ -48,7 +57,16 @@ const routes: Routes = [
     NecklaceComponent,
     CombosetsComponent,
     ShippingDetailsComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ProductViewComponent,
+    HipchainComponent,
+    BridalsetsComponent,
+    ChokerComponent,
+    AnkletComponent,
+    BanglesComponent,
+    ChainsComponent,
+    RingsComponent,
+    SearchresultComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +74,7 @@ const routes: Routes = [
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes), //, { enableTracing: true }
+    RouterModule.forRoot(routes,{ scrollPositionRestoration: 'enabled' ,anchorScrolling:'enabled'}), //, { enableTracing: true }
     BrowserAnimationsModule,
     HttpClientModule,
     MatCarouselModule.forRoot(),

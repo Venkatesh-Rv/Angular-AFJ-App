@@ -15,8 +15,19 @@
           <!-- Search Form -->
           <div class="search-top">
             <div class="top-search">
-              <a><i class="ti-search"></i></a>
+              <i class="ti-search" data-toggle="modal" data-target=".bd-example-modal-sm"></i>
             </div>
+            <!-- <button type="button" class="btn btn-primary" >Small modal</button> -->
+
+<!-- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="input-group mb-3"> <input type="text" class="form-control">
+        <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
+    </div>
+    </div>
+  </div>
+</div> -->
             <!-- Search Form -->
             <div class="search-top">
               <div class="mp">
@@ -103,7 +114,7 @@
                               <a
                                 routerLink="/"
                                 (click)="
-                                  modal.dismiss('Cross click'); gotoTop()
+                                  modal.dismiss('Cross click');
                                 "
                                 >Home</a
                               >
@@ -112,7 +123,7 @@
                               <a
                                 routerLink="/neck"
                                 (click)="
-                                  modal.dismiss('Cross click'); gotoTop()
+                                  modal.dismiss('Cross click');
                                 "
                                 >Necklace
                               </a>
@@ -203,6 +214,7 @@
                   name="search"
                   placeholder="Search Products Here....."
                   type="search"
+                  (change)='search($event)'
                 />
                 <button class="btnn"><i class="ti-search"></i></button>
               </form>
@@ -299,26 +311,27 @@
                 <div class="navbar-collapse">
                   <div class="nav-inner">
                     <ul class="nav main-menu menu navbar-nav">
-                      <li class="active">
-                        <a routerLink="/" (click)="gotoTop()">Home</a>
+                      <li class="">
+                        <a routerLink="/"  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                          true}">Home</a>
                       </li>
                       <li>
-                        <a routerLink="/neck" class="active" (click)="gotoTop()"
+                        <a routerLink="/neck" class="active"
                           >Necklace</a
                         >
                       </li>
                       <li>
-                        <a routerLink="/comboset" (click)="gotoTop()"
+                        <a routerLink="/comboset"
                           >Combo Sets</a
                         >
                       </li>
                       <li>
-                        <a routerLink="/" (click)="gotoTop()">Hipchain/Belt</a>
+                        <a routerLink="/">Hipchain/Belt</a>
                       </li>
                       <li>
-                        <a routerLink="/" (click)="gotoTop()">Bridal Sets</a>
+                        <a routerLink="/">Bridal Sets</a>
                       </li>
-                      <li><a routerLink="/" (click)="gotoTop()">Choker</a></li>
+                      <li><a routerLink="/">Choker</a></li>
                       <li>
                         <a>Others</a>
                         <ul class="dropdown">

@@ -78,7 +78,10 @@
         </div> -->
       <div>
           
-          <div class="row px-sm-2 px-0 pt-3"  *ngFor="let pp of products">
+          <div class="row px-sm-2 px-0 pt-3"  *ngFor="let pp of products
+          | paginate: { itemsPerPage: 5, 
+            currentPage: page, 
+            totalItems:totalNumber }">
               <div class="col-md-4 offset-md-0 offset-sm-2 offset-1 col-sm-8 col-10 offset-sm-2 offset-1 mb-3">
                   <div class="card">
                       <div class="px-2 red text-uppercase">new</div>
@@ -242,9 +245,7 @@
 
       </div>
   </div> -->
-
-  
-  
+  <pagination-controls  maxSize='5' directionLinks='true' (pageChange)="page = $event"></pagination-controls>
 </div>
 </section>
 <app-footer></app-footer>

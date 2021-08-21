@@ -34,7 +34,7 @@ export class CartService {
   } 
 
   loadCart(): void {
-    this.items = JSON.parse(localStorage.getItem("cart_items")) ?? [];
+    this.items = JSON.parse(sessionStorage.getItem("cart_items")) ?? [];
   }
 
   saveCart(): void {
