@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { ServService } from './serv.service';
 import { ActivatedRoute,ParamMap,Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
+
 import { map } from "rxjs/operators";
 
 
@@ -25,12 +27,14 @@ export class HeaderComponent implements OnInit {
 
   filteredOptions;
 
+  cart;
+
 
   formGroup : FormGroup ;
 
   constructor(private modalService: NgbModal,private service : ServService, private fb : FormBuilder,
     private aroute :ActivatedRoute,
-    private router: Router ) { 
+    private router: Router, private cs:CartService ) { 
 
 
   }
@@ -70,7 +74,26 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     // this.initForm();
     // this.getNames();
+  //   this.cs.loadCart();
+  //   this.cart = this.cs.getItems();
+  //   this.cart_count();
+   }
+
+   public reset(): void {
+    //window.location.assign('/cart');
+    //this.router.navigateByUrl('/cart');
+
+    this.router.navigate(['/cart'])
+  .then(() => {
+    window.location.reload();
+  });
   }
+
+  // cart_count(){
+  //   this.cart.forEach(ele => {
+  //    console.log( ele.qtyTotal)
+  //   });
+  // }
 
   // initForm(){
   //   this.formGroup = this.fb.group({
@@ -114,4 +137,5 @@ export class HeaderComponent implements OnInit {
     console.log(this.sid)
     this.router.navigate(['search',this.sid])
   }
+
 }

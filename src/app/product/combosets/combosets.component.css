@@ -82,6 +82,13 @@ a:hover {
     text-decoration: none
 }
 
+.ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: orange !important;
+    color: #fefefe;
+    cursor: default;
+}
+
 @media(max-width:800px) {
     .wrapper {
         margin: 20px 10px

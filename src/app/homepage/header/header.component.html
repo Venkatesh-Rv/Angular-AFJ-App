@@ -19,15 +19,16 @@
             </div>
             <!-- <button type="button" class="btn btn-primary" >Small modal</button> -->
 
-<!-- <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="input-group mb-3"> <input type="text" class="form-control">
-        <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
+        
+        <div class="input-group-append"><button class="btn btn-warning"><i class="fas fa-search"></i></button></div>
     </div>
     </div>
   </div>
-</div> -->
+</div>
             <!-- Search Form -->
             <div class="search-top">
               <div class="mp">
@@ -137,31 +138,51 @@
                             </li>
                             <li>
                               <a
-                                routerLink="/"
+                                routerLink="/hipchain"
                                 (click)="modal.dismiss('Cross click')"
                                 >Hipchain/Belt</a
                               >
                             </li>
                             <li>
                               <a
-                                routerLink="/"
+                                routerLink="/bridal"
                                 (click)="modal.dismiss('Cross click')"
                                 >Bridal Sets</a
                               >
                             </li>
                             <li>
-                              <a href="" (click)="modal.dismiss('Cross click')"
+                              <a routerLink="/choker" (click)="modal.dismiss('Cross click')"
                                 >Choker</a
                               >
                             </li>
                             <li>
-                              <a href="" (click)="modal.dismiss('Cross click')"
-                                >Others</a
+                              <a routerLink="/anklet" (click)="modal.dismiss('Cross click')"
+                                >Anklet</a
                               >
                             </li>
                             <li>
-                              <a href="" (click)="modal.dismiss('Cross click')"
-                                >Cart</a
+                              <a routerLink="/bangles" (click)="modal.dismiss('Cross click')"
+                                >Bangles</a
+                              >
+                            </li>
+                            <li>
+                              <a routerLink="/chains" (click)="modal.dismiss('Cross click')"
+                                >Chains</a
+                              >
+                            </li>
+                            <li>
+                              <a routerLink="/toe-rings" (click)="modal.dismiss('Cross click')"
+                                >Toe Rings</a
+                              >
+                            </li>
+                            <li>
+                              <a routerLink="/rings" (click)="modal.dismiss('Cross click')"
+                                >Finger Ring</a
+                              >
+                            </li>
+                            <li>
+                              <a routerLink="/nose-rings" (click)="modal.dismiss('Cross click')"
+                                >Nose Ring</a
                               >
                             </li>
                           </ul>
@@ -249,16 +270,16 @@
               ></a>
             </div>
             <div class="sinlge-bar shopping">
-              <a href="#" class="single-icon"
-                ><i class="ti-bag"></i> <span class="total-count">2</span></a
+              <a (click)=" reset()" class="single-icon" 
+                ><i class="ti-bag"></i> <span class="total-count"></span></a
               >
               <!-- Shopping Item -->
-              <div class="shopping-item">
+              <div class="shopping-item" style="display: none;">
                 <div class="dropdown-cart-header">
                   <span>2 Items</span>
-                  <a href="#">View Cart</a>
+                  <a routerLink="/cart">View Cart</a>
                 </div>
-                <ul class="shopping-list">
+                <!-- <ul class="shopping-list">
                   <li>
                     <a href="#" class="remove" title="Remove this item"
                       ><i class="fa fa-remove"></i
@@ -282,6 +303,11 @@
                     <p class="quantity">
                       1x - <span class="amount">35.00</span>
                     </p>
+                  </li>
+                </ul> -->
+                <ul>
+                  <li>
+                    <!-- <app-cart></app-cart> -->
                   </li>
                 </ul>
                 <div class="bottom">
@@ -326,18 +352,18 @@
                         >
                       </li>
                       <li>
-                        <a routerLink="/">Hipchain/Belt</a>
+                        <a routerLink="/hipchain">Hipchain/Belt</a>
                       </li>
                       <li>
-                        <a routerLink="/">Bridal Sets</a>
+                        <a routerLink="/bridal">Bridal Sets</a>
                       </li>
-                      <li><a routerLink="/">Choker</a></li>
+                      <li><a routerLink="/choker">Choker</a></li>
                       <li>
                         <a>Others</a>
                         <ul class="dropdown">
-                          <li><a>Anklet</a></li>
-                          <li><a>Bangles</a></li>
-                          <li><a>Chains</a></li>
+                          <li><a routerLink="/anklet">Anklet</a></li>
+                          <li><a routerLink="/bangles">Bangles</a></li>
+                          <li><a routerLink="/chains">Chains</a></li>
 
                           <li>
                             <a class="myDIV"
@@ -346,18 +372,18 @@
                           </li>
                           <ul class="dropdown hider">
                             <li>
-                              <a href=""
-                                ><i class="ti-angle-right"></i>Toe Rings</a
+                              <a routerLink="/toe-rings"
+                                >Toe Rings</a
                               >
                             </li>
                             <li>
-                              <a href=""
-                                ><i class="ti-angle-right"></i>Finger Rings</a
+                              <a routerLink="/rings"
+                                >Finger Rings</a
                               >
                             </li>
                             <li>
-                              <a href=""
-                                ><i class="ti-angle-right"></i>Nose Rings</a
+                              <a routerLink="/nose-rings"
+                                >Nose Rings</a
                               >
                             </li>
                           </ul>

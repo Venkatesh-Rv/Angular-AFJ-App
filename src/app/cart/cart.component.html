@@ -1,0 +1,153 @@
+<app-header></app-header>
+
+<div>
+  {{qwerty}}
+  </div>
+
+<!-- <div >
+  <h1>{{res}}</h1>
+  <p class="text-dark">{{res.id}}</p>
+  <p class="text-dark">{{res.name}}</p>
+  <p class="text-dark">{{res.offer}}</p>
+  <p class="text-dark">{{res.qtyTotal}}</p>
+  <button class="btn btn-secondary" (click)="removeFromCart(res)"> x</button>
+  
+</div> -->
+
+<br>
+<div class="card">
+  <div class="row">
+      <div class="col-md-8 cart">
+          <div class="title">
+              <div class="row">
+                  <div class="col">
+                      <h4><b>Shopping Cart</b></h4>
+                  </div>
+                  <div class="back-to-shop"><a></a><span class="text-muted">Back to shop</span></div>
+                  <p>{{items.length}}</p>
+              </div>
+          </div>
+          <div class="row border-top border-bottom"  *ngFor="let res of items; let j = index">
+              <div class="row main align-items-center">
+                
+                  <div class="col-2"><img class="img-fluid" src="{{res.image_url}}"></div>
+                  <div class="col">
+                      <!-- <div class="row text-muted">Shirt</div> -->
+                      <div class="row">{{res.name}}</div>
+                  </div>
+                  
+
+                  <div class="col"> {{res.offer}}
+                     <span class="close" (click)="removeFromCart(res)">&#10005;</span>
+                    </div>
+
+                  <div class="col">
+                     <!-- <a>-</a> -->
+                     <input
+                     [(ngModel)]="res.qtyTotal"
+                     [ngModelOptions]="{standalone: true}"
+                     min="1"
+                     type="number"
+                     value="{{ res.qtyTotal }}"
+                     name=""
+                     class="form-control"
+                     (change)="changeSubtotal(res ,j)"
+                   />
+                   <!-- <a>+</a>  -->
+                    </div>
+              </div>
+          </div>
+          
+          <!-- <div class="row">
+              <div class="row main align-items-center">
+                  <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
+                  <div class="col">
+                      <div class="row text-muted">Shirt</div>
+                      <div class="row">Cotton T-shirt</div>
+                  </div>
+                  <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
+                  <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+              </div>
+          </div>
+          <div class="row border-top border-bottom">
+              <div class="row main align-items-center">
+                  <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/pHQ3xT3.jpg"></div>
+                  <div class="col">
+                      <div class="row text-muted">Shirt</div>
+                      <div class="row">Cotton T-shirt</div>
+                  </div>
+                  <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
+                  <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+              </div>
+          </div> -->
+          
+      </div>
+      <div class="col-md-4 summary">
+          <div>
+              <h5><b>Summary</b></h5>
+          </div>
+          <hr>
+          <div class="row"  *ngFor="let res of items; let j = index">
+              <!-- <div class="col" style="padding-left:0;">ITEMS {{res.qtyTotal}}</div> -->
+              <div class="col text-right"> 
+                <div #subTotalWrap></div>
+              <!-- <span class="font-weight-bold">&#8377; {{total }}</span> -->
+            </div>
+          </div>
+          <form>
+              <p>SHIPPING</p> <select>
+                  <option class="text-muted">Standard-Delivery- &#8377;5.00</option>
+              </select>
+              <p>GIVE CODE</p> <input id="code" placeholder="Enter your code">
+          </form>
+          <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right">&euro; 137.00</div>
+          </div> <button class="btn" (click)="checkout()">CHECKOUT</button>
+      </div>
+  </div>
+</div>
+
+<!-- <h5>Cart</h5>
+  <div class="row">
+    <div class="col-12 " *ngFor="let item of items; let j = index ">
+      <div class="row" id="{{ item.id}}">
+        <div class="col-6">
+          <div class=" ">
+                          {{ item.name }}
+                          <small>( {{ item.offer }} ) </small>
+          </div>
+          <small class=" ">{{ item.desc }}</small>
+        </div>
+        <div class="col-2 p-0">
+                      <input
+            [(ngModel)]="item.qtyTotal"
+            [ngModelOptions]="{standalone: true}"
+            min="1"
+            type="number"
+            value="{{ item.qtyTotal }}"
+            name=""
+            class="form-control"
+            (change)="changeSubtotal(item ,j)"
+          />
+        </div>
+        <div class="col-2 pr-0">
+                          <div #subTotalWrap>{{ item.offer  }}</div>
+        </div>
+        <div class="col-1 pl-0">
+                          <button class="btn btn-secondary" (click)="removeFromCart(item)"> x</button>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-12 ">
+                  <hr />
+      <div>
+                      Order Total:
+                      <span class="font-weight-bold  ">{{total }}</span><hr>
+            <button class="btn btn-primary  " (click)="clearCart(items)"> Clear Items</button>
+      </div>
+    </div>
+  </div>  -->
+<br>
+  <app-footer></app-footer>

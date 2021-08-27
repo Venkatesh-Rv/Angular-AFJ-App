@@ -102,3 +102,6 @@ a{
 
 /* search bar mobile */
 
+.modal-dialog .modal-content {
+  border-radius: 1.3rem !important;
+}

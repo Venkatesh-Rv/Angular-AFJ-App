@@ -35,6 +35,10 @@ import { BanglesComponent } from './product/bangles/bangles.component';
 import { ChainsComponent } from './product/chains/chains.component';
 import { RingsComponent } from './product/rings/rings.component';
 import { SearchresultComponent } from './searchresult/searchresult.component';
+import { ToeRingComponent } from './product/toe-ring/toe-ring.component';
+import { NoseRingComponent } from './product/nose-ring/nose-ring.component';
+import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -42,10 +46,21 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'neck', component: NecklaceComponent },
   { path: 'comboset', component: CombosetsComponent },
+  { path: 'hipchain', component: HipchainComponent },
+  { path: 'bridal', component: BridalsetsComponent },
+  { path: 'choker', component: ChokerComponent },
+  { path: 'anklet', component: AnkletComponent },
+  { path: 'bangles', component: BanglesComponent },
+  { path: 'chains', component: ChainsComponent },
+  { path: 'rings', component: RingsComponent },
+  { path: 'toe-rings', component: ToeRingComponent},
+  { path: 'nose-rings', component: NoseRingComponent },
   { path: 'prod-page', component: ProductPageComponent },
-  { path: 'details', component: ShippingDetailsComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'product/:id', component: ProductViewComponent },
-  { path: 'search/:id', component: SearchresultComponent }
+  { path: 'search/:id', component: SearchresultComponent },
+  { path: 'details', component: ShippingDetailsComponent },
+  { path: 'payment', component: PaymentComponent }
 ]
 
 @NgModule({
@@ -66,7 +81,11 @@ const routes: Routes = [
     BanglesComponent,
     ChainsComponent,
     RingsComponent,
-    SearchresultComponent
+    SearchresultComponent,
+    ToeRingComponent,
+    NoseRingComponent,
+    CartComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

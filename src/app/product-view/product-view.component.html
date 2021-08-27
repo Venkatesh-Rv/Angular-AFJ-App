@@ -5,13 +5,15 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
-            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{product.image_url}}" alt="{{product.name}}"></div>
+            <div class="col-md-6">
+                <img class="card-img-top mb-5 mb-md-0" src="{{product.image_url}}" alt="{{product.name}}">
+            </div>
             <div class="col-md-6">
                 <div class="small mb-1">{{product.id}}</div>
                 <h1 class="display-5 fw-bolder">{{product.name}} </h1>
                 <div class="fs-5 mb-5">
                     <span class="text-decoration-line-through"></span>
-                    <span>{{product.price}}</span>
+                    <span>{{product.offer}}</span>
                 </div>
                 <!-- <mat-form-field appearance="fill">
                     <mat-label>Favorite food</mat-label>
@@ -30,18 +32,19 @@
 <br>
                 <p class="lead">{{product.description.data}}</p>
                 <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem">
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                    <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem"> -->
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button" (click)='addToCart(product)'>
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
+                    <button (click)='reset()'>Go to Cart</button>
                 </div>
             </div>
         </div>
     </div>
   </section>
   
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-light" style="display: none;">
     <div class="container px-4 px-lg-5 mt-5">
         <h2 class="fw-bolder mb-4">Related products</h2>
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -147,7 +150,11 @@
     </div>
   </section>
 
-<h5>Available Items</h5>
+
+  
+  <!--CART-->
+
+<!-- <h5>Available Items</h5>
   <div class="row ">
       <div id="{{i}}" class="col-12 " *ngFor="let data of sampleSuggestionsArray; let i = index">
           <div class="row">
@@ -165,21 +172,37 @@
         <div class="col-2">
                       <button (click)="addToCart(data)" class="btn btn-secondary mb-1">
             Add Item
-            <!-- <span class="icon-add_circle"></span> -->
+            <span class="icon-add_circle"></span>
           </button>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <hr />
-  <h5>Cart</h5>
+
+  <div *ngFor="let item of items; let j = index">
+<p>{{ item.name }}</p>
+<div class="col-2 p-0">
+    <input
+[(ngModel)]="item.qtyTotal"
+[ngModelOptions]="{standalone: true}"
+min="1"
+type="number"
+value="{{ item.qtyTotal }}"
+name=""
+class="form-control"
+(change)="changeSubtotal(item ,j)"
+/>
+</div>
+  </div>
+  <!-- <h5>Cart</h5>
   <div class="row">
     <div class="col-12 " *ngFor="let item of items; let j = index ">
       <div class="row" id="{{ item.id}}">
         <div class="col-6">
           <div class=" ">
-                          {{ item.menuName }}
-                          <small>( {{ item.variationCost }} ) </small>
+                          {{ item.name }}
+                          <small>( {{ item.offer }} ) </small>
           </div>
           <small class=" ">{{ item.desc }}</small>
         </div>
@@ -196,7 +219,7 @@
           />
         </div>
         <div class="col-2 pr-0">
-                          <div #subTotalWrap>{{ item.variationCost  }}</div>
+                          <div #subTotalWrap>{{ item.offer  }}</div>
         </div>
         <div class="col-1 pl-0">
                           <button class="btn btn-secondary" (click)="removeFromCart(item)"> x</button>
@@ -212,6 +235,9 @@
             <button class="btn btn-primary  " (click)="clearCart(items)"> Clear Items</button>
       </div>
     </div>
-  </div> 
+  </div>  -->
 
+  <!-- <app-cart [data]='items'></app-cart> -->
+
+ 
   <app-footer></app-footer>

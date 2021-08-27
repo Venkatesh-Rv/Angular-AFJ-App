@@ -1,10 +1,11 @@
 import { Component, OnInit,
   QueryList,
   ViewChildren,
-  ElementRef 
+  ElementRef, 
+  Input
 } from '@angular/core';
 import { CurrencyPipe } from "@angular/common";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap,Router} from "@angular/router";
 import { map } from "rxjs/operators";
 import { ProductService } from '../services/product.service'; 
 import { CartService } from '../services/cart.service';
@@ -22,7 +23,9 @@ import { CartService } from '../services/cart.service';
 
 export class ProductViewComponent implements OnInit {
   id: Number;
+  cat;
   product;
+  message='hello'
 
   items = [];
   sampleSuggestionsArray = [
@@ -57,6 +60,7 @@ export class ProductViewComponent implements OnInit {
   constructor(private aroute:ActivatedRoute, 
     private productService:ProductService,
     private cartService :CartService,
+    private router: Router,
     private currencyPipe: CurrencyPipe ){
     }
   // foods: Food[] = [
@@ -74,6 +78,7 @@ export class ProductViewComponent implements OnInit {
       })
     ).subscribe(prodId => {
       this.id = prodId;
+      
       this.productService.getSingleProduct(this.id).subscribe(prod => {
         this.product = prod;
         // if (prod.image_url !== null) {
@@ -85,8 +90,8 @@ export class ProductViewComponent implements OnInit {
 
     //For cart
     this.cartService.loadCart();
-    this.items = this.cartService.getItems();
-    console.log(this.sampleSuggestionsArray)
+    //this.items = this.cartService.getItems();
+    // console.log(this.items)
   }
 
 
@@ -97,22 +102,24 @@ export class ProductViewComponent implements OnInit {
     return this.items.reduce(
       (sum, x) => ({
         qtyTotal: 1,
-        variationCost: sum.variationCost + x.qtyTotal * x.variationCost
+        offer: sum.offer + x.qtyTotal * x.offer
       }),
-      { qtyTotal: 1, variationCost: 0 }
-    ).variationCost;
+      { qtyTotal: 1, offer: 0 }
+    ).offer;
   }
 
   changeSubtotal(item, index) {
     const qty = item.qtyTotal;
-    const amt = item.variationCost;
+    const amt = item.offer;
     const subTotal = amt * qty;
-    const subTotal_converted = this.currencyPipe.transform(subTotal, "USD");
+    const subTotal_converted = this.currencyPipe.transform(subTotal, "INR");
 
     this.subTotalItems.toArray()[
       index
     ].nativeElement.innerHTML = subTotal_converted;
     this.cartService.saveCart();
+    console.log('werks')
+    console.log(this.items)
   }
 
   //----- remove specific item
@@ -133,13 +140,22 @@ export class ProductViewComponent implements OnInit {
     if (!this.cartService.itemInCart(item)) {
       item.qtyTotal = 1;
       this.cartService.addToCart(item); //add items in cart
-      this.items = [...this.cartService.getItems()];
+      //this.items = [...this.cartService.getItems()];
+      
     }
   }
 
   // cart function code ends here
 
   
+  public reset(): void {
+    //window.location.assign('/cart');
+    //this.router.navigateByUrl('/cart');
 
+    this.router.navigate(['path/to'])
+  .then(() => {
+    window.location.reload();
+  });
+  }
 
 }
