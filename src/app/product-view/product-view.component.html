@@ -9,7 +9,8 @@
                 <img class="card-img-top mb-5 mb-md-0" src="{{product.image_url}}" alt="{{product.name}}">
             </div>
             <div class="col-md-6">
-                <div class="small mb-1">{{product.id}}</div>
+                <div class="" style="text-transform: uppercase;">{{product.id}}</div>
+                &nbsp;
                 <h1 class="display-5 fw-bolder">{{product.name}} </h1>
                 <div class="fs-5 mb-5">
                     <span class="text-decoration-line-through"></span>
@@ -37,7 +38,10 @@
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
-                    <button (click)='reset()'>Go to Cart</button>
+                    &nbsp;&nbsp;
+                    <button class="btn btn-outline-dark flex-shrink-0" (click)='reset()'>
+                        <i class="bi-cart-fill me-1"></i>
+                        Go to Cart</button>
                 </div>
             </div>
         </div>

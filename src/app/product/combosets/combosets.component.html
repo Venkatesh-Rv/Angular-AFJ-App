@@ -3,9 +3,9 @@
 <section class="product-area shop-sidebar shop section">
 
 <div class="wrapper rounded bg-white">
-  <div class="d-flex align-items-center justify-content-end px-sm-3 pt-3 px-1">
+  <div class="d-flex align-items-center px-sm-3 pt-3 px-1">
     
-      <div class="text-muted align-items-center justify-content-end"> <b>Combo Sets</b> </div> 
+      <div class=" align-items-center justify-content-left"> <b>Combo Sets</b> </div> 
       <!-- <select name="num" id="num" class="px-2 py-1 ml-sm-2 ml-1">
           <option value="10">10</option>
           <option value="11">11</option>
@@ -14,12 +14,15 @@
           <option value="14">14</option>
           <option value="15">15</option>
       </select>  -->
-      <select name="sort" id="sort" class="px-1 py-1 ml-2">
+
+      
+
+      <!-- <select name="sort" id="sort" class="px-1 py-1 ml-2">
           <option value="" selected hidden>Sort by</option>
           <option value="rating">Rating</option>
           <option value="popular">Popular</option>
           <option value="featured">Featured</option>
-      </select>
+      </select> -->
   </div>
   <hr>
 
@@ -77,8 +80,16 @@
           </div>
         </div> -->
       <div>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-caret">
+              <li class="breadcrumb-item"><a href="#" class="text-uppercase">Home</a></li>
+              <li class="breadcrumb-item"><a href="#" class="text-uppercase">Library</a></li>
+              <li aria-current="page" class="breadcrumb-item active text-uppercase">Data</li>
+            </ol>
+          </nav>
           
-          <div class="row px-sm-2 px-0 pt-3"  *ngFor="let pp of products
+          <div class="row px-0 pt-3 "  *ngFor="let pp of products
           | paginate: { itemsPerPage: 5, 
             currentPage: page, 
             totalItems:totalNumber }">

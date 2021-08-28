@@ -130,3 +130,15 @@ a:hover {
         display:none;
     }
 }
+
+/* Caret Breadcrumb */
+.breadcrumb{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: #fff;
+}
+
+.breadcrumb-caret .breadcrumb-item+.breadcrumb-item::before {
+    content: '\f0da';
+    font-family: 'FontAwesome';
+  }
