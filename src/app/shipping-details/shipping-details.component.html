@@ -1,5 +1,4 @@
 
-
 <section class="shop checkout section">
   <div class="container">
     <div class="row">
@@ -8,7 +7,7 @@
           <h2>Make Your Checkout Here</h2>
           <p>Please register in order to checkout more quickly</p>
           <!-- Form -->
-          <form class="form" method="post" action="#">
+          <form class="form" [formGroup]='addressForm' >
             <div class="row">
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
@@ -18,7 +17,9 @@
                     name="name"
                     placeholder=""
                     required="required"
+                    formControlName="name"
                   />
+                  <small *ngIf="name.invalid && name.touched" class="text-danger">Name is Required</small> 
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
@@ -29,6 +30,7 @@
                     name="house"
                     placeholder=""
                     required="required"
+                    formControlName="HouseName"
                   />
                 </div>
               </div>
@@ -40,7 +42,9 @@
                     name="address"
                     placeholder=""
                     required="required"
+                    formControlName="Address"
                   />
+                  <small *ngIf="Address.invalid && Address.touched" class="text-danger">Address is Required</small>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
@@ -51,24 +55,28 @@
                     name="email"
                     placeholder=""
                     required="required"
+                    formControlName="email"
                   />
+                  <small *ngIf="email.invalid && email.touched" class="text-danger">Email is Required</small>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
                   <label>Phone Number<span>*</span></label>
                   <input
-                    type="number"
+                    type="text"
                     name="ph-number"
                     placeholder=""
                     required="required"
+                    formControlName="phone"
                   />
+                  <small *ngIf="phone.invalid && phone.touched" class="text-danger">Phone no is Required</small>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
                   <label>City/Village/Panchayat<span>*</span></label>
-                  <select
+                  <!-- <select
                     name="state-province"
                     id="state-province"
                     style="display: none"
@@ -92,7 +100,15 @@
                         Kanchipuram
                       </li>
                     </ul>
-                  </div>
+                  </div> -->
+                  <input
+                  type="text"
+                  name="city"
+                  placeholder=""
+                  required="required"
+                  formControlName="city"
+                />
+                
                 </div>
 
                 <!-- <div class="form-group">
@@ -350,65 +366,63 @@
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
                   <label>District<span>*</span></label>
-                  <select name="state-province" id="state-province" style="display: none;">
-                    <option value="divition" selected="selected">
-                      Chennai
-                    </option>
-                    <option>Kerala</option>
-                    <option>Karnataka</option>
-                    <option>North</option>
-                  </select>
-                  <div class="nice-select" tabindex="0">
-                    <span class="current"></span>
-                    <ul class="list">
-                      <li data-value="divition" class="option selected focus">
-                        TamilNadu
-                      </li>
-                      <li data-value="Coimbatore" class="option">Kerala</li>
-                      <li data-value="Trichy" class="option">Andhra Pradesh</li>
-                      <li data-value="Kanchipuram" class="option">
-                        North
-                      </li>
-                    </ul>
-                  </div>
+                  <input
+                  type="text"
+                  name="district"
+                  placeholder=""
+                  required="required"
+                  formControlName="district"
+                />
                 </div>
               </div>
 
               <div class="col-lg-6 col-md-6 col-12">
                 <div class="form-group">
                   <label>State<span>*</span></label>
-                  <select name="state-province" id="state-province" style="display: none;">
-                    <option value="divition" selected="selected">
+                  <!-- <select name="state-province" id="state-province" style="display: none;">
+                    <option value="TamilNadu" selected="selected">
                       TamilNadu
                     </option>
                     <option>Kerala</option>
                     <option>Karnataka</option>
-                    <option>North</option>
+                    <option>Andhra Pradesh</option>
+                    <option>Telugana</option>
+                    <option>Maharastra</option>
+                    <option>Others</option>
                   </select>
                   <div class="nice-select" tabindex="0">
                     <span class="current"></span>
-                    <ul class="list">
-                      <li data-value="divition" class="option selected focus">
+                    <ul class="list" formControlName="state">
+                      <li data-value="TamilNadu" class="option selected focus">
                         TamilNadu
                       </li>
-                      <li data-value="Coimbatore" class="option">Kerala</li>
-                      <li data-value="Trichy" class="option">Andhra Pradesh</li>
+                      <li data-value="Kerala" class="option">Kerala</li>
+                      <li data-value="Andhra" class="option">Andhra Pradesh</li>
+                      <li data-value="Karnataka" class="option">
+                        Karnataka
+                      </li>
                       <li data-value="Kanchipuram" class="option">
-                        North
+                        Karnataka
+                      </li>
+                      <li data-value="Kanchipuram" class="option">
+                        Karnataka
+                      </li>
+                      <li data-value="Kanchipuram" class="option">
+                        Karnataka
+                      </li>
+                      <li data-value="Kanchipuram" class="option">
+                        Karnataka
                       </li>
                     </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label>House Name/No<span>*</span></label>
+                  </div> -->
                   <input
-                    type="text"
-                    name="address"
-                    placeholder=""
-                    required="required"
-                  />
+                  type="text"
+                  name="state"
+                  placeholder=""
+                  required="required"
+                  formControlName="state"
+                />
+                
                 </div>
               </div>
               
@@ -420,7 +434,9 @@
                     name="post"
                     placeholder=""
                     required="required"
+                    formControlName="pincode"
                   />
+                  <small *ngIf="pincode.invalid && pincode.touched" class="text-danger"> Enter Proper Pincode</small> 
                 </div>
               </div>
 
@@ -432,6 +448,7 @@
                     name="house"
                     placeholder=""
                     required="required"
+                    formControlName="landmark"
                   />
                 </div>
               </div>
@@ -444,6 +461,8 @@
                     name="house"
                     placeholder=""
                     required="required"
+                    formControlName='alt'
+                    
                   />
                 </div>
               </div>
@@ -455,6 +474,7 @@
                                 </div>
                             </div> -->
             </div>
+            <button (click)="clicksub()" [disabled]="addressForm.invalid" type="button" class="btn btn-warning">Proceed</button>
           </form>
           <!--/ End Form -->
         </div>
@@ -511,10 +531,11 @@
     </div>
   </div>
 </section>
+
 <!--/ End Checkout -->
 
 <!-- Start Shop Services Area  -->
-<section class="shop-services section home">
+<section class="shop-services section home" style="display: none;">
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-6 col-12">

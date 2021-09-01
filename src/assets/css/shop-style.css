@@ -2050,10 +2050,12 @@
     font-weight: 500;
   }
   .single-product .product-content .product-price span.old {
-    text-decoration: line-through;
+    text-decoration: line-through !important;
     opacity: 0.6;
     margin-right: 2px;
   }
+
+  
   /*======================================
      End Single Product CSS
   ========================================*/

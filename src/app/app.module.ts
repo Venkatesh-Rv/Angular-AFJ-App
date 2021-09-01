@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
+import { ToastrModule } from 'ngx-toastr'
 import { ButtonModule } from 'primeng/button';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -57,7 +58,7 @@ const routes: Routes = [
   { path: 'nose-rings', component: NoseRingComponent },
   { path: 'prod-page', component: ProductPageComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'product/:id', component: ProductViewComponent },
+  { path: 'product', component: ProductViewComponent },
   { path: 'search/:id', component: SearchresultComponent },
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'payment', component: PaymentComponent }
@@ -103,6 +104,12 @@ const routes: Routes = [
     FontAwesomeModule,
     MatSelectModule,
     NgxPaginationModule,
+    ToastrModule.forRoot({
+      timeOut:1500,
+      progressBar:true,
+      progressAnimation:'increasing',
+      preventDuplicates:true
+    }),
     MatInputModule,
     MatAutocompleteModule
 

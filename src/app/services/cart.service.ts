@@ -10,17 +10,31 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   items = [];
-
+  
+  qr:any= NaN;
   private paramSource = new BehaviorSubject(this.items);
-  sharedParam = this.paramSource.asObservable();
+  qty=new BehaviorSubject(this.qr)
 
-  changeParam(param: any) {
-    this.paramSource.next(param)
-    //console.log(param)
-  }
+  // changeParam(param: any) {
+  //   this.paramSource.next(param)
+  //   //console.log(param)
+  // }
 
+get changevar(){
+  return this.qty.asObservable();
+}
+
+ger(qe){
+  this.qr=qe
+  console.log(this.qr)
+  this.qty.next(this.qr)
+  return this.qr
+}
   addToCart(addedItem) {
+  
     this.items.push(addedItem);
+
+  
     // console.log(addedItem);
 
     //-----check if there are items already added in cart
@@ -45,13 +59,18 @@ export class CartService {
 
   loadCart() {
     this.items = JSON.parse(sessionStorage.getItem("cart_items")) ?? [];
+    // this.qr = sessionStorage.getItem("count")
+  }
+
+  countr(){
+    
   }
 
   saveCart(): void {
     sessionStorage.setItem('cart_items', JSON.stringify(this.items)); 
     console.log(this.items)
     //this.loadCart();
-    console.log(this.items)
+    
   }
 
   clearCart(items) {
@@ -61,11 +80,14 @@ export class CartService {
   }
 
   removeItem(item) {
+   
     const index = this.items.findIndex(o => o.id === item.id);
 
     if (index > -1) {
       this.items.splice(index, 1);
       this.saveCart();
+      console.log()
+      this.ger(this.items.length)
     }
   }
 

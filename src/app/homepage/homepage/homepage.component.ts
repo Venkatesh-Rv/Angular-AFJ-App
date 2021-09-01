@@ -166,8 +166,8 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  nav(id){
-    this.router.navigateByUrl('/product/'+id);
+  nav(id,getval){
+    this.router.navigate(['/product'], { queryParams: { cat: getval,id } });
   }
 
 

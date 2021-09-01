@@ -7,6 +7,7 @@ import { ActivatedRoute,ParamMap,Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
 import { map } from "rxjs/operators";
+import { Observable } from 'rxjs';
 
 
 
@@ -69,7 +70,7 @@ export class HeaderComponent implements OnInit {
 
   //typeahead/auto-suggestion
 
- 
+ qwe:Observable<number>
 
   ngOnInit(): void {
     // this.initForm();
@@ -77,6 +78,8 @@ export class HeaderComponent implements OnInit {
   //   this.cs.loadCart();
   //   this.cart = this.cs.getItems();
   //   this.cart_count();
+  this.qwe=this.cs.changevar
+  console.log(this.qwe)
    }
 
    public reset(): void {
@@ -85,7 +88,7 @@ export class HeaderComponent implements OnInit {
 
     this.router.navigate(['/cart'])
   .then(() => {
-    window.location.reload();
+    //window.location.reload();
   });
   }
 

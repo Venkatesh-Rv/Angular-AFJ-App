@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div>
-  {{qwerty}}
+  
   </div>
 
 <!-- <div >
@@ -161,17 +161,96 @@
         </div>
     </div>
   </div>
+
+  <!-- <p></p> -->
+
+  <div class="container" style="display: none;" >
+    <br>
+    <h1>Your Cart</h1>
+    <table class="table table-xs">
+      <tr class="m-view">
+        <th></th>
+        <th>Item</th>
+        <th class="text-left">Quantity</th>
+        <th class="text-right">Price</th>
+        <th class="text-right">Total</th>
+      </tr>
+      <tr class="item-row">
+        <td> <img src="http://placehold.it/50x50"/></td>
+        <td>
+          <p> <strong>Item 1</strong></p>
+          <p>Amet et esse do nostrud id irure cupidatat labore nulla irure laboris</p>
+        </td>
+        <!-- <td class="text-right" title="Amount">3</td> -->
+        <td class="text-right" title="Quantity"> <input
+         
+          id="mobile"
+          min="1"
+          type="number"
+          value=""
+          name=""
+          class="form-control"
+          
+        /></td>
+        <td class="text-right" title="Price">2.00</td>
+        <!-- <td class="text-right" title="Total">6.00</td> -->
+        <td class="text-right">
+         
+          <button>
+          <span><i class="far fa-trash-alt"></i></span>
+        </button>
+      </td>
+      </tr>
+      <br>
+      <hr>
+      <tr class="item-row item-row-last">
+        <td> <img src="http://placehold.it/50x50"/></td>
+        <td>
+          <p> <strong>Item 2</strong></p>
+          <p>Amet et esse do nostrud id irure cupidatat labore nulla irure laboris</p>
+        </td>
+        <td class="text-right" title="Amount"> <input
+         
+          
+          min="1"
+          type="number"
+          value=""
+          name=""
+          class="form-control"
+          
+        /></td>
+        <td class="text-right" title="Price">4.00</td>
+        <!-- <td class="text-right" title="Total">12.00</td> -->
+        <td class="text-right">
+          <button >
+            <span><i class="far fa-trash-alt"></i></span>
+          </button>
+      </td>
+      </tr>
+      <tr class="total-row info">
+        <td class="text-right" colspan="4">Total</td>
+        <td class="text-right">18.00</td>
+      </tr>
+    </table>
+  </div>
   
 
-  <div class="row" >
+  <div class="row"  >
       <div class="col-md-8 cart">
           <div class="title">
               <div class="row">
                   <div class="col">
                       <h4><b>Shopping Cart</b></h4>
                   </div>
-                  <div class="back-to-shop"><a></a><span class="text-muted">Back to shop</span></div>
-                  <p>{{items.length}}</p>
+                  <!-- <div class="back-to-shop"><a></a><span class="text-muted">Back to shop</span></div> -->
+                  
+                  
+              </div>
+              <div class="alert alert-warning d-flex justify-content-center" role="alert" *ngIf="items.length<=0">
+                Your Cart is &nbsp; <strong>Empty</strong>!! 
+                <br>
+                <a routerLink="/"><span class="text-bold text-uppercase"><u>Back to shop</u></span></a>
+                <!-- {{items.length}} -->
               </div>
           </div>
           <div class="row border-top border-bottom"  *ngFor="let res of items; let j = index">
@@ -185,7 +264,7 @@
                   
 
                   <div class="col"> {{res.offer}}
-                     <span class="close" (click)="removeFromCart(res)">&#10005;</span>
+                     
                     </div>
 
                   <div class="col">
@@ -202,8 +281,18 @@
                    />
                    <!-- <a>+</a>  -->
                     </div>
-              </div>
+                    <button  class="btn btn-outline-danger" (click)="removeFromCart(res)">
+                    <span><i class="far fa-trash-alt"></i></span>
+                  </button>
+                  
+                  </div>
+                  
           </div>
+          <div *ngIf="items.length>0">
+            <button class="btn" (click)="checkout()" >CHECKOUT</button>
+          </div>
+         
+          
           
           <!-- <div class="row">
               <div class="row main align-items-center">
@@ -229,7 +318,7 @@
           </div> -->
           
       </div>
-      <div class="col-md-4 summary">
+      <div class="col-md-4 summary" style="display: none;">
           <div>
               <h5><b>Summary</b></h5>
           </div>

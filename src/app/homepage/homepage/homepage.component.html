@@ -174,7 +174,7 @@
                     <!-- <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy
                       maboriosm.</p> -->
                     <div class="button">
-                      <a  class="btn">Shop Now!</a>
+                      <a routerLink="/neck" class="btn">Shop Now!</a>
                     </div>
                   </div>
                 </div>
@@ -333,14 +333,18 @@
                     class="product-image img-fluid"
                     src="{{ necklaces.image_url }}"
                     alt="{{ necklaces.name }}"
-                    (click)="nav(necklaces.id)"
+                    (click)="nav(necklaces.id,'necklace')"
                   />
                   
                 </div>
                 <div>
                   <p></p>
                   <h3>{{ necklaces.name }}</h3>
-                  <h6>{{ necklaces.offer }}</h6>
+                  <div class="product-price">
+                    <span class="old">₹{{necklaces.price}}</span>&nbsp;
+                    <span>₹{{necklaces.offer}}</span>
+                  </div>
+                  <!-- <h6>{{ necklaces.offer }}</h6> -->
                 </div>
               </div>
             </div>
@@ -401,7 +405,7 @@
                   <!-- <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy
                     maboriosm.</p> -->
                   <div class="button">
-                    <a class="btn">Shop Now!</a>
+                    <a routerLink="/comboset" class="btn">Shop Now!</a>
                   </div>
                 </div>
               </div>
@@ -559,13 +563,16 @@
                   class="product-image img-fluid"
                   src="{{ comboset.image_url }}"
                   alt="{{ comboset.name }}"
-                  (click)="nav(comboset.id)"
+                  (click)="nav(comboset.id,'combo-sets')"
                 />
                 
               </div>
               <div>
                 <h3 >{{ comboset.name }}</h3>
-                <h6 >{{ comboset.price }}</h6>
+                <div class="product-price">
+                  <span class="old">₹{{comboset.price}}</span>&nbsp;
+                  <span>₹{{comboset.offer}}</span>
+                </div>
               </div>
             </div>
           </div>

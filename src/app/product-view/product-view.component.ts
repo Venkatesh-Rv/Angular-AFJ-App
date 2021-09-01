@@ -5,6 +5,7 @@ import { Component, OnInit,
   Input
 } from '@angular/core';
 import { CurrencyPipe } from "@angular/common";
+import { ToastrService } from 'ngx-toastr';
 import {ActivatedRoute, ParamMap,Router} from "@angular/router";
 import { map } from "rxjs/operators";
 import { ProductService } from '../services/product.service'; 
@@ -24,33 +25,13 @@ import { CartService } from '../services/cart.service';
 export class ProductViewComponent implements OnInit {
   id: Number;
   cat;
+  cat2:string
   product;
-  message='hello'
+  message;
 
   items = [];
-  sampleSuggestionsArray = [
-    {
-      id: "1",
-      menuName: "Item 1",
-      variationCost: "20.50",
-      desc: "Lorem ipsum dolor sit amet..",
-      qtyTotal: 0
-    },
-    {
-      id: "2",
-      menuName: "Item 2",
-      variationCost: "10",
-      desc: "Lorem ipsum dolor sit amet..",
-      qtyTotal: 0
-    },
-    {
-      id: "3",
-      menuName: "Item 3",
-      variationCost: "5.50",
-      desc: "Lorem ipsum dolor sit amet..",
-      qtyTotal: 0
-    }
-  ];
+  totalr:number=0;
+  
 
 
   // @ViewChildren('myitems') subTotalItems: QueryList<ElementRef>;
@@ -61,7 +42,8 @@ export class ProductViewComponent implements OnInit {
     private productService:ProductService,
     private cartService :CartService,
     private router: Router,
-    private currencyPipe: CurrencyPipe ){
+    private currencyPipe: CurrencyPipe,
+    private ts:ToastrService ){
     }
   // foods: Food[] = [
   //   {value: 'steak-0', viewValue: 'Steak'},
@@ -70,6 +52,22 @@ export class ProductViewComponent implements OnInit {
   // ];
 
   ngOnInit(): void {
+    this.aroute.queryParamMap
+    .subscribe((params:any) => {
+      this.id=params.params.id
+      this.cat2=params.params.cat
+      console.log(this.id)
+      this.productService.getSingleProduct(this.id,this.cat2).subscribe(prod => {
+        this.product = prod;
+        // if (prod.image_url !== null) {
+        //   this.thumbimages = prod.image_url.split(';');
+        // }
+
+      });
+      // this.orderObj = { ...params.keys, ...params };
+      console.log(params)
+    }
+  );
 
     this.aroute.paramMap.pipe(
       map((param: ParamMap) => {
@@ -79,19 +77,18 @@ export class ProductViewComponent implements OnInit {
     ).subscribe(prodId => {
       this.id = prodId;
       
-      this.productService.getSingleProduct(this.id).subscribe(prod => {
-        this.product = prod;
-        // if (prod.image_url !== null) {
-        //   this.thumbimages = prod.image_url.split(';');
-        // }
+     
 
-      });
+  
     });
 
     //For cart
     this.cartService.loadCart();
     //this.items = this.cartService.getItems();
     // console.log(this.items)
+
+    this.message=this.cartService.changevar;
+    console.table(this.message)
   }
 
 
@@ -139,10 +136,28 @@ export class ProductViewComponent implements OnInit {
   addToCart(item) {
     if (!this.cartService.itemInCart(item)) {
       item.qtyTotal = 1;
-      this.cartService.addToCart(item); //add items in cart
+
+      console.log('hello cart ')
+      this.cartService.addToCart(item); 
+
+      this.countr();
+
+      this.ts.success('Added to Cart Successfully')
+     // this.cartService.ger(this.message)//add items in cart
       //this.items = [...this.cartService.getItems()];
       
+    }   
+    else{
+      // alert('already in cart..!!')
+      this.ts.info('Already in Cart, Checkout..!!')
     }
+  }
+
+  countr(){
+    this.items = this.cartService.getItems();
+  this.items.forEach(ele=>this.totalr+=ele.qtyTotal)
+    console.log(this.totalr)
+    this.cartService.ger(this.totalr)
   }
 
   // cart function code ends here
@@ -152,9 +167,9 @@ export class ProductViewComponent implements OnInit {
     //window.location.assign('/cart');
     //this.router.navigateByUrl('/cart');
 
-    this.router.navigate(['path/to'])
+    this.router.navigate(['/cart'])
   .then(() => {
-    window.location.reload();
+    //window.location.reload();
   });
   }
 

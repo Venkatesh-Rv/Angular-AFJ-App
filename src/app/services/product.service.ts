@@ -29,8 +29,8 @@ export class ProductService {
   //   });
   // }
 
-  getSingleProduct(id: Number): Observable<any> {
-    return this.http.get<any>(this.url + 'necklace/' + id);
+  getSingleProduct(id: Number,cat:string): Observable<any> {
+    return this.http.get<any>(this.url + cat+'/'+ id);
   }
 
 

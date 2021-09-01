@@ -1,9 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    font-family:"Poppins",sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+html,body{
+    /* font-family:"Poppins",sans-serif; */
+    font-family: 'Nunito', sans-serif !important;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
 .p-carousel-indicators {
       display: none !important;
@@ -29,4 +33,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .my-float{
 	margin-top:16px;
 }
+
+span.old {
+  text-decoration: line-through !important;
+  opacity: 0.6;
+  margin-right: 2px;
+}
     
+/* Caret Breadcrumb */
+.breadcrumb{
+    margin-left: 0rem;
+    margin-right: 0rem;
+    /*background-color: #fff; */
+}
+
+.breadcrumb-caret .breadcrumb-item+.breadcrumb-item::before {
+    content: '\f0da';
+    font-family: 'FontAwesome';
+  }
+
+  /*Product Page 2X CSS*/
+
+ 

@@ -1,3 +1,8 @@
+
+html,body{
+    font-family: 'Nunito', sans-serif !important;
+}
+
 img{
     cursor: pointer;
 }
@@ -7,3 +12,8 @@ img{
     border-radius: 14px;
 }
 
+span.old {
+    text-decoration: line-through !important;
+    opacity: 0.6;
+    margin-right: 2px;
+  }
