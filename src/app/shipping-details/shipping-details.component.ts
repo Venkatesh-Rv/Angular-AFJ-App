@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-shipping-details',
@@ -11,9 +12,10 @@ import { ToastrService } from 'ngx-toastr';
 export class ShippingDetailsComponent implements OnInit {
 
   addressForm: any;
+  details:any;
 
 
-  constructor(private ts:ToastrService, private router:Router) { }
+  constructor(private ts:ToastrService, private router:Router, private cs:CartService) { }
 
   ngOnInit(): void {
     this.addressForm = new FormGroup({
@@ -41,8 +43,12 @@ export class ShippingDetailsComponent implements OnInit {
 
   }
   clicksub() {
-    console.log(this.addressForm.value);
-    this.addressForm.reset();
+   
+    this.details= this.addressForm.value;
+    console.log(this.cs.checkout);
+    console.log(this.details);
+    
+    //this.addressForm.reset();
     this.ts.success('Thanks for purchasing...');
     this.router.navigate(['/'])
 

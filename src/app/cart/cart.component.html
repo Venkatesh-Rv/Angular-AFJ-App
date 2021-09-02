@@ -290,6 +290,10 @@
           </div>
           <div *ngIf="items.length>0">
             <button class="btn" (click)="checkout()" >CHECKOUT</button>
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+              <div class="col">TOTAL PRICE</div>
+              <div class="col text-right-muted">&#8377; Will be calculate at next step</div>
+          </div> 
           </div>
          
           
@@ -386,4 +390,15 @@
     </div>
   </div>  -->
 <br>
+
+<!-- <div class="td_item item_qty">
+  <select>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="more">More</option>
+  </select>
+</div> -->
   <app-footer></app-footer>

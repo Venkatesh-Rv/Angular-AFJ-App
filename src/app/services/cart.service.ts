@@ -10,8 +10,9 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   items = [];
+  checkout:any;
   
-  qr:any= NaN;
+  qr:any= 0;
   private paramSource = new BehaviorSubject(this.items);
   qty=new BehaviorSubject(this.qr)
 
@@ -96,6 +97,8 @@ ger(qe){
   }
 
   checkoutCart(url, getData) {
+    this.checkout= getData
+    console.log(this.checkout)
     return this.http.post(url, getData)
   }
 

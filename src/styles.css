@@ -52,6 +52,12 @@ span.old {
     font-family: 'FontAwesome';
   }
 
+  .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: orange !important;
+    color: #fefefe;
+    cursor: default;
+}
   /*Product Page 2X CSS*/
 
  

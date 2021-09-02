@@ -40,6 +40,7 @@ import { ToeRingComponent } from './product/toe-ring/toe-ring.component';
 import { NoseRingComponent } from './product/nose-ring/nose-ring.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -86,7 +87,8 @@ const routes: Routes = [
     ToeRingComponent,
     NoseRingComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

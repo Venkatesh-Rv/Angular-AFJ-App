@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto+Slab&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto+Slab&display=swap'); */
 
 /* * {
     padding: 0;
@@ -82,12 +82,7 @@ a:hover {
     text-decoration: none
 }
 
-.ngx-pagination .current {
-    padding: 0.1875rem 0.625rem;
-    background: orange !important;
-    color: #fefefe;
-    cursor: default;
-}
+
 
 @media(max-width:800px) {
     .wrapper {
