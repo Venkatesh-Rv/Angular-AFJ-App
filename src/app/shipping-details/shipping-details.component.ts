@@ -12,7 +12,7 @@ import { CartService } from '../services/cart.service';
 export class ShippingDetailsComponent implements OnInit {
 
   addressForm: any;
-  details:any;
+  details=[];
 
 
   constructor(private ts:ToastrService, private router:Router, private cs:CartService) { }
@@ -45,12 +45,14 @@ export class ShippingDetailsComponent implements OnInit {
   clicksub() {
    
     this.details= this.addressForm.value;
-    console.log(this.cs.checkout);
+    console.log(this.cs.items);
+   
     console.log(this.details);
+    this.cs.checkout = this.details;
     
     //this.addressForm.reset();
-    this.ts.success('Thanks for purchasing...');
-    this.router.navigate(['/'])
+    // this.ts.success('Thanks for purchasing...');
+    this.router.navigate(['/checkout'])
 
   }
 

@@ -1,7 +1,9 @@
 
 html,body{
     font-family: 'Nunito', sans-serif !important;
+    
 }
+
 
 img{
     cursor: pointer;
@@ -17,3 +19,11 @@ span.old {
     opacity: 0.6;
     margin-right: 2px;
   }
+
+#def{
+   
+        font: 400 24px/32px Roboto, "Nunito", sans-serif !important;
+        letter-spacing: normal;
+        margin: 0 0 16px;
+      
+}

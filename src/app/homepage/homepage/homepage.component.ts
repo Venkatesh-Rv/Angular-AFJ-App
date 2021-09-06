@@ -13,22 +13,41 @@ export class HomepageComponent implements OnInit {
 
   slides = [
   { "name": "Necklace",
-    "image": "../../../assets/images/AFJ- Images/Necklace/20200823_000808.jpg",
+    "image": "../../../assets/images/AFJ- Images/neck.jpg",
     "url":"neck"
   },
   { "name": "Combo Sets",
-  "image": "../../../assets/images/AFJ- Images/Combo sets/20200822_224531.jpg",
+  "image": "../../../assets/images/AFJ- Images/combo.jpg",
   "url":"comboset"
 },
 { "name": "Choker",
-"image": "../../../assets/images/AFJ- Images/Choker/20200820_001925.jpg",
+"image": "../../../assets/images/AFJ- Images/choker.jpg",
 "url":"choker"
 },
 { "name": "Bridal Sets",
-"image": "../../../assets/images/AFJ- Images/Harram/hp.jpg",
+"image": "../../../assets/images/AFJ- Images/haram.jpg",
 "url":"bridal"
 },
 ];
+
+// slides = [
+//   { "name": "Necklace",
+//     "image": "assets/images/AFJ-Images/neck.jpg",
+//     "url":"neck"
+//   },
+//   { "name": "Combo Sets",
+//   "image": ".assets/images/AFJ-Images/combo.jpg",
+//   "url":"comboset"
+// },
+// { "name": "Choker",
+// "image": "assets/images/AFJ-Images/choker.jpg",
+// "url":"choker"
+// },
+// { "name": "Bridal Sets",
+// "image": "assets/images/AFJ-Images/haram.jpg",
+// "url":"bridal"
+// },
+// ];
  
  
   //  //code ends here
@@ -96,7 +115,7 @@ export class HomepageComponent implements OnInit {
     // console.log('The session data is:' +sessionStorage.getItem('session_testing'));
     this.hpNecklace();
     this.hpCombosets();
-    this.hpHipchain();
+    //this.hpHipchain();
   }
 
   btnClick(url) {

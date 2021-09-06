@@ -10,6 +10,7 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   items = [];
+  count=[];
   checkout:any;
   
   qr:any= 0;
@@ -60,6 +61,7 @@ ger(qe){
 
   loadCart() {
     this.items = JSON.parse(sessionStorage.getItem("cart_items")) ?? [];
+    this.count = JSON.parse(sessionStorage.getItem("count")) ?? [];
     // this.qr = sessionStorage.getItem("count")
   }
 
@@ -70,6 +72,7 @@ ger(qe){
   saveCart(): void {
     sessionStorage.setItem('cart_items', JSON.stringify(this.items)); 
     console.log(this.items)
+    sessionStorage.setItem('count',JSON.stringify(this.items.length))
     //this.loadCart();
     
   }

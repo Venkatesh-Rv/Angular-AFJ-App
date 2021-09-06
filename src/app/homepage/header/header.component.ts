@@ -20,7 +20,7 @@ import { Observable } from 'rxjs';
 export class HeaderComponent implements OnInit {
   closeResult = '';
 
-  title = 'autocomplete';
+  title = [];
 
   options = ["Sam", "Varun", "Jasmine"];
 
@@ -79,7 +79,9 @@ export class HeaderComponent implements OnInit {
   //   this.cart = this.cs.getItems();
   //   this.cart_count();
   this.qwe=this.cs.changevar
-  console.log(this.qwe)
+  //console.log(this.qwe)
+
+  this.title= this.cs.count
    }
 
    public reset(): void {
@@ -137,7 +139,7 @@ export class HeaderComponent implements OnInit {
     // )
 
     this.sid=event.target.value
-    console.log(this.sid)
+    //console.log(this.sid)
     this.router.navigate(['search',this.sid])
   }
 

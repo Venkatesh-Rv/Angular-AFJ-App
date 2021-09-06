@@ -1,3 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* @import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto+Slab&display=swap'); */
 
 /* * {
@@ -10,12 +36,12 @@ body {
     background: linear-gradient(to top, #fff, #37fc0f 150%) no-repeat
 } */
 
-.wrapper {
-    /* box-shadow: 10px 10px 80px #e7e6e3; */
+/* .wrapper {
+    box-shadow: 10px 10px 80px #e7e6e3;
     max-width: 800px;
     margin: 30px auto
-}
-
+} */
+/* 
 select {
     border-radius: 20px;
     outline: none;
@@ -124,10 +150,10 @@ a:hover {
     .d-view{
         display:none;
     }
-}
+} */
 
 /* Caret Breadcrumb */
-.breadcrumb{
+/* .breadcrumb{
     margin-left: 1rem;
     margin-right: 1rem;
     background-color: #fff;
@@ -136,4 +162,4 @@ a:hover {
 .breadcrumb-caret .breadcrumb-item+.breadcrumb-item::before {
     content: '\f0da';
     font-family: 'FontAwesome';
-  }
+  } */

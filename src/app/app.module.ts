@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HomepagesectionService } from './services/homepagesection.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -62,6 +62,7 @@ const routes: Routes = [
   { path: 'product', component: ProductViewComponent },
   { path: 'search/:id', component: SearchresultComponent },
   { path: 'details', component: ShippingDetailsComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'payment', component: PaymentComponent }
 ]
 
@@ -117,7 +118,8 @@ const routes: Routes = [
 
   ],
   providers: [HomepagesectionService,
-    CurrencyPipe],
+    CurrencyPipe,
+    { provide: LocationStrategy, useClass: PathLocationStrategy }],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

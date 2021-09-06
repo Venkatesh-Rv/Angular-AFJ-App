@@ -43,14 +43,19 @@
               </nav>
 
               <div id="wrap">
-                <div id="columns" class="columns_4">
-                  <figure>
-                    <img src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg" />
-                    <figcaption>Necklace </figcaption>
-                    <span class="price">&#8377;44</span>
+                <div id="columns" class="columns_4" >
+              
+                  <figure *ngFor="let pp of products
+                  | paginate: { itemsPerPage: 5, 
+                    currentPage: page, 
+                    totalItems:totalNumber }">
+                    <img src="{{pp.image_url}}" (click)="nav(pp.id,'necklace')"/>
+                    <figcaption>{{pp.name}}</figcaption>
+                    <span class="price">&#8377;{{pp.price}}</span>
                   </figure>
               &nbsp;
-                  <figure>
+            
+                  <!-- <figure>
                     <img src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg" />
                     <figcaption>Necklace</figcaption>
                     <span class="price">&#8377;44</span>
@@ -67,8 +72,10 @@
                     <figcaption>Necklace</figcaption>
                     <span class="price">&#8377;44</span>
                   </figure>
-                  &nbsp;
-                  
+                  &nbsp; -->
+                  <div class="d-flex justify-content-center">
+                    <pagination-controls  maxSize='5' directionLinks='true' (pageChange)="page = $event"></pagination-controls>
+                  </div>
                 </div>
               
                 
