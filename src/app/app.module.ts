@@ -41,11 +41,27 @@ import { NoseRingComponent } from './product/nose-ring/nose-ring.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { BannerUploadComponent } from './banner-upload/banner-upload.component';
+import { BannerViewComponent } from './banner-view/banner-view.component';
+import { HeaderDbComponent } from './core/header-db/header-db.component';
+import { LoaderDbComponent } from './core/loader-db/loader-db.component';
+import { ProductDbComponent } from './product-db/product-db.component';
+import { PostService } from './services/post.service';
+import { SucesslogginggService } from './services/sucessloggingg.service';
+import { DbGuard } from './db.guard';
+import { ContactusComponent } from './homepage/contactus/contactus.component';
+import { TermsComponent } from './homepage/terms/terms.component';
+import { PrivacypolicyComponent } from './homepage/privacypolicy/privacypolicy.component';
+import { TrackComponent } from './homepage/track/track.component';
 
 
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
+  { path: 'contact', component: ContactusComponent },
+  { path: 'policy', component: PrivacypolicyComponent },
+  { path: 'terms', component: TermsComponent },
+  { path: 'track', component: TrackComponent },
   { path: 'neck', component: NecklaceComponent },
   { path: 'comboset', component: CombosetsComponent },
   { path: 'hipchain', component: HipchainComponent },
@@ -63,7 +79,10 @@ const routes: Routes = [
   { path: 'search/:id', component: SearchresultComponent },
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'payment', component: PaymentComponent }
+  { path: 'payment', component: PaymentComponent },
+  { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
+  { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
+  { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]}
 ]
 
 @NgModule({
@@ -89,7 +108,16 @@ const routes: Routes = [
     NoseRingComponent,
     CartComponent,
     PaymentComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    BannerUploadComponent,
+    BannerViewComponent,
+    HeaderDbComponent,
+    LoaderDbComponent,
+    ProductDbComponent,
+    ContactusComponent,
+    TermsComponent,
+    PrivacypolicyComponent,
+    TrackComponent
   ],
   imports: [
     BrowserModule,
@@ -119,7 +147,8 @@ const routes: Routes = [
   ],
   providers: [HomepagesectionService,
     CurrencyPipe,
-    { provide: LocationStrategy, useClass: PathLocationStrategy }],
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+  PostService,SucesslogginggService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

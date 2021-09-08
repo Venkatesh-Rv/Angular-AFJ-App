@@ -12,44 +12,52 @@ import { HomepagesectionService } from 'src/app/services/homepagesection.service
 export class HomepageComponent implements OnInit {
 
   slides = [
-  { "name": "Necklace",
-    "image": "../../../assets/images/AFJ- Images/neck.jpg",
-    "url":"neck"
-  },
-  { "name": "Combo Sets",
-  "image": "../../../assets/images/AFJ- Images/combo.jpg",
-  "url":"comboset"
-},
-{ "name": "Choker",
-"image": "../../../assets/images/AFJ- Images/choker.jpg",
-"url":"choker"
-},
-{ "name": "Bridal Sets",
-"image": "../../../assets/images/AFJ- Images/haram.jpg",
-"url":"bridal"
-},
-];
+    {
+      "name": "Necklace",
+      "image": "../../../assets/images/AFJ- Images/neck.jpg",
+      "url": "neck"
+    },
+    {
+      "name": "Combo Sets",
+      "image": "../../../assets/images/AFJ- Images/combo.jpg",
+      "url": "comboset"
+    },
+    {
+      "name": "Choker",
+      "image": "../../../assets/images/AFJ- Images/choker.jpg",
+      "url": "choker"
+    },
+    {
+      "name": "Bridal Sets",
+      "image": "../../../assets/images/AFJ- Images/haram.jpg",
+      "url": "bridal"
+    },
+  ];
 
-// slides = [
-//   { "name": "Necklace",
-//     "image": "assets/images/AFJ-Images/neck.jpg",
-//     "url":"neck"
-//   },
-//   { "name": "Combo Sets",
-//   "image": ".assets/images/AFJ-Images/combo.jpg",
-//   "url":"comboset"
-// },
-// { "name": "Choker",
-// "image": "assets/images/AFJ-Images/choker.jpg",
-// "url":"choker"
-// },
-// { "name": "Bridal Sets",
-// "image": "assets/images/AFJ-Images/haram.jpg",
-// "url":"bridal"
-// },
-// ];
- 
- 
+  // slides = [
+  //   {
+  //     "name": "Necklace",
+  //     "image": "assets/images/AFJ-Images/neck.jpg",
+  //     "url": "neck"
+  //   },
+  //   {
+  //     "name": "Combo Sets",
+  //     "image": "assets/images/AFJ-Images/combo.jpg",
+  //     "url": "comboset"
+  //   },
+  //   {
+  //     "name": "Choker",
+  //     "image": "assets/images/AFJ-Images/choker.jpg",
+  //     "url": "choker"
+  //   },
+  //   {
+  //     "name": "Bridal Sets",
+  //     "image": "assets/images/AFJ-Images/haram.jpg",
+  //     "url": "bridal"
+  //   },
+  // ];
+
+
   //  //code ends here
 
   //slider setting variable
@@ -59,13 +67,13 @@ export class HomepageComponent implements OnInit {
   products: any;
 
   //
-  necklace:any;
-  combosets:any;
-  hipchain:any;
-  bridalsets:any;
-  choker:any;
+  necklace: any;
+  combosets: any;
+  hipchain: any;
+  bridalsets: any;
+  choker: any;
 
-  endpoint_necklace ='necklace/';
+  endpoint_necklace = 'necklace/';
 
 
   constructor(private http: HttpClient, private router: Router, private Homepagesection: HomepagesectionService) {
@@ -101,7 +109,7 @@ export class HomepageComponent implements OnInit {
 
     // banner images
     this.Homepagesection.getHomeBanner('product/banner/get/all/record/').subscribe(ele => {
-      
+
       console.log(ele);
       this.topImageSeprator(ele)
 
@@ -120,22 +128,22 @@ export class HomepageComponent implements OnInit {
 
   btnClick(url) {
     console.log(url)
-    this.router.navigateByUrl('/'+url)
+    this.router.navigateByUrl('/' + url)
   }
 
   dummy: any = [];
 
-  private working(){
+  private working() {
     console.log(this.products)
   }
   private getImage() {
     // this.Homepagesection.getHomeBanner('product/banner/get/all/record/').subscribe(ele => {
-      
+
     //   console.log(ele);
     //   this.topImageSeprator(ele)
 
     // })
-   
+
   }
 
   private topImageSeprator(TopItems) {
@@ -161,7 +169,7 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  private hpNecklace(){
+  private hpNecklace() {
     this.Homepagesection.homeSection('necklace').subscribe(data => {
       //data storing for use in html component
       this.necklace = data;
@@ -169,7 +177,7 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  private hpCombosets(){
+  private hpCombosets() {
     this.Homepagesection.homeSection('combo-sets').subscribe(data => {
       //data storing for use in html component
       this.combosets = data;
@@ -177,7 +185,7 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  private hpHipchain(){
+  private hpHipchain() {
     this.Homepagesection.homeSection('hipchain').subscribe(data => {
       //data storing for use in html component
       this.hipchain = data;
@@ -185,8 +193,8 @@ export class HomepageComponent implements OnInit {
 
   }
 
-  nav(id,getval){
-    this.router.navigate(['/product'], { queryParams: { cat: getval,id } });
+  nav(id, getval) {
+    this.router.navigate(['/product'], { queryParams: { cat: getval, id } });
   }
 
 

@@ -1,0 +1,175 @@
+<app-header-db></app-header-db>
+<app-loader-db  *ngIf="loaderbool"></app-loader-db>
+
+
+<div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Upload Banner Image</h1>
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a>Home</a></li>
+              <li class="breadcrumb-item active">Upload Image</li>
+            </ol>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <div class="card card-primary">
+      <!-- /.card-header  -->
+      <!-- form start  (ngSubmit)="uploadBanner(uploadbannerform)"-->
+      <form role="form" #uploadbannerform="ngForm">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+  
+            <input
+              type="text"
+              name="name"
+              required
+              class="form-control"
+              id="exampleInputEmail1"
+              ngModel
+              (change)="onNameChanged($event)"
+              
+              #BannerName="ngModel"
+              [ngClass]="{
+                'is-invalid': uploadbannerform.submitted && !BannerName.valid
+              }"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label for="exampleInputFile">Upload Image</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input
+                  required
+                  accept="image/*"
+                  type="file"
+                  class="custom-file-input"
+                  id="exampleInputFile"
+                  name="banner_image"
+                  #BannerImg="ngModel"
+                  ngModel
+                  (change)="onImageChanged($event)"
+                  [ngClass]="{
+                    'is-invalid': uploadbannerform.submitted && !BannerImg.valid
+                  }"
+                />
+                <label class="custom-file-label" for="exampleInputFile">{{
+                  imgName
+                }}</label>
+              </div>
+              <div class="input-group-append">
+                <span class="input-group-text" id="">Upload</span>
+              </div>
+            </div>
+            <!-- <div class="form-group" #fgName="ngModelGroup" ngModelGroup="Des">
+                  <label for="exampleInputEmail1">features</label>
+                  <input type="email" name="features" class="form-control"ngModel  id="exampleInputEmail1" placeholder="Enter Name" (change)="onfeatureChanged($event)" > 
+                
+                  <div>
+                      <label for="exampleInputEmail1">description</label>
+                      <input type="email" name="description" class="form-control"ngModel  id="exampleInputEmail1" placeholder="Enter Name" (change)="onDesChanged($event)">
+                     
+                  </div>
+              </div> -->
+  
+            <!-- <div class="form-group">
+                  <label for="exampleInputEmail1">price</label>
+                  <input type="email" name="price" class="form-control" ngModel id="exampleInputEmail1" placeholder="Enter Name" (change)="onPriceChanged($event)">
+                </div>
+               
+  
+                 <div class="form-group">
+                  <label for="exampleInputEmail1"> offer</label>
+                  <input type="email" name="offer" class="form-control" ngModel id="exampleInputEmail1" placeholder="Enter Name" (change)="onDiscountChanged($event)">
+                </div> -->
+            <br />
+            <div class="form-group">
+              <label>Category</label>
+              <select
+                class="form-control select2 select2-hidden-accessible"
+                style="width: 100%"
+                data-select2-id="1"
+                tabindex="-1"
+                aria-hidden="true"
+                (change)="onSelectChange($event)"
+              >
+                <option selected="Please Select the option" data-select2-id="1 ">
+                  Please Select the option
+                </option>
+                <option data-select2-id="3 " value="Cosmetics">Cosmetics</option>
+                <option data-select2-id="face" value="Fashion">
+                  Fashion
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body  [disabled]="buttonboool===true ? true : false"-->
+  
+        <div class="card-footer">
+          <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
+          <button type="submit" class="btn btn-primary" (click)="open(content)">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <!--preview modal-->
+    <ng-template #content let-modal>
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Preview</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <img class="d-block w-100 peinture-ombre-interne-fine" src="{{reader.result}}" alt="">
+            <table class="table" style="display: none;">
+              <!-- <tr>
+                <th>Name</th>
+                <td>{{name}}</td>
+              </tr> -->
+              <tr>
+                <!-- <th>Image</th> -->
+                <td><img class="my-class" src="{{reader.result}}" alt="{{name}}"></td>
+              </tr>
+              <tr>
+                <th>Category</th>
+                <td>Name: &nbsp;{{name}}</td><br>
+                <td>Category: &nbsp;{{selectCat}}</td>
+              </tr>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          class="btn btn-outline-dark "
+          (click)="uploadBanner();modal.dismiss('Cross click')"
+        >
+          Save
+        </button>
+      </div>
+    </ng-template>
+  
+    <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+  </div>
