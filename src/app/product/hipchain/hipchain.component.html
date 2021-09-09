@@ -1,8 +1,370 @@
 <app-header></app-header>
 
-<div class="container justify-content-center">
-    <p>hipchain works!</p>
-</div>
+<!-- Product Style -->
+<section class="product-area shop-sidebar shop section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-12">
+          <div class="shop-sidebar">
+            <!-- Single Widget -->
+  
+            <!--/ End Single Widget -->
+  
+            <!-- Single Widget -->
+            <div class="single-widget recent-post">
+              <h3 class="title">Necklace</h3>
+             
+              <ul>
+                  <li><a routerLink="/neck" >Necklace</a></li><br>
+                  <li><a routerLink="/comboset" >Combo-Set</a></li><br>
+                  <li><a routerLink="/bridal" >Bridal Set</a></li><br>
+                  <li><a routerLink="/hipchain" >Hipchain</a></li><br>
+                  <li><a routerLink="/choker" >Choker</a></li><br>
+              </ul>
+              
+            </div>
+            
+            <!--/ End Single Widget -->
+          </div>
+        </div>
+        
+        <div class="col-lg-9 col-md-8 col-12">
+          <div class="row">
+            <div class="col-12">
+              <br>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-caret">
+                  <li class="breadcrumb-item"><a routerLink="/" class="text-uppercase">Home</a></li>
+                  <!-- <li class="breadcrumb-item"><a href="#" class="text-uppercase">Library</a></li> -->
+                  <li aria-current="page" routerLink="/combo"  class="breadcrumb-item active text-uppercase">Hipchains</li>
+                </ol>
+              </nav>
+  
+              <div id="wrap" style="display: none;">
+                <div id="columns" class="columns_4" >
+              
+                  <!-- <figure *ngFor="let pp of products
+                  | paginate: { itemsPerPage: 5, 
+                    currentPage: page, 
+                    totalItems:totalNumber }">
+                    <img src="{{pp.image_url}}" (click)="nav(pp.id,'necklace')"/>
+                    <figcaption>{{pp.name}}</figcaption>
+                    <span class="price">&#8377;{{pp.price}}</span>
+                  </figure> -->
+              &nbsp;
+            
+                  <!-- <figure>
+                    <img src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg" />
+                    <figcaption>Necklace</figcaption>
+                    <span class="price">&#8377;44</span>
+                  </figure>
+                  &nbsp;
+                  <figure>
+                    <img src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg" />
+                    <figcaption>Necklace</figcaption>
+                    <span class="price">&#8377;44</span>
+                  </figure>
+                  &nbsp;
+                  <figure>
+                    <img src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg" />
+                    <figcaption>Necklace</figcaption>
+                    <span class="price">&#8377;44</span>
+                  </figure>
+                  &nbsp; -->
+                  <!-- <div class="d-flex justify-content-center">
+                    <pagination-controls  maxSize='5' directionLinks='true' (pageChange)="page = $event"></pagination-controls>
+                  </div> -->
+                </div>
+              
+                
+              </div>
+  
+              <!-- Shop Top -->
+              <div class="shop-top"style="display: none;" >
+                <div class="shop-shorter">
+                  <div class="single-shorter">
+                    <label>Show :</label>
+                    <select>
+                      <option selected="selected">09</option>
+                      <option>15</option>
+                      <option>25</option>
+                      <option>30</option>
+                    </select>
+                  </div>
+                  <div class="single-shorter">
+                    <label>Sort By :</label>
+                    <select>
+                      <option selected="selected">Name</option>
+                      <option>Low to High</option>
+                      <option>Best Selling</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- <ul class="view-mode">
+                    <li class="active"><a href="shop-grid.html"><i class="fa fa-th-large"></i></a></li>
+                    <li><a href="shop-list.html"><i class="fa fa-th-list"></i></a></li>
+                  </ul> -->
+              </div>
+              <!--/ End Shop Top -->
+            </div>
+          </div>
+          <div class="row">
+            <!--Product start -->
+  
+            <div class="container py-5" style="display: none;">
+              <!-- For demo purpose -->
+  
+              <!-- End -->
+  
+              <div class="row">
+                <div class="col-lg-8 mx-auto">
+                  <!-- List group-->
+                  <ul class="list-group shadow">
+                    <!-- list group item-->
+                    <li class="list-group-item">
+                      <!-- Custom content-->
+                      <div
+                        class="
+                          media
+                          align-items-lg-center
+                          flex-column flex-lg-row
+                          p-3
+                        "
+                      >
+                        <div class="media-body order-2 order-lg-1">
+                          <h5 class=" font-weight-bold mb-2">
+                            Necklace
+                          </h5>
+                          <!-- <p class="font-italic text-muted mb-0 small">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit. Suscipit fuga autem maiores necessitatibus.
+                          </p> -->
+                          <div
+                            class="
+                              d-flex
+                              align-items-center
+                              justify-content-between
+                              mt-1
+                            "
+                          >
+                            <h6 class="font-weight-bold">&#8377;120.00</h6>
+                            <h6 class="font-weight-bold ">&#8377;120.00</h6>
+                            <!-- <ul class="list-inline small">
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star-o text-gray"></i>
+                              </li>
+                            </ul> -->
+                          </div>
+                        </div>
+                        <img
+                          src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg"
+                          alt="Generic placeholder image"
+                          width="200"
+                          class="ml-lg-5 order-1 order-lg-2"
+                        />
+                      </div>
+                      <!-- End -->
+                    </li>
+                    <!-- End -->
+  
+                    <!-- list group item-->
+                   
+                    <!-- End -->
+  
+                    <!-- list group item -->
+                    <li class="list-group-item">
+                      <!-- Custom content-->
+                      <div
+                        class="
+                          media
+                          align-items-lg-center
+                          flex-column flex-lg-row
+                          p-3
+                        "
+                      >
+                        <div class="media-body order-2 order-lg-1">
+                          <h5 class="mt-0 font-weight-bold mb-2">
+                            Awesome product
+                          </h5>
+                          <p class="font-italic text-muted mb-0 small">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit. Suscipit fuga autem maiores necessitatibus.
+                          </p>
+                          <div
+                            class="
+                              d-flex
+                              align-items-center
+                              justify-content-between
+                              mt-1
+                            "
+                          >
+                            <h6 class="font-weight-bold my-2">&#8377;140.00</h6>
+                            <ul class="list-inline small">
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star-o text-gray"></i>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <img
+                          src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg"
+                          alt="Generic placeholder image"
+                          width="200"
+                          class="ml-lg-5 order-1 order-lg-2"
+                        />
+                      </div>
+                      <!-- End -->
+                    </li>
+                    <!-- End -->
+  
+                    <!-- list group item -->
+                    <li class="list-group-item">
+                      <!-- Custom content-->
+                      <div
+                        class="
+                          media
+                          align-items-lg-center
+                          flex-column flex-lg-row
+                          p-3
+                        "
+                      >
+                        <div class="media-body order-2 order-lg-1">
+                          <h5 class="mt-0 font-weight-bold mb-2">
+                            Awesome product
+                          </h5>
+                          <p class="font-italic text-muted mb-0 small">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit. Suscipit fuga autem maiores necessitatibus.
+                          </p>
+                          <div
+                            class="
+                              d-flex
+                              align-items-center
+                              justify-content-between
+                              mt-1
+                            "
+                          >
+                            <h6 class="font-weight-bold my-2">&#8377;220.00</h6>
+                            <ul class="list-inline small">
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                              <li class="list-inline-item m-0">
+                                <i class="fa fa-star text-success"></i>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <img
+                          src="https://ayisha-media.s3.amazonaws.com/media/images/size.jpg"
+                          alt="Generic placeholder image"
+                          width="200"
+                          class="ml-lg-5 order-1 order-lg-2"
+                        />
+                      </div>
+                      <!-- End -->
+                    </li>
+                    <!-- End -->
+                  </ul>
+                  <!-- End -->
+                </div>
+              </div>
+            </div>
+            <!--Product ends here-->
+  
+            <div class="row " style="display: none;">
+              <div class="col-md-4 offset-md-0 offset-sm-2 offset-1 col-sm-8 col-10 offset-sm-2 offset-1 mb-3">
+                  <div class="card">
+                      <div class="px-2 red text-uppercase">new</div>
+                      <div class="d-flex justify-content-center"> <img src='https://ayisha-media.s3.amazonaws.com/media/images/size.jpg' class="product" alt=""> </div> <b class="px-2">
+                          <p class="h4"></p>
+                      </b>
+                      <div class="d-flex align-items-center justify-content-start rating border-top border-bottom py-2">
+                          <div class="text-muted text-uppercase px-2 border-right"></div>
+                         
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between py-2 px-3">
+                          <div class="h4"><span>&#xa3;</span></div>
+                          
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-4 offset-md-0 offset-sm-2 offset-1 col-sm-8 col-10 offset-sm-2 offset-1 my-md-0 my-3">
+                  <div class="card">
+                      <div class="px-2 red text-uppercase">new</div>
+                      <div class="d-flex justify-content-center"> <img src="https://www.freepnglogos.com/uploads/plant-png/plants-transparent-png-pictures-icons-and-png-14.png" class="product" alt=""> </div> <b class="px-2">
+                          <p class="h4">Testing</p>
+                      </b>
+                      <div class="d-flex align-items-center justify-content-start rating border-top border-bottom py-2">
+                          <div class="text-muted text-uppercase px-2 border-right">insto2007</div>
+                         
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between py-2 px-3">
+                          <div class="h4"><span>&#xa3;</span>10.99</div>
+                          
+                      </div>
+                  </div>
+              </div>
+              <!-- <div class="col-md-4 offset-md-0 offset-sm-2 offset-1 col-sm-8 col-10 offset-sm-2 offset-1 my-md-0 my-3">
+                  <div class="card">
+                      
+                      <div class="d-flex justify-content-center"> <img src="https://www.freepnglogos.com/uploads/plant-png/plant-png-plants-png-transparent-images-png-only-27.png" class="product" alt=""> </div> <b class="px-2">
+                          <p class="h4"></p>
+                      </b>
+                      <div class="d-flex align-items-center justify-content-start rating border-top border-bottom py-2">
+                          <div class="text-muted text-uppercase px-2 border-right">insto2007</div>
+                         
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between py-2 px-3">
+                          <div class="h4"><span>&#xa3;</span>10.99</div>
+                          
+                      </div>
+                  </div>
+              </div> -->
+          </div>
+  
+          </div>
+        </div>
+        <!-- <div class="d-flex justify-content-center">
+          <pagination-controls  maxSize='5' directionLinks='true' (pageChange)="page = $event"></pagination-controls>
+        </div> -->
+      </div>
+    </div>
+  </section>
+  <!--/ End Product Style 1  -->
 
 
 <app-footer></app-footer>

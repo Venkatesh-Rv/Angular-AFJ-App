@@ -274,8 +274,100 @@
 
 <br>
 <br>
+<div class="container d-flex justify-content-center" >
+	<div class="card">
+	  <div class="card-body" id="font">
+		<div class="card-header">
+			<h5>Order Finalize</h5>
+		  </div>
+		  <div class="card-footer text-dark d-flex justify-content-center">
+			Cash On Delivery- COD
+		  </div> 
+		  <div class="card-body">
+			  <h5 class="card-title" >Items</h5><br>
+			  <div style="display: none;">
+				<p class="card-text">qwertyuiopoytfr</p><br>
+				<p class="card-text">qwertyuiopoytfr</p><br>
+				<p class="card-text">qwertyuiopoytfr</p>
+		  </div>
+
+		  <div *ngFor="let qq of data" >
+			<p class="card-text"><strong>{{qq.name}}</strong> </p><p class="card-text"><strong>{{qq.qtyTotal}}</strong> </p><br>
+				
+		</div>
+			<br>
+			<hr>
+		  <div *ngFor="let j of details">
+			<h5 class="card-title" >Shipping Address</h5><br>
+			
+			<p class="card-text"></p>
+			<p>{{j.name}}</p>
+			<p>{{j.Address}}</p>
+			<p>{{j.HouseName}}</p>
+			<p>{{j.email}}</p>
+			<p>{{j.phone}}</p>
+			
+		  </div>
+			<a  class="btn btn-warning" (click)='response()'>Proceed</a>
+		  </div>
+		  <!-- <div class="card-footer text-muted">
+			AFJ
+		  </div> -->
+	  </div>
+	</div>
+
+
+	<br>
+
+	<div class="card" style="display: none;">
+		<h5 class="card-header">Featured</h5>
+		<div class="card-body">
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  <h5 class="card-title">Special title treatment</h5>
+		  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+		  <a href="#" class="btn btn-primary">Go somewhere</a>
+		  
+		</div>
+	  </div>
+  </div>
+
+
+<br>
+<br>
 <br><br>
-<div class="card text-center">
+<div class="card text-center" style="display: none;">
     <div class="card-header">
       Order Finalize
     </div>
@@ -302,4 +394,4 @@
     <div class="card-footer text-muted">
       AFJ
     </div>
-  </div>
+</div>

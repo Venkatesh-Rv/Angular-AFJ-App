@@ -11,51 +11,51 @@ import { HomepagesectionService } from 'src/app/services/homepagesection.service
 })
 export class HomepageComponent implements OnInit {
 
-  slides = [
-    {
-      "name": "Necklace",
-      "image": "../../../assets/images/AFJ- Images/neck.jpg",
-      "url": "neck"
-    },
-    {
-      "name": "Combo Sets",
-      "image": "../../../assets/images/AFJ- Images/combo.jpg",
-      "url": "comboset"
-    },
-    {
-      "name": "Choker",
-      "image": "../../../assets/images/AFJ- Images/choker.jpg",
-      "url": "choker"
-    },
-    {
-      "name": "Bridal Sets",
-      "image": "../../../assets/images/AFJ- Images/haram.jpg",
-      "url": "bridal"
-    },
-  ];
-
   // slides = [
   //   {
   //     "name": "Necklace",
-  //     "image": "assets/images/AFJ-Images/neck.jpg",
+  //     "image": "../../../assets/images/AFJ- Images/neck.jpg",
   //     "url": "neck"
   //   },
   //   {
   //     "name": "Combo Sets",
-  //     "image": "assets/images/AFJ-Images/combo.jpg",
+  //     "image": "../../../assets/images/AFJ- Images/combo.jpg",
   //     "url": "comboset"
   //   },
   //   {
   //     "name": "Choker",
-  //     "image": "assets/images/AFJ-Images/choker.jpg",
+  //     "image": "../../../assets/images/AFJ- Images/choker.jpg",
   //     "url": "choker"
   //   },
   //   {
   //     "name": "Bridal Sets",
-  //     "image": "assets/images/AFJ-Images/haram.jpg",
+  //     "image": "../../../assets/images/AFJ- Images/haram.jpg",
   //     "url": "bridal"
   //   },
   // ];
+
+  slides = [
+    {
+      "name": "Necklace",
+      "image": "assets/images/AFJ-Images/neck.jpg",
+      "url": "neck"
+    },
+    {
+      "name": "Combo Sets",
+      "image": "assets/images/AFJ-Images/combo.jpg",
+      "url": "comboset"
+    },
+    {
+      "name": "Choker",
+      "image": "assets/images/AFJ-Images/choker.jpg",
+      "url": "choker"
+    },
+    {
+      "name": "Bridal Sets",
+      "image": "assets/images/AFJ-Images/haram.jpg",
+      "url": "bridal"
+    },
+  ];
 
 
   //  //code ends here

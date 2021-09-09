@@ -560,5 +560,132 @@
   }
   } */
 
+h5{
+  font: 400 14px/20px Roboto, "Nunito", sans-serif !important;
+    letter-spacing: normal;
+}
 
-  
+.card-header{
+  display: flex;
+  justify-content: center;
+}
+
+.card title{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-warning{
+  display: flex;
+  justify-content: center;
+}
+
+  .card-heading,
+      .card-subheading {
+        font-weight: bold;
+      }
+
+      .card {
+        width: 850px;
+        /* height: 450px; */
+        border: none;
+        border-radius: 10px;
+      }
+
+      .form-control {
+        border: none;
+        border-radius: 10px;
+      }
+
+      .fone {
+        padding-left: 30px;
+      }
+
+      .form-control {
+        background-color: #eee !important;
+      }
+
+      .form-control:focus {
+        color: #495057;
+        border-color: #fff !important;
+        outline: 0;
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.25) !important;
+      }
+
+      .fone input {
+        width: 120%;
+        background: rgba(165, 147, 69, 0.075);
+      }
+
+      .ftwo input {
+        width: 120%;
+        background: rgba(165, 147, 69, 0.075);
+      }
+
+      .fthree {
+        padding-left: 30px;
+        padding-right: 45px;
+      }
+
+      .fthree input {
+        background-color: rgba(165, 147, 69, 0.075);
+      }
+
+      .ffour {
+        padding-left: 30px;
+      }
+
+      .ffour input {
+        width: 120%;
+        background-color: rgba(165, 147, 69, 0.075);
+      }
+
+      .ffive input {
+        width: 120%;
+        background-color: rgba(165, 147, 69, 0.075);
+      }
+
+      .rthree {
+        padding-top: 1px;
+      }
+
+      .para1 {
+        height: 10px;
+        font-size: 12px;
+      }
+
+      .para2 {
+        font-size: 12px;
+      }
+
+      .btn-primary {
+        border-radius: 8px;
+        background: #2979ff;
+        width: 120px;
+      }
+
+      .btn-primary span {
+        font-size: 15px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .fone input {
+          width: 90%;
+        }
+
+        .ftwo input {
+          width: 86%;
+        }
+
+        .fthree {
+          width: 110%;
+        }
+
+        .ffour input {
+          width: 90%;
+        }
+
+        .ffive input {
+          width: 86%;
+        }
+      }
