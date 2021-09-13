@@ -53,6 +53,8 @@ import { ContactusComponent } from './homepage/contactus/contactus.component';
 import { TermsComponent } from './homepage/terms/terms.component';
 import { PrivacypolicyComponent } from './homepage/privacypolicy/privacypolicy.component';
 import { TrackComponent } from './homepage/track/track.component';
+import { BulkordersComponent } from './homepage/bulkorders/bulkorders.component';
+import { EmailVerifyComponent } from './email-verify/email-verify.component';
 
 
 
@@ -62,6 +64,7 @@ const routes: Routes = [
   { path: 'policy', component: PrivacypolicyComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'track', component: TrackComponent },
+  { path: 'bulk', component: BulkordersComponent },
   { path: 'neck', component: NecklaceComponent },
   { path: 'comboset', component: CombosetsComponent },
   { path: 'hipchain', component: HipchainComponent },
@@ -77,6 +80,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'product', component: ProductViewComponent },
   { path: 'search/:id', component: SearchresultComponent },
+  { path: 'verify-email', component: EmailVerifyComponent },
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'payment', component: PaymentComponent },
@@ -117,7 +121,9 @@ const routes: Routes = [
     ContactusComponent,
     TermsComponent,
     PrivacypolicyComponent,
-    TrackComponent
+    TrackComponent,
+    BulkordersComponent,
+    EmailVerifyComponent
   ],
   imports: [
     BrowserModule,

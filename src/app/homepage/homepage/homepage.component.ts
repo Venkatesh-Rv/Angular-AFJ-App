@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef, ViewChild  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HomepagesectionService } from 'src/app/services/homepagesection.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { HomepagesectionService } from 'src/app/services/homepagesection.service
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+
+  @ViewChild('content', { static: true }) content: TemplateRef<any>;
 
   // slides = [
   //   {
@@ -74,9 +77,10 @@ export class HomepageComponent implements OnInit {
   choker: any;
 
   endpoint_necklace = 'necklace/';
+  closeResult: string;
 
 
-  constructor(private http: HttpClient, private router: Router, private Homepagesection: HomepagesectionService) {
+  constructor(private http: HttpClient, private router: Router, private Homepagesection: HomepagesectionService,private modalService: NgbModal) {
     //slider responsive settings
     this.responsiveOptions = [
       {
@@ -124,6 +128,9 @@ export class HomepageComponent implements OnInit {
     this.hpNecklace();
     this.hpCombosets();
     //this.hpHipchain();
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+      this.modalService.open(this.content);
+  }, 3000);
   }
 
   btnClick(url) {
@@ -198,6 +205,27 @@ export class HomepageComponent implements OnInit {
   }
 
 
+
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+
+  
 
 }
 

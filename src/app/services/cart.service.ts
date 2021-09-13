@@ -100,11 +100,17 @@ ger(qe){
   }
 
   checkoutCart(url, getData) {
-    this.checkout= getData
+    
+    //this.checkout= getData
+    sessionStorage.setItem('details', JSON.stringify(getData)); 
+    this.checkout = JSON.parse(sessionStorage.getItem("details")) 
     console.log(this.checkout)
     return this.http.post(url, getData)
   }
 
+  email_verify(url,post){
+    return this.http.post(url,post)
+  }
   
 
   // public editCart:any ={cart:0,products:[],subTotal:0,shippingCost:1,grandTotal:0};

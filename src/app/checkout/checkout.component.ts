@@ -30,8 +30,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   response(){
-    this.ts.success('Thanks for purchasing...');
-    this.router.navigate(['/'])
+    //this.ts.success('Thanks for purchasing...');
+    this.router.navigate(['/verify-email'])
   }
 
 }

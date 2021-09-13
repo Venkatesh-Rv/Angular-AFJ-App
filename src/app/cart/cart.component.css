@@ -11,6 +11,12 @@
     border: transparent
 }
 
+.alert-warning {
+    color: #1F2D3D;
+    background: #fff3cd!important;
+    border-color: none !important;
+}
+
 @media(max-width:767px) {
     .card {
         margin: 3vh auto

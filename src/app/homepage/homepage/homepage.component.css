@@ -1,6 +1,7 @@
 
 html,body{
     font-family: 'Nunito', sans-serif !important;
+    color: white !important;
     
 }
 
@@ -27,3 +28,194 @@ span.old {
         margin: 0 0 16px;
       
 }
+
+.recipe, .pizza-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.pizza-box {
+    flex: 3 1 30ch;
+    height: calc(282px + 5vw);
+    overflow: hidden;
+}
+.pizza-box img {
+    max-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+.recipe {
+    border: 2px solid #f2f2f2;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.recipe-content {
+    padding: 16px 32px;
+    flex: 4 1 40ch;
+}
+.recipe-tags {
+    margin: 0 -8px;
+}
+.recipe-tag {
+    display: inline-block;
+    margin: 8px;
+    font-size: 0.875em;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #ffc107;
+}
+.recipe-title {
+    margin: 0;
+    font-size: clamp(1.4em, 2.1vw, 2.1em);
+    
+}
+.recipe-title a {
+    text-decoration: none;
+    color: inherit;
+}
+.recipe-metadata {
+    margin: 0;
+}
+.recipe-rating {
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    color: var(--primary);
+}
+.recipe-rating span {
+    color: var(--grey);
+}
+.recipe-votes {
+    font-size: 0.825em;
+    font-style: italic;
+    color: var(--lightgrey);
+}
+.recipe-save {
+    display: flex;
+    align-items: center;
+    padding: 6px 14px 6px 12px;
+    border-radius: 4px;
+   
+    color: #ffc107;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.recipe-save svg {
+    margin-right: 6px;
+    
+}
+/* Body Layout */
+* {
+    box-sizing: border-box;
+}
+body {
+    --primary: #e05d26;
+    --grey: #454545;
+    --lightgrey: #666;
+    color: var(--grey);
+    line-height: 1.55;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+.big {
+    width: clamp(320px, 65%, 65%);
+    padding: 24px;
+}
+.small {
+    width: clamp(320px, 35%, 480px);
+    padding: 24px;
+}
+
+.box {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    height: 400px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+  }
+  
+  /* common */
+  .ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+  }
+  .ribbon::before,
+  .ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9;
+  }
+  .ribbon span {
+    position: absolute;
+    display: block;
+    width: 225px;
+    padding: 15px 0;
+    background-color: #ffc107;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  /* top left*/
+  .ribbon-top-left {
+    top: -10px;
+    left: -10px;
+  }
+  .ribbon-top-left::before,
+  .ribbon-top-left::after {
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-top-left::before {
+    top: 0;
+    right: 0;
+  }
+  .ribbon-top-left::after {
+    bottom: 0;
+    left: 0;
+  }
+  .ribbon-top-left span {
+    right: -25px;
+    top: 30px;
+    transform: rotate(-45deg);
+  }
+  
+  
+  
+  /* bottom right*/
+  .ribbon-bottom-right {
+    bottom: -10px;
+    right: -10px;
+  }
+  .ribbon-bottom-right::before,
+  .ribbon-bottom-right::after {
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+  }
+  .ribbon-bottom-right::before {
+    bottom: 0;
+    left: 0;
+  }
+  .ribbon-bottom-right::after {
+    top: 0;
+    right: 0;
+  }
+  .ribbon-bottom-right span {
+    left: -25px;
+    bottom: 30px;
+    transform: rotate(-225deg);
+  }

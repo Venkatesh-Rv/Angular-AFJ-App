@@ -1,0 +1,163 @@
+#white{
+    background: #fff;
+}
+
+.container{
+    width: 100%;
+    padding-right: 7.5px;
+    padding-left: 30.5px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 1px black;
+    
+}
+.contact-us {
+  position: relative;
+  z-index: 43;
+  background-color: #fff;
+}
+.contact-us .title {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+#cen{
+    display: flex;
+    justify-content: center;
+}
+h3{
+    font-size: 26px !important;
+}
+.contact-us .title h3 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #f7941d;
+}
+.contact-us .title h3 {
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.contact-us .single-head {
+  padding: 50px;
+  box-shadow: 0px 0px 15px #0000001a;
+  height: 100%;
+}
+.contact-us .single-info {
+  text-align: left;
+  margin-bottom: 30px;
+}
+.contact-us .single-info i {
+  color: #fff;
+  font-size: 18px;
+  display: inline-block;
+  margin-bottom: 15px;
+  height: 40px;
+  width: 40px;
+  display: block;
+  text-align: center;
+  border-radius: 3px;
+  line-height: 40px;
+  background: #f7941d;
+}
+.contact-us .single-info ul .contact-us .single-info ul li {
+  margin-bottom: 5px;
+}
+.contact-us .single-info ul li:last-child {
+  margin-bottom: 0;
+}
+.contact-us .single-info ul li a {
+  font-weight: 400;
+}
+.contact-us .single-info ul li a:hover {
+  color: #f7941d;
+}
+.contact-us .single-info .title {
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #333;
+  font-size: 18px;
+}
+.contact-us .form-main {
+  box-shadow: 0px 0px 15px #0000001a;
+  padding: 50px;
+}
+.contact-us .form .form-group input {
+  height: 48px;
+  line-height: 48px;
+  width: 100%;
+  border: 1px solid #e6e2f5;
+  padding: 0px 20px;
+  color: #333;
+  border-radius: 0px;
+  font-weight: 400;
+}
+.contact-us .form .form-group textarea {
+  height: 180px;
+  width: 100%;
+  border: 1px solid #e6e2f5;
+  padding: 15px 20px;
+  color: #333;
+  border-radius: 0px;
+  resize: none;
+  font-weight: 400;
+}
+.contact-us .form .form-group label {
+  color: #333;
+  position: relative;
+}
+.contact-us .form .form-group label span {
+  color: #ff2c18;
+  display: inline-block;
+  position: absolute;
+  right: -12px;
+  top: 4px;
+  font-size: 16px;
+}
+.contact-us .form .button {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+.contact-us .form .button .btn {
+  height: 50px;
+  border: none;
+
+}
+#myMap {
+  height: 500px;
+  width: 100%;
+}
+/*======================================
+  End Contact CSS
+========================================*/
+
+/* Mail Success */
+.mail-success .mail-inner {
+  text-align: center;
+  background: #fff;
+  padding: 0px 30px;
+}
+.mail-success .mail-inner h2 {
+  margin-bottom: 10px;
+  display: block;
+  font-weight: 600;
+  color: #f7941d;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+.mail-success .mail-inner p {
+  font-size: 14;
+  color: #333;
+  margin-bottom: 30px;
+  line-height: 22px;
+}
+.mail-success .mail-inner .btn {
+  color: #fff;
+  padding: 10px 30px;
+}
+.mail-success .mail-inner .btn i {
+  margin-right: 5px;
+}

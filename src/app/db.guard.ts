@@ -12,14 +12,12 @@ export class DbGuard implements CanActivate {
 
       //code for authorisation & stuffs..
 
-      const adminu=true;
+      const adminu=false;
 
       if(adminu){
         return true
       }
-      else{
-        return false
-      }
+      
   }
   
 }

@@ -3841,8 +3841,8 @@
   }
   .shop-newsletter .inner p {
     color: #777;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 800;
     margin-bottom: 30px;
   }
   .shop-newsletter .inner p span {
@@ -4044,6 +4044,7 @@
   margin-bottom: 20px;
 }
 .footer .about .logo img {
+  width: 80px;
 }
 .footer .about .text {
   color: #fff;
