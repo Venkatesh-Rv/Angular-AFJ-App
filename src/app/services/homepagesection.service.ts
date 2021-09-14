@@ -13,6 +13,13 @@ export class HomepagesectionService {
 
   url_dummy: string = 'http://localhost:3000/'
 
+  staging_server :string ="https://afj-staging-server.herokuapp.com/"
+
+
+checking(){
+  return this.http.get(`${this.staging_server}`)
+
+}
 
   getHomeBanner(endpoint) {
     return this.http.get(`${this.url}${endpoint}`)

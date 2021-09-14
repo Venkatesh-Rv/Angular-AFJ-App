@@ -121,6 +121,8 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.working();
     // let ses_prod= this.products;
     // // console.log(ses_prod)
     // sessionStorage.setItem('session_testing',JSON.stringify(ses_prod));
@@ -139,10 +141,15 @@ export class HomepageComponent implements OnInit {
   }
 
   dummy: any = [];
+  check:any;
 
   private working() {
-    console.log(this.products)
+    this.Homepagesection.checking().subscribe(ele=>{
+      console.log(ele)
+      this.check = ele;
+    })
   }
+
   private getImage() {
     // this.Homepagesection.getHomeBanner('product/banner/get/all/record/').subscribe(ele => {
 

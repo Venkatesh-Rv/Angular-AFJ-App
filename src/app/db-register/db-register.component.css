@@ -1,0 +1,10 @@
+.row{
+    justify-content: center;
+}
+
+.cent{
+    display: block;
+margin-left: auto;
+margin-right: auto;
+width: 16%;
+  }

@@ -55,6 +55,8 @@ import { PrivacypolicyComponent } from './homepage/privacypolicy/privacypolicy.c
 import { TrackComponent } from './homepage/track/track.component';
 import { BulkordersComponent } from './homepage/bulkorders/bulkorders.component';
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
+import { DbLoginComponent } from './db-login/db-login.component';
+import { DbRegisterComponent } from './db-register/db-register.component';
 
 
 
@@ -84,6 +86,8 @@ const routes: Routes = [
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'payment', component: PaymentComponent },
+  { path: 'register', component: DbRegisterComponent },
+  { path: 'login', component: DbLoginComponent },
   { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
   { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
   { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]}
@@ -123,7 +127,9 @@ const routes: Routes = [
     PrivacypolicyComponent,
     TrackComponent,
     BulkordersComponent,
-    EmailVerifyComponent
+    EmailVerifyComponent,
+    DbLoginComponent,
+    DbRegisterComponent
   ],
   imports: [
     BrowserModule,
