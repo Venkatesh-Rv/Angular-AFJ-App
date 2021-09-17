@@ -57,6 +57,9 @@ import { BulkordersComponent } from './homepage/bulkorders/bulkorders.component'
 import { EmailVerifyComponent } from './email-verify/email-verify.component';
 import { DbLoginComponent } from './db-login/db-login.component';
 import { DbRegisterComponent } from './db-register/db-register.component';
+import { ToggleDirective } from './toggle.directive';
+import { DbForgotPwdComponent } from './db-forgot-pwd/db-forgot-pwd.component';
+import { DbResetPwdComponent } from './db-reset-pwd/db-reset-pwd.component';
 
 
 
@@ -88,6 +91,8 @@ const routes: Routes = [
   { path: 'payment', component: PaymentComponent },
   { path: 'register', component: DbRegisterComponent },
   { path: 'login', component: DbLoginComponent },
+  { path: 'forgot-pwd', component: DbForgotPwdComponent },
+  { path: 'reset-pwd', component: DbResetPwdComponent },
   { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
   { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
   { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]}
@@ -129,7 +134,10 @@ const routes: Routes = [
     BulkordersComponent,
     EmailVerifyComponent,
     DbLoginComponent,
-    DbRegisterComponent
+    DbRegisterComponent,
+    ToggleDirective,
+    DbForgotPwdComponent,
+    DbResetPwdComponent
   ],
   imports: [
     BrowserModule,

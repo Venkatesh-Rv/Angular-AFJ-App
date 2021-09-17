@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoaderDbComponent } from './loader-db.component';
+import { DbForgotPwdComponent } from './db-forgot-pwd.component';
 
-describe('LoaderDbComponent', () => {
-  let component: LoaderDbComponent;
-  let fixture: ComponentFixture<LoaderDbComponent>;
+describe('DbForgotPwdComponent', () => {
+  let component: DbForgotPwdComponent;
+  let fixture: ComponentFixture<DbForgotPwdComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoaderDbComponent ]
+      declarations: [ DbForgotPwdComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoaderDbComponent);
+    fixture = TestBed.createComponent(DbForgotPwdComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
