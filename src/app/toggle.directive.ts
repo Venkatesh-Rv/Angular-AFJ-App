@@ -9,10 +9,13 @@ export class ToggleDirective {
 
   constructor(private el: ElementRef) {
     const parent = this.el.nativeElement.parentNode;
-    const span = document.createElement('span');
-    span.innerHTML = `<div class="input-group-text">
-    <span class="fas fa-lock"></span>
-  </div>`;
+    const span = document.createElement(`div`);
+    span.setAttribute('class','input-group-text')
+    span.innerHTML = `
+    
+    <i class="far fa-eye-slash"></i>
+    
+ `;
     span.addEventListener('click', () => {
       this.toggle(span);
     });
@@ -23,14 +26,19 @@ export class ToggleDirective {
     this._shown = !this._shown;
     if (this._shown) {
       this.el.nativeElement.setAttribute('type', 'text');
-      span.innerHTML = `<div class="input-group-text">
-      <span class="fas fa-lock"></span>
-    </div>`;
+      span.innerHTML = `
+      
+      <i class="far fa-eye"></i>
+      
+
+    `;
     } else {
       this.el.nativeElement.setAttribute('type', 'password');
-      span.innerHTML = `<div class="input-group-text">
-      <span class="fas fa-lock"></span>
-    </div>`;
+      span.innerHTML = `
+      
+      <i class="far fa-eye-slash"></i>
+      
+    `;
     }
   }
 }

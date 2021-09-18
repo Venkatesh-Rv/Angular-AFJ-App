@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DbLoginComponent } from './db-login.component';
+import { DbUserProfileComponent } from './db-user-profile.component';
 
-describe('DbLoginComponent', () => {
-  let component: DbLoginComponent;
-  let fixture: ComponentFixture<DbLoginComponent>;
+describe('DbUserProfileComponent', () => {
+  let component: DbUserProfileComponent;
+  let fixture: ComponentFixture<DbUserProfileComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DbLoginComponent ]
+      declarations: [ DbUserProfileComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DbLoginComponent);
+    fixture = TestBed.createComponent(DbUserProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

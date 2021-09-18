@@ -60,6 +60,7 @@ import { DbRegisterComponent } from './db-register/db-register.component';
 import { ToggleDirective } from './toggle.directive';
 import { DbForgotPwdComponent } from './db-forgot-pwd/db-forgot-pwd.component';
 import { DbResetPwdComponent } from './db-reset-pwd/db-reset-pwd.component';
+import { DbUserProfileComponent } from './db-user-profile/db-user-profile.component';
 
 
 
@@ -93,6 +94,7 @@ const routes: Routes = [
   { path: 'login', component: DbLoginComponent },
   { path: 'forgot-pwd', component: DbForgotPwdComponent },
   { path: 'reset-pwd', component: DbResetPwdComponent },
+  { path: 'db-profile', component: DbUserProfileComponent },
   { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
   { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
   { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]}
@@ -137,7 +139,8 @@ const routes: Routes = [
     DbRegisterComponent,
     ToggleDirective,
     DbForgotPwdComponent,
-    DbResetPwdComponent
+    DbResetPwdComponent,
+    DbUserProfileComponent
   ],
   imports: [
     BrowserModule,

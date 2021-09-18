@@ -1,4 +1,6 @@
-<section class="hold-transition login-page">
+<app-loader-db  *ngIf="loaderbool"></app-loader-db>
+
+<section class="hold-transition login-page" *ngIf="forgot;">
     <div class="login-box">
         <div class="login-logo">
           <a><b>AFJ</b></a>
@@ -8,9 +10,9 @@
           <div class="card-body login-card-body">
             <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
       
-            <form action="recover-password.html" method="post">
+            <form>
               <div class="input-group mb-3">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="email" class="form-control" placeholder="Email" (change)="mail($event)">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
@@ -19,7 +21,7 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary btn-block">Request new password</button>
+                  <button type="submit" class="btn btn-primary btn-block" (click)="email_verify()">Request new password</button>
                 </div>
                 <!-- /.col -->
               </div>
@@ -35,4 +37,65 @@
           <!-- /.login-card-body -->
         </div>
       </div>
+</section>
+
+<section class="shop-newsletter section" style="display: none;">
+  <div class="container">
+      <div class="inner-top">
+          <div class="row">
+              <div class="col-lg-8 offset-lg-2 col-12">
+                  <!-- Start Newsletter Inner -->
+                  <div class="inner">
+                      <img width="60" src="https://ayishafashionjewellery.com/assets/images/afj-logo.png" title="logo" alt="logo" style="text-align:center;"><br><br>
+                      <h4>E-mail Password Change</h4> <br>
+                      <p> Enter your OTP to <span>change</span> your email password</p>
+                      <form class="newsletter-inner">
+                          <input name="otp" placeholder="Your OTP" required="" type="number" (change)="otp($event)">
+                          <button class="btn"(click)="check()">Verify</button>
+                      </form>
+                  </div>
+                  <!-- End Newsletter Inner -->
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="hold-transition login-page" *ngIf="verify">
+  <div class="login-box">
+      <div class="login-logo">
+        <a><b>AFJ</b></a>
+      </div>
+      <!-- /.login-logo -->
+      <div class="card">
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Please Enter Your OTP for Password Change</p>
+    
+          <form>
+            <div class="input-group mb-3">
+              <input type="number" class="form-control" placeholder="Enter your OTP" (change)="otp($event)">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block" (click)="check()">Verify OTP</button>
+              </div>
+              <!-- /.col -->
+            </div>
+          </form>
+    
+          <!-- <p class="mt-3 mb-1">
+            <a href="login.html">Login</a>
+          </p>
+          <p class="mb-0">
+            <a href="register.html" class="text-center">Register a new membership</a>
+          </p> -->
+        </div>
+        <!-- /.login-card-body -->
+      </div>
+    </div>
 </section>
