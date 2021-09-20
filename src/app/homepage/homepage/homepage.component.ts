@@ -122,7 +122,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.working();
+    //this.working();
     // let ses_prod= this.products;
     // // console.log(ses_prod)
     // sessionStorage.setItem('session_testing',JSON.stringify(ses_prod));

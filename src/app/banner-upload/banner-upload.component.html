@@ -38,7 +38,7 @@
               id="exampleInputEmail1"
               ngModel
               (change)="onNameChanged($event)"
-              
+              placeholder=" Enter Name"
               #BannerName="ngModel"
               [ngClass]="{
                 'is-invalid': uploadbannerform.submitted && !BannerName.valid

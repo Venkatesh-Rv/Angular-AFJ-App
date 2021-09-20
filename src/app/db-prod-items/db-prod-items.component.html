@@ -1,0 +1,108 @@
+<app-header-db></app-header-db>
+
+<div class="content-wrapper" >
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">View Products</h1>
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a>Home</a></li>
+              <li class="breadcrumb-item active">View Products</li>
+            </ol>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <div class="card card-primary">
+        <div class="container">
+            <div class="row">
+              <div class="col-12">
+                <table class="table table-image">
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <!-- <th scope="col">Upload Image</th> -->
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Offer Price</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- <tr *ngFor="let row of allproductData">
+                        
+                        <td>{{row?.name}}</td>
+                        <td>{{row?.description}}</td>
+                        <td>{{row?.price}}</td>
+                        <td>{{row?.offerprice}}</td>
+                        <td>{{row?.category}}</td>
+                       
+                        <td>
+                          <button class="btn btn-info"
+                           (click)="onEdit(row); open(content)">Edit</button>
+                          <button class="btn btn-danger mx-3" (click)='deleteProduct(row)'>Delete</button>
+                        </td>
+                      </tr> -->
+                    </tbody>
+                  </table> 
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <!--preview modal-->
+    <ng-template #content let-modal>
+      <!-- <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Preview</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <img class="d-block w-100 peinture-ombre-interne-fine" src="{{reader.result}}" alt="">
+            <table class="table" style="display: none;">
+              <!-- <tr>
+                <th>Name</th>
+                <td>{{name}}</td>
+              </tr> -->
+              <tr>
+                <!-- <th>Image</th> -->
+                <td><img class="my-class" src="{{reader.result}}" alt="{{name}}"></td>
+              </tr>
+              <tr>
+                <th>Category</th>
+                <td>Name: &nbsp;{{name}}</td><br>
+                <td>Category: &nbsp;{{selectCat}}</td>
+              </tr>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          class="btn btn-outline-dark "
+          (click)="uploadBanner();modal.dismiss('Cross click')"
+        >
+          Save
+        </button>
+      </div>
+    </ng-template>
+  
+    <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+  </div>

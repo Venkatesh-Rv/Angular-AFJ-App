@@ -22,8 +22,161 @@
       
     </div>
     <div class="card card-primary">
+
+      <form role="form">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+
+            <input
+              type="text"
+              
+              required
+              class="form-control"
+              id="exampleInputEmail1"
+             
+              (change)="onNameChanged($event)"
+              placeholder="  Enter Name"
+              
+              
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputFile">Upload Image</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input
+                  required
+                  accept="image/*"
+                  type="file"
+                  class="custom-file-input"
+                  id="exampleInputFile"
+                  name="product"
+                  (change)="onFileSelect($event)">
+                <label class="custom-file-label" for="exampleInputFile" placeholder=' Upload'>{{
+                  imgName
+                }}</label>
+              </div>
+              <!-- <div class="input-group-append">
+                <span class="input-group-text" id="">Upload</span>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- <br /> -->
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+
+            <input
+              type="text"
+              
+              required
+              class="form-control"
+              (change)="onDesChanged($event)"
+              placeholder="  Enter Description"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Price</label>
+
+            <input
+              type="number"
+             
+              required
+              class="form-control"
+              (change)="onPriceChanged($event)"
+              placeholder="  Enter Price"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Offer-Price</label>
+
+            <input
+              type="number"
+             
+              required
+              class="form-control"
+              (change)="onDiscountChanged($event)"
+              placeholder="  Enter discount price"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <select
+              class="form-control select2 select2-hidden-accessible"
+              style="width: 100%"
+              data-select2-id="1"
+              tabindex="-1"
+              aria-hidden="true"
+              (change)="onSelectChange($event)"
+              
+            >
+              <option
+                selected="Please Select the option"
+                data-select2-id="1 "
+              >
+                Please Select the option
+              </option>
+              <option  value="Nose accessories">
+                Nose accessories
+              </option>
+              <option  value="Forehead accessories">
+                Forehead accessories
+              </option>
+              <option  value="Eye accessories">
+                Eye accessories
+              </option>
+              <option  value="Ear accessories">
+                Ear accessories
+              </option>
+              <option  value="Hand accessories">
+                Hand accessories
+              </option>
+              <option  value="Finger accessories">
+                Finger accessories
+              </option>
+              <option  value="Arm accessories">
+                Arm accessories
+              </option>
+              <option  value="Wrist accessories">
+                Wrist accessories
+              </option>
+              <option  value="Hip accessories">
+                Hip accessories
+              </option>
+              <option  value="Masonry accessories">
+                Masonry accessories
+              </option>
+              <option  value="Toe accessories">
+                Toe accessories
+              </option>
+              <option  value="Ankle accessories">
+               Ankle accessories
+              </option>
+              <option  value="Floral accessories">
+                Floral accessories
+               </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- /.card-body  [disabled]="buttonboool===true ? true : false"-->
+
+        <div class="card-footer">
+          <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
+          <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#preview">
+            Submit
+          </button>
+        </div>
+
+      </form>
       
-      <nav class="navbar navbar-light">
+      <nav class="navbar navbar-light" style="display: none;">
     <div class="container-fluid">
       
       <div class="d-flex">
@@ -40,7 +193,7 @@
     </div>
   </nav>
   
-  <table class="table table-image ">
+  <table class="table table-image " style="display: none;">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -71,7 +224,7 @@
   </table>
   
   <!-- Button trigger modal -->
-  <!-- Modal -->
+  <!-- Modal add product -->
   
   <div
     class="modal fade"
@@ -247,7 +400,7 @@
           <!--*ngIf="showCreate"-->
           <button
             type="button"
-            data-toggle="modal" data-target="#preview"
+            data-toggle="modal" data-target=".bd-example-modal-xl"
             
             class="btn btn-primary">Create</button>
             <!--*ngIf="showUpdate"-->
@@ -265,7 +418,7 @@
   
   
   
-  
+  <!-- edit product modal -->
   <ng-template #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Edit Product</h4>
@@ -309,9 +462,9 @@
                   imgName
                 }}</label>
               </div>
-              <div class="input-group-append">
+              <!-- <div class="input-group-append">
                 <span class="input-group-text" id="">Upload</span>
-              </div>
+              </div> -->
             </div>
           </div>
       
@@ -426,8 +579,8 @@
   
   <!--Second modal for preview-->
   
-  <div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <div class="modal fade bd-example-modal-xl" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <!-- <div class="modal-header">
           <h5 class="modal-title" id="previewLabel">Preview</h5>
@@ -436,12 +589,49 @@
           </button>
         </div> -->
         <div class="modal-body">
-          <figure>
+          <figure style="display: none;">
             <img src="{{reader.result}}" class="img-fluid img-thumbnail">
             <figcaption>{{name}}</figcaption>
             <span class="span old">&#8377;{{price}}</span>
             <span class="price">&#8377;{{Discount}}</span>
           </figure>
+          <section class="container">
+          <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6">
+                    <img class="card-img-top mb-5 mb-md-0" src="{{reader.result}}" alt="{{name}}">
+                </div>
+                <div class="col-md-6">
+                    <!-- <div class="" style="text-transform: uppercase;">{{product.id}}</div> -->
+                    &nbsp;
+                    <h1 class="display-5 fw-bolder">{{name}}</h1>
+                    <div class="product-price">
+                        <span class="old">₹{{price}}</span>&nbsp;
+                        <span>₹{{Discount}}</span>
+                      </div>
+                    <!-- <mat-form-field appearance="fill">
+                        <mat-label>Favorite food</mat-label>
+                        <mat-select>
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field> -->
+    
+                      <!-- <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option selected>{{product.id}}</option>
+                        
+                      </select> -->
+    <br>
+    <br>
+                    <p class="lead">{{selectCat}}</p>
+                    
+                </div>
+            </div>
+        </div>
+      </section>
+    
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

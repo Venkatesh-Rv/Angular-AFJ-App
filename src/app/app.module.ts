@@ -61,6 +61,7 @@ import { ToggleDirective } from './toggle.directive';
 import { DbForgotPwdComponent } from './db-forgot-pwd/db-forgot-pwd.component';
 import { DbResetPwdComponent } from './db-reset-pwd/db-reset-pwd.component';
 import { DbUserProfileComponent } from './db-user-profile/db-user-profile.component';
+import { DbProdItemsComponent } from './db-prod-items/db-prod-items.component';
 
 
 
@@ -97,7 +98,8 @@ const routes: Routes = [
   { path: 'db-profile', component: DbUserProfileComponent },
   { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
   { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
-  { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]}
+  { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]},
+  { path: 'view-prod', component: DbProdItemsComponent,canActivate:[DbGuard]}
 ]
 
 @NgModule({
@@ -140,7 +142,8 @@ const routes: Routes = [
     ToggleDirective,
     DbForgotPwdComponent,
     DbResetPwdComponent,
-    DbUserProfileComponent
+    DbUserProfileComponent,
+    DbProdItemsComponent
   ],
   imports: [
     BrowserModule,
