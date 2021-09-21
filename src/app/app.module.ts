@@ -4,6 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HomepagesectionService } from './services/homepagesection.service';
 
+import { AuthModule } from './auth/auth.module';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { RandomGuard } from './auth/guards/random.guard';
+import { LoginComponent } from './auth/containers/login/login.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { CurrencyPipe,CommonModule  } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -66,6 +71,13 @@ import { DbProdItemsComponent } from './db-prod-items/db-prod-items.component';
 
 
 const routes: Routes = [
+
+  {
+    path: 'login-check',
+    component: LoginComponent,
+    canActivate: [AuthGuard]
+  },
+
   { path: '', component: HomepageComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'policy', component: PrivacypolicyComponent },
@@ -95,7 +107,8 @@ const routes: Routes = [
   { path: 'login', component: DbLoginComponent },
   { path: 'forgot-pwd', component: DbForgotPwdComponent },
   { path: 'reset-pwd', component: DbResetPwdComponent },
-  { path: 'db-profile', component: DbUserProfileComponent },
+  { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard],
+  canLoad: [RandomGuard] },
   { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
   { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
   { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]},
@@ -143,7 +156,8 @@ const routes: Routes = [
     DbForgotPwdComponent,
     DbResetPwdComponent,
     DbUserProfileComponent,
-    DbProdItemsComponent
+    DbProdItemsComponent,
+    // LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -168,7 +182,8 @@ const routes: Routes = [
       preventDuplicates:true
     }),
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    AuthModule
 
   ],
   providers: [HomepagesectionService,
