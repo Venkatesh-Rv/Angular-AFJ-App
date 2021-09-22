@@ -223,18 +223,24 @@
     }
   ],
   "register": [
-    
     {
       "name": "venkatesh",
       "email": "venkatrv34@gmail.com",
       "pwd": "qwerty",
       "id": "qzJhNQ-"
+    },
+    {
+      "first_name": "Venkat",
+      "lastname": null,
+      "email": "venkatrv34@gmail.com",
+      "password": "checking",
+      "phone_number": "9003813345",
+      "address": {
+        "address": "Chennai"
+      },
+      "profile_pic": null,
+      "id": "xECvUQK"
     }
-    
-   
-
   ],
-  "login": [
-    
-  ]
+  "login": []
 }

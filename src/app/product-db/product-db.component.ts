@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { PostService } from '../services/post.service';
 import { SucesslogginggService } from "../services/sucessloggingg.service"
 import { ProductModel } from './createproduct.model';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-product-db',
@@ -19,8 +21,9 @@ export class ProductDbComponent implements OnInit {
   reader = new FileReader();
   description: any = {};
   loaderbool: boolean = false;
-  price: string;
-  Discount: string;
+  price: any;
+  Discount: any;
+  afterDisc:any;
   selectCat: string;
   changeporperty: string;
   buttonboool: boolean = true;
@@ -40,7 +43,7 @@ export class ProductDbComponent implements OnInit {
 
   constructor(private http: HttpClient, private postMethod: PostService,
     private successmsg: SucesslogginggService, private fb: FormBuilder,
-    private modalService: NgbModal, private router:Router) { }
+    private modalService: NgbModal, private router:Router,private ts:ToastrService) { }
 
   ngOnInit(): void {
     this.getAllProduct();
@@ -85,6 +88,16 @@ export class ProductDbComponent implements OnInit {
     this.Discount = event.target.value;
   }
 
+  discount(){
+    let bill= this.price;
+    var discount= this.Discount;
+    var afterDiscount = bill - (bill * discount / 100);
+    this.afterDisc = afterDiscount;
+    this.ts.success(''+ afterDiscount);
+    console.log("After discount your price is: " + afterDiscount);
+  }
+  
+
 
   onSelectChange(event) {
     this.selectCat = event.target.value;
@@ -94,7 +107,7 @@ export class ProductDbComponent implements OnInit {
   }
 
   create() {
-    const uploadData = new FormData();
+    let uploadData = new FormData();
     uploadData.append('name', this.name);
     console.log(this.description)
 
@@ -103,17 +116,24 @@ export class ProductDbComponent implements OnInit {
 
     // uploadData.append(`${this.changeporperty}_cosmetics_image`, this.cover, this.cover.name);
     uploadData.append('image', this.cover);
-    uploadData.append('description ', JSON.stringify(this.description));
+    uploadData.append('description', JSON.stringify(this.description));
     uploadData.append('price', this.price);
-    uploadData.append('offer', this.Discount);
+    uploadData.append('offer', this.afterDisc);
     uploadData.append('category', this.selectCat);
 
+    uploadData.forEach((value,key) => {
+      console.log(key+":"+value)
+    });
+
     this.loaderbool = true;
+    this.loaderbool =false;
 
     this.postMethod.postData(`http://ec2-13-232-92-217.ap-south-1.compute.amazonaws.com/product/create/`, uploadData)
-    .subscribe(ele =>{ this.successmsg.SuccessLog(ele, 'add-prod')
-    this.loaderbool =false;
-    window.location.reload();}
+    .subscribe(
+      ele =>{ this.successmsg.SuccessLog(ele, 'view-prod')
+    console.log(uploadData)
+    // window.location.reload();
+  }
     
     ,error => {
       this.loaderbool=false;

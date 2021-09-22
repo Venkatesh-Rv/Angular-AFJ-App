@@ -96,8 +96,8 @@
             <label for="exampleInputEmail1">Offer-Price</label>
 
             <input
-              type="number"
-             
+              type="text"
+              maxlength="2"
               required
               class="form-control"
               (change)="onDiscountChanged($event)"
@@ -169,8 +169,8 @@
 
         <div class="card-footer">
           <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
-          <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#preview">
-            Submit
+          <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#preview" (click)="discount()">
+            Submit 
           </button>
         </div>
 
@@ -324,7 +324,7 @@
                  
                   required
                   class="form-control"
-                  (change)="onDiscountChanged($event)"
+                  (change)="onDiscountChanged($event);"
                   placeholder="Enter discount price"
                 />
               </div>
@@ -400,9 +400,9 @@
           <!--*ngIf="showCreate"-->
           <button
             type="button"
-            data-toggle="modal" data-target=".bd-example-modal-xl"
+            data-toggle="modal" data-target=".bd-example-modal-lg"
             
-            class="btn btn-primary">Create</button>
+            class="btn btn-primary" (click)="discount()">Create</button>
             <!--*ngIf="showUpdate"-->
           <button
             type="button"
@@ -579,8 +579,8 @@
   
   <!--Second modal for preview-->
   
-  <div class="modal fade bd-example-modal-xl" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
+  <div class="modal fade bd-example-modal-lg" id="preview" tabindex="-1" role="dialog" aria-labelledby="previewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <!-- <div class="modal-header">
           <h5 class="modal-title" id="previewLabel">Preview</h5>
@@ -606,8 +606,10 @@
                     &nbsp;
                     <h1 class="display-5 fw-bolder">{{name}}</h1>
                     <div class="product-price">
-                        <span class="old">₹{{price}}</span>&nbsp;
-                        <span>₹{{Discount}}</span>
+                        <span class="old" style="color: #f64749;
+                        text-decoration: line-through; font-size:22px">₹{{price}}</span>&nbsp;
+                        <span style="font-size:22px">₹{{afterDisc}}</span><br><br><br>
+                        <span style="font-size:22px; color:#eeb109;">{{Discount}}%off</span>
                       </div>
                     <!-- <mat-form-field appearance="fill">
                         <mat-label>Favorite food</mat-label>

@@ -11,7 +11,7 @@
   
         <form [formGroup]="register" (ngSubmit)="signup()">
           <div class="input-group mb-3">
-            <input formControlName='name' type="text" class="form-control" placeholder="Full name">
+            <input formControlName='first_name' type="text" class="form-control" placeholder="Full name">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -27,17 +27,33 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input toggle formControlName='pwd' toggle type="password" class="form-control" placeholder="Password">
+            <input formControlName='phone_number' type="email" class="form-control" placeholder="Phone Number">
             <div class="input-group-append">
-              
+              <div class="input-group-text">
+                <span class="fas fa-phone"></span>
+              </div>
             </div>
           </div>
           <div class="input-group mb-3">
-            <input toggle type="password" class="form-control" placeholder="Retype password">
+            <input formControlName='address' type="email" class="form-control" placeholder="Address">
             <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-map-marker-alt"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input toggle formControlName='password' toggle type="password" class="form-control" placeholder="Password">
+            <div class="input-group-append" style="cursor: pointer;">
               
             </div>
           </div>
+          <!-- <div class="input-group mb-3">
+            <input toggle formControlName='p' type="password" class="form-control" placeholder="Confirm password">
+            <div class="input-group-append">
+              
+            </div>
+          </div> -->
           <div class="row">
             <!-- <div class="col-8">
               <div class="icheck-primary">

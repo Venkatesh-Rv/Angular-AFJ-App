@@ -1,5 +1,5 @@
 .modal-body{
-    background: url("https://covernest.com/images/Home_page_bg_1.jpg");
+    /* background: url("https://covernest.com/images/Home_page_bg_1.jpg"); */
 }
 
 .card-img, .card-img-top {
@@ -7,4 +7,5 @@
     border-top-right-radius: calc(1.25rem - 1px);
     border-bottom-left-radius: calc(1.25rem - 1px);
     border-bottom-right-radius: calc(1.25rem - 1px);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

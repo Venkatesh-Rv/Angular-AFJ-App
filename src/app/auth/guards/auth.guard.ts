@@ -13,6 +13,9 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/ban-upload']);
     }
+    console.log('error')
     return !this.authService.isLoggedIn();
+      //  console.log('error')
+      //   return false; 
   }
 }

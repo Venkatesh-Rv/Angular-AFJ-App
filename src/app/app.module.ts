@@ -67,6 +67,7 @@ import { DbForgotPwdComponent } from './db-forgot-pwd/db-forgot-pwd.component';
 import { DbResetPwdComponent } from './db-reset-pwd/db-reset-pwd.component';
 import { DbUserProfileComponent } from './db-user-profile/db-user-profile.component';
 import { DbProdItemsComponent } from './db-prod-items/db-prod-items.component';
+import { DbContactComponent } from './db-contact/db-contact.component';
 
 
 
@@ -103,12 +104,15 @@ const routes: Routes = [
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'payment', component: PaymentComponent },
+  //
   { path: 'register', component: DbRegisterComponent },
-  { path: 'login', component: DbLoginComponent },
+  { path: 'login', component: DbLoginComponent},
   { path: 'forgot-pwd', component: DbForgotPwdComponent },
   { path: 'reset-pwd', component: DbResetPwdComponent },
-  { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard],
-  canLoad: [RandomGuard] },
+  // { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard],
+  // canLoad: [RandomGuard] },
+  { path: 'db-profile', component: DbUserProfileComponent },
+  { path: 'db-contact', component: DbContactComponent },
   { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
   { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
   { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]},
@@ -157,6 +161,7 @@ const routes: Routes = [
     DbResetPwdComponent,
     DbUserProfileComponent,
     DbProdItemsComponent,
+    DbContactComponent,
     // LoginComponent
   ],
   imports: [
