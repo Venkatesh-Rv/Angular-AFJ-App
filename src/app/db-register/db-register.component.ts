@@ -28,15 +28,17 @@ export class DbRegisterComponent implements OnInit {
       profile_pic:null
     }
     );
+
+    ///test
+    this.http.get<any>("https://afj-staging-server.herokuapp.com/management/head_start/").subscribe(res=>{
+      console.log(res)
+    })
+    
   }
 
-  
-
-
-  signup(){
-
-   console.log(this.register.value)
-   console.log(this.register.value.address)
+  signup_d(){
+  //  console.log(this.register.value)
+  //  console.log(this.register.value.address)
    //let ggs = this.register.value["address"] = {'address':this.register.value.address};
    console.log(JSON.stringify(this.register.value["address"] = {'address':this.register.value.address}));
    
@@ -56,5 +58,26 @@ export class DbRegisterComponent implements OnInit {
     
 
   }
+
+  signup(){
+   let ggs = JSON.stringify(this.register.value["address"] = {"address":this.register.value.address});
+   console.log(this.register.value);
+   
+  //  this.http.post<any>("https://afj-staging-server.herokuapp.com/management/create/owner/",this.register.value, 
+  //  {
+  //    headers: {"Content-Type": "application/json","Accept": "application/json"}
+  //   }).subscribe(
+  //    res=>{
+  //      this.ts.success('Account created Successfully')
+  //      this.register.reset();
+  //      this.router.navigate(['/login'])
+  //    }
+  //  ),error => {
+    
+  //    this.ts.error('Error please try again')
+  //    this.register.reset();
+  //    // window.location.href = 'URL';
+  //    }
+   }
 
 }

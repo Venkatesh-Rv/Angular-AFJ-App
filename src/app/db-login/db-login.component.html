@@ -7,8 +7,8 @@
       <br>
         <div class="card">
           <div class="card-body register-card-body">
-            <p class="login-box-msg">Login</p>
-      
+            <p class="register-logo" ><b>Login</b></p>
+      <br><br>
             <form [formGroup]="login" (ngSubmit)="auth()">
               <!-- <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Full name">
@@ -19,7 +19,7 @@
                 </div>
               </div> -->
               <div class="input-group mb-3">
-                <input formControlName='email' type="email" class="form-control" placeholder="Email">
+                <input formControlName='user_name' type="text" class="form-control" placeholder="Email">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
@@ -27,11 +27,9 @@
                 </div>
               </div>
               <div class="input-group mb-3">
-                <input formControlName='pwd' type="password" class="form-control" placeholder="Password">
+                <input toggle formControlName='password' type="password" class="form-control" placeholder="Password">
                 <div class="input-group-append">
-                  <div class="input-group-text">
-                    <span class="fas fa-lock"></span>
-                  </div>
+                  
                 </div>
               </div>
               <!-- <div class="input-group mb-3">

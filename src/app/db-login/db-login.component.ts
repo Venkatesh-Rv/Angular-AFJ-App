@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../auth/services/auth.service';
 
 
 @Component({
@@ -12,22 +13,25 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DbLoginComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private http:HttpClient,private router:Router,private ts:ToastrService) { }
+  constructor(private fb:FormBuilder, private http:HttpClient,private router:Router,private ts:ToastrService,
+    private authService:AuthService) { }
 
   public login:FormGroup;
 
   ngOnInit(): void {
     this.login = this.fb.group({
-      email:[''],
-      pwd:['']
+      user_name:[''],
+      password:['']
     })
   }
 
-  auth(){
+  get f() { return this.login.controls; }
+
+  auth_d(){
     this.http.get<any>("http://localhost:3000/register").subscribe(
       res=>{
         const user = res.find((a:any)=>{
-          return a.email === this.login.value.email && a.pwd === this.login.value.pwd
+          return a.name === this.login.value.name && a.password === this.login.value.password
         });
         if(user){
           this.ts.success('login success')
@@ -41,6 +45,25 @@ export class DbLoginComponent implements OnInit {
        
       }
     )
+
+  }
+
+  auth(){
+    this.authService.login(
+      {
+        user_name: this.f.user_name.value,
+        password: this.f.password.value
+      }
+    )
+    .subscribe(success => {
+      if (success) {
+        this.router.navigate(['/ban-upload']);
+      }
+      else{
+        this.ts.error('User Not Found')
+        this.login.reset();
+      }
+    });
 
   }
 

@@ -26,13 +26,13 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(
       {
-        username: this.f.username.value,
+        user_name: this.f.username.value,
         password: this.f.password.value
       }
     )
     .subscribe(success => {
       if (success) {
-        this.router.navigate(['/secret-random-number']);
+        this.router.navigate(['/ban-upload']);
       }
     });
   }

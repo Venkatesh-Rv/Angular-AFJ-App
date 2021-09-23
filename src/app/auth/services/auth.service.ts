@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { config } from './../../config';
@@ -10,22 +11,24 @@ import { Tokens } from '../models/tokens';
 })
 export class AuthService {
 
-  private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  private readonly JWT_TOKEN = 'access_token';
+  private readonly REFRESH_TOKEN = 'refresh_token';
   private loggedUser: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private ts:ToastrService) {}
 
   sample(){
     return true;
   }
 
-  login(user: { username: string, password: string }): Observable<boolean> {
-    return this.http.post<any>(`${config.apiUrl}/login`, user)
+  login(user: { user_name: string, password: string }): Observable<boolean> {
+    console.log(user)
+    return this.http.post<any>(`${config.apiUrl}management/user/signin/`, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.username, tokens)),
+        tap(tokens => this.doLoginUser(user.user_name, tokens)),
         mapTo(true),
         catchError(error => {
+          //this.ts.error('User Not found')
           alert(error.error);
           return of(false);
         }));
@@ -51,7 +54,7 @@ export class AuthService {
     return this.http.post<any>(`${config.apiUrl}/refresh`, {
       'refreshToken': this.getRefreshToken()
     }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.jwt);
+      this.storeJwtToken(tokens.access_token);
     }));
   }
 
@@ -78,8 +81,8 @@ export class AuthService {
   }
 
   private storeTokens(tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+    localStorage.setItem(this.JWT_TOKEN, tokens.access_token);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
 
   private removeTokens() {
