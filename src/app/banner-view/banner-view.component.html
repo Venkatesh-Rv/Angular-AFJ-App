@@ -31,7 +31,28 @@
       </div>
     </div>
   </nav>
+<br>
+<!-- search bar -->
+  <div class="container" >
+    <div class="row">
+      
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="search-box">
+          <form class="search-form">
+            <input class="form-control" name="term" placeholder="Search Here" type="text" [(ngModel)]="term">
+            <button class="btn btn-link search-btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
+<br>
   <div class="container">
     <div class="row">
       <div class="col-12">
@@ -47,7 +68,7 @@
         <tbody>
           <tr  *ngFor="let row of banner.success | paginate: { itemsPerPage: 5, 
             currentPage: page, 
-            totalItems:totalNumber }">
+            totalItems:totalNumber } | filter:term">
             <td class="w-25">
               <img src="{{row?.image_url}}" class="img-fluid img-thumbnail" alt="{{row?.name}">
             </td>

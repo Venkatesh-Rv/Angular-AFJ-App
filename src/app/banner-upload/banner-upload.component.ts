@@ -124,7 +124,12 @@ private getDismissReason(reason: any): string {
   //     console.log(i);
   //  }
     this.postMethod.postData(`http://ec2-13-232-92-217.ap-south-1.compute.amazonaws.com/product/banner/create/`, uploadData).subscribe(ele => {
-      this.successmsg.SuccessLog(ele, 'banner')
+      this.successmsg.SuccessLog(ele, 'ban-view')
+      for (const entry of uploadData.getAll('image'))
+    {
+        console.log(entry)
+    }
+      this.loaderbool=false
 
     },error => {
       this.loaderbool=false;
@@ -132,10 +137,7 @@ private getDismissReason(reason: any): string {
       })
 
 
-    // for (const entry of uploadData.entries())
-    // {
-    //     console.log(entry)
-    // }
+    
     //      this.http.post(`http://127.0.0.1:8000/${this.selectCat}/banner/create/`,uploadData).subscribe(ele => {
 
     //  console.log(ele);

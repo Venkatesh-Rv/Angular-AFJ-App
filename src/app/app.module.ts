@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './auth/guards/auth.guard';
 import { RandomGuard } from './auth/guards/random.guard';
 import { LoginComponent } from './auth/containers/login/login.component';
+import { FilterPipe } from './banner-view/filter.pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CurrencyPipe,CommonModule  } from '@angular/common';
@@ -31,6 +32,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HipchainComponent } from './product/hipchain/hipchain.component';
@@ -68,6 +70,7 @@ import { DbResetPwdComponent } from './db-reset-pwd/db-reset-pwd.component';
 import { DbUserProfileComponent } from './db-user-profile/db-user-profile.component';
 import { DbProdItemsComponent } from './db-prod-items/db-prod-items.component';
 import { DbContactComponent } from './db-contact/db-contact.component';
+import { DbProfileUpdateComponent } from './db-user-profile/db-profile-update/db-profile-update.component';
 
 
 
@@ -112,6 +115,7 @@ const routes: Routes = [
   // { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard],
   // canLoad: [RandomGuard] },
   { path: 'db-profile', component: DbUserProfileComponent },
+  { path: 'db-update-profile', component: DbProfileUpdateComponent },
   { path: 'db-contact', component: DbContactComponent },
   { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
   { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
@@ -157,11 +161,13 @@ const routes: Routes = [
     DbLoginComponent,
     DbRegisterComponent,
     ToggleDirective,
+    FilterPipe,
     DbForgotPwdComponent,
     DbResetPwdComponent,
     DbUserProfileComponent,
     DbProdItemsComponent,
     DbContactComponent,
+    DbProfileUpdateComponent,
     // LoginComponent
   ],
   imports: [
@@ -180,6 +186,7 @@ const routes: Routes = [
     FontAwesomeModule,
     MatSelectModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     ToastrModule.forRoot({
       timeOut:1500,
       progressBar:true,

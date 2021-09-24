@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgModule } from '@angular/core';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { PostService } from '../services/post.service';
@@ -39,6 +39,8 @@ export class BannerViewComponent implements OnInit {
 
   //modal
   closeResult = '';
+  searchText = '';
+  term;
 
   formValue!:FormGroup;
 

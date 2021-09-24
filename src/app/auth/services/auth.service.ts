@@ -11,7 +11,7 @@ import { Tokens } from '../models/tokens';
 })
 export class AuthService {
 
-  private readonly JWT_TOKEN = 'access_token';
+  private readonly ACCESS_TOKEN = 'access_token';
   private readonly REFRESH_TOKEN = 'refresh_token';
   private loggedUser: string;
 
@@ -25,10 +25,15 @@ export class AuthService {
     console.log(user)
     return this.http.post<any>(`${config.apiUrl}management/user/signin/`, user)
       .pipe(
-        tap(tokens => this.doLoginUser(user.user_name, tokens)),
+        tap(tokens => {
+          console.log(user)
+          console.log(tokens)
+          this.doLoginUser(user.user_name, tokens)
+        }),
         mapTo(true),
         catchError(error => {
           //this.ts.error('User Not found')
+          // console.log(error.error)
           alert(error.error);
           return of(false);
         }));
@@ -55,14 +60,16 @@ export class AuthService {
       'refreshToken': this.getRefreshToken()
     }).pipe(tap((tokens: Tokens) => {
       this.storeJwtToken(tokens.access_token);
+      console.log('new tokens refreshed')
     }));
   }
 
   getJwtToken() {
-    return localStorage.getItem(this.JWT_TOKEN);
+    return localStorage.getItem(this.ACCESS_TOKEN);
   }
 
   private doLoginUser(username: string, tokens: Tokens) {
+    console.log(tokens)
     this.loggedUser = username;
     this.storeTokens(tokens);
   }
@@ -77,16 +84,16 @@ export class AuthService {
   }
 
   private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+    localStorage.setItem(this.ACCESS_TOKEN, jwt);
   }
 
   private storeTokens(tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.access_token);
+    localStorage.setItem(this.ACCESS_TOKEN, tokens.access_token);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
 
   private removeTokens() {
-    localStorage.removeItem(this.JWT_TOKEN);
+    localStorage.removeItem(this.ACCESS_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
   }
 }
