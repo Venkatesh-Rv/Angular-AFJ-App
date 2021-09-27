@@ -39,6 +39,9 @@ export class PostService {
       .pipe(map((res: any) => {
         return res;
       }))
+
+    // return this.http.get<any>("http://ec2-13-232-92-217.ap-south-1.compute.amazonaws.com/product/banner/get/all/record/")
+      
   }
 
   //for image retrieval

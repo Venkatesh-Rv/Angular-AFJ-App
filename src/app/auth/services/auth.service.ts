@@ -5,6 +5,7 @@ import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { config } from './../../config';
 import { Tokens } from '../models/tokens';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,20 @@ export class AuthService {
 
   private readonly ACCESS_TOKEN = 'access_token';
   private readonly REFRESH_TOKEN = 'refresh_token';
-  private loggedUser: string;
+  public loggedUser: string;
+  public email:string;
+  public ph_no:string;
+  send; //login data
+  ans; //token data after refresh
 
-  constructor(private http: HttpClient,private ts:ToastrService) {}
+  constructor(private http: HttpClient,private ts:ToastrService, private router: Router) {}
 
   sample(){
     return true;
+  }
+
+  register(){
+
   }
 
   login(user: { user_name: string, password: string }): Observable<boolean> {
@@ -27,8 +36,22 @@ export class AuthService {
       .pipe(
         tap(tokens => {
           console.log(user)
+          
+          for (let key in tokens) {
+            this.send = tokens[key];
+            console.log(this.send);
+        
+    }
           console.log(tokens)
-          this.doLoginUser(user.user_name, tokens)
+          
+          this.doLoginUser(user.user_name, this.send)
+          this.loggedUser= this.send.first_name
+          this.email= this.send.email_id
+          this.ph_no= this.send.phone_number
+
+          console.log(this.loggedUser,this.email,this.ph_no)
+
+          this.ts.success("Logged In.")
         }),
         mapTo(true),
         catchError(error => {
@@ -39,16 +62,24 @@ export class AuthService {
         }));
   }
 
+  // logout() {
+  //   return this.http.get<any>(`${config.apiUrl}management/user/logout/`, {
+  //     // 'refresh_token': this.getRefreshToken()
+  //   }).pipe(
+  //     tap(() =>{ this.doLogoutUser()}),
+  //     mapTo(true),
+  //     catchError(error => {
+  //       alert(error.error);
+        
+  //       return of(false);
+  //     }));
+  // }
+
   logout() {
-    return this.http.post<any>(`${config.apiUrl}/logout`, {
-      'refreshToken': this.getRefreshToken()
-    }).pipe(
-      tap(() => this.doLogoutUser()),
-      mapTo(true),
-      catchError(error => {
-        alert(error.error);
-        return of(false);
-      }));
+    this.doLogoutUser()
+    this.router.navigate(["/login"])
+    this.ts.success("Logged Out Successfully")
+    this.http.get<any>(`${config.apiUrl}management/user/logout/`);
   }
 
   isLoggedIn() {
@@ -56,10 +87,17 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.http.post<any>(`${config.apiUrl}/refresh`, {
-      'refreshToken': this.getRefreshToken()
-    }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.access_token);
+    return this.http.post<any>(`${config.apiUrl}management/refresh/token/`, {
+      'refresh_token': this.getRefreshToken()
+    }).pipe(tap((tokens) => {
+      console.log("rt works"+ tokens)
+
+      for (let key in tokens) {
+        this.ans = tokens[key];
+        console.log(this.ans);   
+}
+      this.storeJwtToken(this.ans.access_token);
+      this.storeRefreshToken(this.ans.refresh_token)
       console.log('new tokens refreshed')
     }));
   }
@@ -68,10 +106,19 @@ export class AuthService {
     return localStorage.getItem(this.ACCESS_TOKEN);
   }
 
-  private doLoginUser(username: string, tokens: Tokens) {
+  getProfile(){
+   this.loggedUser= sessionStorage.getItem('first_name'); 
+    sessionStorage.getItem('last_name'); 
+   this.email = sessionStorage.getItem('email_id'); 
+   this.ph_no = sessionStorage.getItem('phone_number'); 
+    sessionStorage.getItem('address'); 
+  }
+
+  private doLoginUser(username: string, tokens: any) {
     console.log(tokens)
     this.loggedUser = username;
     this.storeTokens(tokens);
+    this.storeProfile(tokens)
   }
 
   private doLogoutUser() {
@@ -87,10 +134,28 @@ export class AuthService {
     localStorage.setItem(this.ACCESS_TOKEN, jwt);
   }
 
+  private storeRefreshToken(jwt: string) {
+    localStorage.setItem(this.REFRESH_TOKEN, jwt);
+  }
+
   private storeTokens(tokens: Tokens) {
+    console.log('entered')
+   
+    console.log(tokens)
     localStorage.setItem(this.ACCESS_TOKEN, tokens.access_token);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
+
+  private storeProfile(data:any){
+    sessionStorage.setItem('first_name', data.first_name); 
+    sessionStorage.setItem('last_name', data.last_name); 
+    sessionStorage.setItem('email_id', data.email_id); 
+    sessionStorage.setItem('phone_number', data.phone_number); 
+    sessionStorage.setItem('address', data.address.address); 
+    
+  }
+
+ 
 
   private removeTokens() {
     localStorage.removeItem(this.ACCESS_TOKEN);

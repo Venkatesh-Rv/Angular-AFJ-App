@@ -58,6 +58,9 @@ export class BannerViewComponent implements OnInit {
       this.banner= res
       console.log(this.banner)
       
+    }, error=>{
+      console.error('error')
+      console.log(error)
     })
    
     //this.imgName=this.banner.image

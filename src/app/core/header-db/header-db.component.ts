@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-header-db',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderDbComponent implements OnInit {
 
-  constructor() { }
+  name;
+  constructor(private as:AuthService) { 
+
+   this.name= this.as.loggedUser
+  }
 
   ngOnInit(): void {
+    this.as.getProfile();
+  }
+
+  logout(){
+    this.as.logout()
+    
   }
 
 }

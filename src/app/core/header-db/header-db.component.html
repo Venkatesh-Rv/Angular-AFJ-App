@@ -127,7 +127,7 @@
           <!-- <span class="dropdown-item dropdown-header">User-Profile</span> -->
           <!-- <div class="dropdown-divider"></div> -->
           <a routerLink="/db-profile" class="dropdown-item dropdown-header" style="cursor: pointer;">
-            User - Profile
+            User - {{name}}
           </a>
           
 
@@ -143,7 +143,7 @@
             <span class="float-right text-muted text-sm">2 days</span>
           </a>
           <div class="dropdown-divider"></div> -->
-          <a class="dropdown-item dropdown-footer" routerLink="/login">Logout</a>
+          <a class="dropdown-item dropdown-footer" style="cursor: pointer;" (click)="logout()">Logout</a>
         </div>
       </li>
 
@@ -158,14 +158,14 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <!-- <br> -->
-    <a href="" class="brand-link">
+    <a routerLink="/ban-upload" class="brand-link">
       <img src="https://ayishafashionjewellery.com/assets/images/sample.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       
       <span class="brand-text font-weight-light">AFJ </span>
       <br>
       
     </a>
-    <a href="" class="brand-link">
+    <a routerLink="/ban-upload" class="brand-link">
       <span class="brand-text font-weight-light">Ayisha Fashion Jewelery</span>
       <br>
       
@@ -187,7 +187,7 @@
                   &nbsp;
                   <p>
                   Banner
-                    <i class="right fas fa-angle-left"></i>
+                    <!-- <i class="right fas fa-angle-left"></i> -->
                   </p>
                 </a>
               
@@ -217,7 +217,7 @@
                       <i class="fab fa-product-hunt"></i>
                       <p>
                         &nbsp;Products
-                        <i class="right fas fa-angle-left"></i>
+                        <!-- <i class="right fas fa-angle-left"></i> -->
                       </p>
                     </a>
                    
@@ -248,7 +248,7 @@
                       &nbsp;
                       <p>
                       Help
-                        <i class="right fas fa-angle-left"></i>
+                        <!-- <i class="right fas fa-angle-left"></i> -->
                       </p>
                     </a>
                   
