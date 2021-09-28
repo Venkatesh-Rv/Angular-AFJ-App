@@ -10,6 +10,8 @@ export class DbUserProfileComponent implements OnInit {
   admin_profile;
   email;
   ph_no;
+  last_name;
+  address;
 
   constructor(private authService:AuthService) { }
 
@@ -23,6 +25,9 @@ export class DbUserProfileComponent implements OnInit {
     this.admin_profile = this.authService.loggedUser;
     this.email = this.authService.email;
     this.ph_no = this.authService.ph_no;
+    this.last_name = this. authService.last_name;
+    this.address = this.authService.address;
+    
 
    
 

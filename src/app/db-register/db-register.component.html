@@ -1,3 +1,5 @@
+<app-loader-db *ngIf="loaderbool"></app-loader-db>
+
 <section class="register-page">
 <div class="register-box">
     <div class="register-logo">
@@ -9,9 +11,17 @@
       <div class="card-body register-card-body">
         <p class="login-box-msg">Signup for register here..!!</p>
   
-        <form [formGroup]="register" (ngSubmit)="signup()">
+        <form [formGroup]="register" (ngSubmit)="create()">
           <div class="input-group mb-3">
             <input formControlName='first_name' type="text" class="form-control" placeholder="Full name">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input formControlName='last_name' type="text" class="form-control" placeholder="Last name">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -27,7 +37,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input formControlName='phone_number' type="email" class="form-control" placeholder="Phone Number">
+            <input formControlName='phone_number' type="text" class="form-control" placeholder="Phone Number">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-phone"></span>
@@ -35,12 +45,23 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input formControlName='address' type="email" class="form-control" placeholder="Address">
+            <input formControlName='address' type="text" class="form-control" placeholder="Address">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-map-marker-alt"></span>
               </div>
             </div>
+          </div>
+          <div class="input-group mb-3">
+            
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="exampleInputFile" (change)="onImageChanged($event)">
+                  <label class="custom-file-label" for="exampleInputFile">{{imgName}}</label>
+                </div>
+                <!-- <div class="input-group-append">
+                  <span class="input-group-text">Upload</span>
+                </div> -->
+             
           </div>
           <div class="input-group mb-3">
             <input toggle formControlName='password' toggle type="password" class="form-control" placeholder="Password">

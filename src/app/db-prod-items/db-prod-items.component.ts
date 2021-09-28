@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./db-prod-items.component.css']
 })
 export class DbProdItemsComponent implements OnInit {
+  message;
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get<any>("https://afj-staging-server.herokuapp.com/management/head_start/").subscribe(res=>{
+      console.log(res)
+      this.message = res
+    })
   }
 
 }

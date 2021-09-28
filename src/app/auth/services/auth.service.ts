@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { of, Observable } from 'rxjs';
-import { catchError, mapTo, tap } from 'rxjs/operators';
+import { catchError, mapTo,map, tap } from 'rxjs/operators';
 import { config } from './../../config';
 import { Tokens } from '../models/tokens';
 import { Router } from '@angular/router';
@@ -17,6 +17,8 @@ export class AuthService {
   public loggedUser: string;
   public email:string;
   public ph_no:string;
+  public last_name:string;
+  public address:string;
   send; //login data
   ans; //token data after refresh
 
@@ -26,8 +28,12 @@ export class AuthService {
     return true;
   }
 
-  register(){
+  register(url,getData){
+    return this.http.post(url, getData)
+  }
 
+  update_adminprofile(url,getData){
+    return this.http.post(url, getData)
   }
 
   login(user: { user_name: string, password: string }): Observable<boolean> {
@@ -45,11 +51,14 @@ export class AuthService {
           console.log(tokens)
           
           this.doLoginUser(user.user_name, this.send)
-          this.loggedUser= this.send.first_name
-          this.email= this.send.email_id
-          this.ph_no= this.send.phone_number
+          // this.loggedUser= this.send.first_name
+          // this.email= this.send.email_id
+          // this.ph_no= this.send.phone_number
+          // this.last_name = this.send.last_name
+          // this.address = this.send.address.city
+          
 
-          console.log(this.loggedUser,this.email,this.ph_no)
+          //console.log(this.loggedUser,this.email,this.ph_no,this.last_name,this.address)
 
           this.ts.success("Logged In.")
         }),
@@ -62,25 +71,30 @@ export class AuthService {
         }));
   }
 
-  // logout() {
-  //   return this.http.get<any>(`${config.apiUrl}management/user/logout/`, {
-  //     // 'refresh_token': this.getRefreshToken()
-  //   }).pipe(
-  //     tap(() =>{ this.doLogoutUser()}),
-  //     mapTo(true),
-  //     catchError(error => {
-  //       alert(error.error);
-        
-  //       return of(false);
-  //     }));
-  // }
-
   logout() {
-    this.doLogoutUser()
-    this.router.navigate(["/login"])
-    this.ts.success("Logged Out Successfully")
-    this.http.get<any>(`${config.apiUrl}management/user/logout/`);
+    return this.http.get<any>(`${config.apiUrl}management/user/logout/`).pipe(
+      tap(() =>{ 
+        this.doLogoutUser()
+        
+      }),
+      mapTo(true),
+      catchError(error => {
+        alert(error.error);
+        
+        return of(false);
+      }));
   }
+
+  // logout() {
+  //   this.doLogoutUser()
+  //   this.router.navigate(["/login"])
+  //   //return this.http.get<any>(`${config.apiUrl}management/user/logout/`);
+  //   return this.http.get<any>(`${config.apiUrl}management/user/logout/`)
+  //     .pipe(map((res: any) => {
+  //       this.ts.success('in..')
+  //       return res;
+  //     }))
+  // }
 
   isLoggedIn() {
     return !!this.getJwtToken();
@@ -107,11 +121,11 @@ export class AuthService {
   }
 
   getProfile(){
-   this.loggedUser= sessionStorage.getItem('first_name'); 
-    sessionStorage.getItem('last_name'); 
+   this.loggedUser = sessionStorage.getItem('first_name'); 
+   this.last_name = sessionStorage.getItem('last_name'); 
    this.email = sessionStorage.getItem('email_id'); 
    this.ph_no = sessionStorage.getItem('phone_number'); 
-    sessionStorage.getItem('address'); 
+   this.address = sessionStorage.getItem('address'); 
   }
 
   private doLoginUser(username: string, tokens: any) {
@@ -124,6 +138,9 @@ export class AuthService {
   private doLogoutUser() {
     this.loggedUser = null;
     this.removeTokens();
+    this.removeProfile();
+    this.ts.success('Logout Successfully')
+    this.router.navigate(['/login'])
   }
 
   private getRefreshToken() {
@@ -146,16 +163,25 @@ export class AuthService {
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh_token);
   }
 
+  //store profile data in storage
   private storeProfile(data:any){
     sessionStorage.setItem('first_name', data.first_name); 
     sessionStorage.setItem('last_name', data.last_name); 
     sessionStorage.setItem('email_id', data.email_id); 
     sessionStorage.setItem('phone_number', data.phone_number); 
-    sessionStorage.setItem('address', data.address.address); 
+    sessionStorage.setItem('address', data.address.city); 
     
   }
 
- 
+  private removeProfile(){
+    sessionStorage.removeItem('first_name'); 
+    sessionStorage.removeItem('last_name'); 
+    sessionStorage.removeItem('email_id'); 
+    sessionStorage.removeItem('phone_number'); 
+    sessionStorage.removeItem('address'); 
+    
+  }
+
 
   private removeTokens() {
     localStorage.removeItem(this.ACCESS_TOKEN);

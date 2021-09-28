@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HeaderDbComponent implements OnInit {
 
   name;
-  constructor(private as:AuthService) { 
+  constructor(private as:AuthService, private ts:ToastrService, private r:Router) { 
 
    this.name= this.as.loggedUser
   }
@@ -19,7 +21,12 @@ export class HeaderDbComponent implements OnInit {
   }
 
   logout(){
-    this.as.logout()
+    this.as.logout().subscribe(res=>{
+      console.log(res)
+    },
+    error=>{
+      this.ts.error(error)
+    })
     
   }
 
