@@ -19,6 +19,7 @@ export class AuthService {
   public ph_no:string;
   public last_name:string;
   public address:string;
+  public picture:string;
   send; //login data
   ans; //token data after refresh
 
@@ -51,53 +52,69 @@ export class AuthService {
           console.log(tokens)
           
           this.doLoginUser(user.user_name, this.send)
-          // this.loggedUser= this.send.first_name
-          // this.email= this.send.email_id
-          // this.ph_no= this.send.phone_number
-          // this.last_name = this.send.last_name
-          // this.address = this.send.address.city
-          
-
-          //console.log(this.loggedUser,this.email,this.ph_no,this.last_name,this.address)
-
           this.ts.success("Logged In.")
         }),
         mapTo(true),
         catchError(error => {
           //this.ts.error('User Not found')
           // console.log(error.error)
-          alert(error.error);
+          alert(error);
+          this.removeTokens();
+          
           return of(false);
         }));
   }
 
-  logout() {
-    return this.http.get<any>(`${config.apiUrl}management/user/logout/`).pipe(
-      tap(() =>{ 
-        this.doLogoutUser()
-        
-      }),
-      mapTo(true),
-      catchError(error => {
-        alert(error.error);
-        
-        return of(false);
-      }));
-  }
-
   // logout() {
-  //   this.doLogoutUser()
-  //   this.router.navigate(["/login"])
-  //   //return this.http.get<any>(`${config.apiUrl}management/user/logout/`);
-  //   return this.http.get<any>(`${config.apiUrl}management/user/logout/`)
-  //     .pipe(map((res: any) => {
-  //       this.ts.success('in..')
-  //       return res;
-  //     }))
+  //   return this.http.get<any>(`${config.apiUrl}management/user/logout/`).pipe(
+  //     tap(() =>{ 
+  //       this.doLogoutUser()
+        
+  //     }),
+  //     mapTo(true),
+  //     catchError(error => {
+  //       alert(error.error);
+        
+  //       return of(false);
+  //     }));
   // }
 
+  logout() {
+    this.doLogoutUser();
+    // this.router.navigate(["/login"])
+    //return this.http.get<any>(`${config.apiUrl}management/user/logout/`);
+    // return this.http.get<any>(`${config.apiUrl}management/user/logout/`)
+    //   .pipe(map((res: any) => {
+    //     this.ts.success('out..')
+    //     return res;
+    //   }))
+  }
+
+
+  getUserPayload(){
+    var token = localStorage.getItem(this.ACCESS_TOKEN);
+    if(token){
+      var userPayload = atob(token.split('.')[1])
+      return JSON.parse(userPayload);
+    }
+    else{
+      return null;
+    }
+  }
+
   isLoggedIn() {
-    return !!this.getJwtToken();
+    var userPayload = this.getUserPayload();
+    console.log(userPayload)
+
+    if(userPayload){
+      return userPayload.exp > Date.now() /1000
+      
+    }
+    else{
+      //this.ts.warning('')
+      return false
+    }
+    //return !!this.getJwtToken();
   }
 
   refreshToken() {
@@ -125,12 +142,12 @@ export class AuthService {
    this.last_name = sessionStorage.getItem('last_name'); 
    this.email = sessionStorage.getItem('email_id'); 
    this.ph_no = sessionStorage.getItem('phone_number'); 
-   this.address = sessionStorage.getItem('address'); 
+   this.address = sessionStorage.getItem('address');
+   this.picture = sessionStorage.getItem('profile_url')
   }
 
   private doLoginUser(username: string, tokens: any) {
     console.log(tokens)
-    this.loggedUser = username;
     this.storeTokens(tokens);
     this.storeProfile(tokens)
   }
@@ -164,12 +181,17 @@ export class AuthService {
   }
 
   //store profile data in storage
-  private storeProfile(data:any){
+  private storeProfile(data){
     sessionStorage.setItem('first_name', data.first_name); 
     sessionStorage.setItem('last_name', data.last_name); 
     sessionStorage.setItem('email_id', data.email_id); 
     sessionStorage.setItem('phone_number', data.phone_number); 
-    sessionStorage.setItem('address', data.address.city); 
+    sessionStorage.setItem('address', data.address.city);
+    sessionStorage.setItem('profile_url', data.profile_url);
+
+    console.log(sessionStorage.getItem('profile_pic'))
+    
+    this.loggedUser = sessionStorage.getItem('first_name'); 
     
   }
 
@@ -178,7 +200,8 @@ export class AuthService {
     sessionStorage.removeItem('last_name'); 
     sessionStorage.removeItem('email_id'); 
     sessionStorage.removeItem('phone_number'); 
-    sessionStorage.removeItem('address'); 
+    sessionStorage.removeItem('address');
+    sessionStorage.removeItem('profile_url');   
     
   }
 

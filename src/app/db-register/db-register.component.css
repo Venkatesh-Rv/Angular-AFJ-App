@@ -11,3 +11,5 @@ margin-left: auto;
 margin-right: auto;
 width: 16%;
   }
+
+  .red-tooltip + .tooltip > .tooltip-inner {background-color: black;}

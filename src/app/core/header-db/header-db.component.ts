@@ -21,12 +21,8 @@ export class HeaderDbComponent implements OnInit {
   }
 
   logout(){
-    this.as.logout().subscribe(res=>{
-      console.log(res)
-    },
-    error=>{
-      this.ts.error(error)
-    })
+    this.as.logout();
+    
     
   }
 

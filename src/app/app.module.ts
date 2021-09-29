@@ -76,12 +76,7 @@ import { DbProfileUpdateComponent } from './db-user-profile/db-profile-update/db
 
 const routes: Routes = [
 
-  {
-    path: 'login-check',
-    component: LoginComponent,
-    canActivate: [AuthGuard]
-  },
-
+// AFJ APP ROUTES
   { path: '', component: HomepageComponent },
   { path: 'contact', component: ContactusComponent },
   { path: 'policy', component: PrivacypolicyComponent },
@@ -107,20 +102,20 @@ const routes: Routes = [
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'payment', component: PaymentComponent },
-  //
+
+  //ADMIN PANEL ROUTES
   { path: 'register', component: DbRegisterComponent },
-  { path: 'login', component: DbLoginComponent},
-  { path: 'forgot-pwd', component: DbForgotPwdComponent },
-  { path: 'reset-pwd', component: DbResetPwdComponent },
-  // { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard],
-  // canLoad: [RandomGuard] },
-  { path: 'db-profile', component: DbUserProfileComponent },
-  { path: 'db-update-profile', component: DbProfileUpdateComponent },
-  { path: 'db-contact', component: DbContactComponent },
-  { path: 'ban-upload', component: BannerUploadComponent,canActivate:[DbGuard] },
-  { path: 'ban-view', component: BannerViewComponent,canActivate:[DbGuard]},
-  { path: 'add-prod', component: ProductDbComponent,canActivate:[DbGuard]},
-  { path: 'view-prod', component: DbProdItemsComponent,canActivate:[DbGuard]}
+
+  { path: 'login', component: DbLoginComponent,canActivate: [AuthGuard]},
+  { path: 'ban-upload', component: BannerUploadComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'ban-view', component: BannerViewComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'add-prod', component: ProductDbComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'view-prod', component: DbProdItemsComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'db-update-profile', component: DbProfileUpdateComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'forgot-pwd', component: DbForgotPwdComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'reset-pwd', component: DbResetPwdComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'db-contact', component: DbContactComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
 ]
 
 @NgModule({

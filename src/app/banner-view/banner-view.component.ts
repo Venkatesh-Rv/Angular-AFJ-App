@@ -48,7 +48,7 @@ export class BannerViewComponent implements OnInit {
     private modalService: NgbModal,private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.getAllBanner();
+    //this.getAllBanner();
     this. getImageFromService();
   }
 

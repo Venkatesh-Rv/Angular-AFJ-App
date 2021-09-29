@@ -12,6 +12,7 @@ export class DbUserProfileComponent implements OnInit {
   ph_no;
   last_name;
   address;
+  picture;
 
   constructor(private authService:AuthService) { }
 
@@ -27,6 +28,7 @@ export class DbUserProfileComponent implements OnInit {
     this.ph_no = this.authService.ph_no;
     this.last_name = this. authService.last_name;
     this.address = this.authService.address;
+    this.picture = this.authService.picture;
     
 
    

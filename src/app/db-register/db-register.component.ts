@@ -32,7 +32,7 @@ export class DbRegisterComponent implements OnInit {
       email_id:[""],
       phone_number:[""],
       address:[""],
-      password:[""],
+      password:["",Validators.required],
       profile_pic:"null"
     }
     );

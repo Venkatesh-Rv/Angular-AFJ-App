@@ -13,7 +13,7 @@
   
         <form [formGroup]="register" (ngSubmit)="create()">
           <div class="input-group mb-3">
-            <input formControlName='first_name' type="text" class="form-control" placeholder="Full name">
+            <input formControlName='first_name' type="text" class="form-control" placeholder=" Full name">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input formControlName='last_name' type="text" class="form-control" placeholder="Last name">
+            <input formControlName='last_name' type="text" class="form-control" placeholder=" Last name">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input formControlName='email_id' type="email" class="form-control" placeholder="Email">
+            <input formControlName='email_id' type="email" class="form-control" placeholder=" Email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input formControlName='phone_number' type="text" class="form-control" placeholder="Phone Number">
+            <input formControlName='phone_number' type="text" class="form-control" placeholder=" Phone Number">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-phone"></span>
@@ -45,7 +45,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input formControlName='address' type="text" class="form-control" placeholder="Address">
+            <input formControlName='address' type="text" class="form-control" placeholder=" Address">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-map-marker-alt"></span>
@@ -64,17 +64,17 @@
              
           </div>
           <div class="input-group mb-3">
-            <input toggle formControlName='password' toggle type="password" class="form-control" placeholder="Password">
+            <input toggle formControlName='password' toggle type="password" class="form-control red-tooltip" placeholder=" Password" data-toggle="tooltip" data-placement="right" title="Your password must be 8 characters long, must contain letters, numbers, and special characters">
             <div class="input-group-append" style="cursor: pointer;">
               
             </div>
           </div>
-          <!-- <div class="input-group mb-3">
-            <input toggle formControlName='p' type="password" class="form-control" placeholder="Confirm password">
-            <div class="input-group-append">
-              
-            </div>
-          </div> -->
+          <span class="text-danger" *ngIf="register.controls['password'].dirty && register.hasError('required','password')">
+            * Password format should be as below rules..</span>
+            <span id="passwordHelpBlock" class="form-text text-info">
+              Your password must be 8 characters long, must contain letters, numbers, and special characters.
+            </span>
+            <br>
           <div class="row">
             <!-- <div class="col-8">
               <div class="icheck-primary">
