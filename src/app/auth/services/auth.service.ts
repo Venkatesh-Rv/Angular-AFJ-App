@@ -107,17 +107,29 @@ export class AuthService {
     console.log(userPayload)
 
     if(userPayload){
-      return userPayload.exp > Date.now() /1000
+      let bool=userPayload.exp > Date.now() /1000
+      if(!bool){
+        this. refreshToken();
+        return true;
+      }
+      return bool
       
     }
     else{
       //this.ts.warning('')
       return false
     }
+
+    
     //return !!this.getJwtToken();
   }
 
+  expire(){
+
+  }
+
   refreshToken() {
+    
     return this.http.post<any>(`${config.apiUrl}management/refresh/token/`, {
       'refresh_token': this.getRefreshToken()
     }).pipe(tap((tokens) => {

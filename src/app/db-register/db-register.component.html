@@ -1,12 +1,15 @@
 <app-loader-db *ngIf="loaderbool"></app-loader-db>
 
 <section class="register-page">
+  <br>
+  <br>
+  
 <div class="register-box">
     <div class="register-logo">
         <img src="https://ayishafashionjewellery.com/assets/images/afj-logo.png" width="60" alt="logo" class="cent" /><br>
       <a href=""><b>AFJ-</b>Dashboard Panel</a>
     </div>
-  <br>
+ 
     <div class="card">
       <div class="card-body register-card-body">
         <p class="login-box-msg">Signup for register here..!!</p>
@@ -69,10 +72,10 @@
               
             </div>
           </div>
-          <span class="text-danger" *ngIf="register.controls['password'].dirty && register.hasError('required','password')">
-            * Password format should be as below rules..</span>
+          <!-- <span class="text-danger" *ngIf="register.controls['password'].dirty && register.hasError('required','password')">
+            * Password format should be as below rules..</span> -->
             <span id="passwordHelpBlock" class="form-text text-info">
-              Your password must be 8 characters long, must contain letters, numbers, and special characters.
+              Password must be minimum 8 characters long,must contain uppercase, lowercase, numbers, & special characters.
             </span>
             <br>
           <div class="row">
@@ -91,18 +94,7 @@
             <!-- /.col -->
           </div>
         </form>
-  
-        <!-- <div class="social-auth-links text-center">
-          <p>- OR -</p>
-          <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i>
-            Sign up using Facebook
-          </a>
-          <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i>
-            Sign up using Google+
-          </a>
-        </div> -->
+
   <br>
         <a routerLink="/login" class="d-flex justify-content-center">I already have a account</a>
       </div>

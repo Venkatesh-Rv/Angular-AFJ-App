@@ -13,7 +13,7 @@ export class DbForgotPwdComponent implements OnInit {
   co_email;
   OTP;
   forgot: boolean = true;
-  verify: boolean = false;
+  verify: boolean = false;//otp
   loaderbool: boolean = false;
 
   constructor(private route: Router, private cs: CartService, private ts: ToastrService) { }
@@ -27,9 +27,9 @@ export class DbForgotPwdComponent implements OnInit {
     this.cs.email_verify("https://fakestoreapi.com/products", this.co_email).subscribe(ele => {
       console.log(this.co_email);
       this.ts.success("Please check mail for the verification")
-      this.verify = true;
+      // this.verify = true;
       this.loaderbool = false;
-      this.forgot = false;
+      // this.forgot = false;
      
       
       // this.route.navigate(['/details'])

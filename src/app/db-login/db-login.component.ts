@@ -17,6 +17,7 @@ export class DbLoginComponent implements OnInit {
     private authService:AuthService) { }
 
   public login:FormGroup;
+  loaderbool: boolean = false;
 
   ngOnInit(): void {
     this.login = this.fb.group({
@@ -49,6 +50,7 @@ export class DbLoginComponent implements OnInit {
   }
 
   auth(){
+    this.loaderbool = true
     this.authService.login(
       {
         user_name: this.f.user_name.value,
@@ -57,9 +59,11 @@ export class DbLoginComponent implements OnInit {
     )
     .subscribe(success => {
       if (success) {
+        this.loaderbool = false
         this.router.navigate(['/ban-upload']);
       }
       else{
+        this.loaderbool = false
         this.ts.error('User Not Found')
         this.login.reset();
       }

@@ -5,6 +5,14 @@
     background: url();
 }
 
+.login-logo, .register-logo {
+    font-size:26px !important
+}
+
+ p {
+    margin: -6px 0 0px !important;
+}
+
 .cent{
     display: block;
 margin-left: auto;
