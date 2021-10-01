@@ -38,9 +38,7 @@ export class DbRegisterComponent implements OnInit {
     );
 
     ///test
-    this.http.get<any>("https://afj-staging-server.herokuapp.com/management/head_start/").subscribe(res=>{
-      console.log(res)
-    })
+    
     
   }
 
@@ -85,6 +83,7 @@ export class DbRegisterComponent implements OnInit {
   //ordinary
 
   create() {
+    this.loaderbool = true;
     let uploadData = new FormData();
     uploadData.append('first_name', this.f.first_name.value);
     uploadData.append('last_name', this.f.last_name.value);
@@ -100,12 +99,11 @@ export class DbRegisterComponent implements OnInit {
       console.log(key+":"+value)
     });
 
-    this.loaderbool = true;
-    this.loaderbool =false;
 
     this.as.register(`https://afj-staging-server.herokuapp.com/management/create/owner/`, uploadData)
     .subscribe(
       ele =>{ 
+        this.loaderbool = false;
         this.ts.success("Account Created Successfully")
         console.log(uploadData)
         this.router.navigate(['/login'])

@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   login(user: { user_name: string, password: string }): Observable<boolean> {
-    console.log(user)
+    //console.log(user)
     return this.http.post<any>(`${config.apiUrl}management/user/signin/`, user)
       .pipe(
         tap(tokens => {
@@ -46,9 +46,18 @@ export class AuthService {
           
           for (let key in tokens) {
             this.send = tokens[key];
+            if(this.send === null){
+              this.ts.error("Please enter your email correctly")
+              
+            }
             console.log(this.send);
         
     }
+      if(this.send === 'sign in password is invalid'){
+        this.ts.error(this.send)
+        
+        return of (false)
+      }
           console.log(tokens)
           
           this.doLoginUser(user.user_name, this.send)
@@ -58,8 +67,9 @@ export class AuthService {
         catchError(error => {
           //this.ts.error('User Not found')
           // console.log(error.error)
-          alert(error);
+          //alert(error);
           this.removeTokens();
+          this.removeProfile();
           
           return of(false);
         }));

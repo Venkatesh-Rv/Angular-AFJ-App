@@ -32,7 +32,7 @@ export class ProductViewComponent implements OnInit {
   items = [];
   totalr:number=0;
   
-
+  discount;
 
   // @ViewChildren('myitems') subTotalItems: QueryList<ElementRef>;
   @ViewChildren("subTotalWrap") subTotalItems: QueryList<ElementRef>;
@@ -66,6 +66,7 @@ export class ProductViewComponent implements OnInit {
       });
       // this.orderObj = { ...params.keys, ...params };
       console.log(params)
+      console.log(this.product)
     }
   );
 
@@ -91,6 +92,13 @@ export class ProductViewComponent implements OnInit {
     console.table(this.message)
   }
 
+
+   calculatePercentage(oldFigure, newFigure)
+  {
+      let percentChange = ((oldFigure - newFigure) / oldFigure) * 100;
+      Math.round(percentChange)
+      return this.discount = percentChange
+  }
 
   //cart function code
   
