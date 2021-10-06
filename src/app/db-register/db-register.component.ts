@@ -113,7 +113,7 @@ export class DbRegisterComponent implements OnInit {
     uploadData.append('address', JSON.stringify(this.address));
     uploadData.append('password', this.f.cpassword.value);
     uploadData.append('profile_pic', this.cover);
-
+console.log(uploadData)
     // uploadData.forEach((value, key) => {
     //   console.log(key + ":" + value)
     // });

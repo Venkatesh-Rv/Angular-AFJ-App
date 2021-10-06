@@ -11,14 +11,15 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HeaderDbComponent implements OnInit {
 
   name;
+  head;
   constructor(private as:AuthService, private ts:ToastrService, private r:Router) { 
 
    
   }
 
   ngOnInit(): void {
-    this.as.getProfile();
-    this.name= this.as.loggedUser
+    this.head = this.as.get_details()
+    this.name = this.head.first_name
 
     
   }
