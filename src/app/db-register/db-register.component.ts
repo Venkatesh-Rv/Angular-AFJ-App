@@ -1,10 +1,12 @@
-import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth/services/auth.service';
-import { PwdValidator } from '../pwd-validator';
+
+import { PasswordStrengthValidator } from '../password-strength.validators';
+import { ConfirmedValidator } from '../confirmed.validator';
 
 @Component({
   selector: 'app-db-register',
@@ -13,69 +15,80 @@ import { PwdValidator } from '../pwd-validator';
 })
 export class DbRegisterComponent implements OnInit {
 
-  public register:FormGroup;
+  public register: FormGroup;
+  submitted = false;
+  msg;
+
+  //passwordPtn ='^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,16}$'
   loaderbool: boolean = false;
   address: any = {};
-  cover: File;
+  cover: File = null;
   reader = new FileReader();
   imgName: string = 'Upload Image'
-  
-  
 
-  constructor(private fb:FormBuilder, private http:HttpClient,private router:Router,private ts:ToastrService,
-    private as:AuthService) { }
+
+
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private ts: ToastrService,
+    private as: AuthService) { }
 
   ngOnInit(): void {
     this.register = this.fb.group({
-      first_name:[""],
-      last_name:[""],
-      email_id:[""],
-      phone_number:[""],
-      address:[""],
-      password:["",Validators.required],
-      profile_pic:"null"
-    }
-    );
+      first_name: ["",[Validators.required,Validators.minLength(4)]],
+      last_name: [null],
+      email_id: ["",[Validators.required, Validators.email]],
+      phone_number: ["",[Validators.required,Validators.minLength(10)]],
+      address1: ["",Validators.required],
+      address2: ["",Validators.required],
+      profile_pic: null,
+      password: [null, Validators.compose([
+        Validators.required, Validators.minLength(8), PasswordStrengthValidator])],
+      cpassword: [null, Validators.compose([
+        Validators.required, Validators.minLength(8), PasswordStrengthValidator])]
+    },
+      {
+        validator: ConfirmedValidator('password', 'cpassword')
+      }
+    )
 
     ///test
-    
-    
+
   }
 
   get f() { return this.register.controls; }
 
   onDesChanged() {
-    this.address.city = this.f.address.value;
+    this.address.area = this.f.address1.value;
+    this.address.city = this.f.address2.value;
   }
 
   onImageChanged(event) {
-    
+
     this.cover = event.target.files[0];
     this.reader.readAsDataURL(event.target.files[0])
     console.log(this.reader);
     this.imgName = this.cover.name
   }
 
-  signup_d(){
-  //  console.log(this.register.value)
-  //  console.log(this.register.value.address)
-   //let ggs = this.register.value["address"] = {'address':this.register.value.address};
-   console.log(JSON.stringify(this.register.value["address"] = {'address':this.register.value.address}));
-   
-    this.http.post<any>("http://localhost:3000/register",this.register.value).subscribe(
-      res=>{
+  signup_d() {
+    //  console.log(this.register.value)
+    //  console.log(this.register.value.address)
+    //let ggs = this.register.value["address"] = {'address':this.register.value.address};
+    console.log(JSON.stringify(this.register.value["address"] = { 'address': this.register.value.address }));
+
+    this.http.post<any>("http://localhost:3000/register", this.register.value).subscribe(
+      res => {
         this.ts.success('Account created Successfully')
         this.register.reset();
         this.router.navigate(['/login'])
       }
-    ),error => {
-     
+    ), error => {
+
       this.ts.warning('Error please try again')
       this.register.reset();
       // window.location.href = 'URL';
-      }
+    }
 
-    
+
 
   }
 
@@ -83,6 +96,12 @@ export class DbRegisterComponent implements OnInit {
   //ordinary
 
   create() {
+  //   this.submitted = true;
+
+  //   //validation check
+  //   if (this.register.invalid) {
+  //     return;
+  // }
     this.loaderbool = true;
     let uploadData = new FormData();
     uploadData.append('first_name', this.f.first_name.value);
@@ -92,65 +111,86 @@ export class DbRegisterComponent implements OnInit {
     this.onDesChanged();
     console.log(this.address);
     uploadData.append('address', JSON.stringify(this.address));
-    uploadData.append('password', this.f.password.value);
+    uploadData.append('password', this.f.cpassword.value);
     uploadData.append('profile_pic', this.cover);
 
-    uploadData.forEach((value,key) => {
-      console.log(key+":"+value)
-    });
+    // uploadData.forEach((value, key) => {
+    //   console.log(key + ":" + value)
+    // });
 
+
+    //this.as.register(`https://afj-staging-server.herokuapp.com/management/create/owner/`, uploadData)
 
     this.as.register(`https://afj-staging-server.herokuapp.com/management/create/owner/`, uploadData)
-    .subscribe(
-      ele =>{ 
-        this.loaderbool = false;
-        this.ts.success("Account Created Successfully")
-        console.log(uploadData)
-        this.router.navigate(['/login'])
-    // window.location.reload();
-  }
-    
-    ,error => {
-      this.loaderbool=false;
-      this.ts.error('Error, Please enter the details correctly!!')
-      
-      // window.location.href = 'URL';
-      })
+      .subscribe(
+        ele => {
+          for (let key in ele) {
+            this.msg = ele[key];
+            if(this.msg === "Owner Created Successfully"){
+              this.loaderbool = false;
+              this.ts.success(this.msg)
+              this.router.navigate(['/login'])
+              console.log(this.msg)
+            }
+        
+    }
+                 
+          alert(this.msg)
+          console.log(this.msg)
+          this.ts.warning(this.msg)
+          uploadData.forEach((value, key) => {
+            console.log(key + ":" + value)
+          });
+          this.loaderbool = false;
+          
+          console.log(uploadData)
+          
+          // window.location.reload();
+        }
+
+        , error => {
+          this.loaderbool = false;
+          console.log(this.msg)
+          this.ts.error(this.msg,error)
+          //this.ts.error('Error, Please enter the details correctly!!')
+
+          // window.location.href = 'URL';
+        })
 
   }
 
 
   //reactive approach
-  signup(){
-   let ggs = JSON.stringify(this.register.value["address"] = {"address":this.register.value.address});
-   console.log(this.register.value);
-   const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  signup() {
+    let ggs = JSON.stringify(this.register.value["address"] = { "address": this.register.value.address });
+    console.log(this.register.value);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }
+
+    this.http.post<any>("https://afj-staging-server.herokuapp.com/management/create/owner",
+      this.register.value, httpOptions
+      //  {
+      //   first_name: this.f.first_name.value,
+      //   last_name: this.f.last_name.value,
+      //   email_id: this.f.email_id.value,
+      //   phone_number: this.f.phone_number.value,
+      //   address: this.f.address.value,
+      //   password: this.f.password.value,
+      //   profile_pic: this.f.profile_pic.value
+      //  }
+    ).subscribe(
+      res => {
+        this.ts.success('Account created Successfully')
+        this.register.reset();
+        this.router.navigate(['/login'])
+      }
+    ), error => {
+
+      this.ts.error('Error please try again')
+      this.register.reset();
+      // window.location.href = 'URL';
+    }
   }
-   
-   this.http.post<any>("https://afj-staging-server.herokuapp.com/management/create/owner",
-   this.register.value,httpOptions
-  //  {
-  //   first_name: this.f.first_name.value,
-  //   last_name: this.f.last_name.value,
-  //   email_id: this.f.email_id.value,
-  //   phone_number: this.f.phone_number.value,
-  //   address: this.f.address.value,
-  //   password: this.f.password.value,
-  //   profile_pic: this.f.profile_pic.value
-  //  }
-   ).subscribe(
-     res=>{
-       this.ts.success('Account created Successfully')
-       this.register.reset();
-       this.router.navigate(['/login'])
-     }
-   ),error => {
-    
-     this.ts.error('Error please try again')
-     this.register.reset();
-     // window.location.href = 'URL';
-     }
-   }
 
 }

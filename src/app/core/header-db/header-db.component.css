@@ -24,3 +24,24 @@ aside {
   background-color: transparent;
   border: 0;
 }
+
+.media {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.img-size-50 {
+  width: 50px;
+}
+.img-size-32, .img-size-50, .img-size-64 {
+  height: auto;
+}
+
+.dropdown-item-title {
+  font-size: 1rem;
+  margin: 0;
+}

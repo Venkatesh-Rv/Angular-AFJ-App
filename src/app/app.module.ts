@@ -9,6 +9,7 @@ import { AuthGuard } from './auth/guards/auth.guard';
 import { RandomGuard } from './auth/guards/random.guard';
 import { LoginComponent } from './auth/containers/login/login.component';
 import { FilterPipe } from './banner-view/filter.pipe';
+import { ConfirmEqualValidatorDirective } from "./appConfirmEqualValidator.directive"
 
 import { AppRoutingModule } from './app-routing.module';
 import { CurrencyPipe,CommonModule  } from '@angular/common';
@@ -94,7 +95,7 @@ const routes: Routes = [
   { path: 'rings', component: RingsComponent },
   { path: 'toe-rings', component: ToeRingComponent},
   { path: 'nose-rings', component: NoseRingComponent },
-  { path: 'prod-page', component: ProductPageComponent },
+  // { path: 'prod-page', component: ProductPageComponent },
   { path: 'cart', component: CartComponent },
   { path: 'product', component: ProductViewComponent },
   { path: 'search/:id', component: SearchresultComponent },
@@ -105,6 +106,8 @@ const routes: Routes = [
 
   //ADMIN PANEL ROUTES
   { path: 'register', component: DbRegisterComponent },
+  { path: 'forgot-pwd', component: DbForgotPwdComponent},
+  { path: 'reset-pwd', component: DbResetPwdComponent },
 
   { path: 'login', component: DbLoginComponent,canActivate: [AuthGuard]},
   { path: 'ban-upload', component: BannerUploadComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
@@ -113,8 +116,6 @@ const routes: Routes = [
   { path: 'view-prod', component: DbProdItemsComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
   { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
   { path: 'db-update-profile', component: DbProfileUpdateComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
-  { path: 'forgot-pwd', component: DbForgotPwdComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
-  { path: 'reset-pwd', component: DbResetPwdComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
   { path: 'db-contact', component: DbContactComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
 ]
 
@@ -163,6 +164,7 @@ const routes: Routes = [
     DbProdItemsComponent,
     DbContactComponent,
     DbProfileUpdateComponent,
+    ConfirmEqualValidatorDirective
     // LoginComponent
   ],
   imports: [

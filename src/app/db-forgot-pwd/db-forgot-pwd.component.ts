@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,24 +12,33 @@ import { ToastrService } from 'ngx-toastr';
 export class DbForgotPwdComponent implements OnInit {
 
   co_email;
+  public email_form:FormGroup;
   OTP;
   forgot: boolean = true;
   verify: boolean = false;//otp
   loaderbool: boolean = false;
 
-  constructor(private route: Router, private cs: CartService, private ts: ToastrService) { }
+  constructor(private route: Router, private cs: CartService, private ts: ToastrService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
+    this.email_form = this.fb.group({
+      email:[""],
+     
+    }
+    );
   }
+
+  get f() { return this.email_form.controls; }
 
   //forgot
   email_verify() {
     this.loaderbool = true;
-    this.cs.email_verify("https://fakestoreapi.com/products", this.co_email).subscribe(ele => {
-      console.log(this.co_email);
-      this.ts.success("Please check mail for the verification")
+    console.log(this.f.email.value);
+    this.cs.email_verify("https://fakestoreapi.com/products", this.f.email.value).subscribe(ele => {
+      this.ts.success("Please check mail for the verification",this.f.email.value)
       // this.verify = true;
       this.loaderbool = false;
+      this.email_form.reset();
       // this.forgot = false;
      
       

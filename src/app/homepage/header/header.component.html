@@ -21,10 +21,26 @@
 
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
+    
     <div class="modal-content">
-      <div class="input-group mb-3"> <input type="text" class="form-control">
+      <div class="input-group mb-3">
+      <div class="nice-select" tabindex="0">
+        <span class="current">All Category</span>
+        <ul class="list">
+          <li data-value="All Category" class="option selected focus">All Category</li>
+          <li data-value="necklace" class="option">Necklace</li>
+          <li data-value="Combo sets" class="option">Combo Sets</li>
+          <li data-value="Bridal sets" class="option">Bridal sets</li>
+        </ul>
+      </div>
+    </div>
+      <div class="input-group mb-3">
+         <input type="text" class="form-control">
         
-        <div class="input-group-append"><button class="btn btn-warning"><i class="fas fa-search"></i></button></div>
+        <div class="input-group-append">
+          <button class="btn btn-warning"><i class="fas fa-search"></i></button> <br>
+          
+        </div>
     </div>
     </div>
   </div>
@@ -233,6 +249,15 @@
         <div class="col-lg-8 col-md-7 col-12">
           <div class="search-bar-top">
             <div class="search-bar">
+              <div class="nice-select" tabindex="0">
+                <span class="current">All Category</span>
+                <ul class="list">
+                  <li data-value="All Category" class="option selected focus">All Category</li>
+                  <li data-value="necklace" class="option">Necklace</li>
+                  <li data-value="Combo sets" class="option">Combo Sets</li>
+                  <li data-value="Bridal sets" class="option">Bridal sets</li>
+                </ul>
+              </div>
               <form>
                 <input
                   name="search"

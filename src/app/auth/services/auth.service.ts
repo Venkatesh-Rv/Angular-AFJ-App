@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   update_adminprofile(url,getData){
-    return this.http.post(url, getData)
+    return this.http.put(url, getData, {observe: 'response'})
   }
 
   login(user: { user_name: string, password: string }): Observable<boolean> {
@@ -65,8 +65,9 @@ export class AuthService {
         }),
         mapTo(true),
         catchError(error => {
-          //this.ts.error('User Not found')
-          // console.log(error.error)
+          //this.send = error
+          this.ts.error(error.error.message)
+          console.log(error.error.message)
           //alert(error);
           this.removeTokens();
           this.removeProfile();
@@ -89,15 +90,22 @@ export class AuthService {
   //     }));
   // }
 
-  logout() {
-    this.doLogoutUser();
-    // this.router.navigate(["/login"])
-    //return this.http.get<any>(`${config.apiUrl}management/user/logout/`);
-    // return this.http.get<any>(`${config.apiUrl}management/user/logout/`)
-    //   .pipe(map((res: any) => {
-    //     this.ts.success('out..')
-    //     return res;
-    //   }))
+  // logout() {
+  //   this.doLogoutUser();
+  //   // this.router.navigate(["/login"])
+  //   //return this.http.get<any>(`${config.apiUrl}management/user/logout/`);
+  //   // return this.http.get<any>(`${config.apiUrl}management/user/logout/`)
+  //   //   .pipe(map((res: any) => {
+  //   //     this.ts.success('out..')
+  //   //     return res;
+  //   //   }))
+  // }
+
+  logout(){
+    this.http.get<any>('https://afj-staging-server.herokuapp.com/management/user/logout/').subscribe(data => {
+            this.ts.success(data.message)
+            this.doLogoutUser();
+        }) 
   }
 
 
@@ -171,7 +179,8 @@ export class AuthService {
   private doLoginUser(username: string, tokens: any) {
     console.log(tokens)
     this.storeTokens(tokens);
-    this.storeProfile(tokens)
+    this.storeProfile(tokens);
+    this.owner_data(tokens)
   }
 
   private doLogoutUser() {
@@ -203,6 +212,15 @@ export class AuthService {
   }
 
   //store profile data in storage
+
+  owner_data(data){
+    localStorage.setItem('details',JSON.stringify(data))
+  }
+
+  get_details(){
+    return JSON.parse( localStorage.getItem('details'))
+  }
+
   private storeProfile(data){
     sessionStorage.setItem('first_name', data.first_name); 
     sessionStorage.setItem('last_name', data.last_name); 

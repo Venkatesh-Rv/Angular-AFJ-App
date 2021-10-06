@@ -11,9 +11,9 @@
           <div class="card-body login-card-body">
             <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
       
-            <form>
+            <form [formGroup]="email_form" (ngSubmit)="email_verify()">
               <div class="input-group mb-3">
-                <input type="email" class="form-control" placeholder="Email" (change)="mail($event)">
+                <input type="email" formControlName='email' class="form-control" placeholder="Email" (change)="mail($event)">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
@@ -22,7 +22,7 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <button type="submit" class="btn btn-primary btn-block" (click)="email_verify()">Request new password</button>
+                  <button type="submit" class="btn btn-primary btn-block">Request new password</button>
                 </div>
                 <!-- /.col -->
               </div>

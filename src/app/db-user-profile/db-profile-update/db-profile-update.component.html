@@ -11,7 +11,7 @@
             
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a >Home</a></li>
+                <li class="breadcrumb-item"><a routerLink="/db-profile">Back</a></li>
                 <li class="breadcrumb-item active">Profile Update</li>
               </ol>
             </div>
@@ -57,6 +57,7 @@
                 class="form-control"
                 formControlName="email_id"
                 placeholder="  Enter Email-ID"
+                readonly
               />
             </div>
   
@@ -73,15 +74,28 @@
             </div>
   
             <div class="form-group">
-              <label for="exampleInputEmail1">Address</label>
+              <label for="exampleInputEmail1">Area</label>
   
               <input
                 type="text"
                
                 required
                 class="form-control"
-                formControlName="address"
-                placeholder="  Enter Address"
+                formControlName="address1"
+                placeholder="  Area"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">City</label>
+  
+              <input
+                type="text"
+               
+                required
+                class="form-control"
+                formControlName="address2"
+                placeholder="  City"
               />
             </div>
 
@@ -90,6 +104,7 @@
     
                 <input
                   type="password"
+                  toggle
                   required
                   class="form-control"
                   formControlName="password"
@@ -126,7 +141,7 @@
   
           <div class="card-footer">
             <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" [disabled]="prof_update.invalid" class="btn btn-primary">
               Submit 
             </button>
           </div>

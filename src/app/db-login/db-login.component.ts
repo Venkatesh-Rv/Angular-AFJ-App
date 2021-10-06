@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder } from '@angular/forms';
+import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth/services/auth.service';
@@ -21,8 +21,8 @@ export class DbLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.login = this.fb.group({
-      user_name:[''],
-      password:['']
+      user_name:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.minLength(8)]]
     })
   }
 
@@ -64,7 +64,7 @@ export class DbLoginComponent implements OnInit {
       }
       else{
         this.loaderbool = false
-        this.ts.error('User Not Found')
+        //this.ts.error('User Not Found')
         this.login.reset();
       }
     });

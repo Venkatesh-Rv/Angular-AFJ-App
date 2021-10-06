@@ -7,6 +7,8 @@ import { AuthService } from '../auth/services/auth.service';
   styleUrls: ['./db-user-profile.component.css']
 })
 export class DbUserProfileComponent implements OnInit {
+ 
+ obj_data;
   admin_profile;
   email;
   ph_no;
@@ -22,16 +24,11 @@ export class DbUserProfileComponent implements OnInit {
   }
 
   profile(){
-    this.authService.getProfile();
-    this.admin_profile = this.authService.loggedUser;
-    this.email = this.authService.email;
-    this.ph_no = this.authService.ph_no;
-    this.last_name = this. authService.last_name;
-    this.address = this.authService.address;
-    this.picture = this.authService.picture;
     
-
-   
+    
+    this.obj_data = this.authService.get_details();
+    console.log(this.obj_data);
+    console.log(this.obj_data.last_name,this.obj_data.email_id)
 
   }
 

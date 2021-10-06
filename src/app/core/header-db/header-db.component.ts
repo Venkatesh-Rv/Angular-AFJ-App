@@ -13,11 +13,14 @@ export class HeaderDbComponent implements OnInit {
   name;
   constructor(private as:AuthService, private ts:ToastrService, private r:Router) { 
 
-   this.name= this.as.loggedUser
+   
   }
 
   ngOnInit(): void {
     this.as.getProfile();
+    this.name= this.as.loggedUser
+
+    
   }
 
   logout(){
