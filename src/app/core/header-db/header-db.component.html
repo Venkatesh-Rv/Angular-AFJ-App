@@ -130,7 +130,8 @@
           <!-- <div class="dropdown-divider"></div> -->
           
           <a routerLink="/db-profile" class="dropdown-item dropdown-header" style="cursor: pointer;">
-            User - {{name}}
+            <img src="{{pic}}" onerror='this.style.display = "none"' alt="dp" width="30" height="30" > &nbsp;
+             {{name}}
           </a>
           
           <div class="dropdown-divider"></div>
@@ -162,7 +163,7 @@
     <!-- Brand Logo -->
     <!-- <br> -->
     <a routerLink="/ban-upload" class="brand-link">
-      <img src="https://ayishafashionjewellery.com/assets/images/sample.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="https://ayishafashionjewellery.com/assets/images/sample.png"  alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       
       <span class="brand-text font-weight-light">AFJ </span>
       <br>

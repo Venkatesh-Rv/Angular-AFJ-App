@@ -60,10 +60,12 @@ export class DbLoginComponent implements OnInit {
     .subscribe(success => {
       if (success) {
         this.loaderbool = false
+        //this.login.reset();
         this.router.navigate(['/ban-upload']);
       }
       else{
         this.loaderbool = false
+        console.log("client")
         //this.ts.error('User Not Found')
         this.login.reset();
       }

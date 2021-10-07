@@ -39,7 +39,7 @@ export class DbRegisterComponent implements OnInit {
       phone_number: ["",[Validators.required,Validators.minLength(10)]],
       address1: ["",Validators.required],
       address2: ["",Validators.required],
-      profile_pic: null,
+      profile_pic: [null],
       password: [null, Validators.compose([
         Validators.required, Validators.minLength(8), PasswordStrengthValidator])],
       cpassword: [null, Validators.compose([
@@ -135,17 +135,15 @@ console.log(uploadData)
         
     }
                  
-          alert(this.msg)
+          //alert(this.msg)
           console.log(this.msg)
-          this.ts.warning(this.msg)
+          //this.ts.warning(this.msg)
           uploadData.forEach((value, key) => {
             console.log(key + ":" + value)
           });
           this.loaderbool = false;
           
           console.log(uploadData)
-          
-          // window.location.reload();
         }
 
         , error => {

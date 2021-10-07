@@ -3,15 +3,25 @@
 <section class="register-page">
   <br>
   <br>
+  <br>
+  <br>
+  <br>
+  <!-- <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br> -->
   
 <div class="register-box">
-    <div class="register-logo">
-        <img src="https://ayishafashionjewellery.com/assets/images/afj-logo.png" width="60" alt="logo" class="cent" /><br>
-      <a href=""><b>AFJ-</b>Dashboard</a>
-    </div>
+    
  
     <div class="card">
       <div class="card-body register-card-body">
+        <div class="register-logo">
+          <img src="https://ayishafashionjewellery.com/assets/images/afj-logo.png" width="60" alt="logo" class="cent" /><br>
+        <a href=""><b>AFJ-</b>Dashboard</a>
+      </div>
         <p class="login-box-msg">Signup for register here..!!</p>
   
         <form [formGroup]="register" (ngSubmit)="create()">
@@ -23,7 +33,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="(register.get('first_name').invalid && register.get('first_name').touched) || register.get('first_name').dirty">
+          <div class="input-group mb-3" *ngIf="(register.get('first_name').invalid && register.get('first_name').touched) || register.get('first_name').dirty">
             <small class="text-danger" *ngIf="register.get('first_name').errors?.required">First Name is required</small>
             
           </div>
@@ -44,7 +54,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="(register.get('email_id').invalid && register.get('email_id').touched) || register.get('email_id').dirty">
+          <div class="input-group mb-3" *ngIf="(register.get('email_id').invalid && register.get('email_id').touched) || register.get('email_id').dirty">
             <small class="text-danger" *ngIf="register.get('email_id').errors?.required">Email address is required</small>
             <small class="text-danger" *ngIf="register.get('email_id').errors?.email">Email address is invalid</small>
           </div>
@@ -56,7 +66,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="(register.get('phone_number').invalid && register.get('phone_number').touched) || register.get('phone_number').dirty">
+          <div class="input-group mb-3" *ngIf="(register.get('phone_number').invalid && register.get('phone_number').touched) || register.get('phone_number').dirty">
             <small class="text-danger" *ngIf="register.get('phone_number').errors?.required">Number is required</small>
             <!-- <small class="text-danger" *ngIf="register.get('phone_number').errors">Number is invalid</small> -->
           </div>
@@ -68,6 +78,10 @@
               </div>
             </div>
           </div>
+          <div class="input-group mb-3" *ngIf="(register.get('address1').invalid && register.get('address1').touched) || register.get('address1').dirty">
+            <small class="text-danger" *ngIf="register.get('address1').errors?.required">Area is required</small>
+            
+          </div>
           <div class="input-group mb-3">
             <input formControlName='address2' type="text" class="form-control" placeholder=" City">
             <div class="input-group-append">
@@ -75,6 +89,10 @@
                 <span class="fas fa-city"></span>
               </div>
             </div>
+          </div>
+          <div class="input-group mb-3" *ngIf="(register.get('address2').invalid && register.get('address2').touched) || register.get('address2').dirty">
+            <small class="text-danger" *ngIf="register.get('address2').errors?.required">City is required</small>
+            
           </div>
          
           <div class="input-group mb-3">
@@ -95,16 +113,16 @@
             </div>
           </div>
 
-          <div class="errors form-text text-danger" *ngIf="register.get('password').invalid && (register.get('password').touched || register.get('password').dirty)">
+          <div class="errors form-text text-danger input-group mb-3" *ngIf="register.get('password').invalid && (register.get('password').touched || register.get('password').dirty)">
             <div *ngIf="register.get('password').hasError('required')">
-              <small class="text-danger">password is required</small> 
+              <small class="text-danger">Password is required</small> 
             </div>
         
-            <div *ngIf="register.get('password').errors.minlength">
+            <div class="input-group mb-3" *ngIf="register.get('password').errors.minlength">
               <small class="text-danger">Password must be at least 8 characters </small>
             </div>
         
-            <div class="error-text" *ngIf="register.get('password').hasError('passwordStrength')">
+            <div class="error-text input-group mb-3" *ngIf="register.get('password').hasError('passwordStrength')">
              <small class="text-danger">{{register.get('password').errors['passwordStrength']}}</small> 
             </div>
           </div>
@@ -115,20 +133,20 @@
               
             </div>
           </div>
-          <div class="errors form-text" *ngIf="register.get('cpassword').invalid && (register.get('cpassword').touched || register.get('cpassword').dirty)">
-            <div *ngIf="register.get('cpassword').hasError('required')">
-              <small class="text-danger">confirm password is required</small> 
+          <div class="errors form-text input-group mb-3" *ngIf="register.get('cpassword').invalid && (register.get('cpassword').touched || register.get('cpassword').dirty)">
+            <div class="input-group mb-3" *ngIf="register.get('cpassword').hasError('required')">
+              <small class="text-danger">Confirm password is required</small> 
             </div>
         
-            <div *ngIf="register.get('cpassword').errors.minlength">
+            <div class="input-group mb-3" *ngIf="register.get('cpassword').errors.minlength">
               <small class="text-danger">Password must be at least 8 characters </small>
             </div>
         
-            <div class="error-text" *ngIf="register.get('cpassword').hasError('passwordStrength')">
+            <div class="error-text input-group mb-3" *ngIf="register.get('cpassword').hasError('passwordStrength')">
               <small class="text-danger">{{register.get('cpassword').errors['passwordStrength']}}</small>
             </div>
 
-            <div *ngIf="register.get('cpassword').errors.confirmedValidator">
+            <div class="input-group mb-3" *ngIf="register.get('cpassword').errors.confirmedValidator">
               <small class="text-danger"> Password and Confirm Password must be match.</small>
             </div>
           </div>

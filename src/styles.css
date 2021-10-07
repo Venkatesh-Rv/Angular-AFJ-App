@@ -188,3 +188,10 @@ span.old {
   @media screen and (max-width: 500px) {
     #columns figure { width: 50%;}
   }
+
+  /*admin dashboard*/
+
+  .content-header{
+    border-radius: 12px;
+    background: white;
+}

@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HeaderDbComponent implements OnInit {
 
   name;
+  pic;
   head;
   constructor(private as:AuthService, private ts:ToastrService, private r:Router) { 
 
@@ -19,7 +20,8 @@ export class HeaderDbComponent implements OnInit {
 
   ngOnInit(): void {
     this.head = this.as.get_details()
-    this.name = this.head.first_name
+    this.name = this.head.first_name;
+    this.pic = this.head.profile_url;
 
     
   }

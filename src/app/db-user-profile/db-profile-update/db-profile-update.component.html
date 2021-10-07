@@ -2,6 +2,7 @@
 <app-header-db></app-header-db>
 
 <div class="content-wrapper">
+  <br>
     <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
@@ -21,8 +22,10 @@
         </div>
         
       </div>
+      <br>
+     
 
-      <div class="card card-primary">
+      <div class="card card-primary card mx-auto" style="width: 730px; border-radius:6px">
 
         <form role="form" [formGroup]="prof_update"  (ngSubmit)="update()">
           <div class="card-body">
@@ -139,10 +142,10 @@
   
           <!-- /.card-body  [disabled]="buttonboool===true ? true : false"-->
   
-          <div class="card-footer">
+          <div class="card-footer" style="display: flex; justify-content:center">
             <!-- <button type="submit"" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
             <button type="submit"  [disabled]="prof_update.invalid" class="btn btn-primary">
-              Submit 
+              Save Changes
             </button>
           </div>
   
@@ -150,3 +153,5 @@
    
     </div> 
 </div>
+<br>
+

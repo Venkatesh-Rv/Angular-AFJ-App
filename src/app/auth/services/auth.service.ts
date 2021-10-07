@@ -104,6 +104,7 @@ export class AuthService {
   logout(){
     this.http.get<any>('https://afj-staging-server.herokuapp.com/management/user/logout/').subscribe(data => {
             this.ts.success(data.message)
+            console.log(data.message)
             this.doLogoutUser();
         }) 
   }
@@ -249,5 +250,6 @@ export class AuthService {
   private removeTokens() {
     localStorage.removeItem(this.ACCESS_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
+    localStorage.removeItem('details');
   }
 }
