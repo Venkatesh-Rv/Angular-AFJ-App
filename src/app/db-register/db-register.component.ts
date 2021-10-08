@@ -126,15 +126,22 @@ console.log(uploadData)
         ele => {
           for (let key in ele) {
             this.msg = ele[key];
-            if(this.msg === "Owner Created Successfully"){
-              this.loaderbool = false;
-              this.ts.success(this.msg)
-              this.router.navigate(['/login'])
-              console.log(this.msg)
-            }
-        
     }
-                 
+    if(ele.status === 201){
+      this.loaderbool = false;
+      this.ts.warning(this.msg)
+      this.router.navigate(['/login'])
+      console.log(this.msg)
+    }
+    else if(ele.status === 206){
+      console.log('pc check');
+      for (let key in ele.body) {
+        console.log(ele.body[key])
+        var pc = ele.body[key]
+      }
+      console.log(pc)
+      this.ts.info(pc)
+    }   
           //alert(this.msg)
           console.log(this.msg)
           //this.ts.warning(this.msg)

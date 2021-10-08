@@ -30,7 +30,7 @@ export class AuthService {
   }
 
   register(url,getData){
-    return this.http.post(url, getData)
+    return this.http.post(url, getData, {observe: 'response'})
   }
 
   update_adminprofile(url,getData){
@@ -127,6 +127,7 @@ export class AuthService {
 
     if(userPayload){
       let bool=userPayload.exp > Date.now() /1000
+      console.log(bool, typeof(bool))
       if(!bool){
         this. refreshToken();
         return true;
