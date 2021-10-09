@@ -1,6 +1,6 @@
 <app-loader-db *ngIf="loaderbool"></app-loader-db>
 
-<section class="register-page">
+<section class="register-page" style="display: none;">
     <div class="register-box">
         <div class="register-logo">
             <img src="https://ayishafashionjewellery.com/assets/images/afj-logo.png" width="60" alt="logo" class="cent" /><br>
@@ -80,17 +80,17 @@
       <!-- /.register-box -->
     </section>
 
-    <section style="display: none;">
+    <section style="background-color:white;">
       <!-- Navbar-->
 <header class="header">
-  <nav class="navbar navbar-expand-lg navbar-light py-3">
+  <nav class="navbar navbar-expand-lg navbar py-3">
       <div class="container">
           <!-- Navbar Brand -->
-          <a class="navbar-brand">
-              <img src="https://bootstrapious.com/i/snippets/sn-registeration/logo.svg" alt="logo" width="150">
+          <a id="is" class="navbar-brand">
+              <img src="https://ayishafashionjewellery.com/assets/images/sample.png" alt="logo" width="100">
           </a>
 
-          <img src=""
+          <img src="data:image/png;base64,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"
            id="" alt="logo" width="100">
       </div>
   </nav>
@@ -109,7 +109,7 @@
 
       <!--  Form -->
       <div class="col-md-7 col-lg-6 ml-auto">
-          <form>
+          <form [formGroup]="login" (ngSubmit)="auth()">
               <div class="row">
                   <!-- Email Address -->
                   <div class="input-group col-lg-12 mb-4">
@@ -118,34 +118,37 @@
                               <i class="fa fa-envelope text-muted"></i>
                           </span>
                       </div>
-                      <input id="email" type="email" name="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
+                      <input id="email" autocomplete="off" type="email" formControlName='user_name' placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
                   </div>
 
 
                   <!-- Password -->
-                  <div class="input-group col-lg-6 mb-4">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text bg-white px-4 border-md border-right-0">
-                              <i class="fa fa-lock text-muted"></i>
-                          </span>
-                      </div>
-                      <input id="password" type="password" name="password" placeholder="Password" class="form-control bg-white border-left-0 border-md">
-                  </div>
-
-              
+                  <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-white border-md border-right-0">
+                        <!-- <i class="fa fa-lock text-muted"></i> -->
+                    </span>
+                    </div>
+                    
+                    <input formControlName='password' toggle type="password" placeholder="Password" class="form-control bg-white border-left-0 border-md">
+                </div>
 
                   <!-- Submit Button -->
                   <div class="form-group col-lg-12 mx-auto mb-0">
-                      <a href="#" class="btn btn-primary btn-block py-2">
-                          <span class="font-weight-bold">Create your account</span>
-                      </a>
+                    <button [disabled]="login.invalid" class="btn btn-primary btn-block py-2">
+                      <span class="">LOGIN</span>
+                  </button>
                   </div>
-
-        
-
-                  <!-- Already Registered -->
+<br>
+                  <!-- new -->
                   <div class="text-center w-100">
-                      <p class="text-muted font-weight-bold">Already Registered? <a href="#" class="text-primary ml-2">Login</a></p>
+                    <br>
+                      <p class="text-muted font-weight-bold">New User? <a routerLink="/register" class="text-primary ml-2">Register</a></p>
+                  </div>
+<br>
+                  <div class="text-center w-100">
+                    <br>
+                      <p class="text-muted font-weight-bold">Forgot Password ?<a routerLink="/forgot-pwd" class="text-primary ml-2"> Click Here</a></p>
                   </div>
 
               </div>

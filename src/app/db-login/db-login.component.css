@@ -79,3 +79,12 @@ select.form-control {
 .form-control:focus {
     box-shadow: none;
 }
+
+#is{
+    -moz-box-shadow: 0px 6px 5px #ccc;
+  -webkit-box-shadow: 0px 6px 5px #ccc;
+  box-shadow: 0px 6px 5px #ccc;
+  -moz-border-radius:190px;
+  -webkit-border-radius:190px;
+  border-radius:190px;
+}

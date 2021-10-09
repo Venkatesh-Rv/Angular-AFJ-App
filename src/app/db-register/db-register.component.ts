@@ -34,12 +34,12 @@ export class DbRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.register = this.fb.group({
       first_name: ["",[Validators.required,Validators.minLength(4)]],
-      last_name: [null],
+      last_name: [null,Validators.minLength(4)],
       email_id: ["",[Validators.required, Validators.email]],
       phone_number: ["",[Validators.required,Validators.minLength(10)]],
       address1: ["",Validators.required],
       address2: ["",Validators.required],
-      profile_pic: [null],
+      profile_pic: [null,Validators.required],
       password: [null, Validators.compose([
         Validators.required, Validators.minLength(8), PasswordStrengthValidator])],
       cpassword: [null, Validators.compose([
@@ -155,8 +155,15 @@ console.log(uploadData)
 
         , error => {
           this.loaderbool = false;
-          console.log(this.msg)
-          this.ts.error(this.msg,error)
+          console.log(error)
+          console.log(error.status)
+          // for (let key in error.body) {
+          //   console.log(error.body[key])
+          //   var pcc = error.body[key]
+          // }
+          
+          console.log(error.statusText)
+          this.ts.error(error.statusText)
           //this.ts.error('Error, Please enter the details correctly!!')
 
           // window.location.href = 'URL';
