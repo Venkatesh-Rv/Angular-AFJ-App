@@ -1,9 +1,9 @@
 /* aside {
   height: 150vh !important;
 } */
-aside {
+/* aside {
     position: fixed !important;
-  }
+  } */
   
   .dropdown-footer, .dropdown-header {
     display: block;
@@ -50,4 +50,8 @@ aside {
   border-bottom: 1px solid #4b545c !important;
   color: rgba(255, 255, 255, 0.8) !important;
 }
+
+/*lector*/
+
+
 
