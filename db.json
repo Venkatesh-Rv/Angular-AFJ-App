@@ -3,7 +3,7 @@
     {
       "id": "bb5e9285-eaa8-4c1e-a90e-5ef7e0c1754e",
       "name": "necklace",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "necklace"
       },
@@ -16,7 +16,7 @@
     {
       "id": "bb5e9285-eaa8-4c1e-a90e-5ef7e0c1754e",
       "name": "necklace",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "necklace"
       },
@@ -27,9 +27,9 @@
       "updated_at": "2021-08-04T05:41:48.778411Z"
     },
     {
-      "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb528",
       "name": "Necklacetwo",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -42,7 +42,7 @@
     {
       "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
       "name": "Neckklacetwo",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -55,9 +55,9 @@
   ],
   "combo-sets": [
     {
-      "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb558",
       "name": "combo-sets-1",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -70,7 +70,7 @@
     {
       "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
       "name": "combo-sets-two",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -83,7 +83,7 @@
     {
       "id": "5f36cbde-b247-4d70-b138-511dc0adcb58",
       "name": "combo-sets-3",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -98,7 +98,7 @@
     {
       "id": "5f36cbde-b247-4d70-b138-511dc0adcb59",
       "name": "Neckklacetwo",
-      "image_url": "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -109,9 +109,48 @@
       "updated_at": "2021-08-03T11:55:09.147841Z"
     },
     {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb49",
+      "name": "Neckklacetwo",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "999",
+      "offer": "699",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb19",
+      "name": "Neckklacetwoasdfg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "899",
+      "offer": "799",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
+      "id": "5f36cbde-b247-4d70-b138-511dc0adcb99",
+      "name": "Neckklacetwoqwert",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
+      "description": {
+        "data": "stone2"
+      },
+      "price": "399",
+      "offer": "199",
+      "category": "Hand accessories",
+      "created_at": "2021-08-03T11:55:09.137859Z",
+      "updated_at": "2021-08-03T11:55:09.147841Z"
+    },
+    {
       "id": "5f36cbde-b247-4d70-b138-511dc0adcb60",
       "name": "Neckklacethree",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -124,7 +163,7 @@
     {
       "id": "5f36cbde-b247-4d70-b138-511dc0adcb61",
       "name": "Neckklacefour",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -137,7 +176,7 @@
     {
       "id": "5f36cbde-b247-4d70-b138-511dc0adcb62",
       "name": "Neckklacefinal",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "description": {
         "data": "stone2"
       },
@@ -152,7 +191,7 @@
     {
       "id": "f6425aa6-577f-4589-aa37-3d20678b57fb",
       "name": "workingrnot",
-      "image_url": "https://ayisha-media.s3.amazonaws.com/media/images/size.jpg",
+      "image_url": "https://assetscdn1.paytm.com/images/catalog/product/J/JE/JEWYOUBELLA-GOLYOUB35376A5639887/1562701692830_8.jpg",
       "category": "Fashion",
       "created_at": "2021-08-04T06:17:16.070384Z",
       "updated_at": "2021-08-11T05:49:26.073549Z"
