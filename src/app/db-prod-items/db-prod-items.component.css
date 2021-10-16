@@ -37,3 +37,21 @@
     color: #fff;
     background-color: blue;
   }
+
+  .img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  .table tbody td .img {
+    width: 120px;
+    height: 130px;
+    border-radius: 8px;
+  }
+
+  .card-header {
+    
+    background-color: white;
+    
+}

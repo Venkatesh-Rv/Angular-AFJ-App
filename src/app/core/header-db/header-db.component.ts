@@ -19,9 +19,9 @@ export class HeaderDbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.head = this.as.get_details()
-    this.name = this.head.first_name;
-    this.pic = this.head.profile_url;
+    // this.head = this.as.get_details()
+    // this.name = this.head.first_name;
+    // this.pic = this.head.profile_url;
 
     
   }

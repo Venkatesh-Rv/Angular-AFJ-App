@@ -215,18 +215,32 @@
         
               <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <div class="d-flex flex-column align-items-center text-center">
-                        <img src="{{obj_data.profile_url}}" alt="Admin" class="" width="150" onerror='this.style.display = "none"'>
-                        <div class="mt-3">
-                          <h4>{{obj_data.first_name}} {{obj_data.last_name}}</h4>
-                          <p class="text font-size-sm">ADMINISTRATOR</p>
-                          <p class="text font-size-sm">{{obj_data.first_name}} {{obj_data.last_name}} , {{obj_data.address.area}}, {{obj_data.address.city}}</p>
-                          <button class="btn btn-outline-primary" routerLink="/db-update-profile">PROFILE EDIT</button>  <br> <br>
-                          <button class="btn btn-outline-primary" routerLink="/forgot-pwd">PASSWORD RESET</button>
+                  <div class="card card-widget widget-user">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header text-white" style="background: url(https://adminlte.io/themes/v3/dist/img/photo1.png) center center;">
+                      <h3 class="widget-user-username">Name</h3>
+                      <h5 class="widget-user-desc">ADMIN</h5>
+                    </div>
+                    <div class="widget-user-image">
+                      <!-- <img src="{{obj_data.profile_url}}" alt="dp"/> -->
+                      <img class="img-circle" src="https://ayishafashionjewellery.com/assets/images/sample.png" alt="User Avatar">
+                    </div>
+                    <div class="card-footer" style="background-color: white;">
+                      <div class="row">
+                        
+                        <!-- /.col -->
+                        <div class="col-sm-12">
+                          <div class="description-block">
+                            <button type="button" routerLink="/db-update-profile" class="btn btn-block btn-outline-info">EDIT <i class="fas fa-edit"></i></button> &nbsp;
+                            <button type="button" routerLink="/forgot-pwd" class="btn btn-block btn-outline-info">PASSWORD RESET <i class="fas fa-edit"></i></button>
+                          </div>
+                          <!-- /.description-block -->
                         </div>
+                        <!-- /.col -->
+                        
+                        <!-- /.col -->
                       </div>
+                      <!-- /.row -->
                     </div>
                   </div>
                   <div class="card mt-3" style="display: none;">

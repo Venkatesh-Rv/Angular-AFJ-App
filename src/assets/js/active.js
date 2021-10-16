@@ -1,12 +1,5 @@
 /* =====================================
-Template Name: Eshop
-Author Name: Naimur Rahman
-Author URI: http://www.wpthemesgrid.com/
-Description: Eshop - eCommerce HTML5 Template.
-Version:1.0
-========================================*/
-/*=======================================
-[Start Activation Code]
+
 =========================================
 	01. Mobile Menu JS
 	02. Sticky Header JS
@@ -271,11 +264,11 @@ Version:1.0
 		/*=====================================
 		15.  Video Popup JS
 		======================================*/ 
-		$('.video-popup').magnificPopup({
-			type: 'iframe',
-			removalDelay: 300,
-			mainClass: 'mfp-fade'
-		});
+		// $('.video-popup').magnificPopup({
+		// 	type: 'iframe',
+		// 	removalDelay: 300,
+		// 	mainClass: 'mfp-fade'
+		// });
 		
 		/*====================================
 			Scroll Up JS

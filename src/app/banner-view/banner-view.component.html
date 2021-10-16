@@ -1,12 +1,15 @@
 <app-header-db></app-header-db>
 <app-loader-db *ngIf="loaderbool"></app-loader-db>
 
+
+
 <div class="content-wrapper">
+  <br>
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">View Banner (Offers)</h1>
+            <h1 class="m-0 text-dark">View Banner</h1>
           </div>
           
           <div class="col-sm-6">
@@ -21,7 +24,7 @@
       </div>
       
     </div>
-    <div class="card card-primary">
+    <div class="card card-primary" style="display: none;">
       
       <nav class="navbar navbar-light">
     <div class="container-fluid">
@@ -53,67 +56,9 @@
   
 
 <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-      <table class="table table-image">
-        <thead>
-          <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr  *ngFor="let row of banner.success | paginate: { itemsPerPage: 5, 
-            currentPage: page, 
-            totalItems:totalNumber } | filter:term">
-            <td class="w-25">
-              <img src="{{row?.image_url}}" class="img-fluid img-thumbnail" alt="{{row?.name}">
-            </td>
-            <td>{{row?.name}}</td>
-            <td>{{row?.category}}</td>
-            <td>
-              <button class="btn btn-info" data-toggle="modal"
-              data-target="#exampleModal" (click)="onEdit(row); open(content)">Edit</button>
-              <button class="btn btn-danger mx-3" (click)="deletebanner(row.id)" >Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>   
-      </div>
-    </div>
-  </div>
+
   
-  <table class="table mt-3" style="display: none;">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Upload Image</th>
-        <th scope="col">Category</th>
-        <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of banner.success | paginate: { itemsPerPage: 5, 
-        currentPage: page, 
-        totalItems:totalNumber }">
-        
-        <td class="font-weight-bold">{{row?.name}}</td>
-        <td><img src="{{row?.image_url}}" width="180px" height="90px" alt="{{row?.name}}"></td>
-        <td class="font-weight-bold">{{row?.category}}</td>
-        
-        <!-- <td>{{row.id}}</td> -->
-        <td>
-          <button class="btn btn-info" data-toggle="modal"
-          data-target="#exampleModal" (click)="onEdit(row); open(content)">Edit</button>
-          <button class="btn btn-danger mx-3" (click)="deletebanner(row.id)" >Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+
   <!-- Button trigger modal -->
   <!-- Modal -->
   
@@ -125,101 +70,202 @@
   </div>
   
 
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Preview</h4>
-      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+ 
+  
+  </div>
+  <br>
+<div class="col-12">
+  <div class="card">
+    <div class="card-header">
+      <!-- <h3 class="card-title">Offers</h3> -->
+
+      <div class="card-tools">
+        <div class="input-group input-group-sm" style="width: 500px;">
+          <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-default">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div><br>
+      </div>
     </div>
-    <div class="modal-body">
-      <form>
-        <form role="form" >
-            <div class="card-body">
-              <div class="form-group">
-                <label for="exampleInputEmail1">Name</label>
-          
-                <input
-                  type="text"
-                
-                  required
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  value="{{objbanr?.name}}"
-                  
-                  placeholder="Enter Name"
-                  (click)="onNameChanged($event)"
-                  
-                />
-              </div>
-          
-              <div class="form-group">
-                <label for="exampleInputFile">Upload Image</label>
-                <div class="alert alert-light" role="alert">
-                    Upload ur Image below
+    <!-- /.card-header -->
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead class="table-warning">
+          <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+           
+            
+            <td>200</td>
+            <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
+            <td>11-7-2014</td>
+            <td><span class="tag tag-success">Approved</span></td>
+            <td>
+              <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
+              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>200</td>
+            <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"    alt="alt"></td>
+            <td>11-7-2014</td>
+            <td><span class="tag tag-success">Approved</span></td>
+            <td>
+              <button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
+              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td>200</td>
+            <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
+            <td>11-7-2014</td>
+            <td><span class="tag tag-success">Approved</span></td>
+            <td>
+              <button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
+              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    
+      
+      <div class="modal-body" style="overflow: hidden;">
+        <br>
+        <br>
+        <br>
+        <section class="content">
+          <div class="container-fluid">
+            <div>
+          <div class="card card-info">
+            <!-- /.card-header  -->
+            <div class="card-header">
+              <h3 class="card-title text-center">Banner Edit <i class="fas fa-edit"></i> </h3>
+            </div>
+            <!-- form start  (ngSubmit)="uploadBanner(uploadbannerform)"-->
+            <form role="form" #uploadbannerform="ngForm">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+        
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    ngModel
+                    (change)="onNameChanged($event)"
+                    placeholder=" Enter Name"
+                    #BannerName="ngModel"
+                    [ngClass]="{
+                      'is-invalid': uploadbannerform.submitted && !BannerName.valid
+                    }"
+                  />
+                </div>
+        
+                <div class="form-group">
+                  <label for="exampleInputFile">Upload Image</label>
+                  <div class="input-group">
+                    <div class="custom-file">
+                      <input
+                        required
+                        accept="image/*"
+                        type="file"
+                        class="custom-file-input"
+                        id="exampleInputFile"
+                        name="banner_image"
+                        #BannerImg="ngModel"
+                        ngModel
+                        (change)="onImageChanged($event)"
+                        [ngClass]="{
+                          'is-invalid': uploadbannerform.submitted && !BannerImg.valid
+                        }"
+                      />
+                      <label class="custom-file-label" for="exampleInputFile"></label>
+                    </div>
+                    <!-- <div class="input-group-append">
+                      <span class="input-group-text" id="">Upload</span>
+                    </div> -->
                   </div>
-                <div class="input-group">
-                  <div class="custom-file">
-                    <input
-                      required
-                      accept="image/*"
-                      type="file"
-                      class="custom-file-input"
-                      id="exampleInputFile"
-                      name="product"
-                      (change)="onImageChanged($event)">
-                    <label class="custom-file-label" for="exampleInputFile">{{
-                      imgName
-                    }}</label>
-                  </div>
-                  <div class="input-group-append">
-                    <span class="input-group-text" id="">Upload</span>
+                  <!-- <div class="form-group" #fgName="ngModelGroup" ngModelGroup="Des">
+                        <label for="exampleInputEmail1">features</label>
+                        <input type="email" name="features" class="form-control"ngModel  id="exampleInputEmail1" placeholder="Enter Name" (change)="onfeatureChanged($event)" > 
+                      
+                        <div>
+                            <label for="exampleInputEmail1">description</label>
+                            <input type="email" name="description" class="form-control"ngModel  id="exampleInputEmail1" placeholder="Enter Name" (change)="onDesChanged($event)">
+                           
+                        </div>
+                    </div> -->
+        
+                  <!-- <div class="form-group">
+                        <label for="exampleInputEmail1">price</label>
+                        <input type="email" name="price" class="form-control" ngModel id="exampleInputEmail1" placeholder="Enter Name" (change)="onPriceChanged($event)">
+                      </div>
+                     
+        
+                       <div class="form-group">
+                        <label for="exampleInputEmail1"> offer</label>
+                        <input type="email" name="offer" class="form-control" ngModel id="exampleInputEmail1" placeholder="Enter Name" (change)="onDiscountChanged($event)">
+                      </div> -->
+                  <br />
+                  <div class="form-group">
+                    <label>Category</label>
+                    <select
+                      class="form-control select2 select2-hidden-accessible"
+                      style="width: 100%"
+                      data-select2-id="1"
+                      tabindex="-1"
+                      aria-hidden="true"
+                      (change)="onSelectChange($event)"
+                    >
+                      <option selected="Please Select the option" data-select2-id="1 ">
+                        Please Select the option
+                      </option>
+                      <option data-select2-id="3 " value="Cosmetics">Cosmetics</option>
+                      <option data-select2-id="face" value="Fashion">
+                        Fashion
+                      </option>
+                    </select>
                   </div>
                 </div>
               </div>
-              <!-- <img [src]="imageToShow"
-     alt="Place image title"
-     *ngIf="!isImageLoading;"
-     class="my-class"> -->
-          
-              <br />
-          
-              <div class="form-group">
-                <label>Category</label>
-                <select
-                  class="form-control select2 select2-hidden-accessible"
-                  style="width: 100%"
-                  data-select2-id="1"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  (click)="onSelectChange($event)"
-                >
-                  <!-- <option
-                    selected="Please Select the option"
-                    data-select2-id="1 "
-                  >
-                    Please Select the option
-                  </option> -->
-                  <option selected="Please Select the option" data-select2-id="1 "
-                     value="{{objbanr?.category}}">
-                      {{objbanr?.category}}
-                  </option>
-                  <option data-select2-id="3 " value="Cosmetics">Cosmetics</option>
-                  <option data-select2-id="face" value="Fashion">
-                    Fashion
-                  </option>
-                </select>
+              <!-- /.card-body  [disabled]="buttonboool===true ? true : false"-->
+        
+              <div class="card-footer" style="display: flex; justify-content:center">
+                <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
+                <button type="submit" class="btn btn-outline-info"  data-dismiss="modal">
+                  Submit
+                </button>
               </div>
-            </div>
-          <button
-            type="button"
-            class="btn btn-primary"
-            (click)="editSubmit();modal.dismiss('Cross click');">Update</button>
+            </form>
+          </div>
+          <br>
           
-          </form>
-      </form>
-    </div>
+        </div>
+        </div>
+        </section>
+      </div>
+      
     
-  </ng-template>
-  
   </div>
+</div>

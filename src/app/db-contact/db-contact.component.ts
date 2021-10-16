@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-db-contact',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DbContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private as :AuthService) { }
 
   ngOnInit(): void {
+    
   }
 
 }

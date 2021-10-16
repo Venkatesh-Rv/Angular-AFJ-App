@@ -39,7 +39,7 @@ export class AuthService {
 
   login(user: { user_name: string, password: string }): Observable<boolean> {
     //console.log(user)
-    return this.http.post<any>(`${config.apiUrl}management/user/signin/`, user)
+    return this.http.post<any>(`${config.apiUrl}management/management/signin/`, user)
       .pipe(
         tap(tokens => {
           console.log(user)
@@ -129,7 +129,8 @@ export class AuthService {
       let bool=userPayload.exp > Date.now() /1000
       console.log(bool, typeof(bool))
       if(!bool){
-        this. refreshToken();
+        console.log(bool)
+        this.refreshToken();
         return true;
       }
       return bool
@@ -149,7 +150,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    
+    console.log('called')
     return this.http.post<any>(`${config.apiUrl}management/refresh/token/`, {
       'refresh_token': this.getRefreshToken()
     }).pipe(tap((tokens) => {

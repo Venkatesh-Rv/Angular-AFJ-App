@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+      <table class="table table-image">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let row of banner.success | paginate: { itemsPerPage: 5, 
+            currentPage: page, 
+            totalItems:totalNumber } | filter:term">
+            <td class="w-25">
+              <img src="{{row?.image_url}}" class="img-fluid img-thumbnail" alt="{{row?.name}">
+            </td>
+            <td>{{row?.name}}</td>
+            <td>{{row?.category}}</td>
+            <td>
+              <button class="btn btn-info" data-toggle="modal"
+              data-target="#exampleModal" (click)="onEdit(row); open(content)">Edit</button>
+              <button class="btn btn-danger mx-3" (click)="deletebanner(row.id)" >Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>   
+      </div>
+    </div>
+  </div>
+
+
+
+  <table class="table mt-3" style="display: none;">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Upload Image</th>
+        <th scope="col">Category</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of banner.success | paginate: { itemsPerPage: 5, 
+        currentPage: page, 
+        totalItems:totalNumber }">
+        
+        <td class="font-weight-bold">{{row?.name}}</td>
+        <td><img src="{{row?.image_url}}" width="180px" height="90px" alt="{{row?.name}}"></td>
+        <td class="font-weight-bold">{{row?.category}}</td>
+        
+        <!-- <td>{{row.id}}</td> -->
+        <td>
+          <button class="btn btn-info" data-toggle="modal"
+          data-target="#exampleModal" (click)="onEdit(row); open(content)">Edit</button>
+          <button class="btn btn-danger mx-3" (click)="deletebanner(row.id)" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -12,10 +12,10 @@ export class DbProdItemsComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<any>("https://afj-staging-server.herokuapp.com/management/head_start/").subscribe(res=>{
-      console.log(res)
-      this.message = res
-    })
+    // this.http.get<any>("https://afj-staging-server.herokuapp.com/head_start/").subscribe(res=>{
+    //   console.log(res)
+    //   this.message = res
+    // })
   }
 
 }

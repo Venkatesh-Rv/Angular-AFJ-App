@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Upload Banner Image</h1>
+            <h1 class="m-0 text-dark ">Upload Banner Category</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
@@ -22,8 +22,13 @@
       </div>
       <!-- /.container-fluid -->
     </div>
-    <div class="card card-primary">
+    <br>
+  <section class="content">
+    <div class="container-fluid">
+      <div>
+    <div class="card card-info">
       <!-- /.card-header  -->
+      
       <!-- form start  (ngSubmit)="uploadBanner(uploadbannerform)"-->
       <form role="form" #uploadbannerform="ngForm">
         <div class="card-body">
@@ -64,9 +69,7 @@
                     'is-invalid': uploadbannerform.submitted && !BannerImg.valid
                   }"
                 />
-                <label class="custom-file-label" for="exampleInputFile">{{
-                  imgName
-                }}</label>
+                <label class="custom-file-label" for="exampleInputFile">{{imgName}}</label>
               </div>
               <!-- <div class="input-group-append">
                 <span class="input-group-text" id="">Upload</span>
@@ -117,14 +120,19 @@
         </div>
         <!-- /.card-body  [disabled]="buttonboool===true ? true : false"-->
   
-        <div class="card-footer">
+        <div class="card-footer" style="display: flex; justify-content:center">
           <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
-          <button type="submit" class="btn btn-primary" (click)="open(content)">
+          <button type="submit" class="btn btn-outline-info" (click)="open(content)">
             Submit
           </button>
         </div>
       </form>
     </div>
+    <br>
+    
+  </div>
+  </div>
+  </section>
     <!--preview modal-->
     <ng-template #content let-modal>
       <!-- <div class="modal-header">
@@ -166,7 +174,7 @@
           class="btn btn-outline-dark "
           (click)="uploadBanner();modal.dismiss('Cross click')"
         >
-          Save
+          Save <i class="far fa-save"></i>
         </button>
       </div>
     </ng-template>

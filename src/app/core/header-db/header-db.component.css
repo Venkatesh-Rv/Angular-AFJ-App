@@ -12,6 +12,12 @@
     text-align: center !important;
 }
 
+
+/* .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+ 
+  background-color:#494E53!important;
+} */
+
 .dropdown-item {
   display: block;
   width: 100%;
