@@ -112,20 +112,21 @@ private getDismissReason(reason: any): string {
 
 
   }
+
   url: string = 'http://127.0.0.1:8000/'
   uploadBanner() {
     const uploadData = new FormData();
-    uploadData.append('name', this.name);
-    uploadData.append('category', this.selectCat);
-    uploadData.append('image', this.cover);
+    uploadData.append('banner_name', this.name);
+    // uploadData.append('category', this.selectCat);
+    uploadData.append('banner_pic', this.cover);
 
     this.loaderbool = true;
   //   for (var i of uploadData.values()) {
   //     console.log(i);
   //  }
-    this.postMethod.postData(`http://ec2-13-232-92-217.ap-south-1.compute.amazonaws.com/product/banner/create/`, uploadData).subscribe(ele => {
+    this.postMethod.postData(`https://afj-staging-server.herokuapp.com/banner/create/`, uploadData).subscribe(ele => {
       this.successmsg.SuccessLog(ele, 'ban-view')
-      for (const entry of uploadData.getAll('image'))
+      for (const entry of uploadData.getAll('banner_pic'))
     {
         console.log(entry)
     }
@@ -133,7 +134,7 @@ private getDismissReason(reason: any): string {
 
     },error => {
       this.loaderbool=false;
-      alert('Please enter the details correctly!!')
+      this.toastr.error('Please enter the details correctly!!')
       })
 
 

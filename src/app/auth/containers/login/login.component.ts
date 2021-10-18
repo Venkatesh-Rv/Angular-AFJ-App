@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(
       {
-        user_name: this.f.username.value,
+        username: this.f.username.value,
         password: this.f.password.value
       }
     )

@@ -7,6 +7,7 @@ import { SucesslogginggService } from '../services/sucessloggingg.service';
 import { BannerModel } from './banner.model';
 
 import {HttpClient} from "@angular/common/http"
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class BannerViewComponent implements OnInit {
   result;
   name: string;
   selectCat: string;
-  cover: File;
+  cover: File=null;
   imgName: string = 'Upload Image';
   changeporperty: string;
   buttonboool: boolean = true;
@@ -45,11 +46,12 @@ export class BannerViewComponent implements OnInit {
   formValue!:FormGroup;
 
   constructor(private formBuilder: FormBuilder, private ps:PostService, private successmsg:SucesslogginggService,
-    private modalService: NgbModal,private http:HttpClient) { }
+    private modalService: NgbModal,private http:HttpClient, private ts:ToastrService) { }
 
   ngOnInit(): void {
-    //this.getAllBanner();
-    this. getImageFromService();
+    this.getAllBanner();
+    console.log(this.cover)
+    //this. getImageFromService();
   }
 
   getAllBanner(){
@@ -93,6 +95,9 @@ export class BannerViewComponent implements OnInit {
 
 
   onEdit(row:any){
+    this.cover = null
+    this.imgName = 'Upload Image'
+    console.log(this.cover ===null)
     this.bannerModelObj.id = row.id;
     console.log(this.bannerModelObj.id)
     this.update(this.bannerModelObj.id)
@@ -100,7 +105,8 @@ export class BannerViewComponent implements OnInit {
 
   update(id){
     this.ps.getData().subscribe(ele => {
-      this.result= ele.success
+      console.log(ele)
+      this.result= ele.message
       console.log(this.result)
   
       this.result.forEach(ele => {
@@ -109,10 +115,10 @@ export class BannerViewComponent implements OnInit {
         if (ele.id === id) {
           console.log('hellobanner')
           this.objbanr = ele
-          this.name=this.objbanr.name;
+          this.name=this.objbanr.banner_name;
           // this.cover=this.objbanr.image.blob();
-          this.imageToShow = ele.image_url;
-          this.selectCat=this.objbanr.category;
+          this.imageToShow = ele.banner_url;
+          //this.selectCat=this.objbanr.category;
           console.log(this.cover)
           console.log(this.objbanr)
   return
@@ -141,24 +147,34 @@ export class BannerViewComponent implements OnInit {
 
    editSubmit(){
     const uploadData = new FormData();
-    uploadData.append('name', this.name);
-    // uploadData.append(`${this.changeporperty}_cosmetics_image`, this.cover, this.cover.name);
-   
-    uploadData.append('image', this.cover);
-    // uploadData.append('image',this.imageToShow)
-    uploadData.append('category', this.selectCat);
+    console.log(this.cover ===null)
+
+    let check = this.cover === null
+    if(check === true){
+      uploadData.append('banner_name', this.name);
+    }
+    else{
+      uploadData.append('banner_name', this.name);
+      uploadData.append('banner_pic', this.cover);
+    }
 
     this.loaderbool = true;
   //   for (var i of uploadData.values()) {
   //     console.log(i);
   //  }
-   var send ='http://ec2-13-232-92-217.ap-south-1.compute.amazonaws.com/product/banner/update/?banner_id='+ this.bannerModelObj.id;
+   var send ='https://afj-staging-server.herokuapp.com/banner/update/?banner_id='+ this.bannerModelObj.id;
     this.ps.updateData(send, uploadData).subscribe(ele => {
-      this.successmsg.SuccessLog(ele, 'banner')
+      this.loaderbool =false;
+      console.log(ele)
+      this.getAllBanner();
+      this.ts.success("Updated Successfully")
+      
+      //this.successmsg.SuccessLog(ele, 'ban-view')
 
     },error => {
       this.loaderbool=false;
       alert('Please enter the details correctly!!')
+      console.log(send)
       })
 
    }

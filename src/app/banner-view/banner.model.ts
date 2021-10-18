@@ -1,8 +1,8 @@
 export class BannerModel {
     id: number = 0;
-    name: string = '';
-    image:File;
-    category: string = '';
+    banner_name: string = '';
+    banner_pic:File;
+    // category: string = '';
 }
 
 // export interface ProductModel {

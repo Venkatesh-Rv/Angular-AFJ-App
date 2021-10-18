@@ -21,7 +21,7 @@ export class DbLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.login = this.fb.group({
-      user_name:['',[Validators.required,Validators.email]],
+      username:['',[Validators.required,Validators.email]],
       password:['',[Validators.required,Validators.minLength(8)]]
     })
   }
@@ -53,7 +53,7 @@ export class DbLoginComponent implements OnInit {
     this.loaderbool = true
     this.authService.login(
       {
-        user_name: this.f.user_name.value,
+        username: this.f.username.value,
         password: this.f.password.value
       }
     )

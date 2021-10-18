@@ -65,10 +65,10 @@
   
   <br>
   <!---->
-  <div class="d-flex justify-content-center">
+  <!-- <div class="d-flex justify-content-center">
     <pagination-controls  maxSize='5' directionLinks='true' (pageChange)="page = $event"></pagination-controls>
   </div>
-  
+   -->
 
  
   
@@ -99,43 +99,24 @@
             <th>ID</th>
             <th>Image</th>
             <th>Name</th>
-            <th>Category</th>
+            
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr  *ngFor="let row of banner.message">
            
             
-            <td>200</td>
-            <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
-            <td>11-7-2014</td>
-            <td><span class="tag tag-success">Approved</span></td>
+            <td>{{row?.created_by}}</td>
+            <td><img class="img img-fluid img-thumbnail" src="{{row?.banner_url}}"   alt="alt"></td>
+            <td>{{row?.banner_name}}</td>
+           
             <td>
-              <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
+              <button type="button" (click)="onEdit(row); open(content)"  class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
               <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
-          <tr>
-            <td>200</td>
-            <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"    alt="alt"></td>
-            <td>11-7-2014</td>
-            <td><span class="tag tag-success">Approved</span></td>
-            <td>
-              <button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>200</td>
-            <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
-            <td>11-7-2014</td>
-            <td><span class="tag tag-success">Approved</span></td>
-            <td>
-              <button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
-              <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-            </td>
-          </tr>
+       
         </tbody>
       </table>
     </div>
@@ -269,3 +250,62 @@
     
   </div>
 </div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+
+          <input
+            type="text"
+
+            required
+            class="form-control"
+            id="exampleInputEmail1"
+            value="{{objbanr?.banner_name}}"
+
+            placeholder="Enter Name"
+            (click)="onNameChanged($event)"
+
+          />
+        </div>
+<br>
+<img class="img img-fluid img-thumbnail" src="{{objbanr?.banner_url}}"   alt="alt">
+        <div class="form-group">
+          <!-- <label for="exampleInputFile">Upload Image</label>
+                <div class="alert alert-light" role="alert">
+                    Upload ur Image below
+                  </div> -->
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input
+                      required
+                      accept="image/*"
+                      type="file"
+                      class="custom-file-input"
+                      id="exampleInputFile"
+                      name="product"
+                      (change)="onImageChanged($event)">
+                    <label class="custom-file-label" for="exampleInputFile">{{
+                      imgName
+                    }}</label>
+                  </div>
+                </div>
+        </div>
+        </div>
+        
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"  (click)="editSubmit();modal.dismiss('Cross click');">Update</button>
+  </div>
+</ng-template>

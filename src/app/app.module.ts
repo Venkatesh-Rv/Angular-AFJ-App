@@ -109,22 +109,15 @@ const routes: Routes = [
   { path: 'forgot-pwd', component: DbForgotPwdComponent},
   { path: 'reset-pwd', component: DbResetPwdComponent },
   
-  { path: 'ban-upload', component: BannerUploadComponent},
-  { path: 'ban-view', component: BannerViewComponent},
-  { path: 'add-prod', component: ProductDbComponent},
-  { path: 'view-prod', component: DbProdItemsComponent},
-  { path: 'db-profile', component: DbUserProfileComponent },
-  { path: 'db-update-profile', component: DbProfileUpdateComponent},
-  { path: 'db-contact', component: DbContactComponent},
-
+ 
   { path: 'login', component: DbLoginComponent,canActivate: [AuthGuard]},
-  // { path: 'ban-upload', component: BannerUploadComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
-  // { path: 'ban-view', component: BannerViewComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
-  // { path: 'add-prod', component: ProductDbComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
-  // { path: 'view-prod', component: DbProdItemsComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
-  // { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
-  // { path: 'db-update-profile', component: DbProfileUpdateComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
-  // { path: 'db-contact', component: DbContactComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'ban-upload', component: BannerUploadComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'ban-view', component: BannerViewComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'add-prod', component: ProductDbComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'view-prod', component: DbProdItemsComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
+  { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'db-update-profile', component: DbProfileUpdateComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'db-contact', component: DbContactComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
 ]
 
 @NgModule({
@@ -193,7 +186,7 @@ const routes: Routes = [
     NgxPaginationModule,
     Ng2SearchPipeModule,
     ToastrModule.forRoot({
-      timeOut:1500,
+      timeOut:3500,
       progressBar:true,
       progressAnimation:'increasing',
       preventDuplicates:true

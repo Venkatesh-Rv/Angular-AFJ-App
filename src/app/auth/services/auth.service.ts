@@ -37,9 +37,9 @@ export class AuthService {
     return this.http.put(url, getData, {observe: 'response'})
   }
 
-  login(user: { user_name: string, password: string }): Observable<boolean> {
+  login(user: { username: string, password: string }): Observable<boolean> {
     //console.log(user)
-    return this.http.post<any>(`${config.apiUrl}management/management/signin/`, user)
+    return this.http.post<any>(`${config.apiUrl}signin/`, user)
       .pipe(
         tap(tokens => {
           console.log(user)
@@ -60,7 +60,7 @@ export class AuthService {
       }
           console.log(tokens)
           
-          this.doLoginUser(user.user_name, this.send)
+          this.doLoginUser(user.username, this.send)
           this.ts.success("Logged In.")
         }),
         mapTo(true),
@@ -102,7 +102,7 @@ export class AuthService {
   // }
 
   logout(){
-    this.http.get<any>('https://afj-staging-server.herokuapp.com/management/user/logout/').subscribe(data => {
+    this.http.get<any>('https://afj-staging-server.herokuapp.com/user/logout/').subscribe(data => {
             this.ts.success(data.message)
             console.log(data.message)
             this.doLogoutUser();
@@ -151,7 +151,7 @@ export class AuthService {
 
   refreshToken() {
     console.log('called')
-    return this.http.post<any>(`${config.apiUrl}management/refresh/token/`, {
+    return this.http.post<any>(`${config.apiUrl}refresh​/token​/`, {
       'refresh_token': this.getRefreshToken()
     }).pipe(tap((tokens) => {
       console.log("rt works"+ tokens)

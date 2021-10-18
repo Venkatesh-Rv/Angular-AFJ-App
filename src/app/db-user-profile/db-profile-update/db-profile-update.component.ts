@@ -34,7 +34,7 @@ export class DbProfileUpdateComponent implements OnInit {
       phone_number: [""],
       address1: [""],
       address2: [""],
-      password: ["", Validators.required],
+      // password: ["", Validators.required],
       profile_pic: null
     })
     this.edit = this.as.get_details();
@@ -89,16 +89,39 @@ export class DbProfileUpdateComponent implements OnInit {
     console.log(this.prof_update)
     this.loaderbool = true;
     let uploadData = new FormData();
+    let check = this.cover === null
+    if(check === true){
     uploadData.append('first_name', this.f.first_name.value);
     uploadData.append('last_name', this.f.last_name.value);
     uploadData.append('email_id', this.f.email_id.value);
     uploadData.append('phone_number', this.f.phone_number.value);
     this.onDesChanged();
     console.log(this.address);
-    //uploadData.append('address', JSON.stringify(this.address));
-    uploadData.append('password', this.f.password.value);
-    //uploadData.append('profile_pic',null);
-    console.log(this.cover)
+    uploadData.append('address', JSON.stringify( this.address));
+    }
+    else{
+      uploadData.append('first_name', this.f.first_name.value);
+      uploadData.append('last_name', this.f.last_name.value);
+      uploadData.append('email_id', this.f.email_id.value);
+      uploadData.append('phone_number', this.f.phone_number.value);
+      this.onDesChanged();
+      console.log(this.address);
+      uploadData.append('address', JSON.stringify( this.address));
+      
+      uploadData.append('profile_pic', this.cover);
+      console.log(this.cover)
+      
+    }
+    // uploadData.append('first_name', this.f.first_name.value);
+    // uploadData.append('last_name', this.f.last_name.value);
+    // uploadData.append('email_id', this.f.email_id.value);
+    // uploadData.append('phone_number', this.f.phone_number.value);
+    // this.onDesChanged();
+    // console.log(this.address);
+    // uploadData.append('address', JSON.stringify( this.address));
+    
+    // uploadData.append('profile_pic', this.cover);
+    // console.log(this.cover)
     let getdata = []
     uploadData.forEach((value: any, key) => {
       let obj = { 'key': key, 'value': value }
@@ -113,8 +136,7 @@ export class DbProfileUpdateComponent implements OnInit {
     console.log(object)
 
 
-
-    this.as.update_adminprofile(`https://afj-staging-server.herokuapp.com/management/update/owner/profile`, object)
+    this.as.update_adminprofile(`https://afj-staging-server.herokuapp.com/management/update/owner/profile/`, uploadData)
       .subscribe(
         ele => {
           console.log(ele)
@@ -137,11 +159,12 @@ export class DbProfileUpdateComponent implements OnInit {
             console.log(this.update_resp)
 
             this.as.owner_data(this.update_resp)
+            this.loaderbool = false;
 
             uploadData.forEach((value, key) => {
               console.log(key + ":" + value)
             });
-            this.loaderbool = false;
+            
             this.ts.success("Profile Updated")
             console.log(uploadData)
           }
@@ -170,9 +193,9 @@ export class DbProfileUpdateComponent implements OnInit {
 
         , error => {
           this.loaderbool = false;
-          uploadData.forEach((value, key) => {
-            console.log(key + ":" + value)
-          });
+          // uploadData.forEach((value, key) => {
+          //   console.log(key + ":" + value)
+          // });
           //this.ts.info()
           this.ts.error(error.status)
 

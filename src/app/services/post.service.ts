@@ -24,6 +24,14 @@ export class PostService {
 
   }
 
+  private storeProd(data){
+    localStorage.setItem('product', JSON.stringify(data)); 
+  }
+
+  getProd(){
+    return JSON.parse(localStorage.getItem('product')); 
+  }
+
   updateData(url, getData) {
 
     return this.http.put(url, getData)
@@ -35,7 +43,7 @@ export class PostService {
   }
 
   getData(){
-    return this.http.get<any>("http://ec2-13-232-92-217.ap-south-1.compute.amazonaws.com/product/banner/get/all/record/")
+    return this.http.get<any>("https://afj-staging-server.herokuapp.com/banner/all_data/")
       .pipe(map((res: any) => {
         return res;
       }))

@@ -102,7 +102,7 @@
               />
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="exampleInputEmail1">Password</label>
     
                 <input
@@ -113,7 +113,7 @@
                   formControlName="password"
                   placeholder="  Enter Password"
                 />
-              </div>
+              </div> -->
 
             <div class="form-group">
                 <label for="exampleInputFile">Upload Display Picture</label>
@@ -129,7 +129,7 @@
                       
                       (change)=" onImageChanged($event)"
                       >
-                    <label class="custom-file-label" for="exampleInputFile" placeholder=' Upload'></label>
+                    <label class="custom-file-label" for="exampleInputFile" placeholder=' Upload'>{{imgName}}</label>
                   </div>
                   <!-- <div class="input-group-append">
                     <span class="input-group-text" id="">Upload</span>

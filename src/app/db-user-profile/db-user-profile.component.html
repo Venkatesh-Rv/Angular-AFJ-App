@@ -217,13 +217,13 @@
                 <div class="col-md-4 mb-3">
                   <div class="card card-widget widget-user">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header text-white" style="background: url(https://adminlte.io/themes/v3/dist/img/photo1.png) center center;">
-                      <h3 class="widget-user-username">Name</h3>
-                      <h5 class="widget-user-desc">ADMIN</h5>
+                    <div class="widget-user-header text-white" style="background: url() center center;">
+                      <h3 class="widget-user-username text-dark">{{obj_data.first_name}} {{obj_data.last_name}}</h3>
+                      <h5 class="widget-user-desc text-dark">ADMIN</h5>
                     </div>
                     <div class="widget-user-image">
                       <!-- <img src="{{obj_data.profile_url}}" alt="dp"/> -->
-                      <img class="img-circle" src="https://ayishafashionjewellery.com/assets/images/sample.png" alt="User Avatar">
+                      <img class="img-circle" src="{{obj_data.profile_url}}" alt="User Avatar">
                     </div>
                     <div class="card-footer" style="background-color: white;">
                       <div class="row">

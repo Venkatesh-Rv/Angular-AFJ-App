@@ -128,12 +128,17 @@ export class ProductDbComponent implements OnInit {
     this.loaderbool = true;
     this.loaderbool =false;
 
-    this.postMethod.postData(`http://ec2-13-232-92-217.ap-south-1.compute.amazonaws.com/product/create/`, uploadData)
+    this.postMethod.postData(`https://afj-staging-server.herokuapp.com/product/create/`, uploadData)
     .subscribe(
       ele =>{ this.successmsg.SuccessLog(ele, 'view-prod')
     console.log(uploadData)
     // window.location.reload();
+
+    for (let key in ele) {
+      this.allproductData = ele[key];
+      // this.postMethod.getProd()
   }
+}
     
     ,error => {
       this.loaderbool=false;
@@ -177,7 +182,9 @@ export class ProductDbComponent implements OnInit {
   getAllProduct(){
     this.postMethod.getProduct().subscribe(res=>{
       console.log(res)
-      this.allproductData =res;
+      for (let key in res) {
+        this.allproductData = res[key];
+      }
     })
   }
 

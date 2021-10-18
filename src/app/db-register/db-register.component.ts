@@ -129,7 +129,7 @@ console.log(uploadData)
     }
     if(ele.status === 201){
       this.loaderbool = false;
-      this.ts.warning(this.msg)
+      this.ts.success("Owner Created Successfully")
       this.router.navigate(['/login'])
       console.log(this.msg)
     }

@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let row of banner.success | paginate: { itemsPerPage: 5, 
+          <tr  *ngFor="let row of banner.message | paginate: { itemsPerPage: 5, 
             currentPage: page, 
             totalItems:totalNumber } | filter:term">
             <td class="w-25">
