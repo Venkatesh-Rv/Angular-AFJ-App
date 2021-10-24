@@ -14,7 +14,7 @@ export const PasswordStrengthValidator = function (control: AbstractControl): Va
   let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
   if (upperCaseCharacters.test(value) === false || lowerCaseCharacters.test(value) === false || numberCharacters.test(value) === false || specialCharacters.test(value) === false) {
     return {
-      passwordStrength: `Password must contain the following: numbers, lowercase letters, uppercase letters, or special characters.`
+      passwordStrength: `Password must contain the following: numbers, lowercase letters, uppercase letters, and special characters.`
     }
 
   }

@@ -34,16 +34,16 @@ export class DbRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.register = this.fb.group({
       first_name: ["",[Validators.required,Validators.minLength(4)]],
-      last_name: [null,Validators.minLength(4)],
+      // last_name: [null],
       email_id: ["",[Validators.required, Validators.email]],
       phone_number: ["",[Validators.required,Validators.minLength(10)]],
       address1: ["",Validators.required],
-      address2: ["",Validators.required],
-      profile_pic: [null,Validators.required],
+      // address2: ["",Validators.required],
+      // profile_pic: [null,Validators.required],
       password: [null, Validators.compose([
         Validators.required, Validators.minLength(8), PasswordStrengthValidator])],
       cpassword: [null, Validators.compose([
-        Validators.required, Validators.minLength(8), PasswordStrengthValidator])]
+        Validators.required])]
     },
       {
         validator: ConfirmedValidator('password', 'cpassword')
@@ -57,8 +57,8 @@ export class DbRegisterComponent implements OnInit {
   get f() { return this.register.controls; }
 
   onDesChanged() {
-    this.address.area = this.f.address1.value;
-    this.address.city = this.f.address2.value;
+    this.address.pincode = this.f.address1.value;
+    //this.address.city = this.f.address2.value;
   }
 
   onImageChanged(event) {
@@ -96,23 +96,25 @@ export class DbRegisterComponent implements OnInit {
   //ordinary
 
   create() {
-  //   this.submitted = true;
+    this.submitted = true;
 
-  //   //validation check
-  //   if (this.register.invalid) {
-  //     return;
-  // }
+    //validation check
+    if (this.register.invalid) {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      this.ts.info("Kindly Fill Mandatory Details..!!")
+      return;
+  }
     this.loaderbool = true;
     let uploadData = new FormData();
     uploadData.append('first_name', this.f.first_name.value);
-    uploadData.append('last_name', this.f.last_name.value);
+    // uploadData.append('last_name', this.f.last_name.value);
     uploadData.append('email_id', this.f.email_id.value);
     uploadData.append('phone_number', this.f.phone_number.value);
     this.onDesChanged();
     console.log(this.address);
     uploadData.append('address', JSON.stringify(this.address));
     uploadData.append('password', this.f.cpassword.value);
-    uploadData.append('profile_pic', this.cover);
+    // uploadData.append('profile_pic', this.cover);
 console.log(uploadData)
     // uploadData.forEach((value, key) => {
     //   console.log(key + ":" + value)

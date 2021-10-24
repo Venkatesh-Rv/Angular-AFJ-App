@@ -166,6 +166,7 @@ export class DbProfileUpdateComponent implements OnInit {
             });
             
             this.ts.success("Profile Updated")
+            this.router.navigate(["/db-profile"])
             console.log(uploadData)
           }
           else if (ele.status === 206) {

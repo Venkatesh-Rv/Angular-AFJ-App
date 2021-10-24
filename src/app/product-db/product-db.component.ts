@@ -8,6 +8,8 @@ import { SucesslogginggService } from "../services/sucessloggingg.service"
 import { ProductModel } from './createproduct.model';
 import { ToastrService } from 'ngx-toastr';
 
+import { FileUpload } from 'primeng/fileupload';
+
 
 @Component({
   selector: 'app-product-db',
@@ -16,11 +18,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductDbComponent implements OnInit {
 
+  public Product: FormGroup;
   name: string;
   cover: File;
   reader = new FileReader();
   description: any = {};
   loaderbool: boolean = false;
+  check:boolean = false;
   price: any;
   Discount: any;
   afterDisc:any;
@@ -31,7 +35,7 @@ export class ProductDbComponent implements OnInit {
 
   //
   imageURL: string;
-  imgName: string = 'Upload Image'
+  imgName: string = ''
   formValue: FormGroup;
   productModelObj : ProductModel = new ProductModel();
   allproductData:any;
@@ -46,16 +50,39 @@ export class ProductDbComponent implements OnInit {
     private modalService: NgbModal, private router:Router,private ts:ToastrService) { }
 
   ngOnInit(): void {
-    this.getAllProduct();
+    //this.getAllProduct();
+
+    this.Product = this.fb.group({
+      name: [""],
+      category: [""],
+      price:[""],
+      description: [""],
+      discount: [""],
+      product_pic:[""]
+      
+    }
+      
+    )
+
   }
 
-
+  get f() { return this.Product.controls; }
   
   onNameChanged(event: any) {
 
     this.name = event.target.value;
     console.log(this.name)
 
+  }
+  uploadedFiles: any[] = [];
+  onUpload(event) {
+ 
+    for(let file of event.files) {
+      this.uploadedFiles.push(file);
+   }
+     //this will fire toast notification after image upload
+    //  this.messageService.add({severity: 'success', summary: 'File Uploaded', detail: ''});
+    console.log(this.uploadedFiles)
   }
 
   onFileSelect(event) {
@@ -66,6 +93,25 @@ export class ProductDbComponent implements OnInit {
     console.log(this.cover);
     this.imgName = this.cover.name
 
+    
+    var new_str = this.imgName.substr(-4);
+    var new_str1 = this.imgName.substr(-5);
+    if(new_str === '.jpg'){
+      (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+      return this.check=false;
+      
+  }
+  else if(new_str1 === '.jpeg'){
+    (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+    return this.check=false;
+
+  }
+  else{
+    this.check = true;
+    (<HTMLInputElement> document.getElementById("vc")).disabled = true;
+    this.ts.error("Format is not supported")
+  }
+
     // const file=(event.target as HTMLInputElement).files[0];
     // this.formValue.patchValue({
     //   sampleFile: this.cover
@@ -74,8 +120,9 @@ export class ProductDbComponent implements OnInit {
   }
 
 
-  onDesChanged(event) {
-    this.description.des = event.target.value;
+  onDesChanged() {
+    this.description.about = this.f.description.value;
+    //this.address.city = this.f.address2.value;
   }
 
 
@@ -88,12 +135,20 @@ export class ProductDbComponent implements OnInit {
     this.Discount = event.target.value;
   }
 
+  preview(){
+    this.name = this.f.name.value
+    this.price = this.f.price.value
+    this.Discount = this.f.discount.value
+  }
+
   discount(){
-    let bill= this.price;
-    var discount= this.Discount;
+    this.preview();
+    let bill= this.f.price.value;
+    var discount= this.f.discount.value;
     var afterDiscount = bill - (bill * discount / 100);
     this.afterDisc = afterDiscount;
-    this.ts.success(''+ afterDiscount);
+    // this.ts.success(''+ afterDiscount);
+    this.ts.success(this.afterDisc)
     console.log("After discount your price is: " + afterDiscount);
   }
   
@@ -108,42 +163,56 @@ export class ProductDbComponent implements OnInit {
 
   create() {
     let uploadData = new FormData();
-    uploadData.append('name', this.name);
-    console.log(this.description)
-
-    console.log(this.changeporperty);
-    console.log(this.selectCat)
+    uploadData.append('name', this.f.name.value);
 
     // uploadData.append(`${this.changeporperty}_cosmetics_image`, this.cover, this.cover.name);
-    uploadData.append('image', this.cover);
-    uploadData.append('description', JSON.stringify(this.description));
-    uploadData.append('price', this.price);
-    uploadData.append('offer', this.afterDisc);
     uploadData.append('category', this.selectCat);
+    uploadData.append('price', this.f.price.value);
+    this.onDesChanged();
+    console.log(this.description)
+    uploadData.append('description', JSON.stringify(this.description));
+    uploadData.append('discount', this.afterDisc);
+    uploadData.append('product_pic', this.cover);
 
     uploadData.forEach((value,key) => {
       console.log(key+":"+value)
     });
 
     this.loaderbool = true;
-    this.loaderbool =false;
-
+    
+    
     this.postMethod.postData(`https://afj-staging-server.herokuapp.com/product/create/`, uploadData)
     .subscribe(
-      ele =>{ this.successmsg.SuccessLog(ele, 'view-prod')
-    console.log(uploadData)
-    // window.location.reload();
-
-    for (let key in ele) {
-      this.allproductData = ele[key];
-      // this.postMethod.getProd()
-  }
+      ele =>{
+        if(ele.status === 201){
+          
+          for (let key in ele) {
+            this.allproductData = ele[key];
+        }
+        console.log(this.allproductData)
+         this.postMethod.storeProd(this.allproductData)
+         this.loaderbool = false;
+          this.ts.success("Product Created Successfully")
+          
+          this.router.navigate(['/view-prod'])
+        }
+        else if(ele.status === 206){
+          console.log('pc check');
+          for (let key in ele.body) {
+            console.log(ele.body[key])
+            var pc = ele.body[key]
+          }
+          console.log(pc)
+          this.loaderbool = false;
+          this.ts.info(pc)
+        }   
+  
 }
     
     ,error => {
       this.loaderbool=false;
       alert('Please enter the details correctly!!')
-      this.router.navigate(['add-prod'])
+      //this.router.navigate(['add-prod'])
       // window.location.href = 'URL';
       })
 

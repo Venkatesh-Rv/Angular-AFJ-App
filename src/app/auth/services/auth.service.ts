@@ -195,6 +195,7 @@ export class AuthService {
   }
 
   private getRefreshToken() {
+    console.log('got')
     return localStorage.getItem(this.REFRESH_TOKEN);
   }
 

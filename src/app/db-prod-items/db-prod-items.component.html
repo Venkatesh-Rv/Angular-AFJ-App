@@ -21,93 +21,90 @@
       <!-- /.container-fluid -->
     </div>
     <br>
+   
+    
     <div class="col-12">
       <div class="card">
-        <div class="card-header">
-          <!-- <h3 class="card-title">Offers</h3> -->
-    
-          <div class="card-tools">
-            <div class="input-group input-group-sm" style="width: 500px;">
-              <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-    
-              <div class="input-group-append">
-                <button type="submit" class="btn btn-default">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div><br>
-          </div>
-        </div>
-        <!-- /.card-header -->
+        <!-- <h5>Single Column</h5> -->
+        <!-- <div class="p-mb-3">
+          <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" styleClass="p-button-text"></p-button>
+          <p-button type="button" icon="pi pi-refresh" (click)="reset()" styleClass="p-button-text"></p-button>
+          <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" styleClass="p-button-text"></p-button>
+      </div> -->
+      
+      
+        <p-table #dt1 [value]="productshow" responsiveLayout="scroll" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10]"
+        selectionMode="single" [(selection)]="selectedCustomer" dataKey="id" styleClass="p-datatable-customers"
+               stateStorage="local" stateKey="statedemo-local">
+      
+          <ng-template pTemplate="header">
+              <tr>
+                  <!-- <th style="width: 3rem"></th> -->
+                  <th>Image &nbsp;<i class="pi pi-images"></i></th>
+                  <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                  <th pSortableColumn="category">Category<p-sortIcon field="category"></p-sortIcon></th>
+                  <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
+                  <th pSortableColumn="discount">Discount<p-sortIcon field="discount"></p-sortIcon></th>
+                  <th pSortableColumn="description">Description<p-sortIcon field="description"></p-sortIcon></th>
+                  <th pSortableColumn="created_at">Created At<p-sortIcon field="created_at"></p-sortIcon></th>
+                  <th>Actions</th>
+              </tr>
+              <!-- <tr>
+                <th>
+                    
+                </th>
+                <th>
+                    
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'name', 'contains')" [value]="dt1.filters['name']?.value" placeholder="Search" class="p-inputtext p-component p-element p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" (input)="dt1.filter($event.target.value, 'created_at', 'contains')" [value]="dt1.filters['created_at']?.value" placeholder="Search" class="p-inputtext p-component p-element p-column-filter">
+                </th>
+                <th>
+                  <button pButton pRipple type="button" icon="pi pi-file-excel" class="p-button-rounded p-button-warning p-button-outlined" (click)="exportExcel()"></button>
+                </th>
+            </tr> -->
+          </ng-template>
+          <ng-template pTemplate="body" let-productshow let-expanded="expanded">
+              <tr>
+                <!-- <td>
+                  <button type="button" pButton pRipple [pRowToggler]="productshow" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+              </td> -->
+                <td><img src="{{productshow.product_url}}" alt="img" width="100" height="67" style="border-radius: 6px;" class="p-shadow-4" /></td> 
+                <td>{{productshow.name}}</td>
+                <td>{{productshow.category}}</td>
+                <td>{{productshow.price}}</td>
+                <td>{{productshow.discount}}</td>
+                <td>{{productshow.description.about}}</td>
+                <td>{{productshow.created_at}}</td>
+                <td>
+                  <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined" (click)="onEdit(productshow); open(content)"></button>
+                 &nbsp; <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-primary p-button-outlined" (click)="onEdit(productshow); showModalDialog()"></button>
+                </td>
+                
+              </tr>
+          </ng-template>
+      
+        <!-- <ng-template pTemplate="rowexpansion">
+      
+         
+        </ng-template> -->
+      
+          <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+         
+      </p-table>
+      
        
-        <div class="card-body table-responsive p-0">
-          <table class="table table-hover text-nowrap">
-            <thead class="table-warning">
-              <tr>
-                <th>ID</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Offer Price</th>
-                <th>Category</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>200</td>
-                <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
-                <td>Name</td>
-                <td>Head accessories</td>
-                <td>899</td>
-                <td>799 &nbsp; <span class="badge bg-danger">15%</span></td>
-                <td>Head accessories</td>
-                <td><button type="button"  data-toggle="modal" data-target="#exampleModal" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
-                  <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
-              </tr>
-              <tr>
-                <td>200</td>
-                <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
-                <td>Name</td>
-                <td>Head accessories</td>
-                <td>899</td>
-                <td>799&nbsp; <span class="badge bg-danger">15%</span></td>
-                <td>Head accessories</td>
-                <td><button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
-                  <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
-              </tr>
-              <tr>
-                <td>200</td>
-                <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
-                <td>Name</td>
-                <td>Head accessories</td>
-                <td>899</td>
-                <td>799&nbsp; <span class="badge bg-danger">15%</span></td>
-                <td>Head accessories</td>
-                <td><button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
-                  <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
-              </tr>
-              <tr>
-                <td>200</td>
-                <td><img class="img img-fluid img-thumbnail" src="https://ayishafashionjewellery.com/assets/images/AFJ-Images/neck.jpg"   alt="alt"></td>
-                <td>Name</td>
-                <td>Head accessories</td>
-                <td>899</td>
-                <td>799&nbsp; <span class="badge bg-danger">15%</span></td>
-                <td>Head accessories</td>
-                <td><button type="button" class="btn btn-secondary"><i class="fas fa-edit"></i></button>&nbsp;
-                  <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
-                  
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- /.card-body -->
       </div>
-    </div>
-    
-    <!--preview modal-->
+      </div>
    
   
   </div>
@@ -292,4 +289,176 @@
   </div>
 
 
+      <!-- edit product modal (update form) -->
+      <ng-template #content let-modal>
+        <div class="modal-header">
+          <!-- <h4 class="modal-title" id="modal-basic-title">Edit Product</h4> -->
+          <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+          <form role="form" [formGroup]="ProductUp">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Name</label>
+          
+                <input
+                  type="text"
+                
+                  required
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  
+                  formControlName="name"
+                  placeholder="Enter Name"
+                  
+                  
+                />
+              </div>
+          
+              <div class="form-group">
+                <label for="exampleInputFile">Upload Image</label>
+                <div class="input-group">
+                  <div class="custom-file">
+                    <input
+                      required
+                      accept="image/*"
+                      type="file"
+                      class="custom-file-input"
+                      id="exampleInputFile"
+                      name="product"
+                      (change)="onFileSelect($event)">
+                    <label class="custom-file-label" for="exampleInputFile">{{
+                      imgName
+                    }}</label>
+                  </div>
+                  <!-- <div class="input-group-append">
+                    <span class="input-group-text" id="">Upload</span>
+                  </div> -->
+                </div>
+              </div>
+          
+              <br />
+          
+              <div class="form-group">
+                <label for="exampleInputEmail1">Description</label>
+          
+                <input
+                  type="text"
+                
+                  required
+                  class="form-control"
+                  formControlName = "description"
+                  placeholder="Enter "
+                />
+              </div>
+          
+              <div class="form-group">
+                <label for="exampleInputEmail1">Price</label>
+          
+                <input
+                  type="number"
+                  
+                  required
+                  class="form-control"
+                  formControlName = "price"
+                  placeholder="Enter Price"
+                />
+              </div>
+          
+              <div class="form-group">
+                <label for="exampleInputEmail1">Discount</label>
+          
+                <input
+                  type="number"
+                 
+                  required
+                  class="form-control"
+                  formControlName = "discount"
+                  placeholder="Enter discount %"
+                />
+              </div>
+          
+              <div class="form-group">
+                <label>Category</label>
+                <select
+                  class="form-control select2 select2-hidden-accessible"
+                  style="width: 100%"
+                  data-select2-id="1"
+                  tabindex="-1"
+                  aria-hidden="true"
+                  formControlName = "category"
+                  (change)="onSelectChangeedit($event)"
+                >
+                  <!-- <option
+                    selected="Please Select the option"
+                    data-select2-id="1 "
+                  >
+                    Please Select the option
+                  </option> -->
+
+                  <option  value="{{this.catsel}}" selected>
+                    {{this.catsel}}
+                  </option>
+                  
+                  <option  value="Forehead accessories">
+                    Forehead accessories
+                  </option>
+                  <option  value="Eye accessories">
+                    Eye accessories
+                  </option>
+                  <option  value="Ear accessories">
+                    Ear accessories
+                  </option>
+                  <option  value="Hand accessories">
+                    Hand accessories
+                  </option>
+                  <option  value="Finger accessories">
+                    Finger accessories
+                  </option>
+                  <option  value="Arm accessories">
+                    Arm accessories
+                  </option>
+                  <option  value="Wrist accessories">
+                    Wrist accessories
+                  </option>
+                  <option  value="Hip accessories">
+                    Hip accessories
+                  </option>
+                  <option  value="Masonry accessories">
+                    Masonry accessories
+                  </option>
+                  <option  value="Toe accessories">
+                    Toe accessories
+                  </option>
+                  <option  value="Ankle accessories">
+                   Ankle accessories
+                  </option>
+                  <option  value="Floral accessories">
+                    Floral accessories
+                   </option>
+                </select>
+              </div>
+            </div>
+            <div class="card-footer" style="display: flex; justify-content:center">
+          <button
+            type="button"
+            class="btn btn-primary"
+           (click)="editSubmit()">Update</button>
+          </div>
+          </form>
+        </div>
+        
+      </ng-template>
+
+      <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+      [draggable]="false" [resizable]="false" [closable]="false">
+      
+        <img class="d-block w-50 peinture-ombre-interne-fine"  src="{{ productModelObj.product_url}}" alt="pp">
+      
+          <ng-template pTemplate="footer">
+          <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
+          </ng-template>
+  </p-dialog>
  

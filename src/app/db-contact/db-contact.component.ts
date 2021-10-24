@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth/services/auth.service';
 
 @Component({
@@ -8,10 +9,13 @@ import { AuthService } from '../auth/services/auth.service';
 })
 export class DbContactComponent implements OnInit {
 
-  constructor(private as :AuthService) { }
+  constructor(private as :AuthService, private ts:ToastrService) { }
 
   ngOnInit(): void {
     
+  }
+  contact(){
+    this.ts.success("Your Response have been submitted")
   }
 
 }

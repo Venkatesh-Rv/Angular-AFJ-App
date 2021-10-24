@@ -11,6 +11,9 @@ import { LoginComponent } from './auth/containers/login/login.component';
 import { FilterPipe } from './banner-view/filter.pipe';
 import { ConfirmEqualValidatorDirective } from "./appConfirmEqualValidator.directive"
 
+import {TableModule} from 'primeng/table';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { CurrencyPipe,CommonModule  } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -28,6 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import { ToastrModule } from 'ngx-toastr'
 import { ButtonModule } from 'primeng/button';
+import {FileUploadModule} from 'primeng/fileupload';
+import {DialogModule} from 'primeng/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductViewComponent } from './product-view/product-view.component';
@@ -179,7 +184,10 @@ const routes: Routes = [
     HttpClientModule,
     MatCarouselModule.forRoot(),
     CarouselModule,
+    TableModule,
     ButtonModule,
+    DialogModule,
+    FileUploadModule,
     NgbModule,
     FontAwesomeModule,
     MatSelectModule,

@@ -60,3 +60,24 @@
       </tr>
     </tbody>
   </table>
+
+  <p-table  [value]="prime">
+    <ng-template pTemplate="header">
+        <tr>
+            <!-- <th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th> -->
+            <th pSortableColumn="banner_name">Name <p-sortIcon field="banner_name"></p-sortIcon></th>
+            <th pSortableColumn="created_at">Created_at <p-sortIcon field="created_at"></p-sortIcon></th>
+            <th>Image</th>
+            <!-- <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th> -->
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-prime>
+        <tr>
+            <td>{{prime.banner_name}}</td>
+            <td>{{prime.created_at}}</td>
+            <td><img class="img img-fluid img-thumbnail"  src="{{prime.banner_url}}"   alt="alt"></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </ng-template>
+</p-table>

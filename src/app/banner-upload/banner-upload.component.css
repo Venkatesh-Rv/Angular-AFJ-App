@@ -3,6 +3,18 @@
     width: 300px;
 }
 
+#up {
+  position: relative;
+  overflow: hidden;
+}
+#input_ip {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
 /* @media only screen and (max-width: 1000px) {
     .content-wrapper {
       display: none !important;
@@ -13,4 +25,7 @@
   @media only screen  and (max-width: 999px) {
     #my-content { display: block !important; }  
   } */
+
+
+
   

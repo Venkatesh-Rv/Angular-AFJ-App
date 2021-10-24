@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
-
+import { config } from '../config';
 import { HttpClient } from "@angular/common/http"
 
 @Injectable({
@@ -20,11 +20,11 @@ export class PostService {
 //banner datas
   postData(url, getData) {
 
-    return this.http.post(url, getData)
+    return this.http.post(url, getData,{observe: 'response'})
 
   }
 
-  private storeProd(data){
+  storeProd(data){
     localStorage.setItem('product', JSON.stringify(data)); 
   }
 
@@ -68,7 +68,7 @@ export class PostService {
   }
 
   getProduct() {
-    return this.http.get<any>("http://localhost:4000/posts")
+    return this.http.get<any>(config.apiUrl+"product/get/")
       .pipe(map((res: any) => {
         return res;
       }))

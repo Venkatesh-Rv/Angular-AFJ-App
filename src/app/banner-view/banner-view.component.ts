@@ -1,4 +1,5 @@
 import { Component, OnInit,NgModule } from '@angular/core';
+import { trigger,state,style,transition,animate } from '@angular/animations';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { PostService } from '../services/post.service';
@@ -7,13 +8,37 @@ import { SucesslogginggService } from '../services/sucessloggingg.service';
 import { BannerModel } from './banner.model';
 
 import {HttpClient} from "@angular/common/http"
+import { SortEvent } from 'primeng/api';
 import { ToastrService } from 'ngx-toastr';
+
+
 
 
 @Component({
   selector: 'app-banner-view',
   templateUrl: './banner-view.component.html',
-  styleUrls: ['./banner-view.component.css']
+  styles:[`
+
+.confirmation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+`],
+  styleUrls: ['./banner-view.component.css'],
+  animations: [
+    trigger('rowExpansionTrigger', [
+        state('void', style({
+            transform: 'translateX(-10%)',
+            opacity: 0
+        })),
+        state('active', style({
+            transform: 'translateX(0)',
+            opacity: 1
+        })),
+        transition('* <=> *', animate('400ms cubic-bezier(0.86, 0, 0.07, 1)'))
+    ])
+]
 })
 export class BannerViewComponent implements OnInit {
 
@@ -25,13 +50,25 @@ export class BannerViewComponent implements OnInit {
   name: string;
   selectCat: string;
   cover: File=null;
-  imgName: string = 'Upload Image';
+  imgName: string = 'Upload New Image';
   changeporperty: string;
   buttonboool: boolean = true;
+
+  prime:any =[];
+
+  selectedCustomer: any;
+
+  cols: any[];
+
+  exportColumns: any[];
 
   //page
   totalNumber:number;
   page:number=1;
+
+  first = 0;
+  rows = 5;
+  
 
 //img retrieve
   imgUrl: string = '';
@@ -40,8 +77,13 @@ export class BannerViewComponent implements OnInit {
 
   //modal
   closeResult = '';
+  displayModal: boolean = false;
   searchText = '';
   term;
+  
+  showModalDialog() {
+    this.displayModal = true;
+}
 
   formValue!:FormGroup;
 
@@ -51,14 +93,34 @@ export class BannerViewComponent implements OnInit {
   ngOnInit(): void {
     this.getAllBanner();
     console.log(this.cover)
-    //this. getImageFromService();
+
+    this.cols = [
+      { field: "Image", header: "Image" },
+      { field: "Name", header: "Name" },
+      { field: "Created At", header: "Created At" },
+      { field: "None", header: "None" }
+    ];
+
+    this.exportColumns = this.cols.map(col => ({
+      title: col.header,
+      dataKey: col.field
+    }));
+    
   }
+
+  // get sortData() {
+  //   return this.data.sort((a, b) => {
+  //     return <any>new Date(b.CREATE_TS) - <any>new Date(a.CREATE_TS);
+  //   });
+  // }
 
   getAllBanner(){
     this.ps.getData().subscribe(res=>{
       
       this.banner= res
-      console.log(this.banner)
+      console.log(this.banner.message)
+      this.prime = this.banner.message;
+    console.log(this.prime)
       
     }, error=>{
       console.error('error')
@@ -68,13 +130,90 @@ export class BannerViewComponent implements OnInit {
     //this.imgName=this.banner.image
   }
 
+  //Sort By header
+
+  customSort(event: SortEvent) {
+    event.data.sort((data1, data2) => {
+        let value1 = data1[event.field];
+        let value2 = data2[event.field];
+        let result = null;
+
+        if (value1 == null && value2 != null)
+            result = -1;
+        else if (value1 != null && value2 == null)
+            result = 1;
+        else if (value1 == null && value2 == null)
+            result = 0;
+        else if (typeof value1 === 'string' && typeof value2 === 'string')
+            result = value1.localeCompare(value2);
+        else
+            result = (value1 < value2) ? -1 : (value1 > value2) ? 1 : 0;
+
+        return (event.order * result);
+    });
+}
+
+//Pagination
+
+next() {
+ 
+  this.first = this.first + this.rows;
+  console.log(this.first)
+}
+
+prev() {
+  this.first = this.first - this.rows;
+}
+
+reset() {
+  this.first = 0;
+}
+
+isLastPage(): boolean {
+  return this.prime? this.first === (this.prime.length - this.rows): true;
+}
+
+isFirstPage(): boolean {
+  return this.prime ? this.first === 0 : true;
+}
+
+//Export as files
+
+exportExcel() {
+  import("xlsx").then(xlsx => {
+    const worksheet = xlsx.utils.json_to_sheet(this.prime);
+    const workbook = { Sheets: { data: worksheet }, SheetNames: ["data"] };
+    const excelBuffer: any = xlsx.write(workbook, {
+      bookType: "xlsx",
+      type: "array"
+    });
+    this.saveAsExcelFile(excelBuffer, "prime");
+  });
+}
+
+saveAsExcelFile(buffer: any, fileName: string): void {
+  import("file-saver").then(FileSaver => {
+    let EXCEL_TYPE =
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+    let EXCEL_EXTENSION = ".xlsx";
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE
+    });
+    FileSaver.saveAs(
+      data,
+      fileName + "_export_" + new Date().getTime() + EXCEL_EXTENSION
+    );
+  });
+}
+
+
   onNameChanged(event: any) {
 
     this.name = event.target.value;
     console.log(this.name)
 
   }
-
+  check:boolean = false;
   onImageChanged(event) {
 
     this.cover = event.target.files[0];

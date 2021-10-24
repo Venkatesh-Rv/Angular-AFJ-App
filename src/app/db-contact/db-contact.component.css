@@ -106,7 +106,7 @@
   transition: all 0.3s ease;
 }
 .button input[type="button"]:hover{
-  background: #5029bc;
+  background: #d9d7df;
 }
 
 @media (max-width: 950px) {

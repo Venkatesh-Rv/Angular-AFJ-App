@@ -22,12 +22,15 @@ export class BannerUploadComponent implements OnInit {
 
   cover: File;
   reader = new FileReader();
-  imgName: string = 'Upload Image'
+  imgName: string = '';
+  uploadedFiles: any[] = [];
+  check:boolean = false;
   description: any = {};
   price: string;
   Discount: string;
   selectCat: string;
   buttonboool: boolean = true;
+  submitted:boolean= false;
 
   constructor(private http: HttpClient, private toastr: ToastrService, 
     private route: Router, private postMethod: PostService,
@@ -64,13 +67,42 @@ private getDismissReason(reason: any): string {
     console.log(this.name)
 
   }
+  
+
+  onUpload(event) {
+    
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);
+    }
+
+    // this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+}
 
   onImageChanged(event) {
     
     this.cover = event.target.files[0];
+    console.log(this.cover)
     this.reader.readAsDataURL(event.target.files[0])
-    console.log(this.reader);
+    // console.log(this.reader);
     this.imgName = this.cover.name
+
+    var new_str = this.imgName.substr(-4);
+    var new_str1 = this.imgName.substr(-5);
+    if(new_str === '.jpg'){
+      (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+      return this.check=false;
+      
+  }
+  else if(new_str1 === '.jpeg'){
+    (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+    return this.check=false;
+
+  }
+  else{
+    this.check = true;
+    (<HTMLInputElement> document.getElementById("vc")).disabled = true;
+    this.toastr.error("Format is not supported")
+  }
   }
 
 
@@ -114,6 +146,9 @@ private getDismissReason(reason: any): string {
   }
 
   url: string = 'http://127.0.0.1:8000/'
+
+  
+
   uploadBanner() {
     const uploadData = new FormData();
     uploadData.append('banner_name', this.name);
