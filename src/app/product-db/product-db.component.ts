@@ -21,6 +21,8 @@ export class ProductDbComponent implements OnInit {
   public Product: FormGroup;
   name: string;
   cover: File;
+  uploadedFile:any;
+  uploadedFiles: any[] = [];
   reader = new FileReader();
   description: any = {};
   loaderbool: boolean = false;
@@ -41,6 +43,7 @@ export class ProductDbComponent implements OnInit {
   allproductData:any;
   showCreate:boolean;
   showUpdate:boolean;
+  activeIndex: number = 0;
 
   objprod: any = {}
   getid:number
@@ -67,6 +70,10 @@ export class ProductDbComponent implements OnInit {
   }
 
   get f() { return this.Product.controls; }
+
+  st(){
+    window.scrollTo({top: 0});
+  }
   
   onNameChanged(event: any) {
 
@@ -74,16 +81,45 @@ export class ProductDbComponent implements OnInit {
     console.log(this.name)
 
   }
-  uploadedFiles: any[] = [];
+  filesimg:File;
   onUpload(event) {
+
+    this.filesimg = event.target.files[0];
+    console.log(this.filesimg)
  
-    for(let file of event.files) {
-      this.uploadedFiles.push(file);
-   }
+  //   for(let file of event.files) {
+  //     this.filesimg.push(file);
+  //  }
      //this will fire toast notification after image upload
     //  this.messageService.add({severity: 'success', summary: 'File Uploaded', detail: ''});
-    console.log(this.uploadedFiles)
+   
   }
+
+  public onSelectImage(evt: any) {
+    this.uploadedFile = evt[0];
+    // this.uploadedFiles = evt[0];
+    this.reader.readAsDataURL(evt[0])
+    this.cover = evt[0];
+    this.imgName = this.cover.name;
+    console.log(this.uploadedFile)
+
+    var new_str = this.imgName.substr(-4);
+    var new_str1 = this.imgName.substr(-5);
+    if(new_str === '.jpg'){
+      (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+      return this.check=false;
+  }
+  else if(new_str1 === '.jpeg'){
+    (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+    return this.check=false;
+
+  }
+  else{
+    this.check = true;
+    (<HTMLInputElement> document.getElementById("vc")).disabled = true;
+    this.ts.error("Format is not supported")
+  }
+ }
 
   onFileSelect(event) {
 
@@ -146,10 +182,10 @@ export class ProductDbComponent implements OnInit {
     let bill= this.f.price.value;
     var discount= this.f.discount.value;
     var afterDiscount = bill - (bill * discount / 100);
-    this.afterDisc = afterDiscount;
+    this.afterDisc = Math.round(afterDiscount);
     // this.ts.success(''+ afterDiscount);
     this.ts.success(this.afterDisc)
-    console.log("After discount your price is: " + afterDiscount);
+    console.log("After discount your price is: " + this.afterDisc);
   }
   
 

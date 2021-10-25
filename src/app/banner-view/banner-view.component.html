@@ -124,6 +124,10 @@
   </div>
 </div>
 
+<!-- animation -->
+
+
+
 <div class="col-12">
 <div class="card">
   <!-- <h5>Single Column</h5> -->
@@ -135,7 +139,7 @@
 
 
   <p-table #dt1 [value]="prime" responsiveLayout="scroll" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
-  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,20]"
   selectionMode="single" [(selection)]="selectedCustomer" dataKey="id" styleClass="p-datatable-customers"
          stateStorage="local" stateKey="statedemo-local">
 

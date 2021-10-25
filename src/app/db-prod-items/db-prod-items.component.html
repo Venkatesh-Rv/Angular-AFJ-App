@@ -1,6 +1,7 @@
 <app-header-db></app-header-db>
+<!-- <p-toast></p-toast> -->
 
-<div class="content-wrapper" >
+<div class="content-wrapper"  *ngIf="dataLoaded; else skelton" >
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -36,7 +37,18 @@
         <p-table #dt1 [value]="productshow" responsiveLayout="scroll" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10]"
         selectionMode="single" [(selection)]="selectedCustomer" dataKey="id" styleClass="p-datatable-customers"
-               stateStorage="local" stateKey="statedemo-local">
+               stateStorage="local" stateKey="statedemo-local" 
+               [globalFilterFields]="['name','category','price','discount']">
+
+               <ng-template pTemplate="caption">
+                <div class="p-d-flex p-ai-center p-jc-between">
+                    <h3 class="p-m-0">Manage Products</h3>
+                    <span class="p-input-icon-left">
+                        
+                        <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                    </span>
+                </div>
+            </ng-template>
       
           <ng-template pTemplate="header">
               <tr>
@@ -46,9 +58,9 @@
                   <th pSortableColumn="category">Category<p-sortIcon field="category"></p-sortIcon></th>
                   <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
                   <th pSortableColumn="discount">Discount<p-sortIcon field="discount"></p-sortIcon></th>
-                  <th pSortableColumn="description">Description<p-sortIcon field="description"></p-sortIcon></th>
+                  <th >Description</th>
                   <th pSortableColumn="created_at">Created At<p-sortIcon field="created_at"></p-sortIcon></th>
-                  <th>Actions</th>
+                  <th>   Actions</th>
               </tr>
               <!-- <tr>
                 <th>
@@ -76,12 +88,13 @@
                 <td><img src="{{productshow.product_url}}" alt="img" width="100" height="67" style="border-radius: 6px;" class="p-shadow-4" /></td> 
                 <td>{{productshow.name}}</td>
                 <td>{{productshow.category}}</td>
-                <td>{{productshow.price}}</td>
-                <td>{{productshow.discount}}</td>
+                <td>{{productshow.price | currency:'INR'}}</td>
+                <td>{{productshow.discount | currency:'INR'}}</td>
                 <td>{{productshow.description.about}}</td>
                 <td>{{productshow.created_at}}</td>
                 <td>
-                  <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined" (click)="onEdit(productshow); open(content)"></button>
+                  <!-- open(content) -->
+                  <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined" (click)="onEdit(productshow); edit(productshow)"></button>
                  &nbsp; <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-primary p-button-outlined" (click)="onEdit(productshow); showModalDialog()"></button>
                 </td>
                 
@@ -452,6 +465,7 @@
         
       </ng-template>
 
+      <!-- view of prod in table -->
       <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
       [draggable]="false" [resizable]="false" [closable]="false">
       
@@ -462,3 +476,43 @@
           </ng-template>
   </p-dialog>
  
+  <!-- edit product modal (update form)Prime ng -->
+  <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="name">Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="productedit.name" />
+            <small class="p-invalid" *ngIf="submitted && !product.name">Name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="description">Description</label>
+            <textarea id="description" pInputTextarea [(ngModel)]="productedit.description.about" required rows="3" cols="20"></textarea>
+        </div>
+
+        <div class="p-field">
+            <label class="p-mb-3">Category</label>
+            <input type="text" pInputText id="category" [(ngModel)]="productedit.category" />
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="price">Price</label>
+                <p-inputNumber id="price" [(ngModel)]="productedit.price"></p-inputNumber>
+            </div>
+            <div class="p-field p-col">
+                <label for="quantity">Discount</label>
+                <p-inputNumber id="quantity" [(ngModel)]="productedit.discount"></p-inputNumber>
+            </div>
+        </div>
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>
+
+<ng-template #skelton>
+  <div class="skelton">
+  </div>
+</ng-template>

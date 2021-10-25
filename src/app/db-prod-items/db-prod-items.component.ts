@@ -45,6 +45,9 @@ export class DbProdItemsComponent implements OnInit {
 
   loaderbool: boolean = false;
   check:boolean;
+  dataLoaded = false;
+
+  productedit: any;
 
   constructor(private http:HttpClient, private post:PostService, private ts:ToastrService,
     private fb: FormBuilder,
@@ -69,6 +72,7 @@ export class DbProdItemsComponent implements OnInit {
     // this.f.controls['price'].setValue(this.objprod.price);
     // this.f.controls['offerprice'].setValue(this.objprod.discount);
     // this.f.controls['category'].setValue(this.objprod.category);
+    this.dataLoaded = true;
   }
 
   getAllProduct(){
@@ -120,6 +124,13 @@ export class DbProdItemsComponent implements OnInit {
   onDesChanged() {
     this.address.about = this.f.description.value;
     console.log(this.address)
+  }
+
+  productDialog: boolean;
+  edit(product:any){
+    this.productedit = product;
+    console.log(this.productedit)
+    this.productDialog = true;
   }
 
   onEdit(row:any){

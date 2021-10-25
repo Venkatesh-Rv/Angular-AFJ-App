@@ -1,63 +1,60 @@
 .search-box {
-    display: inline-block;
-    width: 100%;
-    border-radius: 3px;
-    padding: 4px 55px 4px 15px;
-    position: relative;
-    background: #fff;
-    border: 1px solid #ddd;
-  }
-  .search-box.hovered,
-  .search-box:hover,
-  .search-box:active {
-    border: 1px solid #aaa;
-  }
-  .search-box input[type="text"] {
-    border: none;
-    box-shadow: none;
-    display: inline-block;
-    padding: 0;
-    background: transparent;
-  }
-  .search-box input[type="text"]:hover,
-  .search-box input[type="text"]:focus,
-  .search-box input[type="text"]:active {
-    box-shadow: none;
-  }
-  .search-box .search-btn {
-    position: absolute;
-    right: 2px;
-    top: 2px;
-    color: #aaa;
-    border-radius: 3px;
-    font-size: 21px;
-    padding: 5px 10px 1px;
-  }
-  .search-box .search-btn:hover {
-    color: #fff;
-    background-color: blue;
-  }
+  display: inline-block;
+  width: 100%;
+  border-radius: 3px;
+  padding: 4px 55px 4px 15px;
+  position: relative;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+.search-box.hovered,
+.search-box:hover,
+.search-box:active {
+  border: 1px solid #aaa;
+}
+.search-box input[type="text"] {
+  border: none;
+  box-shadow: none;
+  display: inline-block;
+  padding: 0;
+  background: transparent;
+}
+.search-box input[type="text"]:hover,
+.search-box input[type="text"]:focus,
+.search-box input[type="text"]:active {
+  box-shadow: none;
+}
+.search-box .search-btn {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  color: #aaa;
+  border-radius: 3px;
+  font-size: 21px;
+  padding: 5px 10px 1px;
+}
+.search-box .search-btn:hover {
+  color: #fff;
+  background-color: blue;
+}
 
-  /* .img {
+/* .img {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
   } */
-  
-  /* .table tbody td .img {
+
+/* .table tbody td .img {
     width: 120px;
     height: 130px;
     border-radius: 8px;
   } */
 
-  .card-header {
-    
-    background-color: white;
-    
+.card-header {
+  background-color: white;
 }
 
 .p-inputtext {
-  
   font-size: 1rem;
   color: #495057;
   background: #ffffff;
@@ -69,9 +66,91 @@
 }
 
 html {
-  overflow:   scroll;
+  overflow: scroll;
 }
 ::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+/* prime ng css */
+
+/* responsive */
+.p-datatable-customers .p-datatable-tbody > tr > td .p-column-title {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-datatable-thead
+    > tr
+    > th,
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-datatable-tfoot
+    > tr
+    > td {
+    display: none !important;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr {
+    border-bottom: 1px solid var(--layer-2);
+  }
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-datatable-tbody
+    > tr
+    > td {
+    text-align: left;
+    display: block;
+    border: 0 none !important;
+    width: 100% !important;
+    float: left;
+    clear: left;
+    border: 0 none;
+  }
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-datatable-tbody
+    > tr
+    > td
+    .p-column-title {
+    padding: 0.4rem;
+    min-width: 30%;
+    display: inline-block;
+    margin: -0.4rem 1rem -0.4rem -0.4rem;
+    font-weight: bold;
+  }
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-datatable-tbody
+    > tr
+    > td
+    .p-progressbar {
+    margin-top: 0.5rem;
+  }
+}
+
+
+
+.skelton{
+  display: block;
+  width : 90%;
+  height : 100px;
+  margin : 5%;
+  margin-right: 5%;
+  animation: loading 1.7s infinite linear;
+  background: #dedfe1;
+  background-image: -webkit-linear-gradient(to right, #dedfe1 0%, #f2f3f5 20%, #dedfe1 40%, #dedfe1 100%);
+  background-image: linear-gradient(to right, #dedfe1 0%, #f2f3f5 20%, #dedfe1 40%, #dedfe1 100%);
+  background-repeat: no-repeat;
+}
+@keyframes loading {
+  0% { background-position  : -100px; }
+  100% { background-position : 500px; }
 }

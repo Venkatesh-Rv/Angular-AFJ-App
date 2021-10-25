@@ -23,10 +23,288 @@
       
     </div>
     <br>
+    <div class="card">
+           
+      <!-- <div style="padding: .5em 0 1em 0">
+          <p-button (click)="activeIndex = 0" styleClass="p-button-text" label="Activate 1rd"></p-button>
+          <p-button (click)="activeIndex = 1" styleClass="p-button-text" label="Activate 2rd" [style]="{'margin-left': '.5em'}"></p-button>
+          <p-button (click)="activeIndex = 2" styleClass="p-button-text" label="Activate 3rd" [style]="{'margin-left': '.5em'}"></p-button>
+      </div> -->
+      <p-tabView [(activeIndex)]="activeIndex">
+          <p-tabPanel header="Details" leftIcon="pi pi-calendar" tooltip="Fill Out the details">
+          <div class="card card-primary">
+            <form [formGroup]="Product">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+      
+                  <input
+                    type="text"
+                    formControlName='name'
+                    required
+                    class="form-control"
+                    id="exampleInputEmail1"
+                    placeholder="  Enter Name"
+                  />
+                </div>
+                <!-- <br /> -->
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Description</label>
+      
+                  <input
+                    type="text"
+                    formControlName='description'
+                    required
+                    class="form-control"
+                    placeholder="  Enter Description"
+                  />
+                </div>
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Price</label>
+      
+                  <input
+                    type="number"
+                    formControlName='price'
+                    required
+                    class="form-control"
+                    placeholder="  Enter Price"
+                  />
+                </div>
+      
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Discount</label>
+      
+                  <input
+                    type="text"
+                    maxlength="2"
+                    required
+                    class="form-control"
+                    formControlName='discount'
+                    placeholder="  Enter discount %"
+                  />
+                </div>
+      
+                <div class="form-group">
+                  <label>Category</label>
+                  <select
+                    class="form-control select2 select2-hidden-accessible"
+                    style="width: 100%"
+                    data-select2-id="1"
+                    tabindex="-1"
+                    aria-hidden="true"
+                    (change)="onSelectChange($event)"
+                    
+                  >
+                    <option
+                      selected="Please Select the option"
+                      data-select2-id="1 "
+                    >
+                      Please Select the option
+                    </option>
+                    <option  value="Necklace">
+                      Necklace
+                    </option>
+                    <option  value="Combo Sets">
+                      Combo Sets
+                    </option>
+                    <option  value="Bridal Sets">
+                      Bridal Sets
+                    </option>
+                    <option  value="Choker">
+                      Choker
+                    </option>
+                    <option  value="Hipchain/Belt">
+                      Hipchain/Belt
+                    </option>
+                    <option  value="Anklet">
+                      Anklet
+                    </option>
+                    <option  value="Bangles">
+                      Bangles
+                    </option>
+                    <option  value="Chains">
+                      Chains
+                    </option>
+                    <option  value="Rings">
+                      Rings
+                    </option>
+                    <option  value="Ear Rings">
+                      Ear Rings
+                    </option>
+                    <option  value="Toe Rings">
+                      Toe Rings
+                    </option>
+                    <option  value="Others">
+                      Others
+                     </option>
+                  </select>
+                </div>
+    <br>
+    
+                <div class="form-group">
+                
+                  <!-- <label for="exampleInputFile">Upload Image</label> -->
+                  <div class="input-group" >
+                    <div class="custom-file" style="display: none;">
+                      <!-- <input type="file" class="custom-file-input" (change)="onImageChanged($event)"/> -->
+                      <label class="custom-file-label" for="exampleInputFile">{{imgName}}</label>
+                    </div>
+      
+                    <div id='up' class="file btn btn-primary">
+                      Upload Image Here
+                      <input id="input_ip" type="file" name="file" (change)="onFileSelect($event)" />
+                    </div>
+                  </div><br>
+                  <p class="text-dark">{{imgName}}</p><br>
+                  <small class="text-danger" *ngIf="check" >Format is not supported.</small>
+                  <p id="emailHelp" class="form-text text-dark">Upload JPEG,JPG only.</p>
+                
+                  <br />
+                  <!-- <div class="form-group">
+                    <label>Category</label>
+                    <select
+                      class="form-control select2 select2-hidden-accessible"
+                      style="width: 100%"
+                      data-select2-id="1"
+                      tabindex="-1"
+                      aria-hidden="true"
+                      (change)="onSelectChange($event)"
+                    >
+                      <option selected="Please Select the option" data-select2-id="1 ">
+                        Please Select the option
+                      </option>
+                      <option data-select2-id="3 " value="Cosmetics">Cosmetics</option>
+                      <option data-select2-id="face" value="Fashion">
+                        Fashion
+                      </option>
+                    </select>
+                  </div> -->
+                </div>
+              </div>
+      
+              <!-- /.card-body  [disabled]="buttonboool===true ? true : false"-->
+    
+              <div class="form-group">
+                <p-fileUpload  name="files" (onSelect)="onSelectImage($event.files)"  mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload></div>
+
+                <p-fileUpload name="files" [showUploadButton]="false" [showCancelButton]="false"  (onSelect)="onSelectImage($event.files)" accept="image/*">
+                <ng-template pTemplate="content">
+                    <ul >
+                        <li ></li>
+                    </ul>
+                </ng-template>
+        </p-fileUpload>
+      
+              <div class="card-footer" style="display: flex; justify-content:center">
+                <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
+                <button id="vc" type="submit" class="btn btn-primary" (click)="activeIndex= 1 ; discount(); st()">
+                  Submit 
+                </button>
+              </div>
+      
+            </form>
+          </div>
+          </p-tabPanel>
+
+          <p-tabPanel header="Preview-I" leftIcon="pi pi-chevron-circle-right" tooltip="Preview-I">
+        <ng-template pTemplate="content">
+            <section class="container">
+              <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6">
+                        <img class="card-img-top mb-5 mb-md-0" src="{{reader.result}}" alt="{{name}}">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- <div class="" style="text-transform: uppercase;">{{product.id}}</div> -->
+                        &nbsp;
+                        <h1 class="display-5 fw-bolder">{{name}}</h1>
+                        <div class="product-price">
+                            <span class="old" style="color: #f64749;
+                            text-decoration: line-through; font-size:22px">₹{{price}}</span>&nbsp;
+                            <span style="font-size:22px">₹{{afterDisc}}</span><br><br><br>
+                            <span style="font-size:22px; color:#eeb109;">{{Discount}}%off</span>
+                          </div>
+                      
+        <br>
+        <br>
+                        <p class="lead">{{selectCat}}</p>
+                        <button class="btn btn-outline-dark flex-shrink-0" (click)='activeIndex = 2 ; st()'>
+                         
+                          Next</button>
+                    </div>
+                </div>
+            </div>
+          
+          
+          
+          
+          </section>
+        </ng-template>
+          </p-tabPanel>
+
+          <p-tabPanel header="Final Preview" leftIcon="pi pi-upload" tooltip="Final Preview">
+          <ng-template pTemplate="content">
+            <app-header style="pointer-events:none"></app-header>
+
+            <section class="py-5">
+              <div class="container px-4 px-lg-5 my-5">
+                  <div class="row gx-4 gx-lg-5 align-items-center">
+                      <div class="col-md-6">
+                          <img class="card-img-top mb-5 mb-md-0" src="{{reader.result}}" alt="prod">
+                      </div>
+                      <div class="col-md-6">
+                          <div class="" style="text-transform: uppercase;">ID </div>
+                          &nbsp;
+                          <h1 class="display-5 fw-bolder">{{name}} </h1>
+                          <div class="product-price">
+                              <span class="old">₹{{price}}</span>&nbsp;
+                              <span>₹{{afterDisc}}</span>
+                              <!-- <span>{{}}}</span> -->
+                            </div>
+                          
+          <br>
+          <br>
+                          <p class="lead">{{selectCat}}</p>
+                          <div class="d-flex" style="pointer-events:none">
+                              <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem"> -->
+                              <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                  <i class="bi-cart-fill me-1"></i>
+                                  Add to cart <i class = "fas fa-shopping-cart"></i>
+                              </button>
+                              &nbsp;&nbsp;
+                              <button class="btn btn-outline-dark flex-shrink-0" (click)='activeIndex = 2'>
+                                  <i class="bi-cart-fill me-1"></i>
+                                  Go to Cart</button>
+                          </div>
+                          <br>
+                          <div class="d-flex">
+                            <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem"> -->
+                            <button (click)="create()" class="btn btn-outline-dark flex-shrink-0" type="button">
+                                <i class="pi pi-save"></i>
+                                CREATE PRODUCT
+                            </button>
+                            
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          
+              
+                 
+          
+            </section>
+
+            <app-footer style="pointer-events:none"></app-footer>
+          </ng-template>
+          </p-tabPanel>
+      </p-tabView>
+  </div>
     <section class="content">
       <div class="container-fluid">
       </div>
-      <div class="card card-primary">
+      <div class="card card-primary" style="display: none;">
 
         <form [formGroup]="Product">
           <div class="card-body">
@@ -396,7 +674,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div> -->
-          <div class="modal-body">
+          <div class="modal-body" style="display: none;">
             
             <section class="container">
             <div class="container px-4 px-lg-5 my-5">
@@ -438,6 +716,10 @@
       
   
           </div>
+
+          
+          
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" (click)=" create()">Create</button>
@@ -447,5 +729,5 @@
     </div>
     </div> 
     </section>
-    
-  
+</div> 
+
