@@ -39,6 +39,7 @@ export class DbProdItemsComponent implements OnInit {
   objprod: any = {}
   catsel
   cover: File = null;
+  uploadedFile;
   reader = new FileReader();
   imgName: string = 'Upload Image'
   address: any = {};
@@ -76,43 +77,50 @@ export class DbProdItemsComponent implements OnInit {
   }
 
   getAllProduct(){
+
     this.post.getProduct().subscribe(res=>{
       console.log(res)
       for (let key in res) {
         this.allproductData = res[key];
       }
       this.productshow = this.allproductData;
+      // hideloader();
     })
+  //   function hideloader() {
+  //     document.getElementById('loading')
+  //         .style.display = 'none';
+  // }
   }
 
   get f() { return this.ProductUp.controls; }
 
-  onFileSelect(event) {
+  onFileSelect(evt:any) {
 
-    this.cover = event.target.files[0];
-    this.reader.readAsDataURL(event.target.files[0])
-    console.log(this.reader);
-    console.log(this.cover);
-    this.imgName = this.cover.name
+    this.uploadedFile = evt[0];
+    // this.uploadedFiles = evt[0];
+    this.reader.readAsDataURL(evt[0])
+    this.cover = evt[0];
+    this.imgName = this.cover.name;
+    console.log(this.uploadedFile)
 
     
-  //   var new_str = this.imgName.substr(-4);
-  //   var new_str1 = this.imgName.substr(-5);
-  //   if(new_str === '.jpg'){
-  //     (<HTMLInputElement> document.getElementById("vc")).disabled = false;
-  //     return this.check=false;
+    var new_str = this.imgName.substr(-4);
+    var new_str1 = this.imgName.substr(-5);
+    if(new_str === '.jpg'){
+      (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+      return this.check=false;
       
-  // }
-  // else if(new_str1 === '.jpeg'){
-  //   (<HTMLInputElement> document.getElementById("vc")).disabled = false;
-  //   return this.check=false;
+  }
+  else if(new_str1 === '.jpeg'){
+    (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+    return this.check=false;
 
-  // }
-  // else{
-  //   this.check = true;
-  //   (<HTMLInputElement> document.getElementById("vc")).disabled = true;
-  //   this.ts.error("Format is not supported")
-  // }
+  }
+  else{
+    this.check = true;
+    (<HTMLInputElement> document.getElementById("vc")).disabled = true;
+    this.ts.error("Format is not supported")
+  }
 
     // const file=(event.target as HTMLInputElement).files[0];
     // this.formValue.patchValue({
@@ -122,12 +130,13 @@ export class DbProdItemsComponent implements OnInit {
   }
 
   onDesChanged() {
-    this.address.about = this.f.description.value;
+    this.address.about = this.productedit.description.about;
     console.log(this.address)
   }
 
   productDialog: boolean;
   edit(product:any){
+    this.productModelObj.id = product.id;
     this.productedit = product;
     console.log(this.productedit)
     this.productDialog = true;
@@ -205,23 +214,23 @@ export class DbProdItemsComponent implements OnInit {
     let check = this.cover === null
     console.log(check)
     if(check === true){
-      uploadData.append('name', this.f.name.value);
-      uploadData.append('category', this.f.category.value)
+      uploadData.append('name', this.productedit.name);
+      uploadData.append('category', this.productedit.category)
       this.onDesChanged();
       uploadData.append('description',JSON.stringify(this.address))
-      uploadData.append('price',this.f.price.value)
+      uploadData.append('price',this.productedit.price)
       
-      uploadData.append('discount',this.f.discount.value)
+      uploadData.append('discount',this.productedit.discount)
      
     }
     else{
-      uploadData.append('name', this.f.name.value);
-      uploadData.append('category', this.f.category.value)
+      uploadData.append('name', this.productedit.name);
+      uploadData.append('category', this.productedit.category)
       this.onDesChanged();
       uploadData.append('description',JSON.stringify(this.address))
-      uploadData.append('price',this.f.price.value)
+      uploadData.append('price',this.productedit.price)
       
-      uploadData.append('discount',this.f.discount.value)
+      uploadData.append('discount',this.productedit.discount)
       uploadData.append('product_pic',this.cover)
     }
 
@@ -244,7 +253,8 @@ export class DbProdItemsComponent implements OnInit {
       // location.reload();
       
       this.ts.success("Updated Successfully")
-      window.location.reload()
+      this.productDialog = false;
+      // window.location.reload()
       
       //this.successmsg.SuccessLog(ele, 'ban-view')
 
@@ -261,7 +271,7 @@ export class DbProdItemsComponent implements OnInit {
     this.productModelObj.name = this.formValue.value.name;
     this.productModelObj.description = this.formValue.value.description.about;
     this.productModelObj.price = this.formValue.value.price;
-    this.productModelObj.offerprice = this.formValue.value.offerprice;
+    // this.productModelObj.offerprice = this.formValue.value.offerprice;
     this.productModelObj.category = this.formValue.value.category;
 
     this.post.updateProduct(this.productModelObj,this.productModelObj.id)
@@ -275,7 +285,8 @@ export class DbProdItemsComponent implements OnInit {
 
   }
 
-  showModalDialog() {
+  showModalDialog(data) {
+    this.productedit = data;
     this.displayModal = true;
 }
 

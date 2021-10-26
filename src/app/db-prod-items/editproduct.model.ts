@@ -4,7 +4,7 @@ export class ProductModel {
     product_url:any;
     description: string = '';
     price: string = '';
-    offerprice: string = '';
+    discount: string = '';
     category: string = '';
 }
 

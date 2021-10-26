@@ -48,26 +48,24 @@
           </div>
 
           <div class="form-group">
-            <label for="exampleInput">Upload Image</label>
+            <label>Upload Image - (JPEG, JPG Only) </label><br>
+           <small class="text-danger" *ngIf="check" >Format is not supported. Kindly Upload Supported formats Only.</small><br>
+            <p-fileUpload name="files" [showUploadButton]="false" [showCancelButton]="false"  (onSelect)=" onImageChanged($event.files)" accept="image/*">
+              <ng-template pTemplate="content">
+                  
+              </ng-template>
+            </p-fileUpload>
           </div>
   
           <div class="form-group">
-            
             <!-- <label for="exampleInputFile">Upload Image</label> -->
             <div class="input-group" >
               <div class="custom-file" style="display: none;">
                 <!-- <input type="file" class="custom-file-input" (change)="onImageChanged($event)"/> -->
                 <label class="custom-file-label" for="exampleInputFile">{{imgName}}</label>
               </div>
-
-              <div id='up' class="file btn btn-primary">
-                Upload Image Here
-                <input id="input_ip" type="file" name="file" (change)="onImageChanged($event)" />
-              </div>
-            </div><br>
-            <p class="text-dark">{{imgName}}</p><br>
-            <small class="text-danger" *ngIf="check" >Format is not supported.</small>
-            <label for="exampleInput">Upload JPEG, JPG Only.</label>
+            </div>
+           
             <!-- <p id="emailHelp" class="form-text text-dark">Upload JPEG,JPG Only.</p> -->
           
             <br />

@@ -200,3 +200,21 @@ span.old {
   display: flex !important;
   justify-content: center !important;
 }
+
+.disable-scroll .ui-dialog-content {
+  overflow: hidden !important;
+}
+
+.my-center {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}

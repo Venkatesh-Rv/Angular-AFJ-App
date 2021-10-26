@@ -31,7 +31,7 @@
           <p-button (click)="activeIndex = 2" styleClass="p-button-text" label="Activate 3rd" [style]="{'margin-left': '.5em'}"></p-button>
       </div> -->
       <p-tabView [(activeIndex)]="activeIndex">
-          <p-tabPanel header="Details" leftIcon="pi pi-calendar" tooltip="Fill Out the details">
+          <p-tabPanel header="Details" leftIcon="pi pi-chevron-circle-right" tooltip="Fill Out the details">
           <div class="card card-primary">
             <form [formGroup]="Product">
               <div class="card-body">
@@ -141,27 +141,26 @@
                      </option>
                   </select>
                 </div>
-    <br>
+
+                <div class="form-group">
+                  <label>Upload Image - (JPEG, JPG Only) </label><br>
+                 <small class="text-danger" *ngIf="check" >Format is not supported. Kindly Upload Supported formats Only.</small><br>
+                  <p-fileUpload name="files" [showUploadButton]="false" [showCancelButton]="false"  (onSelect)="onSelectImage($event.files)" accept="image/*">
+                    <ng-template pTemplate="content">
+                        
+                    </ng-template>
+                  </p-fileUpload>
+                </div>
+  
     
                 <div class="form-group">
-                
                   <!-- <label for="exampleInputFile">Upload Image</label> -->
                   <div class="input-group" >
                     <div class="custom-file" style="display: none;">
                       <!-- <input type="file" class="custom-file-input" (change)="onImageChanged($event)"/> -->
                       <label class="custom-file-label" for="exampleInputFile">{{imgName}}</label>
                     </div>
-      
-                    <div id='up' class="file btn btn-primary">
-                      Upload Image Here
-                      <input id="input_ip" type="file" name="file" (change)="onFileSelect($event)" />
-                    </div>
-                  </div><br>
-                  <p class="text-dark">{{imgName}}</p><br>
-                  <small class="text-danger" *ngIf="check" >Format is not supported.</small>
-                  <p id="emailHelp" class="form-text text-dark">Upload JPEG,JPG only.</p>
-                
-                  <br />
+                  </div>
                   <!-- <div class="form-group">
                     <label>Category</label>
                     <select
@@ -186,21 +185,12 @@
       
               <!-- /.card-body  [disabled]="buttonboool===true ? true : false"-->
     
-              <div class="form-group">
-                <p-fileUpload  name="files" (onSelect)="onSelectImage($event.files)"  mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload></div>
 
-                <p-fileUpload name="files" [showUploadButton]="false" [showCancelButton]="false"  (onSelect)="onSelectImage($event.files)" accept="image/*">
-                <ng-template pTemplate="content">
-                    <ul >
-                        <li ></li>
-                    </ul>
-                </ng-template>
-        </p-fileUpload>
       
               <div class="card-footer" style="display: flex; justify-content:center">
                 <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
                 <button id="vc" type="submit" class="btn btn-primary" (click)="activeIndex= 1 ; discount(); st()">
-                  Submit 
+                 NEXT
                 </button>
               </div>
       
@@ -244,7 +234,7 @@
         </ng-template>
           </p-tabPanel>
 
-          <p-tabPanel header="Final Preview" leftIcon="pi pi-upload" tooltip="Final Preview">
+          <p-tabPanel  header="Final Preview" leftIcon="pi pi-upload" tooltip="Final Preview">
           <ng-template pTemplate="content">
             <app-header style="pointer-events:none"></app-header>
 

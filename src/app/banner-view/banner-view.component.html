@@ -178,7 +178,7 @@
           <td>{{prime.banner_name}}</td>
           <td>{{prime.created_at}}</td>
           <td>
-            <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined" (click)="onEdit(prime); open(content)"></button>
+            <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined" (click)="edit(prime); showEditDialog()"></button>
            &nbsp; <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-primary p-button-outlined" (click)="onEdit(prime); showModalDialog()"></button>
           </td>
           
@@ -404,4 +404,34 @@
         <ng-template pTemplate="footer">
         <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
         </ng-template>
+</p-dialog>
+
+  <!-- edit product modal (update form)Prime ng -->
+  <p-dialog [(visible)]="bannerDialog" [style]="{width: '650px'}" header="Offer Edit" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content" styleClass="disable-scroll">
+        <div class="p-field">
+            <label for="name">Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="banneredit.banner_name" />
+            <!-- <small class="p-invalid" *ngIf="submitted && !product.name">Name is required.</small> -->
+        </div>
+
+        <div class="p-field" *ngIf="!cover">
+          <img  class="img img-fluid img-thumbnail" id="preview" src="{{banneredit.banner_url}}"   alt="alt">
+        </div>
+
+        <div class="p-field">
+          <label class="p-mb-3">Update Image - (JPEG, JPG Only)</label>
+          <small class="text-danger" *ngIf="check" >Format is not supported. Kindly Upload Supported formats Only.</small><br>
+           <p-fileUpload name="files" [showUploadButton]="false" [showCancelButton]="false"  (onSelect)=" onImageChanged($event.files)" accept="image/*">
+             <ng-template pTemplate="content">
+                 
+             </ng-template>
+           </p-fileUpload>
+      </div>
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="bannerDialog=false"></button>
+        <button pButton pRipple label="Save & Update" icon="pi pi-check" class="p-button-text" id="vc" (click)=" editSubmit()"></button>
+    </ng-template>
 </p-dialog>

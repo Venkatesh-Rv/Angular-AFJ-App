@@ -23,6 +23,7 @@ export class BannerUploadComponent implements OnInit {
   cover: File;
   reader = new FileReader();
   imgName: string = '';
+  uploadedFile:any;
   uploadedFiles: any[] = [];
   check:boolean = false;
   description: any = {};
@@ -78,20 +79,20 @@ private getDismissReason(reason: any): string {
     // this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
 }
 
-  onImageChanged(event) {
+  onImageChanged(evt:any) {
     
-    this.cover = event.target.files[0];
-    console.log(this.cover)
-    this.reader.readAsDataURL(event.target.files[0])
-    // console.log(this.reader);
-    this.imgName = this.cover.name
+    this.uploadedFile = evt[0];
+    // this.uploadedFiles = evt[0];
+    this.reader.readAsDataURL(evt[0])
+    this.cover = evt[0];
+    this.imgName = this.cover.name;
+    console.log(this.uploadedFile)
 
     var new_str = this.imgName.substr(-4);
     var new_str1 = this.imgName.substr(-5);
     if(new_str === '.jpg'){
       (<HTMLInputElement> document.getElementById("vc")).disabled = false;
       return this.check=false;
-      
   }
   else if(new_str1 === '.jpeg'){
     (<HTMLInputElement> document.getElementById("vc")).disabled = false;

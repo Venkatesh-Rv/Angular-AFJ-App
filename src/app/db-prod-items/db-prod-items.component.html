@@ -22,7 +22,15 @@
       <!-- /.container-fluid -->
     </div>
     <br>
-   
+
+    <!-- spinnner element is 
+    defined with id loading -->
+<!-- <div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+      <span class="sr-only" id="loading"></span>
+  </div>
+</div>
+    -->
     
     <div class="col-12">
       <div class="card">
@@ -42,10 +50,10 @@
 
                <ng-template pTemplate="caption">
                 <div class="p-d-flex p-ai-center p-jc-between">
-                    <h3 class="p-m-0">Manage Products</h3>
+                    <h3 class="p-m-0"></h3>
                     <span class="p-input-icon-left">
                         
-                        <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                        <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search" />
                     </span>
                 </div>
             </ng-template>
@@ -94,7 +102,7 @@
                 <td>{{productshow.created_at}}</td>
                 <td>
                   <!-- open(content) -->
-                  <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined" (click)="onEdit(productshow); edit(productshow)"></button>
+                  <button pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined" (click)=" edit(productshow)"></button>
                  &nbsp; <button pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-primary p-button-outlined" (click)="onEdit(productshow); showModalDialog()"></button>
                 </td>
                 
@@ -469,16 +477,17 @@
       <p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
       [draggable]="false" [resizable]="false" [closable]="false">
       
-        <img class="d-block w-50 peinture-ombre-interne-fine"  src="{{ productModelObj.product_url}}" alt="pp">
-      
+      <div class="my-center">
+        <img style="border-radius: 6px;" class="d-block w-50 peinture-ombre-interne-fine p-shadow-4"  src="{{ productModelObj.product_url}}" alt="pp">
+      </div>
           <ng-template pTemplate="footer">
           <p-button icon="pi pi-check" (click)="displayModal=false" label="Ok" styleClass="p-button-text"></p-button>
           </ng-template>
   </p-dialog>
  
   <!-- edit product modal (update form)Prime ng -->
-  <p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
-    <ng-template pTemplate="content">
+  <p-dialog [(visible)]="productDialog" [style]="{width: '650px'}" header="Product Details" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content" styleClass="disable-scroll">
         <div class="p-field">
             <label for="name">Name</label>
             <input type="text" pInputText id="name" [(ngModel)]="productedit.name" />
@@ -504,11 +513,21 @@
                 <p-inputNumber id="quantity" [(ngModel)]="productedit.discount"></p-inputNumber>
             </div>
         </div>
+
+        <div class="p-field">
+          <label class="p-mb-3">Update New Image - (JPEG, JPG Only)</label>
+          <small class="text-danger" *ngIf="check" >Format is not supported. Kindly Upload Supported formats Only.</small><br>
+           <p-fileUpload name="files" [showUploadButton]="false" [showCancelButton]="false"  (onSelect)=" onFileSelect($event.files)" accept="image/*">
+             <ng-template pTemplate="content">
+                 
+             </ng-template>
+           </p-fileUpload>
+      </div>
     </ng-template>
     
     <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="productDialog=false"></button>
+        <button pButton pRipple label="Save & Update" icon="pi pi-check" class="p-button-text" id="vc" (click)=" editSubmit()"></button>
     </ng-template>
 </p-dialog>
 

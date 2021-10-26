@@ -49,10 +49,15 @@ export class BannerViewComponent implements OnInit {
   result;
   name: string;
   selectCat: string;
+  banneredit: any;
   cover: File=null;
+  reader = new FileReader();
+  uploadedFile;
+  check:boolean = false;
   imgName: string = 'Upload New Image';
   changeporperty: string;
   buttonboool: boolean = true;
+  bannerDialog: boolean;
   anim:boolean =false;
 
   prime:any =[];
@@ -85,6 +90,10 @@ export class BannerViewComponent implements OnInit {
   showModalDialog() {
     this.displayModal = true;
 }
+
+ showEditDialog(){
+   this.bannerDialog =true;
+ }
 
   formValue!:FormGroup;
 
@@ -218,12 +227,34 @@ isFirstPage(): boolean {
     console.log(this.name)
 
   }
-  check:boolean = false;
-  onImageChanged(event) {
+  
 
-    this.cover = event.target.files[0];
-    console.log(this.cover);
-    this.imgName = this.cover.name
+
+  onImageChanged(evt:any) {
+
+    this.uploadedFile = evt[0];
+    // this.uploadedFiles = evt[0];
+    this.reader.readAsDataURL(evt[0])
+    this.cover = evt[0];
+    this.imgName = this.cover.name;
+    console.log(this.uploadedFile)
+
+    var new_str = this.imgName.substr(-4);
+    var new_str1 = this.imgName.substr(-5);
+    if(new_str === '.jpg'){
+      (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+      return this.check=false;
+  }
+  else if(new_str1 === '.jpeg'){
+    (<HTMLInputElement> document.getElementById("vc")).disabled = false;
+    return this.check=false;
+
+  }
+  else{
+    this.check = true;
+    (<HTMLInputElement> document.getElementById("vc")).disabled = true;
+    this.ts.error("Format is not supported")
+  }
   }
 
   onSelectChange(event) {
@@ -237,6 +268,15 @@ isFirstPage(): boolean {
 
   }
 
+  edit(product:any){
+    this.cover = null;
+    this.imgName = "";
+    this.check = false;
+    this.bannerModelObj.id = product.id;
+    this.banneredit= product;
+    console.log(this.banneredit)
+    this.bannerDialog = true;
+  }
 
   onEdit(row:any){
     this.cover = null
@@ -295,10 +335,10 @@ isFirstPage(): boolean {
 
     let check = this.cover === null
     if(check === true){
-      uploadData.append('banner_name', this.name);
+      uploadData.append('banner_name', this.banneredit.banner_name);
     }
     else{
-      uploadData.append('banner_name', this.name);
+      uploadData.append('banner_name', this.banneredit.banner_name);
       uploadData.append('banner_pic', this.cover);
     }
 
@@ -312,6 +352,7 @@ isFirstPage(): boolean {
       console.log(ele)
       this.getAllBanner();
       this.ts.success("Updated Successfully")
+      this.bannerDialog = false;
       
       //this.successmsg.SuccessLog(ele, 'ban-view')
 
