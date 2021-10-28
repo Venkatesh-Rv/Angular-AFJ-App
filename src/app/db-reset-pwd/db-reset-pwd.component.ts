@@ -12,7 +12,7 @@ export class DbResetPwdComponent implements OnInit {
 
   Pwdform : FormGroup;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private ts:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -28,6 +28,11 @@ export class DbResetPwdComponent implements OnInit {
     const confirmPass = group.controls.confirmPassword.value;
 
     return pass === confirmPass ? null : true;
+}
+
+
+submit(){
+this.ts.info('Submitted For Validation.')
 }
 
 }

@@ -17,6 +17,8 @@ export class DbLoginComponent implements OnInit {
     private authService:AuthService) { }
 
   public login:FormGroup;
+  displayModal:boolean;
+  displayBasic: boolean;
   loaderbool: boolean = false;
 
   ngOnInit(): void {
@@ -72,5 +74,14 @@ export class DbLoginComponent implements OnInit {
     });
 
   }
+
+  showModalDialog() {
+    this.displayModal = true;
+}
+
+showBasicDialog() {
+  this.displayBasic = true;
+}
+
 
 }

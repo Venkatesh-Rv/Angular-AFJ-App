@@ -47,10 +47,16 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {RatingModule} from 'primeng/rating';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { MessagesModule } from 'primeng/messages';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
-import { MessageService } from 'primeng/api';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ConfirmPopupModule } from "primeng/confirmpopup";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { InputMaskModule } from "primeng/inputmask";
+
+// import { CascadeSelectModule } from "primeng/cascadeselect";
+
+import { InputTextareaModule } from "primeng/inputtextarea";
+
 
 
 
@@ -133,7 +139,7 @@ const routes: Routes = [
   //ADMIN PANEL ROUTES
   { path: 'register', component: DbRegisterComponent },
   { path: 'forgot-pwd', component: DbForgotPwdComponent},
-  { path: 'reset-pwd', component: DbResetPwdComponent },
+  { path: 'admin/reset-pwd', component: DbResetPwdComponent },
   
  
   { path: 'login', component: DbLoginComponent,canActivate: [AuthGuard]},
@@ -223,7 +229,11 @@ const routes: Routes = [
     RatingModule,
     RadioButtonModule,
     InputNumberModule,
+    InputTextareaModule ,
+    InputMaskModule,
     ConfirmDialogModule,
+    ConfirmPopupModule,
+    MessagesModule,
    
     NgbModule,
     FontAwesomeModule,
@@ -231,7 +241,7 @@ const routes: Routes = [
     NgxPaginationModule,
     Ng2SearchPipeModule,
     ToastrModule.forRoot({
-      timeOut:3500,
+      timeOut:1500,
       progressBar:true,
       progressAnimation:'increasing',
       preventDuplicates:true
@@ -244,7 +254,8 @@ const routes: Routes = [
   providers: [HomepagesectionService,
     CurrencyPipe,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
-  PostService,SucesslogginggService],
+  PostService,SucesslogginggService,
+  ConfirmationService,MessageService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

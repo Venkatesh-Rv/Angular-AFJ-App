@@ -6,6 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { PostService } from '../services/post.service';
 import { SucesslogginggService } from "../services/sucessloggingg.service"
 import { ProductModel } from './createproduct.model';
+import {
+  ConfirmationService,
+  MessageService,
+  PrimeNGConfig
+} from "primeng/api";
+import { ToastModule } from "primeng/toast";
 import { ToastrService } from 'ngx-toastr';
 
 import { FileUpload } from 'primeng/fileupload';
@@ -50,9 +56,37 @@ export class ProductDbComponent implements OnInit {
 
   constructor(private http: HttpClient, private postMethod: PostService,
     private successmsg: SucesslogginggService, private fb: FormBuilder,
-    private modalService: NgbModal, private router:Router,private ts:ToastrService) { }
+    private modalService: NgbModal, private router:Router,private ts:ToastrService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private primengConfig: PrimeNGConfig) { }
+
+    confirm(event: Event) {
+      this.confirmationService.confirm({
+        target: event.target,
+        message: "Are you want to proceed without a preview ?",
+        icon: "pi pi-exclamation-triangle",
+        accept: () => {
+          
+          this.messageService.add({
+            severity: "info",
+            summary: "Product in Creation",
+            detail: "Please Wait"
+          });
+          this.create();
+        },
+        reject: () => {
+          // this.messageService.add({
+          //   severity: "error",
+          //   summary: "Rejected",
+          //   detail: "You have rejected"
+          // });
+        }
+      });
+    }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     //this.getAllProduct();
 
     this.Product = this.fb.group({
@@ -75,6 +109,8 @@ export class ProductDbComponent implements OnInit {
     window.scrollTo({top: 0});
   }
   
+
+
   onNameChanged(event: any) {
 
     this.name = event.target.value;
@@ -179,9 +215,12 @@ export class ProductDbComponent implements OnInit {
 
   discount(){
     this.preview();
+    // let bill= this.f.price.value;
+    // var discount= this.f.discount.value;
+    // var afterDiscount = bill - (bill * discount / 100);
     let bill= this.f.price.value;
     var discount= this.f.discount.value;
-    var afterDiscount = bill - (bill * discount / 100);
+    var afterDiscount = (((bill - discount )/ bill)*100);
     this.afterDisc = Math.round(afterDiscount);
     // this.ts.success(''+ afterDiscount);
     this.ts.success(this.afterDisc)
@@ -207,7 +246,7 @@ export class ProductDbComponent implements OnInit {
     this.onDesChanged();
     console.log(this.description)
     uploadData.append('description', JSON.stringify(this.description));
-    uploadData.append('discount', this.afterDisc);
+    uploadData.append('discount', this.f.discount.value);
     uploadData.append('product_pic', this.cover);
 
     uploadData.forEach((value,key) => {

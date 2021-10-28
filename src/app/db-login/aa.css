@@ -1,0 +1,362 @@
+/* To-do implement mixins. Clean up. */
+.row.button-row {
+    text-align: center;
+}
+.button-main {
+    width: 100%;
+    height: 54px;
+    border-radius: 100px;
+    margin: auto;
+    line-height: 32px;
+}
+.error-modal-bold {
+    font-weight: 700;
+    color: #ff4500;
+}
+.button-dark-modal {
+    background-color: #4267b2;
+}
+/* Added */
+@media screen and (max-width: 767px) {
+     .button-main {
+        line-height: normal;
+        height: auto;
+        float: left;
+   }
+    #your-membership-content .button-main span {
+        display: block;
+   }
+}
+.button-border-only, .button-border-only-modal {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #008dec;
+    font-weight: 700;
+    color: #008dec;
+}
+.button-border-only:hover, .button-border-only-modal:hover {
+    background-color: rgba(0, 0, 0, 0);
+    color: #008dec;
+    border: 2px solid #ff4500;
+}
+.button-border-only:visited, .button-border-only-modal:visited {
+    color: #008dec;
+}
+.button-border-only-modal {
+    border-color: #d2d3db;
+    color: #333;
+}
+.button-border-only-modal:hover {
+    color: #333;
+}
+#gift-membership, #create-account {
+    padding-top: 23px;
+}
+@media screen and (max-width: 720px) {
+    #gift-membership, #create-account {
+        text-align: center;
+   }
+}
+.bold-link {
+    font-weight: 700;
+}
+#log-out-link {
+    margin-left: 10px;
+}
+@media screen and (max-width: 257px) {
+    #log-out-link {
+        margin-left: 0;
+   }
+}
+.your-mem-details {
+    font-size: 2.25em;
+    font-weight: 500;
+    color: #008dec;
+}
+.button-space {
+    margin: 0 10px;
+}
+#manage-member-header h2, #manage-member-header p, #members-email-title h2, #members-email-title a {
+    display: inline-block;
+}
+#manage-member-header p {
+    width: 3.5em;
+    color: #ff4500;
+    font-weight: 700;
+    margin-left: 1em;
+    vertical-align: middle;
+    margin-top: 12px;
+    font-size: 0.9375em;
+}
+.hr-modal {
+    padding-top: 13px;
+}
+.margin-top-space {
+    margin-top: 20px;
+}
+#replacement-cards-link {
+    padding-top: 30px;
+}
+.bd-right {
+    border-right: 2px solid #d2d3db;
+}
+.text-center {
+    text-align: center;
+}
+.header-grey {
+    color: #666777;
+}
+.font-fourteen, #error-in-mem-num {
+    font-size: 0.875em;
+}
+#error-icon {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+.please-fix {
+    margin-bottom: 5px;
+}
+.left-padding-ten {
+    padding-left: 10px;
+}
+#error-in-mem-num {
+    color: #ff4500;
+    font-weight: 700;
+}
+#create-account-button:hover {
+    cursor: pointer;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+#already-member-modal {
+    padding-top: 30px;
+}
+.error-modal {
+    color: #ff4500;
+}
+.error-modal-bold {
+    font-weight: 700;
+    color: #ff4500;
+}
+.margin-bottom-zero {
+    margin-bottom: 0;
+}
+.oops-no-connect {
+    font-family: Sentine1SSm-Book, Times, serif;
+    font-size: 1.375em;
+    color: #535464;
+}
+.email-replacement {
+    background-color: #fff;
+    padding: 15px 15px 0 15px;
+}
+#mem-num-input {
+    margin-top: 0.625em;
+}
+.display-hidden {
+    display: none;
+}
+#cancel-box {
+    text-align: right;
+    padding-top: 22px;
+}
+@media screen and (max-width: 720px) {
+    #cancel-box {
+        text-align: center;
+   }
+}
+#save-new-email, #member-number-form #member-number-links #connect-mem-button {
+    margin-top: 10px;
+}
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto 100px;
+    padding: 15px 60px 20px 60px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 530px;
+    overflow: auto;
+    z-index: 101;
+}
+@media screen and (max-width: 33.125em) {
+    .modal-content {
+        height: 100%;
+        margin: 0 !important;
+        padding: 15px 20px 20px 20px;
+   }
+}
+.top-margin {
+    margin-top: 210px;
+}
+@media screen and (max-width: 510px) {
+    #new-tag, #manage-header, #manage-member-header p {
+        padding: 0;
+        margin: 5px 0;
+        display: block;
+   }
+}
+#manage-header {
+    margin: 0;
+}
+@media screen and (max-width: 510px) {
+    #manage-header {
+        margin: 0 10px 0 0;
+        display: inline !important;
+   }
+}
+/* The Close Button */
+.close {
+    position: relative;
+    bottom: 7px;
+    left: 48px;
+    color: #444;
+    float: right;
+    font-size: 1.35em;
+}
+.close:hover, .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+@media screen and (max-width: 33.125em) {
+    .close {
+        left: 10px;
+   }
+}
+/* Form style in modal alter with form pseudo-class. */
+.modal-content input, #change-email-form input, #member-number-links input {
+    padding: 18px 20px;
+    border: 1px solid #d2d3db;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 1em;
+    outline: none;
+}
+.modal-content input.top, #change-email-form input.top, #member-number-links input.top {
+    border-radius: 6px 6px 0 0;
+    border-bottom: 0px;
+}
+.modal-content input.bottom, #change-email-form input.bottom, #member-number-links input.bottom {
+    border-radius: 0 0 6px 6px;
+}
+input:focus {
+    border: 2px solid #008dec !important;
+}
+#login-pass-input, #create-account-pass-input {
+    padding: 18px 60px 15px 20px;
+}
+#strength {
+    font-weight: 700;
+}
+#strength .weak {
+    color: #d30000;
+}
+#strength .fair {
+    color: #9d9800;
+}
+#strength .strong {
+    color: #009d35;
+}
+.nomarginbottom {
+    margin-bottom: 0 !important;
+}
+.action_link {
+    padding-left: 0;
+    list-style-type: none;
+}
+.action_link li {
+    float: left;
+    margin-right: 40px;
+}
+.action_link li a {
+    text-decoration: none;
+}
+#log-in-button-modal, #create-account-modal-button, #member-number-form #member-number-links #connect-mem-button, 
+#forgot-pass-button-modal {
+    border-radius: 100px;
+    padding-top: 10px;
+    border: 0;
+}
+#showHide, #showHide-create {
+    color: #535464;
+    cursor: pointer;
+    display: inline;
+    position: absolute;
+    bottom: 11px;
+    right: 17px;
+    width: 40px;
+    text-align: right;
+    font-size: 11px;
+}
+#showHide-create {
+    top: 46px;
+}
+.login-position {
+    position: relative;
+}
+@media screen and (max-width: 940px) {
+    .memb-box {
+        float: none !important;
+        width: 100% !important;
+        display: block;
+        border-right: none;
+        border-bottom: 2px #d2d3db solid;
+        margin-right: 0 !important;
+   }
+    .count-child div:nth-child(4) {
+        border-bottom: none;
+        text-align: left;
+   }
+    .count-child .memb-box:first-child p:first-child {
+        margin: 1.25rem 0;
+   }
+    .count-child .memb-box:nth-child(3) p:nth-child(1), .count-child .memb-box:nth-child(2) p:nth-child(1) {
+        margin: 2.4rem 0 1.5rem 0;
+   }
+    .count-child .memb-box:nth-child(2) p:nth-child(2), .count-child .memb-box:nth-child(3) p:nth-child(2) {
+        margin: 1.5rem 0 2.4rem 0;
+   }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select:focus, textarea:focus, input:focus {
+        font-size: 16px;
+   }
+    select, textarea, input {
+        font-size: 16px !important;
+   }
+}
+#forgot-pass-button-modal {
+    margin-top: 20px;
+}
+.msg-reset, .pwd-changed {
+    border: 2px solid #d2d3db;
+    padding: 20px;
+    margin-bottom: 33px;
+    display: none;
+}
+.msg-reset #header-txt, .pwd-changed #header-txt {
+    color: #009d51;
+    font-weight: 700;
+    margin: 0;
+}
+.msg-reset #regular-txt, .pwd-changed #regular-txt {
+    color: #444;
+    margin: 0;
+}

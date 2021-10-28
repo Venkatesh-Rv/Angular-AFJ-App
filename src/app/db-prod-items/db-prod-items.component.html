@@ -42,17 +42,17 @@
       </div> -->
       
       
-        <p-table #dt1 [value]="productshow" responsiveLayout="scroll" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" 
+        <p-table #dt1 [value]="productshow" responsiveLayout="scroll" [paginator]="true" stateStorage="local" stateKey="statedemo-local" [rows]="5" [showCurrentPageReport]="true" 
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10]"
-        selectionMode="single" [(selection)]="selectedCustomer" dataKey="id" styleClass="p-datatable-customers"
-               stateStorage="local" stateKey="statedemo-local" 
+        selectionMode="single" [(selection)]="selectedCustomer" dataKey="id" styleClass="p-datatable-customers" 
+        sortField="created_at" [sortOrder]="-1" 
                [globalFilterFields]="['name','category','price','discount']">
 
                <ng-template pTemplate="caption">
-                <div class="p-d-flex p-ai-center p-jc-between">
-                    <h3 class="p-m-0"></h3>
-                    <span class="p-input-icon-left">
-                        
+                <div class="p-d-flex">
+                  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left p-ml-auto">
+                      <!-- <i class="pi pi-search"></i> -->
                         <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search" />
                     </span>
                 </div>
@@ -62,10 +62,31 @@
               <tr>
                   <!-- <th style="width: 3rem"></th> -->
                   <th>Image &nbsp;<i class="pi pi-images"></i></th>
-                  <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
-                  <th pSortableColumn="category">Category<p-sortIcon field="category"></p-sortIcon></th>
-                  <th pSortableColumn="price">Price<p-sortIcon field="price"></p-sortIcon></th>
-                  <th pSortableColumn="discount">Discount<p-sortIcon field="discount"></p-sortIcon></th>
+                <th>
+                  <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="name">
+                    Name<p-sortIcon field="name"></p-sortIcon>
+                    <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                  </div>
+                </th>
+                  <!-- <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th> -->
+                  <th>
+                    <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="category">
+                      Category<p-sortIcon field="category"></p-sortIcon>
+                      <p-columnFilter type="text" field="category" display="menu"></p-columnFilter>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="price">
+                      Price<p-sortIcon field="price"></p-sortIcon>
+                      <p-columnFilter type="text" field="price" display="menu"></p-columnFilter>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="discount">
+                      Discounted Price<p-sortIcon field="discount"></p-sortIcon>
+                      <p-columnFilter type="text" field="discount" display="menu"></p-columnFilter>
+                    </div>
+                  </th>
                   <th >Description</th>
                   <th pSortableColumn="created_at">Created At<p-sortIcon field="created_at"></p-sortIcon></th>
                   <th>   Actions</th>
@@ -499,9 +520,13 @@
         </div>
 
         <div class="p-field">
-            <label class="p-mb-3">Category</label>
-            <input type="text" pInputText id="category" [(ngModel)]="productedit.category" />
-        </div>
+          <label for="inventoryStatus">Category</label>
+          <p-dropdown [(ngModel)]="productedit.category" (onChange)="cat($event.value)" optionLabel="name" [options]="category" placeholder="Select">
+              <ng-template let-option pTemplate="item">
+                  <span [class]="option.value">{{option.name}}</span>
+              </ng-template>
+          </p-dropdown>
+      </div>
 
         <div class="p-formgrid p-grid">
             <div class="p-field p-col">

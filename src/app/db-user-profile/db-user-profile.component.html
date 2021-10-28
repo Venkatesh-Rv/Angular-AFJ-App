@@ -1,4 +1,5 @@
 <app-header-db></app-header-db>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
 
 <div class="content-wrapper" style="display: none;">
     <br>
@@ -200,6 +201,7 @@
                 <li class="breadcrumb-item"><a routerLink="/ban-upload">Home</a></li>
                 <li class="breadcrumb-item active">User Profile</li>
               </ol>
+              <!-- <p-messages [value]="msgs"></p-messages> -->
             </div>
             <!-- /.col -->
           </div>
@@ -214,6 +216,7 @@
               
         
               <div class="row gutters-sm">
+               
                 <div class="col-md-4 mb-3">
                   <div class="card card-widget widget-user">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -223,16 +226,27 @@
                     </div>
                     <div class="widget-user-image">
                       <!-- <img src="{{obj_data.profile_url}}" alt="dp"/> -->
-                      <img class="img-circle" src="{{obj_data.profile_url}}" alt="User Avatar">
+                      <img src="{{obj_data.profile_url}}" alt="User Avatar">
                     </div>
+                    <br>
                     <div class="card-footer" style="background-color: white;">
                       <div class="row">
                         
                         <!-- /.col -->
                         <div class="col-sm-12">
                           <div class="description-block">
-                            <button type="button" routerLink="/db-update-profile" class="btn btn-block btn-outline-info">EDIT <i class="fas fa-edit"></i></button> &nbsp;
-                            <button type="button" routerLink="/forgot-pwd" class="btn btn-block btn-outline-info">PASSWORD RESET <i class="fas fa-edit"></i></button>
+                            <!-- <button type="button" routerLink="/db-update-profile" class="btn btn-block btn-outline-info">EDIT <i class="fas fa-edit"></i></button> &nbsp; -->
+                            
+                            <button pButton pRipple icon="pi pi-pencil" routerLink="/db-update-profile" type="button" label="EDIT" class="p-button-outlined"></button>
+                            <button pButton pRipple icon="pi pi-pencil" (click)="confirm1()" type="button" label="PASSWORD RESET" class="p-button-outlined"></button>
+                            <!-- <button type="button" routerLink="/forgot-pwd" class="btn  btn-outline-info">PASSWORD RESET <i class="fas fa-edit"></i></button> -->
+                          </div>
+                          <!-- /.description-block -->
+                        </div>
+                        <div class="col-sm-12">
+                          <div class="description-block">
+                          <br>
+                          <br>
                           </div>
                           <!-- /.description-block -->
                         </div>
@@ -337,4 +351,5 @@
             </div>
         </div>
 </div>
+
 

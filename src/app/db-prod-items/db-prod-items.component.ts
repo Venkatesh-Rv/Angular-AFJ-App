@@ -4,9 +4,17 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { ToastrService } from 'ngx-toastr';
+import { Table } from 'primeng/table';
 import { SortEvent } from 'primeng/api';
+import { LazyLoadEvent } from 'primeng/api';
+
 import { PostService } from '../services/post.service';
 import { ProductModel } from './editproduct.model';
+
+interface Cat {
+  name: string,
+  value: string
+}
 
 
 @Component({
@@ -23,6 +31,7 @@ export class DbProdItemsComponent implements OnInit {
   productshow:any;
   result:any;
   closeResult = '';
+  loading:boolean;
 
   //prime table
   displayModal: boolean = false;
@@ -37,6 +46,10 @@ export class DbProdItemsComponent implements OnInit {
 
   //edit form data
   objprod: any = {}
+  category: any[];
+  options;
+  categoryedit:any;
+  selectedCategory:Cat;
   catsel
   cover: File = null;
   uploadedFile;
@@ -52,7 +65,32 @@ export class DbProdItemsComponent implements OnInit {
 
   constructor(private http:HttpClient, private post:PostService, private ts:ToastrService,
     private fb: FormBuilder,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal) {
+
+       
+      this.category = [
+        {name: 'Necklace', value: 'Necklace'},
+        {name: 'Bridal Sets', value: 'Bridal Sets'},
+        {name: 'Combo Sets', value: 'Combo Sets'},
+        {name: 'Choker', value: 'Choker'},
+        // {name: 'Harram', value: 'Harram'},
+        {name: 'Rings', value: 'Rings'},
+        {name: 'Anklet', value: 'Anklet'},
+        {name: 'Bangles', value: 'Bangles'},
+        {name: 'Ear Rings', value: 'Ear Rings'},
+        {name: 'Toe Rings', value: 'Toe Rings'},
+        {name: 'Hipchain/Belt', value: 'Hipchain/Belt'},
+        {name: 'Chains', value: 'Chains'},
+        {name: 'Others', value: 'Others'}
+    ];
+
+    // for (let i =0; i < this.category.length ; i++){
+    //   this.options = {name: this.category[i].name, value: this.category[i].name }
+    // }
+    // console.log(this.options)
+
+  
+     }
 
   ngOnInit(): void {
     this.getAllProduct();
@@ -84,6 +122,7 @@ export class DbProdItemsComponent implements OnInit {
         this.allproductData = res[key];
       }
       this.productshow = this.allproductData;
+      console.log(this.productshow)
       // hideloader();
     })
   //   function hideloader() {
@@ -91,6 +130,8 @@ export class DbProdItemsComponent implements OnInit {
   //         .style.display = 'none';
   // }
   }
+
+ 
 
   get f() { return this.ProductUp.controls; }
 
@@ -129,6 +170,12 @@ export class DbProdItemsComponent implements OnInit {
     // this.formValue.get('sampleFile').updateValueAndValidity();
   }
 
+  cat(evt:any){
+ let wk = evt;
+ this.catsel = evt
+ console.log(this.catsel)
+  }
+
   onDesChanged() {
     this.address.about = this.productedit.description.about;
     console.log(this.address)
@@ -137,6 +184,7 @@ export class DbProdItemsComponent implements OnInit {
   productDialog: boolean;
   edit(product:any){
     this.productModelObj.id = product.id;
+    this.catsel = product.category;
     this.productedit = product;
     console.log(this.productedit)
     this.productDialog = true;
@@ -215,7 +263,7 @@ export class DbProdItemsComponent implements OnInit {
     console.log(check)
     if(check === true){
       uploadData.append('name', this.productedit.name);
-      uploadData.append('category', this.productedit.category)
+      uploadData.append('category', this.catsel);
       this.onDesChanged();
       uploadData.append('description',JSON.stringify(this.address))
       uploadData.append('price',this.productedit.price)
@@ -253,6 +301,7 @@ export class DbProdItemsComponent implements OnInit {
       // location.reload();
       
       this.ts.success("Updated Successfully")
+      this.getAllProduct();
       this.productDialog = false;
       // window.location.reload()
       
@@ -336,6 +385,10 @@ isLastPage(): boolean {
 
 isFirstPage(): boolean {
   return this.productshow ? this.first === 0 : true;
+}
+
+clear(table: Table) {
+  table.clear();
 }
 
 //Export as files

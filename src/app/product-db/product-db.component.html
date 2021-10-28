@@ -74,15 +74,15 @@
                 </div>
       
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Discount</label>
+                  <label for="exampleInputEmail1">Offer-Price</label>
       
                   <input
                     type="text"
-                    maxlength="2"
+                    
                     required
                     class="form-control"
                     formControlName='discount'
-                    placeholder="  Enter discount %"
+                    placeholder="  Enter Offer Price"
                   />
                 </div>
       
@@ -191,14 +191,20 @@
                 <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
                 <button id="vc" type="submit" class="btn btn-primary" (click)="activeIndex= 1 ; discount(); st()">
                  NEXT
-                </button>
+                </button> &nbsp;
+                <button id="vc" type="submit" class="btn btn-primary" (click)="confirm($event)">
+                  CREATE NOW
+                 </button>
+                <p-toast></p-toast>
+<p-confirmPopup></p-confirmPopup>
+
               </div>
       
             </form>
           </div>
           </p-tabPanel>
 
-          <p-tabPanel header="Preview-I" leftIcon="pi pi-chevron-circle-right" tooltip="Preview-I">
+          <p-tabPanel [disabled]="true"  header="Preview-I" leftIcon="pi pi-chevron-circle-right" tooltip="Preview-I">
         <ng-template pTemplate="content">
             <section class="container">
               <div class="container px-4 px-lg-5 my-5">
@@ -213,28 +219,32 @@
                         <div class="product-price">
                             <span class="old" style="color: #f64749;
                             text-decoration: line-through; font-size:22px">₹{{price}}</span>&nbsp;
-                            <span style="font-size:22px">₹{{afterDisc}}</span><br><br><br>
-                            <span style="font-size:22px; color:#eeb109;">{{Discount}}%off</span>
+                            <span style="font-size:22px">₹{{Discount}}</span><br><br><br>
+                            <span style="font-size:22px; color:#eeb109;">{{afterDisc}}%off</span>
                           </div>
                       
         <br>
         <br>
                         <p class="lead">{{selectCat}}</p>
-                        <button class="btn btn-outline-dark flex-shrink-0" (click)='activeIndex = 2 ; st()'>
+                        <!-- <button class="btn btn-outline-dark flex-shrink-0">
                          
-                          Next</button>
+                          Next</button> -->
                     </div>
                 </div>
             </div>
-          
-          
-          
-          
+
           </section>
+          <div class="card-footer" style="display: flex; justify-content:center">
+            <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
+            <button id="vc" type="submit" class="btn btn-primary" (click)='activeIndex = 2 ; st()'>
+             NEXT
+            </button>
+          </div>
         </ng-template>
+
           </p-tabPanel>
 
-          <p-tabPanel  header="Final Preview" leftIcon="pi pi-upload" tooltip="Final Preview">
+          <p-tabPanel [disabled]="true"  header="Final Preview" leftIcon="pi pi-upload" tooltip="Final Preview">
           <ng-template pTemplate="content">
             <app-header style="pointer-events:none"></app-header>
 
@@ -250,8 +260,8 @@
                           <h1 class="display-5 fw-bolder">{{name}} </h1>
                           <div class="product-price">
                               <span class="old">₹{{price}}</span>&nbsp;
-                              <span>₹{{afterDisc}}</span>
-                              <!-- <span>{{}}}</span> -->
+                              <span>₹{{Discount}}</span>
+                              <span>{{afterDisc}} % off</span>
                             </div>
                           
           <br>
@@ -271,10 +281,7 @@
                           <br>
                           <div class="d-flex">
                             <!-- <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem"> -->
-                            <button (click)="create()" class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="pi pi-save"></i>
-                                CREATE PRODUCT
-                            </button>
+                          
                             
                         </div>
                       </div>
@@ -287,6 +294,13 @@
             </section>
 
             <app-footer style="pointer-events:none"></app-footer>
+            <div class="card-footer" style="display: flex; justify-content:center">
+              <!-- <button type="submit" class="btn btn-primary" (click)="uploadBanner()" >Submit</button> -->
+              <button id="vc" type="submit" class="btn btn-primary" (click)="create()">
+               CREATE NOW
+              </button>
+            </div>
+
           </ng-template>
           </p-tabPanel>
       </p-tabView>
