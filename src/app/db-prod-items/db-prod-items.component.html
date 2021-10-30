@@ -44,13 +44,16 @@
       
         <p-table #dt1 [value]="productshow" responsiveLayout="scroll" [paginator]="true" stateStorage="local" stateKey="statedemo-local" [rows]="5" [showCurrentPageReport]="true" 
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10]"
-        selectionMode="single" [(selection)]="selectedCustomer" dataKey="id" styleClass="p-datatable-customers" 
+        [rowHover]="true" dataKey="id" styleClass="p-datatable-customers" 
         sortField="created_at" [sortOrder]="-1" 
                [globalFilterFields]="['name','category','price','discount']">
 
                <ng-template pTemplate="caption">
                 <div class="p-d-flex">
-                  <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                  <button pButton pRipple  pTooltip="Download as Excel" tooltipPosition="right" type="button" icon="pi pi-file-excel" class="p-button-rounded p-button-success p-mr-2" (click)="exportExcel()"></button>
+                  <button pButton pRipple  pTooltip="Download as PDF" tooltipPosition="top"  type="button" icon="pi pi-file-o" class="p-button-rounded" (click)="exportPdf()"></button>
+                  <!-- <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button> -->
+                  
                     <span class="p-input-icon-left p-ml-auto">
                       <!-- <i class="pi pi-search"></i> -->
                         <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search" />
@@ -69,27 +72,51 @@
                   </div>
                 </th>
                   <!-- <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th> -->
-                  <th>
-                    <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="category">
-                      Category<p-sortIcon field="category"></p-sortIcon>
+                  <!-- <th>
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                      Category
                       <p-columnFilter type="text" field="category" display="menu"></p-columnFilter>
+                    </div>
+                  </th> -->
+                  <th>
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                      Category
+                      <p-columnFilter field="category" matchMode="in" display="menu" [showMatchModes]="false"
+                        [showOperator]="false" [showAddButton]="false">
+                        <!-- <ng-template pTemplate="header">
+                          <div class="p-px-3 p-pt-3 p-pb-0">
+                            <span class="p-text-bold">CategoryS</span>
+                          </div>
+                        </ng-template> -->
+                        <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                          <p-multiSelect [ngModel]="value" [options]="category" placeholder="Any"
+                            (onChange)="filter($event.value)" optionLabel="name">
+                            <ng-template let-option pTemplate="item">
+                              <div class="p-multiselect-representative-option">
+                                <span class="p-ml-1">{{option.name}}</span>
+                              </div>
+                            </ng-template>
+                          </p-multiSelect>
+                        </ng-template>
+                      </p-columnFilter>
                     </div>
                   </th>
                   <th>
                     <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="price">
-                      Price<p-sortIcon field="price"></p-sortIcon>
+                      Actual Price<p-sortIcon field="price"></p-sortIcon>
                       <p-columnFilter type="text" field="price" display="menu"></p-columnFilter>
                     </div>
                   </th>
                   <th>
                     <div class="p-d-flex p-jc-between p-ai-center" pSortableColumn="discount">
-                      Discounted Price<p-sortIcon field="discount"></p-sortIcon>
+                      Discounted <br>
+                       Price<p-sortIcon field="discount"></p-sortIcon>
                       <p-columnFilter type="text" field="discount" display="menu"></p-columnFilter>
                     </div>
                   </th>
                   <th >Description</th>
                   <th pSortableColumn="created_at">Created At<p-sortIcon field="created_at"></p-sortIcon></th>
-                  <th>   Actions</th>
+                  <th>Actions</th>
               </tr>
               <!-- <tr>
                 <th>

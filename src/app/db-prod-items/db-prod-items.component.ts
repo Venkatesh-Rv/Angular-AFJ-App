@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Table } from 'primeng/table';
 import { SortEvent } from 'primeng/api';
 import { LazyLoadEvent } from 'primeng/api';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 import { PostService } from '../services/post.service';
 import { ProductModel } from './editproduct.model';
@@ -38,6 +40,7 @@ export class DbProdItemsComponent implements OnInit {
   selectedCustomer: any;
 
   cols: any[];
+  head = [['IMAGE', 'NAME', 'CATEGORY', 'ACTUAL PRICE','DISCOUNTED PRICE','CREATED AT']]
 
   exportColumns: any[];
 
@@ -106,6 +109,19 @@ export class DbProdItemsComponent implements OnInit {
     }
       
     )
+  this.cols = [
+  { title: "Image", dataKey: "image" },
+  { title: "Name", dataKey: "name" },
+  { title: "Category", dataKey: "category" },
+  { title: "Price", dataKey: "price" },
+  { title: "Discount", dataKey: "discount" },
+  { title: "Description", dataKey: "description" },
+  { title: "Created_At", dataKey: "created_at" }
+
+  ];
+
+  // this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
+
     // this.ProductUp.controls['name'].setValue(this.objprod.name);
     // this.f.controls['description'].setValue(this.objprod.description);
     // this.f.controls['price'].setValue(this.objprod.price);
@@ -392,6 +408,26 @@ clear(table: Table) {
 }
 
 //Export as files
+
+exportPdf() {
+  // import("jspdf").then(jsPDF => {
+  //     import("jspdf-autotable").then(x => {
+  //         const doc = new jsPDF.default(0,0);
+  //         doc.autoTable(this.exportColumns, this.productshow);
+  //         doc.save('products.pdf');
+  //     })
+  // })
+  const doc = new jsPDF('p','pt');
+          
+  autoTable(doc, {
+    columns: this.cols,
+    body: this.productshow,
+    didDrawPage: (dataArg) => { 
+     doc.text('AFJ Products', dataArg.settings.margin.left, 10);
+    }
+}); 
+  doc.save('products.pdf');
+}
 
 exportExcel() {
   import("xlsx").then(xlsx => {

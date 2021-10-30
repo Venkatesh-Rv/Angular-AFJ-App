@@ -56,6 +56,8 @@ import { InputMaskModule } from "primeng/inputmask";
 // import { CascadeSelectModule } from "primeng/cascadeselect";
 
 import { InputTextareaModule } from "primeng/inputtextarea";
+import { TooltipModule } from 'primeng/tooltip';
+import { RippleModule } from 'primeng/ripple';
 
 
 
@@ -138,7 +140,7 @@ const routes: Routes = [
 
   //ADMIN PANEL ROUTES
   { path: 'register', component: DbRegisterComponent },
-  { path: 'forgot-pwd', component: DbForgotPwdComponent},
+  { path: 'admin/forgot-pwd', component: DbForgotPwdComponent},
   { path: 'admin/reset-pwd', component: DbResetPwdComponent },
   
  
@@ -231,6 +233,8 @@ const routes: Routes = [
     InputNumberModule,
     InputTextareaModule ,
     InputMaskModule,
+    RippleModule,
+    TooltipModule,
     ConfirmDialogModule,
     ConfirmPopupModule,
     MessagesModule,

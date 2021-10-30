@@ -146,9 +146,12 @@
       <p class="text-danger">{{register.get('cpassword').errors['passwordStrength']}}</p>
     </div> -->
 
-    <div class="input-group mb-3" *ngIf="submitted && register.get('cpassword').errors.confirmedValidator">
+    <div class="input-group mb-3" *ngIf="register.get('cpassword').errors.confirmedValidator">
       <p class="text-danger"> Password and Confirm Password must be match.</p>
     </div>
+    <!-- <div class="input-group mb-3" *ngIf="submitted.dirty && register.get('cpassword').errors.confirmedValidator">
+      <p class="text-danger"> Password and Confirm Password must be match.</p>
+    </div> -->
 </div>
 
                    <!-- Last  -->

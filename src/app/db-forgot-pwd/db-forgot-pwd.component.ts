@@ -75,6 +75,12 @@ export class DbForgotPwdComponent implements OnInit {
   mail(event: any) {
     this.co_email = event.target.value;
     console.log(this.co_email);
+    
+  }
+
+  d(){
+    this.ts.success("The Verification link is sent to "+this.co_email +" "+"respectively");
+    this.route.navigate(['/login'])
   }
 
   otp(event: any) {

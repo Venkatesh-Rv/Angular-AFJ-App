@@ -3,6 +3,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { AuthService } from './services/auth.service';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, filter, take, switchMap } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {

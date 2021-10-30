@@ -130,7 +130,14 @@ export class AuthService {
       console.log(bool, typeof(bool))
       if(!bool){
         console.log(bool)
-        this.refreshToken();
+        var data = {
+          "refresh_token":localStorage.getItem('refresh_token')
+        }
+        var url= 'https://afj-staging-server.herokuapp.com/refresh/token/';
+        // this.refreshTokent();
+        this.refreshTokent(url,data).subscribe(ele =>{
+          console.log(ele)
+        })
         return true;
       }
       return bool
@@ -166,6 +173,15 @@ export class AuthService {
     }));
   }
 
+  refreshTokent(url,data){
+    console.log('in')
+    return this.http.post(url,data);
+  }
+
+  hs(){
+    return this.http.get('https://afj-staging-server.herokuapp.com/index/head_start/')
+  }
+
   getJwtToken() {
     return localStorage.getItem(this.ACCESS_TOKEN);
   }
@@ -190,7 +206,7 @@ export class AuthService {
     this.loggedUser = null;
     this.removeTokens();
     this.removeProfile();
-    this.ts.success('Logout Successfully')
+    //this.ts.success('Logout Successfully')
     this.router.navigate(['/login'])
   }
 

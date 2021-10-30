@@ -147,27 +147,16 @@
         <tr>
             <th style="width: 3rem"></th>
             <th>Image</th>
-            <th pSortableColumn="banner_name">Name <p-sortIcon field="banner_name"></p-sortIcon></th>
-            <th pSortableColumn="created_at">Created At<p-sortIcon field="created_at"></p-sortIcon></th>
+            <th pSortableColumn="banner_name">
+              Name <p-sortIcon field="banner_name"></p-sortIcon>
+            </th>
+            <th pSortableColumn="created_at">
+              Created At
+              <p-sortIcon field="created_at"></p-sortIcon>
+            </th>
             <th>Actions</th>
         </tr>
-        <tr>
-          <th>
-              
-          </th>
-          <th>
-              
-          </th>
-          <th>
-              <input pInputText type="text" (input)="dt1.filter($event.target.value, 'banner_name', 'contains')" [value]="dt1.filters['banner_name']?.value" placeholder="Search" class="p-inputtext p-component p-element p-column-filter">
-          </th>
-          <th>
-              <input pInputText type="text" (input)="dt1.filter($event.target.value, 'created_at', 'contains')" [value]="dt1.filters['created_at']?.value" placeholder="Search" class="p-inputtext p-component p-element p-column-filter">
-          </th>
-          <th>
-            <button pButton pRipple type="button" icon="pi pi-file-excel" class="p-button-rounded p-button-warning p-button-outlined" (click)="exportExcel()"></button>
-          </th>
-      </tr>
+    
     </ng-template>
     <ng-template pTemplate="body" let-prime let-expanded="expanded">
         <tr>

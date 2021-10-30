@@ -6,6 +6,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from "@angular/router";
 import { PostService } from "../services/post.service"
 import { SucesslogginggService } from "../services/sucessloggingg.service"
+import { AuthService } from '../auth/services/auth.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class BannerUploadComponent implements OnInit {
   closeResult = '';
 
   cover: File;
+  objectURL;
   reader = new FileReader();
   imgName: string = '';
   uploadedFile:any;
@@ -32,14 +34,28 @@ export class BannerUploadComponent implements OnInit {
   selectCat: string;
   buttonboool: boolean = true;
   submitted:boolean= false;
+  activeIndex1: number = 0;
+  
 
   constructor(private http: HttpClient, private toastr: ToastrService, 
     private route: Router, private postMethod: PostService,
     private successmsg: SucesslogginggService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal, private as:AuthService) { }
 
   ngOnInit(): void {
     // this.editBanner();
+    var data = {
+      "refresh_token":localStorage.getItem('refresh_token')
+    }
+    console.log(data)
+    var url= 'https://afj-staging-server.herokuapp.com/refresh/token/'
+    // this.as.refreshTokent(url,data).subscribe(ele =>{
+    //   console.log(ele)
+    // })
+
+    // this.as.hs().subscribe(ele =>{
+    //   console.log(ele)
+    // })
   }
 
   //modal for preview
@@ -69,6 +85,10 @@ private getDismissReason(reason: any): string {
 
   }
   
+  my() {
+  //  this.route.navigate(['/ban-upload'])
+  window.location.reload();
+  }
 
   onUpload(event) {
     
@@ -86,6 +106,9 @@ private getDismissReason(reason: any): string {
     this.reader.readAsDataURL(evt[0])
     this.cover = evt[0];
     this.imgName = this.cover.name;
+    this.objectURL = null;
+    this.objectURL = URL.createObjectURL(this.cover)
+    console.log(this.reader.result)
     console.log(this.uploadedFile)
 
     var new_str = this.imgName.substr(-4);
@@ -106,6 +129,10 @@ private getDismissReason(reason: any): string {
   }
   }
 
+  dummy: any = [ 
+  
+  {image:this.reader.result}
+  ];
 
 
   //   onfeatureChanged(event){
@@ -148,6 +175,7 @@ private getDismissReason(reason: any): string {
 
   url: string = 'http://127.0.0.1:8000/'
 
+  
   
 
   uploadBanner() {

@@ -4,3 +4,95 @@ margin-left: auto;
 margin-right: auto;
 width: 16%;
   }
+
+  
+.card {
+  width: 400px;
+  padding: 20px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+}
+
+
+
+.account {
+  font-weight: 500;
+  font-size: 17px
+}
+
+.contact {
+  font-size: 13px
+}
+
+.form-control {
+  text-indent: 14px
+}
+
+.form-control:focus {
+  color:black;
+  background-color: #fff;
+  border-color: #dbd4e4;
+  outline: 0;
+  box-shadow: none
+}
+
+.inputbox {
+  margin-bottom: 10px;
+  position: relative
+}
+
+.inputbox i {
+  position: absolute;
+  left: 8px;
+  top: 12px;
+  color: #dadada
+}
+
+.form-check-label {
+  font-size: 13px
+}
+
+.form-check-input {
+  width: 14px;
+  height: 15px;
+  margin-top: 5px
+}
+
+.forgot {
+  font-size: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.mail {
+  color: #4EB7F8;
+  text-decoration: none
+}
+
+.form-check {
+  cursor: pointer
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #4EB7F8;
+  border-color: #4EB7F8
+}
+
+img {
+  -webkit-filter: drop-shadow(5px 5px 5px #222 );
+  filter: drop-shadow(5px 5px 5px #222);
+}
+
+.login-page {
+background: url(https://d33wubrfki0l68.cloudfront.net/8d79b89491cf9ef958be1386776dc937d39266be/1a630/img/particle_background.jpg) no-repeat center center fixed;
+
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+
+}
