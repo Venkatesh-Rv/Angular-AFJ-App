@@ -55,8 +55,14 @@
   <div class="mt-4 text-center">
       <!-- <h4>RESET</h4>  -->
       <span>Reset your Password for the admin account credentials</span>
-      <div class="mt-3 inputbox"> <input type="password" class="form-control" placeholder="New Password"> &nbsp;  </div>
-      <div class="inputbox"> <input type="text" class="form-control" placeholder="Confirm Password"> </div>
+      <form [formGroup]="Pwdform">
+        <div class="mt-3 inputbox">
+           <input type="password" class="form-control" formControlName="cpassword" placeholder="New Password"> &nbsp; 
+          </div>
+        <div class="inputbox">
+           <input type="text" class="form-control" formControlName="password" placeholder="Confirm Password">
+          </div>
+      </form>
   </div>
 
   <div class="mt-2"> <button class="btn btn-primary btn-block" (click)="submit()">CREATE</button> </div>

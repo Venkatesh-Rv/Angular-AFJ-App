@@ -106,6 +106,7 @@ import { DbUserProfileComponent } from './db-user-profile/db-user-profile.compon
 import { DbProdItemsComponent } from './db-prod-items/db-prod-items.component';
 import { DbContactComponent } from './db-contact/db-contact.component';
 import { DbProfileUpdateComponent } from './db-user-profile/db-profile-update/db-profile-update.component';
+import { DbOtpVerifyComponent } from './db-otp-verify/db-otp-verify.component';
 
 
 
@@ -141,6 +142,7 @@ const routes: Routes = [
   //ADMIN PANEL ROUTES
   { path: 'register', component: DbRegisterComponent },
   { path: 'admin/forgot-pwd', component: DbForgotPwdComponent},
+  { path: 'admin/otp-verify', component: DbOtpVerifyComponent},
   { path: 'admin/reset-pwd', component: DbResetPwdComponent },
   
  
@@ -199,7 +201,8 @@ const routes: Routes = [
     DbProdItemsComponent,
     DbContactComponent,
     DbProfileUpdateComponent,
-    ConfirmEqualValidatorDirective
+    ConfirmEqualValidatorDirective,
+    DbOtpVerifyComponent
     // LoginComponent
   ],
   imports: [

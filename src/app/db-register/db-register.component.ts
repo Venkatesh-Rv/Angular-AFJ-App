@@ -69,6 +69,8 @@ export class DbRegisterComponent implements OnInit {
     this.imgName = this.cover.name
   }
 
+
+  //dummy
   signup_d() {
     //  console.log(this.register.value)
     //  console.log(this.register.value.address)
@@ -92,9 +94,28 @@ export class DbRegisterComponent implements OnInit {
 
   }
 
+  //Email link login
+
+  email(data){
+    var link ="https://afj-staging-server.herokuapp.com/management/email/verification/?email_id="+data;
+    this.as.email_link(link).subscribe(
+      ele=>{
+        if(ele.status === 200){
+          // this.loaderbool = false;
+          this.ts.info("Please check your email to login.")
+          this.register.reset();
+          //this.router.navigate(['/login'])
+        }
+      },
+      error =>{
+        console.log(error.statusText)
+        this.ts.error(error.statusText)
+      }
+    )
+
+  }
 
   //ordinary
-
   create() {
     this.submitted = true;
 
@@ -131,8 +152,9 @@ console.log(uploadData)
     }
     if(ele.status === 201){
       this.loaderbool = false;
+      this.email(uploadData.get('email_id'));
       this.ts.success("Owner Created Successfully")
-      this.router.navigate(['/login'])
+      //this.router.navigate(['/login'])
       console.log(this.msg)
     }
     else if(ele.status === 206){

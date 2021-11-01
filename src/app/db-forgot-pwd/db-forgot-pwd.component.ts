@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-db-forgot-pwd',
@@ -18,7 +19,8 @@ export class DbForgotPwdComponent implements OnInit {
   verify: boolean = false;//otp
   loaderbool: boolean = false;
 
-  constructor(private route: Router, private cs: CartService, private ts: ToastrService,private fb:FormBuilder) { }
+  constructor(private route: Router, private cs: CartService, private ts: ToastrService,private fb:FormBuilder,
+    private as:AuthService) { }
 
   ngOnInit(): void {
     this.email_form = this.fb.group({
@@ -79,8 +81,39 @@ export class DbForgotPwdComponent implements OnInit {
   }
 
   d(){
-    this.ts.success("The Verification link is sent to "+this.co_email +" "+"respectively");
-    this.route.navigate(['/login'])
+    // this.ts.success("The Verification link is sent to "+this.co_email +" "+"respectively");
+    // this.route.navigate(['/login'])
+    console.log(this.f.email.value)
+
+    var link ="https://afj-staging-server.herokuapp.com/management/password/reset/request/?email_id="+this.f.email.value;
+    this.as.forgot_pwd(link).subscribe(
+      ele=>{
+        if (ele.status === 200) {
+          // this.loaderbool = false;
+          console.log(ele.body)
+          for (let key in ele.body) {
+            console.log(ele.body[key])
+            var pc = ele.body[key]
+          }
+          this.ts.success(pc)
+          localStorage.setItem('email_reset',this.f.email.value);
+          this.route.navigate(['/admin/otp-verify']);
+        }
+        else if(ele.status === 400){
+          
+          for (let key in ele.body) {
+            console.log(ele.body[key])
+            var per = ele.body[key]
+          }
+          console.log(per)
+          this.ts.error(per)
+        }
+      },
+      error =>{
+        console.log(error.statusText)
+        this.ts.error(error.statusText)
+      }
+    )
   }
 
   otp(event: any) {

@@ -22,12 +22,8 @@ export class DbUserProfileComponent implements OnInit {
  
   obj_data;
   msgs: Message[] = [];
-  admin_profile;
-  email;
-  ph_no;
-  last_name;
-  address;
-  picture;
+  public showPassword: boolean;
+ 
 
   constructor(private authService:AuthService,private ts:ToastrService,
      private confirmationService: ConfirmationService,private messageService: MessageService, private primengConfig: PrimeNGConfig) { }
@@ -60,5 +56,6 @@ export class DbUserProfileComponent implements OnInit {
         }
     });
 }
+
 
 }

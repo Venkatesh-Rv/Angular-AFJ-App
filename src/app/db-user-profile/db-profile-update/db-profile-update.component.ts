@@ -34,6 +34,7 @@ export class DbProfileUpdateComponent implements OnInit {
       phone_number: [""],
       address1: [""],
       address2: [""],
+      pincode:[""],
       // password: ["", Validators.required],
       profile_pic: null
     })
@@ -49,6 +50,7 @@ export class DbProfileUpdateComponent implements OnInit {
 
     this.prof_update.controls['address1'].setValue(this.edit.address.area);
     this.prof_update.controls['address2'].setValue(this.edit.address.city);
+    this.prof_update.controls['pincode'].setValue(this.edit.address.pincode);
 
   }
 
@@ -56,7 +58,8 @@ export class DbProfileUpdateComponent implements OnInit {
 
   onDesChanged() {
     this.address.area = this.f.address1.value;
-    this.address.city = this.f.address2.value
+    this.address.city = this.f.address2.value;
+    this.address.pincode = this.f.pincode.value;
   }
 
   onImageChanged(event) {

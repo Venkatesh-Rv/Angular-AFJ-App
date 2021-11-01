@@ -33,13 +33,29 @@ export class AuthService {
     return this.http.post(url, getData, {observe: 'response'})
   }
 
+  email_link(url) {
+    return this.http.get(url,{ observe: 'response'})
+  }
+
+  forgot_pwd(url){
+    return this.http.get(url,{observe:'response'})
+  }
+
+  otp(url,data){
+    return this.http.post(url,data,{observe:'response'})
+  }
+
+  reset_pwd(url,data){
+    return this.http.put(url,data,{observe:'response'})
+  }
+
   update_adminprofile(url,getData){
     return this.http.put(url, getData, {observe: 'response'})
   }
 
   login(user: { username: string, password: string }): Observable<boolean> {
     //console.log(user)
-    return this.http.post<any>(`${config.apiUrl}signin/`, user)
+    return this.http.post<any>(`${config.apiUrl}management/login/`, user)
       .pipe(
         tap(tokens => {
           console.log(user)

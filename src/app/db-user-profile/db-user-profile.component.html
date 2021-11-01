@@ -238,13 +238,15 @@
                             <!-- <button type="button" routerLink="/db-update-profile" class="btn btn-block btn-outline-info">EDIT <i class="fas fa-edit"></i></button> &nbsp; -->
                             
                             <button pButton pRipple icon="pi pi-pencil" routerLink="/db-update-profile" type="button" label="EDIT" class="p-button-outlined"></button>
-                            <button pButton pRipple icon="pi pi-pencil" (click)="confirm1()" type="button" label="PASSWORD RESET" class="p-button-outlined"></button>
+                            <button pButton pRipple icon="pi pi-pencil" type="button" label="PASSWORD CHANGE" class="p-button-outlined"></button>
                             <!-- <button type="button" routerLink="/forgot-pwd" class="btn  btn-outline-info">PASSWORD RESET <i class="fas fa-edit"></i></button> -->
                           </div>
                           <!-- /.description-block -->
                         </div>
                         <div class="col-sm-12">
                           <div class="description-block">
+                          <br>
+                          <br>
                           <br>
                           <br>
                           </div>
@@ -330,6 +332,15 @@
                             {{obj_data.address.city}}
                         </div>
                       </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h4 class="mb-0">Pincode</h4>
+                        </div>
+                        <div class="col-sm-3 text font-size-sm">
+                            {{obj_data.address.pincode}}
+                        </div>
+                      </div>
                       <br>
                       <div class="row">
                         <div class="col-sm-12">
@@ -352,4 +363,20 @@
         </div>
 </div>
 
-
+<main>
+<div class="container">
+  <form>
+    <h2>Login</h2>
+    <div class="input-group">
+      <label for="txtUserName">User Name</label>
+      <input type="text" placeholder="password" class="form-control" name="txtUserName" />
+    </div>
+    <div class="input-group">
+      <label for="txtPassword">Password</label>
+      <input type="password" id="txtPassword" class="form-control" name="txtPassword" placeholder="c Password" />
+      <button type="button" id="btnToggle" class="toggle"></button>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block">Go!</button>
+  </form>
+</div>
+</main>

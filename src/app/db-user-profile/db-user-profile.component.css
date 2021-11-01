@@ -66,3 +66,77 @@
 .shadow-none {
     box-shadow: none!important;
 }
+
+main {
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    height: 100%;
+  }
+  .container {
+    margin: 0 auto;
+  }
+  form {
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3rem 5rem -2rem rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    max-width: 380px;
+    padding: 15px 35px 45px;
+  }
+  h2 {
+    color: #666;
+    margin-bottom: .75em;
+    text-align: center;
+  }
+  .input-group {
+    margin-bottom: 1.25em;
+  }
+
+  input[type="text"],
+input[type="password"] {
+  -webkit-appearance: none;
+  border-radius: 1px;
+  box-sizing: border-box;
+  font-size: 1.25em;
+  height: auto;
+  padding: .5em;
+
+}
+/* suppress IE >= 10 native functionality that can show password */
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+.btn {
+  margin-top: 1.75em;
+}
+.input-group {
+  position: relative;
+  width: 100%;
+}
+.toggle {
+  background: none;
+  border: none;
+  color: #337ab7;
+  /*display: none;*/
+  /*font-size: .9em;*/
+  font-weight: 600;
+  /*padding: .5em;*/
+  position: absolute;
+  right: .75em;
+  top: 2.25em;
+  z-index: 9;
+}
+
+
+
+
+
+.fa {
+  font-size: 2rem;
+}
