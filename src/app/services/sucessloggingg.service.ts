@@ -15,7 +15,7 @@ export class SucesslogginggService {
 
     if (ResponseData) {
 
-      this.toaster.success('Your data has been recorded sucessfully', 'Sucess', {
+      this.toaster.success('Created sucessfully', 'Success', {
         timeOut: 3000,
       });
 

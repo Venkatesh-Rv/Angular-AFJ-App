@@ -31,6 +31,7 @@ export class DbProdItemsComponent implements OnInit {
   productModelObj : ProductModel = new ProductModel();
   allproductData:any;
   productshow:any;
+  view;
   result:any;
   closeResult = '';
   loading:boolean;
@@ -134,9 +135,14 @@ export class DbProdItemsComponent implements OnInit {
 
     this.post.getProduct().subscribe(res=>{
       console.log(res)
-      for (let key in res) {
-        this.allproductData = res[key];
+      this.view = res
+      let rr = '?random+\=' + Math.random()
+      for (let key in this.view.message) {
+        this.view.message[key].product_url =this.view.message[key].product_url+rr
+        // res[key].message.product_url = res[key].message.product_url +rr;
+        // this.allproductData = this.view[key];
       }
+      this.allproductData = this.view.message
       this.productshow = this.allproductData;
       console.log(this.productshow)
       // hideloader();

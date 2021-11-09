@@ -122,6 +122,11 @@
           <input type="text" class="form-control" formControlName="email" style="text-indent: 25px;" placeholder=" Email">
           <i style="position: absolute; left:8px;" class="fa fa-user"></i>
         </form>
+        <br>
+        <div class="alert alert-danger" *ngIf="email_form.get('email').errors?.email">
+          <!-- <p class="text-danger" *ngIf="email_form.get('email').errors?.required">Email address is required</p> -->
+          <small class="text-danger">Email address is invalid</small>
+        </div>
        </div>
   
   </div>
@@ -131,7 +136,7 @@
     <div> 
       <span>Remember Now ?</span>
       &nbsp;
-      <a style="color: slateblue;" routerLink="/login">Back to login</a> </div>
+      <a style="color: slateblue;" routerLink="/admin/login">Back to login</a> </div>
 
 </div>
 </div>

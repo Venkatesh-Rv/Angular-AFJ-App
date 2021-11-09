@@ -22,7 +22,7 @@ checking(){
 }
 
   getHomeBanner(endpoint) {
-    return this.http.get(`${this.url}${endpoint}`)
+    return this.http.get(`${this.staging_server}${endpoint}`)
 
   }
 

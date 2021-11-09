@@ -223,7 +223,7 @@ export class ProductDbComponent implements OnInit {
     var afterDiscount = (((bill - discount )/ bill)*100);
     this.afterDisc = Math.round(afterDiscount);
     // this.ts.success(''+ afterDiscount);
-    this.ts.success(this.afterDisc)
+    //this.ts.success(this.afterDisc)
     console.log("After discount your price is: " + this.afterDisc);
   }
   

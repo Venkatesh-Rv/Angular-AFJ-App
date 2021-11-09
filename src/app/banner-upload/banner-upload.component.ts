@@ -44,11 +44,11 @@ export class BannerUploadComponent implements OnInit {
 
   ngOnInit(): void {
     // this.editBanner();
-    var data = {
-      "refresh_token":localStorage.getItem('refresh_token')
-    }
-    console.log(data)
-    var url= 'https://afj-staging-server.herokuapp.com/refresh/token/'
+    // var data = {
+    //   "refresh_token":localStorage.getItem('refresh_token')
+    // }
+    // console.log(data)
+    // var url= 'https://afj-staging-server.herokuapp.com/refresh/token/'
     // this.as.refreshTokent(url,data).subscribe(ele =>{
     //   console.log(ele)
     // })

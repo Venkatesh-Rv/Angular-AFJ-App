@@ -24,7 +24,7 @@ export class DbForgotPwdComponent implements OnInit {
 
   ngOnInit(): void {
     this.email_form = this.fb.group({
-      email:[""],
+      email:["",[Validators.required, Validators.email]],
      
     }
     );
@@ -85,7 +85,11 @@ export class DbForgotPwdComponent implements OnInit {
     // this.route.navigate(['/login'])
     console.log(this.f.email.value)
 
-    var link ="https://afj-staging-server.herokuapp.com/management/password/reset/request/?email_id="+this.f.email.value;
+    if(this.email_form.invalid){
+      this.ts.info('Enter email in correct format')
+    }
+    else{
+      var link ="https://afj-staging-server.herokuapp.com/management/password/reset/request/?email_id="+this.f.email.value;
     this.as.forgot_pwd(link).subscribe(
       ele=>{
         if (ele.status === 200) {
@@ -114,6 +118,10 @@ export class DbForgotPwdComponent implements OnInit {
         this.ts.error(error.statusText)
       }
     )
+
+    }
+
+    
   }
 
   otp(event: any) {

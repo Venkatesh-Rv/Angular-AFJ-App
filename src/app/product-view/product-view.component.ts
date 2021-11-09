@@ -54,8 +54,8 @@ export class ProductViewComponent implements OnInit {
   ngOnInit(): void {
     this.aroute.queryParamMap
     .subscribe((params:any) => {
-      this.id=params.params.id
-      this.cat2=params.params.cat
+      this.id = params.params.id
+      this.cat2 = params.params.cat
       console.log(this.id)
       this.productService.getSingleProduct(this.id,this.cat2).subscribe(prod => {
         this.product = prod;
@@ -180,5 +180,12 @@ export class ProductViewComponent implements OnInit {
     //window.location.reload();
   });
   }
+
+   my() {
+    document.querySelector("#view")
+      .addEventListener("click", (event) => {
+        var element = document.querySelector(".products");
+        element.classList.toggle("products-table");
+      })}
 
 }

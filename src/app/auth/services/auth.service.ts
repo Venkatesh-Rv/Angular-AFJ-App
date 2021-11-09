@@ -137,6 +137,55 @@ export class AuthService {
     }
   }
 
+  refreshTokent(url,data){
+    console.log('in')
+    return this.http.post(url,data,{observe:'response'});
+  }
+
+  token_call() {
+    var data = {
+      "refresh_token": localStorage.getItem('refresh_token')
+    }
+    var url = 'https://afj-staging-server.herokuapp.com/refresh/token/';
+    this.refreshTokent(url, data).subscribe(ele => {
+      console.log(ele)
+      if (ele.status === 200) {
+        // this.loaderbool = false;
+        console.log(ele.body)
+        for (let key in ele.body) {
+          console.log(ele.body[key])
+          var rt = ele.body[key]
+        }
+        console.log(rt)
+        this.ts.success(rt)
+        this.storeTokens(rt)
+
+      }
+      else if (ele.status === 206) {
+
+        for (let key in ele.body) {
+          console.log(ele.body[key])
+          var per = ele.body[key]
+        }
+        console.log(per)
+        this.ts.error(per)
+      }
+    },
+      error => {
+        console.log(error.statusText)
+        //this.ts.error(error.statusText)
+      })
+
+//       for (let key in ele) {
+//         this.ans = ele[key];
+//         console.log(this.ans);   
+// }
+//       this.storeJwtToken(this.ans.access_token);
+//       this.storeRefreshToken(this.ans.refresh_token)
+//       console.log('new tokens refreshed')
+    
+  }
+
   isLoggedIn() {
     var userPayload = this.getUserPayload();
     console.log(userPayload)
@@ -146,14 +195,8 @@ export class AuthService {
       console.log(bool, typeof(bool))
       if(!bool){
         console.log(bool)
-        var data = {
-          "refresh_token":localStorage.getItem('refresh_token')
-        }
-        var url= 'https://afj-staging-server.herokuapp.com/refresh/token/';
-        // this.refreshTokent();
-        this.refreshTokent(url,data).subscribe(ele =>{
-          console.log(ele)
-        })
+        //this.token_call();
+
         return true;
       }
       return bool
@@ -189,10 +232,7 @@ export class AuthService {
     }));
   }
 
-  refreshTokent(url,data){
-    console.log('in')
-    return this.http.post(url,data);
-  }
+ 
 
   hs(){
     return this.http.get('https://afj-staging-server.herokuapp.com/index/head_start/')
@@ -214,16 +254,16 @@ export class AuthService {
   private doLoginUser(username: string, tokens: any) {
     console.log(tokens)
     this.storeTokens(tokens);
-    this.storeProfile(tokens);
+    //this.storeProfile(tokens);
     this.owner_data(tokens)
   }
 
-  private doLogoutUser() {
+  doLogoutUser() {
     this.loggedUser = null;
     this.removeTokens();
     this.removeProfile();
     //this.ts.success('Logout Successfully')
-    this.router.navigate(['/login'])
+    this.router.navigate(['/admin/login'])
   }
 
   private getRefreshToken() {
@@ -239,7 +279,7 @@ export class AuthService {
     localStorage.setItem(this.REFRESH_TOKEN, jwt);
   }
 
-  private storeTokens(tokens: Tokens) {
+  storeTokens(tokens: Tokens) {
     console.log('entered')
    
     console.log(tokens)

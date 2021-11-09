@@ -104,7 +104,7 @@ export class DbRegisterComponent implements OnInit {
           // this.loaderbool = false;
           this.ts.info("Please check your email to login.")
           this.register.reset();
-          //this.router.navigate(['/login'])
+          this.router.navigate(['/admin/login'])
         }
       },
       error =>{

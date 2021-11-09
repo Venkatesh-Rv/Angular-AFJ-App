@@ -128,19 +128,24 @@ export class BannerViewComponent implements OnInit {
   //   });
   // }
 
-  getAllBanner(){
-    this.ps.getData().subscribe(res=>{
-      
-      this.banner= res
+  getAllBanner() {
+    this.ps.getData().subscribe(res => {
+
+      this.banner = res
       console.log(this.banner.message)
+      let ts;
+      ts = this.banner.message;
+     
+      let rr = '?random+\=' + Math.random()
+      for (let key in this.banner.message) {
+        this.banner.message[key].banner_url = this.banner.message[key].banner_url +rr;
+      }
       this.prime = this.banner.message;
-    console.log(this.prime)
+      console.log(this.prime)
+      console.log(ts)
       
-    }, error=>{
-      console.error('error')
-      console.log(error)
     })
-   
+
     //this.imgName=this.banner.image
   }
 

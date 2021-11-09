@@ -238,7 +238,7 @@
                             <!-- <button type="button" routerLink="/db-update-profile" class="btn btn-block btn-outline-info">EDIT <i class="fas fa-edit"></i></button> &nbsp; -->
                             
                             <button pButton pRipple icon="pi pi-pencil" routerLink="/db-update-profile" type="button" label="EDIT" class="p-button-outlined"></button>
-                            <button pButton pRipple icon="pi pi-pencil" type="button" label="PASSWORD CHANGE" class="p-button-outlined"></button>
+                            <button pButton pRipple icon="pi pi-pencil" routerLink="/admin/pwd-update"  type="button" label="PASSWORD CHANGE" class="p-button-outlined"></button>
                             <!-- <button type="button" routerLink="/forgot-pwd" class="btn  btn-outline-info">PASSWORD RESET <i class="fas fa-edit"></i></button> -->
                           </div>
                           <!-- /.description-block -->
@@ -363,20 +363,128 @@
         </div>
 </div>
 
-<main>
-<div class="container">
-  <form>
-    <h2>Login</h2>
-    <div class="input-group">
-      <label for="txtUserName">User Name</label>
-      <input type="text" placeholder="password" class="form-control" name="txtUserName" />
+<div style="display: none;">
+
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+          <form [formGroup]="updateform">
+            <div class="card px-5 py-5" style=" height: 320px" id="form1">
+            
+              <div class="alert alert-danger" *ngIf="f.cpassword.touched && f.cpassword.invalid">
+                <br>
+                <div *ngIf="f.cpassword.errors.required">Password is required.</div>
+                <div class="error-text input-group mb-3" *ngIf="updateform.get('cpassword').hasError('passwordStrength')">
+                  <p class="text-danger">{{updateform.get('cpassword').errors['passwordStrength']}}</p>
+                </div>
+          
+              </div>
+              <br>
+              <div class="alert alert-danger" *ngIf="f.password.touched && f.password.invalid">
+                <div *ngIf="f.password.errors.required">Password is required.</div>
+                <div *ngIf="f.password.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+              </div>
+            </div>
+            <br>
+            <div class="card px-5 py-5" style=" height: 320px" id="form1">
+          
+              <div class="form-data" v-if="!submitted">
+                <div class="forms-inputs mb-4">
+                  <span>Password</span>
+                  <input autocomplete="off" formControlName="cpassword" type="password">
+          
+                </div>
+                <div class="forms-inputs mb-4">
+                  <span>Confirm Password</span>
+                  <input autocomplete="off" formControlName="password" type="text">
+          
+                </div>
+                <div class="mb-3">
+                  <button class="btn btn-dark w-70">Update</button>
+                </div>
+              </div>
+          
+          
+              <!-- <div class="success-data" v-else>
+                            <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">You have been logged in <br> Successfully</span> </div>
+                        </div> -->
+            </div>
+          </form>
+        </div>
     </div>
-    <div class="input-group">
-      <label for="txtPassword">Password</label>
-      <input type="password" id="txtPassword" class="form-control" name="txtPassword" placeholder="c Password" />
-      <button type="button" id="btnToggle" class="toggle"></button>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block">Go!</button>
-  </form>
+  </div>
+  
+  
+  <p-dialog header="Header" [(visible)]="displayResponsive" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+      [draggable]="false" [resizable]="false">
+      <div>
+        <div class="container mt-5">
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+                <form [formGroup]="updateform">
+                  <!-- <div class="card px-5 py-5" style=" height: 320px" id="form1">
+                  
+                    <div class="alert alert-danger" *ngIf="f.cpassword.touched && f.cpassword.invalid">
+                      <br>
+                      <div *ngIf="f.cpassword.errors.required">Password is required.</div>
+                      <div class="error-text input-group mb-3" *ngIf="updateform.get('cpassword').hasError('passwordStrength')">
+                        <p class="text-danger">{{updateform.get('cpassword').errors['passwordStrength']}}</p>
+                      </div>
+                
+                    </div>
+                    <br>
+                    <div class="alert alert-danger" *ngIf="f.password.touched && f.password.invalid">
+                      <div *ngIf="f.password.errors.required">Password is required.</div>
+                      <div *ngIf="f.password.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+                    </div>
+                  </div> -->
+                  <br>
+                  <div class="card px-5 py-5" style=" height: 320px" id="form1">
+                
+                    <div class="form-data" v-if="!submitted">
+                      <div class="forms-inputs mb-4">
+                        <span>Password</span>
+                        <input autocomplete="off" formControlName="cpassword" type="password">
+                
+                      </div>
+                      <br>
+                      <div class="alert alert-danger" *ngIf="f.cpassword.touched && f.cpassword.invalid">
+                        <br>
+                        <div *ngIf="f.cpassword.errors.required">Password is required.</div>
+                        <div class="error-text input-group mb-3" *ngIf="updateform.get('cpassword').hasError('passwordStrength')">
+                          <p class="text-danger">{{updateform.get('cpassword').errors['passwordStrength']}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="forms-inputs mb-4">
+                        <span>Confirm Password</span>
+                        <input autocomplete="off" formControlName="password" type="text">
+                
+                      </div>
+                      <br>
+                      <div class="alert alert-danger" *ngIf="f.password.touched && f.password.invalid">
+                        <div *ngIf="f.password.errors.required">Password is required.</div>
+                        <div *ngIf="f.password.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+                      </div><br>
+                      <div class="mb-3">
+                        <button class="btn btn-dark w-70">Update</button>
+                      </div>
+                    </div>
+                
+                
+                    <!-- <div class="success-data" v-else>
+                                  <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">You have been logged in <br> Successfully</span> </div>
+                              </div> -->
+                  </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </div>
+          <ng-template pTemplate="footer">
+          <p-button (click)="displayResponsive=false" label="No" styleClass="p-button-text"></p-button>
+          <p-button (click)="displayResponsive=false" label="Yes" styleClass="p-button-text"></p-button>
+          </ng-template>
+  </p-dialog>
 </div>
-</main>
+

@@ -49,6 +49,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ConfirmPopupModule } from "primeng/confirmpopup";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { InputMaskModule } from "primeng/inputmask";
@@ -61,7 +62,7 @@ import { RippleModule } from 'primeng/ripple';
 
 
 
-
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductViewComponent } from './product-view/product-view.component';
@@ -107,6 +108,7 @@ import { DbProdItemsComponent } from './db-prod-items/db-prod-items.component';
 import { DbContactComponent } from './db-contact/db-contact.component';
 import { DbProfileUpdateComponent } from './db-user-profile/db-profile-update/db-profile-update.component';
 import { DbOtpVerifyComponent } from './db-otp-verify/db-otp-verify.component';
+import { DbUpdatePwdComponent } from './db-update-pwd/db-update-pwd.component';
 
 
 
@@ -133,7 +135,7 @@ const routes: Routes = [
   // { path: 'prod-page', component: ProductPageComponent },
   { path: 'cart', component: CartComponent },
   { path: 'product', component: ProductViewComponent },
-  { path: 'search/:id', component: SearchresultComponent },
+  { path: 'search', component: SearchresultComponent },
   { path: 'verify-email', component: EmailVerifyComponent },
   { path: 'details', component: ShippingDetailsComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -146,13 +148,14 @@ const routes: Routes = [
   { path: 'admin/reset-pwd', component: DbResetPwdComponent },
   
  
-  { path: 'login', component: DbLoginComponent,canActivate: [AuthGuard]},
+  { path: 'admin/login', component: DbLoginComponent,canActivate: [AuthGuard]},
   { path: 'ban-upload', component: BannerUploadComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
   { path: 'ban-view', component: BannerViewComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
   { path: 'add-prod', component: ProductDbComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
   { path: 'view-prod', component: DbProdItemsComponent,canActivate: [RandomGuard], canLoad: [RandomGuard]},
   { path: 'db-profile', component: DbUserProfileComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
   { path: 'db-update-profile', component: DbProfileUpdateComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
+  { path: 'admin/pwd-update', component: DbUpdatePwdComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
   { path: 'db-contact', component: DbContactComponent,canActivate: [RandomGuard], canLoad: [RandomGuard] },
 ]
 
@@ -202,7 +205,8 @@ const routes: Routes = [
     DbContactComponent,
     DbProfileUpdateComponent,
     ConfirmEqualValidatorDirective,
-    DbOtpVerifyComponent
+    DbOtpVerifyComponent,
+    DbUpdatePwdComponent
     // LoginComponent
   ],
   imports: [
@@ -239,10 +243,12 @@ const routes: Routes = [
     RippleModule,
     TooltipModule,
     ConfirmDialogModule,
+    DynamicDialogModule,
     ConfirmPopupModule,
     MessagesModule,
    
     NgbModule,
+    AutocompleteLibModule,
     FontAwesomeModule,
     MatSelectModule,
     NgxPaginationModule,

@@ -24,24 +24,34 @@
     
     <div class="modal-content">
       <div class="input-group mb-3">
-      <div class="nice-select" tabindex="0">
-        <span class="current">All Category</span>
-        <ul class="list">
-          <li data-value="All Category" class="option selected focus">All Category</li>
-          <li data-value="necklace" class="option">Necklace</li>
-          <li data-value="Combo sets" class="option">Combo Sets</li>
-          <li data-value="Bridal sets" class="option">Bridal sets</li>
-        </ul>
+        <div class="nice-select" tabindex="0">
+          <span class="current">All Category</span>
+          <ul class="list">
+            <li data-value="All Category" class="option selected focus">All Category</li>
+            <li data-value="necklace" class="option">Necklace</li>
+            <li data-value="Combo sets" class="option">Combo Sets</li>
+            <li data-value="Bridal sets" class="option">Bridal sets</li>
+          </ul>
+        </div>
       </div>
-    </div>
       <div class="input-group mb-3">
-         <input type="text" class="form-control">
-        
+        <input type="text" (input)="searchPosts($event.target.value)" class="form-control">
+    
         <div class="input-group-append">
           <button class="btn btn-warning"><i class="fas fa-search"></i></button> <br>
-          
+    
         </div>
-    </div>
+
+        
+      </div>
+      <ng-container *ngIf="(blogPosts$ | async) as blogPosts">
+        <p>Results:</p>
+        <ul>
+          <li *ngFor="let blogPost of blogPosts">
+            {{blogPost.title}}
+          </li>
+        </ul>
+      </ng-container>
     </div>
   </div>
 </div>
@@ -252,21 +262,50 @@
               <div class="nice-select" tabindex="0">
                 <span class="current">All Category</span>
                 <ul class="list">
-                  <li data-value="All Category" class="option selected focus">All Category</li>
-                  <li data-value="necklace" class="option">Necklace</li>
-                  <li data-value="Combo sets" class="option">Combo Sets</li>
-                  <li data-value="Bridal sets" class="option">Bridal sets</li>
+                  <li data-value="All Category" (click)="click()" class="option selected focus">All Category</li>
+                  <li data-value="necklace" (click)="click2()" class="option">Necklace</li>
+                  <li data-value="Combo sets" (click)="click3()" class="option">Bridal Sets</li>
                 </ul>
               </div>
               <form>
-                <input
+                <!-- <input
                   name="search"
                   placeholder="Search Products Here....."
                   type="search"
-                  (change)='search($event)'
+                  (input)="searchPosts($event.target.value)"
                 />
-                <button class="btnn"><i class="ti-search"></i></button>
+                <button class="btnn"><i class="ti-search"></i></button> -->
+                <div class="ng-autocomplete">
+                  <ng-autocomplete 
+                  #auto
+                    [data]="data"
+                    [searchKeyword]="keyword"
+                    placeholder ="Search Here"
+                    (selected)='selectEvent($event)'
+                    (inputChanged)='onChangeSearch($event)'
+                    (inputFocused)='onFocused($event)'
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate">                                 
+                  </ng-autocomplete>
+                  
+                  <ng-template #itemTemplate let-item>
+                  <p [innerHTML]="item.name" (click)="go(item.name)"></p>
+                  </ng-template>
+                  
+                  <ng-template #notFoundTemplate let-notFound>
+                  <div [innerHTML]="notFound"></div>
+                  </ng-template>
+                  </div>
               </form>
+
+              <ng-container *ngIf="(blogPosts$ | async) as blogPosts">
+                <!-- <p>Results:</p> -->
+                <ul>
+                  <li *ngFor="let blogPost of blogPosts">
+                    {{blogPost.title}}
+                  </li>
+                </ul>
+              </ng-container>
             
               <!-- <form [formGroup]="formGroup">
                 <mat-form-field>
@@ -432,4 +471,5 @@
       </div>
     </div>
   </div>
+  <!-- <script src="../../../assets/js/s.js"></script> -->
 </header>

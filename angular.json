@@ -24,8 +24,19 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/_redirects"
             ],
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "file-saver",
+              "jspdf-autotable",
+              "xlsx",
+              "raf",
+              "core-js"
+
+              
+           ],
             "styles": [
               
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -54,6 +65,8 @@
               "node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.js",
               
               "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"
+
+      
 
             ]
           },

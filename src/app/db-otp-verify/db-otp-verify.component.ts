@@ -29,7 +29,8 @@ export class DbOtpVerifyComponent implements OnInit {
   get f() { return this.otp_form.controls; }
 
   d(){
-    let data = this.f.otp.value;
+    console.log(this.f.otp.value)
+    let data = { otp: this.f.otp.value };
     var email = localStorage.getItem('email_reset');
     let url = "https://afj-staging-server.herokuapp.com/management/otp/validation/?email_id="+email;
     this.as.otp(url,data).subscribe(
@@ -57,6 +58,7 @@ export class DbOtpVerifyComponent implements OnInit {
       },
       error =>{
         console.log(error.statusText)
+        this.otp_form.reset();
         this.ts.error(error.statusText)
       }
       

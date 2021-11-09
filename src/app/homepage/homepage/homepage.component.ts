@@ -112,12 +112,14 @@ export class HomepageComponent implements OnInit {
     }, error => console.error(error));
 
     // banner images
-    this.Homepagesection.getHomeBanner('product/banner/get/all/record/').subscribe(ele => {
+    // this.Homepagesection.getHomeBanner('banner/all_data/').subscribe(ele => {
 
-      console.log(ele);
-      this.topImageSeprator(ele)
+    //   console.log(ele);
+    //   // this.topImageSeprator(ele)
+    //   this.dummy = ele;
+    //   this.ban = this.dummy.message
 
-    })
+    // })
   }
 
   ngOnInit(): void {
@@ -140,7 +142,8 @@ export class HomepageComponent implements OnInit {
     this.router.navigateByUrl('/' + url)
   }
 
-  dummy: any = [];
+  dummy: any;
+  ban;
   check:any;
 
   private working() {
@@ -163,7 +166,7 @@ export class HomepageComponent implements OnInit {
   private topImageSeprator(TopItems) {
 
 
-    for (const i of TopItems.success) {
+    for (const i of TopItems.message) {
 
       console.log(i.banner_image);
       if (i.category === 'Cosmetics') {
@@ -187,6 +190,7 @@ export class HomepageComponent implements OnInit {
     this.Homepagesection.homeSection('necklace').subscribe(data => {
       //data storing for use in html component
       this.necklace = data;
+     // console.log(this.necklace)
     }, error => console.error(error));
 
   }
@@ -212,7 +216,6 @@ export class HomepageComponent implements OnInit {
   }
 
 
-
   open(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',size: 'lg' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -232,6 +235,12 @@ export class HomepageComponent implements OnInit {
   }
 
 
+  my() {
+    document.querySelector("#view")
+      .addEventListener("click", (event) => {
+        var element = document.querySelector(".products");
+        element.classList.toggle("products-table");
+      })}
   
 
 }
