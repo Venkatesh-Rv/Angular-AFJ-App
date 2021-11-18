@@ -11,10 +11,24 @@ export class CombosetsComponent implements OnInit {
   products:any;
   totalNumber:number;
   page:number=1;
+  pageOfItems;
+  itemss: any[];
+  items;
+
+  home: any;
+  filter;
+  orderHeader;
+  isDesc;
+  visibleSidebar1;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.itemss = [{ label: 'Combo-sets' }];
+
+    this.home = { icon: 'pi pi-home' };
+    this.filter = { icon: 'pi pi-filter' };
         //get request
 
         this.http.get('http://localhost:3000/combo-sets').subscribe((data) => {
@@ -28,5 +42,14 @@ export class CombosetsComponent implements OnInit {
           // console.log(this.totalNumber)
         }, error => console.error(error));
   }
+
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+}
+
+sort(header:string){
+  this.orderHeader = header;
+}
 
 }

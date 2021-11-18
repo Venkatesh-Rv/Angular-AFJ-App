@@ -6,7 +6,7 @@
 <!-- Navbar-->
 <header class="header">
   <nav class="navbar navbar-expand-lg navbar py-3">
-      <div class="container">
+      <div class="container" style="display: flex; justify-content:center !important">
           <!-- Navbar Brand -->
           <a id="is" class="navbar-brand">
               <img src="https://ayishafashionjewellery.com/assets/images/sample.png" alt="logo" width="100">
@@ -24,7 +24,7 @@
       <!-- For Demo Purpose -->
       <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
         
-          <img src="https://www.drupal.org/files/project-images/reg_confirm_email_with_button_0.png" id="svg" alt="pic" class="img-fluid mb-3 d-none d-md-block">
+          <img src="https://icon-library.com/images/register-icon-png/register-icon-png-10.jpg" id="svg" alt="pic" class="img-fluid mb-3 d-none d-md-block">
           <h1>Create an Account For Admin</h1>
           <p class="font text mb-0"> Registeration page for AFJ Administrator.</p>
           <!-- <p class="font-italic text">Dashboard For<a class="text-muted">
@@ -216,9 +216,14 @@
                           <span class="">Create your account</span>
                       </button> -->
 
-                      <button class="btn btn-primary btn-block py-2">
+                      <button class="btn btn-block py-2"  style="
+                      color: #fff;
+                      background-color: #D36644 !important;
+                      border-color: #D36644 !important;
+                  ">
                         <span class="">Create your account</span>
                     </button>
+                   
                   </div>
 
                   <!-- Divider Text -->
@@ -251,6 +256,8 @@
   </div>
 </div>
 </section>
+
+
 
 
 <section class="h-100 bg-dark" style="display: none;">
@@ -291,3 +298,21 @@
     </div>
   </div>
 </section>
+<p-toast position="top-center"></p-toast>
+
+<ng-template #ecv>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="#fff"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path
+      d="M17.211,3.39H2.788c-0.22,0-0.4,0.18-0.4,0.4v9.614c0,0.221,0.181,0.402,0.4,0.402h3.206v2.402c0,0.363,0.429,0.533,0.683,0.285l2.72-2.688h7.814c0.221,0,0.401-0.182,0.401-0.402V3.79C17.612,3.569,17.432,3.39,17.211,3.39M16.811,13.004H9.232c-0.106,0-0.206,0.043-0.282,0.117L6.795,15.25v-1.846c0-0.219-0.18-0.4-0.401-0.4H3.189V4.19h13.622V13.004z"
+    ></path>
+  </svg>
+  Please Check Your mail for further Account Activation
+</ng-template>
+
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>

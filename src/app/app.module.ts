@@ -27,7 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
-import { ToastrModule } from 'ngx-toastr'
+import { ToastrModule } from 'ngx-toastr';
+
+import { MessageModule } from 'primeng/message';
 
 //Prime ng modules
 import { TabViewModule } from 'primeng/tabview';
@@ -45,6 +47,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FileUploadModule} from 'primeng/fileupload';
 import {ToolbarModule} from 'primeng/toolbar';
 import {RatingModule} from 'primeng/rating';
+import { SidebarModule } from 'primeng/sidebar';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { MessagesModule } from 'primeng/messages';
@@ -53,6 +56,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ConfirmPopupModule } from "primeng/confirmpopup";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { InputMaskModule } from "primeng/inputmask";
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 
 // import { CascadeSelectModule } from "primeng/cascadeselect";
 
@@ -61,13 +65,20 @@ import { TooltipModule } from 'primeng/tooltip';
 import { RippleModule } from 'primeng/ripple';
 
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import {OrderModule} from 'ngx-order-pipe';
+import {FilterPipeModule} from 'ngx-filter-pipe';
 
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { MatSelectModule } from '@angular/material/select';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { JwPaginationModule } from 'jw-angular-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -109,6 +120,8 @@ import { DbContactComponent } from './db-contact/db-contact.component';
 import { DbProfileUpdateComponent } from './db-user-profile/db-profile-update/db-profile-update.component';
 import { DbOtpVerifyComponent } from './db-otp-verify/db-otp-verify.component';
 import { DbUpdatePwdComponent } from './db-update-pwd/db-update-pwd.component';
+import { ResetSuccessPageComponent } from './db-reset-pwd/reset-success-page/reset-success-page.component';
+import { ToastContainerComponent } from './toast-container/toast-container.component';
 
 
 
@@ -146,6 +159,7 @@ const routes: Routes = [
   { path: 'admin/forgot-pwd', component: DbForgotPwdComponent},
   { path: 'admin/otp-verify', component: DbOtpVerifyComponent},
   { path: 'admin/reset-pwd', component: DbResetPwdComponent },
+  { path: 'admin/reset-success', component: ResetSuccessPageComponent },
   
  
   { path: 'admin/login', component: DbLoginComponent,canActivate: [AuthGuard]},
@@ -206,7 +220,9 @@ const routes: Routes = [
     DbProfileUpdateComponent,
     ConfirmEqualValidatorDirective,
     DbOtpVerifyComponent,
-    DbUpdatePwdComponent
+    DbUpdatePwdComponent,
+    ResetSuccessPageComponent,
+    ToastContainerComponent
     // LoginComponent
   ],
   imports: [
@@ -234,6 +250,7 @@ const routes: Routes = [
     InputTextModule,
     ProgressBarModule,
     FileUploadModule,
+    BreadcrumbModule,
     ToolbarModule,
     RatingModule,
     RadioButtonModule,
@@ -245,19 +262,26 @@ const routes: Routes = [
     ConfirmDialogModule,
     DynamicDialogModule,
     ConfirmPopupModule,
+    SidebarModule,
     MessagesModule,
+    MessageModule,
    
     NgbModule,
+    InfiniteScrollModule,
     AutocompleteLibModule,
+    OrderModule,
+    FilterPipeModule,
     FontAwesomeModule,
     MatSelectModule,
     NgxPaginationModule,
+    JwPaginationModule,
     Ng2SearchPipeModule,
     ToastrModule.forRoot({
       timeOut:1500,
       progressBar:true,
       progressAnimation:'increasing',
-      preventDuplicates:true
+      preventDuplicates:true,
+      "positionClass": "toast-top-center",
     }),
     MatInputModule,
     MatAutocompleteModule,
@@ -267,8 +291,10 @@ const routes: Routes = [
   providers: [HomepagesectionService,
     CurrencyPipe,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
-  PostService,SucesslogginggService,
-  ConfirmationService,MessageService],
+  PostService,
+  SucesslogginggService,
+  ConfirmationService,
+  MessageService],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })

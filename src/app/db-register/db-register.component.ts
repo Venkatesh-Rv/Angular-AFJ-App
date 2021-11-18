@@ -4,14 +4,20 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth/services/auth.service';
+import {MessageService} from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
+import { ToastService } from '../toast-container/toast.service';
 
 import { PasswordStrengthValidator } from '../password-strength.validators';
 import { ConfirmedValidator } from '../confirmed.validator';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-db-register',
   templateUrl: './db-register.component.html',
-  styleUrls: ['./db-register.component.css']
+  styleUrls: ['./db-register.component.css'],
 })
 export class DbRegisterComponent implements OnInit {
 
@@ -29,9 +35,12 @@ export class DbRegisterComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private ts: ToastrService,
-    private as: AuthService) { }
+    private bt:ToastService,
+    private as: AuthService, private messageService: MessageService, private primengConfig: PrimeNGConfig) { }
 
+   
   ngOnInit(): void {
+
     this.register = this.fb.group({
       first_name: ["",[Validators.required,Validators.minLength(4)]],
       // last_name: [null],
@@ -94,6 +103,11 @@ export class DbRegisterComponent implements OnInit {
 
   }
 
+  showStandard() {
+    this.bt.show("Please Check Your mail for further Account Activation",
+    { classname: 'bg-info text-light', delay: 20000 });
+    console.log('works')
+  }
   //Email link login
 
   email(data){
@@ -102,9 +116,9 @@ export class DbRegisterComponent implements OnInit {
       ele=>{
         if(ele.status === 200){
           // this.loaderbool = false;
-          this.ts.info("Please check your email to login.")
-          this.register.reset();
-          this.router.navigate(['/admin/login'])
+          this.showStandard();
+           this.register.reset();
+          //window.location.reload();
         }
       },
       error =>{
@@ -122,7 +136,7 @@ export class DbRegisterComponent implements OnInit {
     //validation check
     if (this.register.invalid) {
       window.scrollTo({top: 0, behavior: 'smooth'});
-      this.ts.info("Kindly Fill Mandatory Details..!!")
+      this.ts.info("Please Fill the Details Properly")
       return;
   }
     this.loaderbool = true;
@@ -153,7 +167,7 @@ console.log(uploadData)
     if(ele.status === 201){
       this.loaderbool = false;
       this.email(uploadData.get('email_id'));
-      this.ts.success("Owner Created Successfully")
+      //this.ts.success("Owner Created Successfully")
       //this.router.navigate(['/login'])
       console.log(this.msg)
     }

@@ -8,12 +8,19 @@ import { ActivatedRoute,ParamMap,Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 
 import { map } from "rxjs/operators";
-import { Observable,Subject } from 'rxjs';
+import { Observable,Subject,OperatorFunction } from 'rxjs';
 import { HomepagesectionService } from 'src/app/services/homepagesection.service';
 import { Toast, ToastrService } from 'ngx-toastr';
 
-
-
+const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
+  'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
+  'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
+  'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
+  'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+  'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
+  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
+  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+  
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -53,6 +60,34 @@ export class HeaderComponent implements OnInit {
     {
       name: 'necklace'
     },
+    {
+      name: 'combo-sets'
+    },
+    {
+      name: 'hipchain'
+    },
+    {
+      name: 'bridalsets'
+    },
+    {
+      name: 'choker'
+    },
+    {
+      name: 'anklet'
+    },
+    {
+      name: 'bangles'
+    },
+    {
+      name: 'chains'
+    },
+    {
+      name: 'toe rings'
+    },
+    {
+      name: 'nose rings'
+    },
+
     { id: 'd29f22ee-7c93-444d-8410-5b48ec487c87', name: 'rings', category: 'Rings', price: '1500' }
   ];
 
@@ -189,19 +224,19 @@ pass(cat){
   //   })
   // }
 
-  search(event: any){
-    // this.aroute.paramMap.pipe(
-    //   map((param: ParamMap) => {
-    //     // @ts-ignore
-    //     return this.router.navigate(['prod-page',param]);
+  // search(event: any){
+  //   // this.aroute.paramMap.pipe(
+  //   //   map((param: ParamMap) => {
+  //   //     // @ts-ignore
+  //   //     return this.router.navigate(['prod-page',param]);
         
-    //   })
-    // )
+  //   //   })
+  //   // )
 
-    this.sid=event.target.value
-    //console.log(this.sid)
-    this.router.navigate(['search',this.sid])
-  }
+  //   this.sid=event.target.value
+  //   //console.log(this.sid)
+  //   this.router.navigate(['search',this.sid])
+  // }
 
   private userIdSubject = new Subject<string>();
 
@@ -230,15 +265,42 @@ pass(cat){
     console.log(item)
   }
 
+   
+
   onChangeSearch(val: string) {
     // fetch remote data from here
     // And reassign the 'data' which is binded to 'data' property.
+
     
+
   }
   
-  onFocused(e){
+  onFocused(e) {
     // do something when input is focused
     this.auto.close();
+    
   }
+
+  openPanel(): void {
+    // e.stopPropagation();
+    this.auto.open();
+  }
+  
+  closePanel(): void {
+    // e.stopPropagation();
+    this.auto.close();
+    }
+
+  public model: any;
+
+  
+
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    )
 
 }

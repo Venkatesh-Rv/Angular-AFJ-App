@@ -33,6 +33,11 @@ export class ProductService {
     return this.http.get<any>(this.url + cat+'/'+ id);
   }
 
+  get(params:any):Observable<any>{
+    let urrl ='http://localhost:3000/necklace?_page=1&_limit='
+    return this.http.get(urrl + params)
+  }
+
 
   // getSingleProduct(id: Number): Observable<ProductModelServer> {
   //   return this.http.get<ProductModelServer>(this.url + 'products/' + id);

@@ -943,6 +943,8 @@
   }
   .single-product {
     margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
   .error-page .error-inner h2 {
     font-size: 55px;

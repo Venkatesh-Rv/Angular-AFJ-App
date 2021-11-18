@@ -24,6 +24,15 @@
 
 /*css*/
 
+#content-desktop {display: block;}
+#content-mobile {display: none;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  #content-desktop {display: none;}
+#content-mobile {display: block;}
+}
+
 *{
     box-sizing:border-box;
     -moz-box-sizing:border-box;
@@ -39,3 +48,41 @@
       justify-content: flex-end;
   }
  
+  /* .p-breadcrumb{
+      display: flex !important;
+      justify-content: center !important;
+  } */
+
+  .item {
+    width: 100%;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+    border-radius: 6px;
+  }
+
+
+  
+  .containerrr {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .containerrr > div {
+    flex: 50%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+    /*demo*/
+    /* box-shadow: 0 0 0 1px black; */
+    margin-bottom: 10px;
+  }
+
+#view{
+  /* border-radius */
+ -webkit-border-radius: 20px;
+ -moz-border-radius: 20px;
+ border-radius: 20px;
+/* box-shadow */
+ -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+ -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+ box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+}
+
+
+  /*Filter*/

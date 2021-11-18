@@ -5,13 +5,18 @@
 html,body{
     /* font-family:"Poppins",sans-serif; */
     font-family: 'Nunito', sans-serif !important;
-    background: url("https://covernest.com/images/Home_page_bg_1.jpg");
+    background: url("https://covernest.com/images/Home_page_bg_1.jpg") !important;
 }
 html, body { height: 100%; }
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
 
 .p-carousel-indicators {
       display: none !important;
+}
+
+.toast-top-left {
+  display: flex !important;
+  justify-content: center !important;
 }
 
 
@@ -73,6 +78,13 @@ span.old {
     background: orange !important;
     color: #fefefe;
     cursor: default;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #FFC107 !important;
+  border-color: #FFC107 !important;
 }
   /*Product Page 2X CSS*/
 
@@ -200,6 +212,11 @@ span.old {
   display: flex !important;
   justify-content: center !important;
 }
+
+/* .p-breadcrumb{
+  display: flex !important;
+  justify-content: center !important;
+} */
 
 .disable-scroll .ui-dialog-content {
   overflow: hidden !important;
